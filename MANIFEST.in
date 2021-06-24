@@ -1,0 +1,7 @@
+include dash_query_builder/dash_query_builder.min.js
+include dash_query_builder/dash_query_builder.min.js.map
+include dash_query_builder/metadata.json
+include dash_query_builder/package-info.json
+include README.md
+include LICENSE
+include package.json
