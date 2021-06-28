@@ -2,7 +2,20 @@
   "src/lib/components/DashQueryBuilder.react.js": {
     "description": "ExampleComponent is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
     "displayName": "DashQueryBuilder",
-    "methods": [],
+    "methods": [
+      {
+        "name": "queryChange",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "e",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
     "props": {
       "id": {
         "type": {
@@ -11,19 +24,129 @@
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
       },
-      "label": {
+      "query": {
         "type": {
-          "name": "string"
+          "name": "shape",
+          "value": {
+            "id": {
+              "name": "string",
+              "required": false
+            },
+            "combinator": {
+              "name": "string",
+              "required": true
+            },
+            "rules": {
+              "name": "union",
+              "value": [
+                {
+                  "name": "shape",
+                  "value": {
+                    "field": {
+                      "name": "string",
+                      "required": true
+                    },
+                    "value": {
+                      "name": "any",
+                      "required": true
+                    },
+                    "operator": {
+                      "name": "string",
+                      "required": true
+                    }
+                  }
+                },
+                {
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "shape",
+                    "value": {
+                      "rules": {
+                        "name": "arrayOf",
+                        "value": {
+                          "name": "shape",
+                          "value": {
+                            "field": {
+                              "name": "string",
+                              "required": true
+                            },
+                            "value": {
+                              "name": "any",
+                              "required": true
+                            },
+                            "operator": {
+                              "name": "string",
+                              "required": true
+                            }
+                          }
+                        },
+                        "required": false
+                      },
+                      "combinator": {
+                        "name": "string",
+                        "required": true
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "array"
+                }
+              ],
+              "required": false
+            }
+          }
         },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
+        "required": false,
+        "description": "The query"
       },
-      "value": {
+      "fields": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "id": {
+                "name": "number",
+                "required": false
+              },
+              "name": {
+                "name": "string",
+                "required": true
+              },
+              "label": {
+                "name": "string",
+                "required": true
+              },
+              "operators": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "shape",
+                  "value": {
+                    "name": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "label": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                },
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "The value displayed in the input."
+      },
+      "formattedOut": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "The value displayed in the input."
+        "description": ""
       },
       "setProps": {
         "type": {

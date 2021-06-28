@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dqbDashQueryBuilder <- function(id=NULL, label=NULL, value=NULL) {
+dqbDashQueryBuilder <- function(id=NULL, fields=NULL, formattedOut=NULL, query=NULL) {
     
-    props <- list(id=id, label=label, value=value)
+    props <- list(id=id, fields=fields, formattedOut=formattedOut, query=query)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dqbDashQueryBuilder <- function(id=NULL, label=NULL, value=NULL) {
         props = props,
         type = 'DashQueryBuilder',
         namespace = 'dash_query_builder',
-        propNames = c('id', 'label', 'value'),
+        propNames = c('id', 'fields', 'formattedOut', 'query'),
         package = 'dashQueryBuilder'
         )
 
