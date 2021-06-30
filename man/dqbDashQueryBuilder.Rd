@@ -10,23 +10,25 @@ ExampleComponent is an example component. It takes a property, `label`, and disp
 }
 
 \usage{
-dqbDashQueryBuilder(id=NULL, fields=NULL, formattedOut=NULL, query=NULL)
+dqbDashQueryBuilder(id=NULL, fields=NULL, formattedOut=NULL, query=NULL,
+showCombinatorsBetweenRules=NULL, showNotToggle=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{fields}{List of lists containing elements 'id', 'name', 'label', 'operators'.
+\item{fields}{List of lists containing elements 'id', 'name', 'label', 'inputtype', 'operators'.
 those elements have the following types:
   - id (numeric; optional)
   - name (character; required)
   - label (character; required)
+  - inputtype (character; optional)
   - operators (optional): . operators has the following type: list of lists containing elements 'name', 'label'.
 those elements have the following types:
   - name (character; optional)
-  - label (character; optional)ss. The value displayed in the input.}
+  - label (character; optional)ss. The possible fields and operators that are allowable.}
 
-\item{formattedOut}{Character. }
+\item{formattedOut}{Character. The formatted query}
 
 \item{query}{Lists containing elements 'id', 'combinator', 'rules'.
 those elements have the following types:
@@ -43,7 +45,12 @@ those elements have the following types:
   - field (character; required)
   - value (logical | numeric | character | named list | unnamed list; required)
   - operator (character; required)s
-  - combinator (character; required)s | unnamed list. The query}
+  - combinator (character; required)s | unnamed list. The query that is created via this component. Can be used to seed the
+initial component.}
+
+\item{showCombinatorsBetweenRules}{Logical. Show the combinators between the items within a group}
+
+\item{showNotToggle}{Logical. Whether or not to show the "Not" Toggle}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

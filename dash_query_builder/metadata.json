@@ -98,7 +98,7 @@
           }
         },
         "required": false,
-        "description": "The query"
+        "description": "The query that is created via this component. Can be used to seed the\ninitial component."
       },
       "fields": {
         "type": {
@@ -117,6 +117,10 @@
               "label": {
                 "name": "string",
                 "required": true
+              },
+              "inputType": {
+                "name": "string",
+                "required": false
               },
               "operators": {
                 "name": "arrayOf",
@@ -139,14 +143,28 @@
           }
         },
         "required": false,
-        "description": "The value displayed in the input."
+        "description": "The possible fields and operators that are allowable."
       },
       "formattedOut": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The formatted query"
+      },
+      "showNotToggle": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Whether or not to show the \"Not\" Toggle"
+      },
+      "showCombinatorsBetweenRules": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Show the combinators between the items within a group"
       },
       "setProps": {
         "type": {

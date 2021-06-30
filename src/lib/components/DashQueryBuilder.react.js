@@ -18,7 +18,14 @@ export default class DashQueryBuilder extends Component {
         console.log(e);
     };
     render() {
-        const {id, setProps, query, fields} = this.props;
+        const {
+            id,
+            setProps,
+            query,
+            fields,
+            showNotToggle,
+            showCombinatorsBetweenRules,
+        } = this.props;
 
         return (
             <div id={id}>
@@ -33,8 +40,8 @@ export default class DashQueryBuilder extends Component {
                             formattedOut: formatQuery(query, 'sql'),
                         });
                     }}
-                    // showCombinatorsBetweenRules={true}
-                    showNotToggle={true}
+                    showCombinatorsBetweenRules={showCombinatorsBetweenRules}
+                    showNotToggle={showNotToggle}
                 ></QueryBuilder>{' '}
             </div>
         );
@@ -49,7 +56,8 @@ DashQueryBuilder.propTypes = {
      */
     id: PropTypes.string,
     /**
-     * The query
+     * The query that is created via this component. Can be used to seed the
+     * initial component.
      */
     query: PropTypes.shape({
         id: PropTypes.string,
@@ -77,13 +85,15 @@ DashQueryBuilder.propTypes = {
         ]),
     }),
     /**
-     * The value displayed in the input.
+     * The possible fields and operators that are allowable.
      */
     fields: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number,
             name: PropTypes.string.isRequired,
             label: PropTypes.string.isRequired,
+            // valueEditorType: PropTypes.oneOf(),
+            inputType: PropTypes.string,
             operators: PropTypes.arrayOf(
                 PropTypes.shape({
                     name: PropTypes.string,
@@ -92,8 +102,18 @@ DashQueryBuilder.propTypes = {
             ),
         })
     ),
+    /**
+     *  The formatted query
+     */
     formattedOut: PropTypes.string,
-
+    /**
+     * Whether or not to show the "Not" Toggle
+     */
+    showNotToggle: PropTypes.bool,
+    /**
+     * Show the combinators between the items within a group
+     */
+    showCombinatorsBetweenRules: PropTypes.bool,
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.

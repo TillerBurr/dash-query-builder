@@ -17,11 +17,13 @@ Keyword arguments:
     The ID used to identify this component in Dash callbacks.
 
 - fields (list of dicts; optional):
-    The value displayed in the input.
+    The possible fields and operators that are allowable.
 
     `fields` is a list of dicts with keys:
 
     - id (number; optional)
+
+    - inputType (string; optional)
 
     - label (string; required)
 
@@ -35,10 +37,12 @@ Keyword arguments:
 
         - name (string; optional)
 
-- formattedOut (string; optional)
+- formattedOut (string; optional):
+    The formatted query.
 
 - query (dict; optional):
-    The query.
+    The query that is created via this component. Can be used to seed
+    the initial component.
 
     `query` is a dict with keys:
 
@@ -66,14 +70,20 @@ Keyword arguments:
 
             - operator (string; required)
 
-            - value (boolean | number | string | dict | list; required) | list"""
+            - value (boolean | number | string | dict | list; required) | list
+
+- showCombinatorsBetweenRules (boolean; optional):
+    Show the combinators between the items within a group.
+
+- showNotToggle (boolean; optional):
+    Whether or not to show the \"Not\" Toggle."""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, query=Component.UNDEFINED, fields=Component.UNDEFINED, formattedOut=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'fields', 'formattedOut', 'query']
+    def __init__(self, id=Component.UNDEFINED, query=Component.UNDEFINED, fields=Component.UNDEFINED, formattedOut=Component.UNDEFINED, showNotToggle=Component.UNDEFINED, showCombinatorsBetweenRules=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'fields', 'formattedOut', 'query', 'showCombinatorsBetweenRules', 'showNotToggle']
         self._type = 'DashQueryBuilder'
         self._namespace = 'dash_query_builder'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'fields', 'formattedOut', 'query']
+        self.available_properties = ['id', 'fields', 'formattedOut', 'query', 'showCombinatorsBetweenRules', 'showNotToggle']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

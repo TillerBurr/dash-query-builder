@@ -4,7 +4,10 @@ from dash.dependencies import Input, Output
 import dash_html_components as html
 
 app = dash.Dash(__name__)
-fields = [{"name": "test", "label": "test"}, {"name": "test2", "label": "test2"}]
+fields = [
+    {"name": "test", "label": "label test"},
+    {"name": "test2", "label": "label test2", "inputType": "number"},
+]
 app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(id="input", fields=fields),
