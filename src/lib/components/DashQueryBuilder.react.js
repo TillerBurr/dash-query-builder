@@ -1,51 +1,114 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import QueryBuilder, {formatQuery} from 'react-querybuilder';
 
-/**
- * ExampleComponent is an example component.
- * It takes a property, `label`, and
- * displays it.
- * It renders an input with the property `value`
- * which is editable by the user.
- */
+import {
+    BasicConfig,
+    Query,
+    Builder,
+    Utils as QbUtils,
+    ImmutableTree,
+} from 'react-awesome-query-builder';
+import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
+import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
+import 'react-awesome-query-builder/lib/css/styles.css';
+import 'antd/dist/antd.css';
+let InitialConfig;
+// import 'react-awesome-query-builder/lib/css/compact_styles.css';
+// const InitialConfig = MaterialConfig;
+// const InitialConfig = AntdConfig;
+
+const queryValue = {id: QbUtils.uuid(), type: 'group'};
+const themeSelect = (theme) => {
+    if (theme === 'antd') {
+        InitialConfig = AntdConfig;
+    } else if (theme === 'material') {
+        InitialConfig = MaterialConfig;
+    } else {
+        InitialConfig = BasicConfig;
+    }
+    return InitialConfig;
+};
 export default class DashQueryBuilder extends Component {
     constructor(props) {
         super(props);
+        let InitialConfig = themeSelect(props.theme);
+        const fields = JSON.parse(props.fields);
+        const config = {
+            ...InitialConfig,
+            ...fields,
+        };
+        this.setProps = props.setProps;
+        console.log(config);
+        this.state = {
+            tree: QbUtils.checkTree(QbUtils.loadTree(queryValue), config),
+            config: config,
+        };
     }
 
-    queryChange = (e) => {
-        console.log(e);
+    onChange = (immutableTree, config) => {
+        // Tip: for better performance you can apply `throttle` - see `examples/demo`
+        this.setState({tree: immutableTree, config: config});
+        this.setProps({tree: this.state.tree});
+        const jsonTree = QbUtils.getTree(immutableTree);
+        console.log(jsonTree);
     };
-    render() {
-        const {
-            id,
-            setProps,
-            query,
-            fields,
-            showNotToggle,
-            showCombinatorsBetweenRules,
-        } = this.props;
+
+    render = () => {
+        const {id, tree, setProps} = this.props;
 
         return (
-            <div id={id}>
-                {' '}
-                <QueryBuilder
-                    id={id}
-                    fields={fields}
-                    query={query}
-                    onQueryChange={(query) => {
-                        setProps({
-                            query: query,
-                            formattedOut: formatQuery(query, 'sql'),
-                        });
-                    }}
-                    showCombinatorsBetweenRules={showCombinatorsBetweenRules}
-                    showNotToggle={showNotToggle}
-                ></QueryBuilder>{' '}
+            <div>
+                <Query
+                    {...this.state.config}
+                    value={this.state.tree}
+                    onChange={this.onChange}
+                    renderBuilder={this.renderBuilder}
+                />
+                {this.renderResult(this.state)}
             </div>
         );
-    }
+    };
+    renderResult = ({tree: immutableTree, config}) => (
+        <div className="query-builder-result">
+            <div>
+                Query string:{' '}
+                <pre>
+                    {JSON.stringify(
+                        QbUtils.queryString(immutableTree, config, true)
+                    )}
+                </pre>
+            </div>
+            <div>
+                MongoDb query:{' '}
+                <pre>
+                    {JSON.stringify(
+                        QbUtils.mongodbFormat(immutableTree, config)
+                    )}
+                </pre>
+            </div>
+            <div>
+                SQL where:{' '}
+                <pre>
+                    {JSON.stringify(QbUtils.sqlFormat(immutableTree, config))}
+                </pre>
+            </div>
+            <div>
+                JsonLogic:{' '}
+                <pre>
+                    {JSON.stringify(
+                        QbUtils.jsonLogicFormat(immutableTree, config)
+                    )}
+                </pre>
+            </div>
+        </div>
+    );
+    renderBuilder = (props) => (
+        <div className="query-builder-container" style={{padding: '10px'}}>
+            <div className="query-builder qb-lite">
+                <Builder {...props} />
+            </div>
+        </div>
+    );
 }
 
 DashQueryBuilder.defaultProps = {};
@@ -56,67 +119,11 @@ DashQueryBuilder.propTypes = {
      */
     id: PropTypes.string,
     /**
-     * The query that is created via this component. Can be used to seed the
-     * initial component.
-     */
-    query: PropTypes.shape({
-        id: PropTypes.string,
-        combinator: PropTypes.string.isRequired,
-
-        rules: PropTypes.oneOfType([
-            PropTypes.shape({
-                field: PropTypes.string.isRequired,
-                value: PropTypes.any.isRequired,
-                operator: PropTypes.string.isRequired,
-            }),
-            PropTypes.arrayOf(
-                PropTypes.shape({
-                    rules: PropTypes.arrayOf(
-                        PropTypes.shape({
-                            field: PropTypes.string.isRequired,
-                            value: PropTypes.any.isRequired,
-                            operator: PropTypes.string.isRequired,
-                        })
-                    ),
-                    combinator: PropTypes.string.isRequired,
-                })
-            ),
-            PropTypes.array,
-        ]),
-    }),
-    /**
-     * The possible fields and operators that are allowable.
-     */
-    fields: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string.isRequired,
-            label: PropTypes.string.isRequired,
-            // valueEditorType: PropTypes.oneOf(),
-            inputType: PropTypes.string,
-            operators: PropTypes.arrayOf(
-                PropTypes.shape({
-                    name: PropTypes.string,
-                    label: PropTypes.string,
-                })
-            ),
-        })
-    ),
-    /**
-     *  The formatted query
-     */
-    formattedOut: PropTypes.string,
-    /**
-     * Whether or not to show the "Not" Toggle
-     */
-    showNotToggle: PropTypes.bool,
-    /**
-     * Show the combinators between the items within a group
-     */
-    showCombinatorsBetweenRules: PropTypes.bool,
-    /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
+    tree: PropTypes.any,
     setProps: PropTypes.func,
+    fields: PropTypes.any.isRequired,
+    theme: PropTypes.string,
 };

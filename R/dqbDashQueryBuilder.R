@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dqbDashQueryBuilder <- function(id=NULL, fields=NULL, formattedOut=NULL, query=NULL, showCombinatorsBetweenRules=NULL, showNotToggle=NULL) {
+dqbDashQueryBuilder <- function(id=NULL, fields=NULL, theme=NULL, tree=NULL) {
     
-    props <- list(id=id, fields=fields, formattedOut=formattedOut, query=query, showCombinatorsBetweenRules=showCombinatorsBetweenRules, showNotToggle=showNotToggle)
+    props <- list(id=id, fields=fields, theme=theme, tree=tree)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dqbDashQueryBuilder <- function(id=NULL, fields=NULL, formattedOut=NULL, query=N
         props = props,
         type = 'DashQueryBuilder',
         namespace = 'dash_query_builder',
-        propNames = c('id', 'fields', 'formattedOut', 'query', 'showCombinatorsBetweenRules', 'showNotToggle'),
+        propNames = c('id', 'fields', 'theme', 'tree'),
         package = 'dashQueryBuilder'
         )
 
