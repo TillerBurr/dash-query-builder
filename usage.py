@@ -36,7 +36,7 @@ fields = {
         "is_promotion": {
             "label": "Promo?",
             "type": "boolean",
-            "operators": ["equal"],
+            "operators": ["equal", "is_empty"],
             "valueSources": ["value"],
         },
     }
@@ -44,7 +44,7 @@ fields = {
 app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(
-            id="input", fields=json.dumps(fields), theme="antd"
+            id="input", fields=fields["fields"], theme="antd"
         ),
         html.Div(id="output"),
         html.Hr(),
@@ -54,12 +54,13 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output("output", "children"), [Input("input", "tree")],
+    Output("output", "children"), [Input("input", "sqlFormat"), Input("input", "tree")],
 )
-def display_output(tree):
-    with open("test.txt", "w") as f:
-        json.dump(json.dumps(tree), f)
-    return json.dumps(tree)
+def display_output(fmt: str, tree: str):
+    # with open("test.txt", "w") as f:
+    #     json.dump(json.dumps(tree), f)
+    new_fmt = fmt.replace("EMPTY", "NULL") if fmt is not None else None
+    return new_fmt
 
 
 if __name__ == "__main__":

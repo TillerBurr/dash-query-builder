@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-dqbDashQueryBuilder <- function(id=NULL, fields=NULL, theme=NULL, tree=NULL) {
+dqbDashQueryBuilder <- function(id=NULL, fields=NULL, jsonLogicFormat=NULL, mongodbFormat=NULL, queryStringFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL) {
     
-    props <- list(id=id, fields=fields, theme=theme, tree=tree)
+    props <- list(id=id, fields=fields, jsonLogicFormat=jsonLogicFormat, mongodbFormat=mongodbFormat, queryStringFormat=queryStringFormat, sqlFormat=sqlFormat, theme=theme, tree=tree)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ dqbDashQueryBuilder <- function(id=NULL, fields=NULL, theme=NULL, tree=NULL) {
         props = props,
         type = 'DashQueryBuilder',
         namespace = 'dash_query_builder',
-        propNames = c('id', 'fields', 'theme', 'tree'),
+        propNames = c('id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree'),
         package = 'dashQueryBuilder'
         )
 

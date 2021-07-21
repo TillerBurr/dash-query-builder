@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import {
     BasicConfig,
     Query,
     Builder,
     Utils as QbUtils,
-    ImmutableTree,
 } from 'react-awesome-query-builder';
 import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
 import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
@@ -26,36 +24,48 @@ const themeSelect = (theme) => {
     } else {
         InitialConfig = BasicConfig;
     }
+
     return InitialConfig;
 };
 export default class DashQueryBuilder extends Component {
     constructor(props) {
         super(props);
         let InitialConfig = themeSelect(props.theme);
-        const fields = JSON.parse(props.fields);
+        const fields = props.fields; //JSON.parse(props.fields);
         const config = {
             ...InitialConfig,
-            ...fields,
+            fields,
         };
         this.setProps = props.setProps;
-        console.log(config);
-        this.state = {
-            tree: QbUtils.checkTree(QbUtils.loadTree(queryValue), config),
-            config: config,
-        };
+        this.state = this.getCurrentStateFromTree(
+            // QbUtils.checkTree(QbUtils.loadTree(queryValue))
+            QbUtils.loadTree(queryValue),
+            config
+        );
     }
-
+    getCurrentStateFromTree = (tree, config) => {
+        let currentState = {
+            tree: QbUtils.checkTree(tree),
+            config: config,
+            queryStringFormat: JSON.stringify(
+                QbUtils.queryString(tree, config, true)
+            ),
+            mongodbFormat: JSON.stringify(QbUtils.mongodbFormat(tree, config)),
+            sqlFormat: JSON.stringify(QbUtils.sqlFormat(tree, config)),
+            jsonLogicFormat: JSON.stringify(
+                QbUtils.jsonLogicFormat(tree, config)
+            ),
+        };
+        return currentState;
+    };
     onChange = (immutableTree, config) => {
         // Tip: for better performance you can apply `throttle` - see `examples/demo`
-        this.setState({tree: immutableTree, config: config});
-        this.setProps({tree: this.state.tree});
-        const jsonTree = QbUtils.getTree(immutableTree);
-        console.log(jsonTree);
+        let currentState = this.getCurrentStateFromTree(immutableTree, config);
+        this.setState(currentState);
+        this.setProps(currentState);
     };
 
     render = () => {
-        const {id, tree, setProps} = this.props;
-
         return (
             <div>
                 <Query
@@ -64,44 +74,10 @@ export default class DashQueryBuilder extends Component {
                     onChange={this.onChange}
                     renderBuilder={this.renderBuilder}
                 />
-                {this.renderResult(this.state)}
             </div>
         );
     };
-    renderResult = ({tree: immutableTree, config}) => (
-        <div className="query-builder-result">
-            <div>
-                Query string:{' '}
-                <pre>
-                    {JSON.stringify(
-                        QbUtils.queryString(immutableTree, config, true)
-                    )}
-                </pre>
-            </div>
-            <div>
-                MongoDb query:{' '}
-                <pre>
-                    {JSON.stringify(
-                        QbUtils.mongodbFormat(immutableTree, config)
-                    )}
-                </pre>
-            </div>
-            <div>
-                SQL where:{' '}
-                <pre>
-                    {JSON.stringify(QbUtils.sqlFormat(immutableTree, config))}
-                </pre>
-            </div>
-            <div>
-                JsonLogic:{' '}
-                <pre>
-                    {JSON.stringify(
-                        QbUtils.jsonLogicFormat(immutableTree, config)
-                    )}
-                </pre>
-            </div>
-        </div>
-    );
+
     renderBuilder = (props) => (
         <div className="query-builder-container" style={{padding: '10px'}}>
             <div className="query-builder qb-lite">
@@ -113,6 +89,87 @@ export default class DashQueryBuilder extends Component {
 
 DashQueryBuilder.defaultProps = {};
 
+const singleFieldType = PropTypes.oneOf([
+    '!struct',
+    '!group',
+    'number',
+    'slider',
+    'rangeslider',
+    'select',
+    'boolean',
+    'text',
+    'date',
+    'textarea',
+    'time',
+    'datetime',
+    'multiselect',
+]);
+
+function lazyFunction(f) {
+    return function () {
+        return f.apply(this, arguments);
+    };
+}
+let lazySubfield = lazyFunction(function () {
+    return fieldPropType;
+});
+
+const fieldPropType = PropTypes.objectOf(
+    PropTypes.shape({
+        type: PropTypes.oneOfType([
+            PropTypes.arrayOf(singleFieldType),
+            singleFieldType,
+        ]).isRequired,
+        mode: PropTypes.oneOf(['some', 'array']),
+        /**
+         * Config for subfields of complex field (multiple nesting is supported)
+         */
+        subfields: lazySubfield, //fields type
+        label: PropTypes.string.isRequired,
+        label2: PropTypes.string,
+        tooltip: PropTypes.string,
+        valueSources: PropTypes.arrayOf(
+            PropTypes.oneOf(['value', 'field', 'func'])
+        ),
+        operators: PropTypes.any,
+        fieldSettings: PropTypes.shape({
+            min: PropTypes.number,
+            max: PropTypes.number,
+            step: PropTypes.number,
+            marks: PropTypes.objectOf(PropTypes.string),
+            timeFormat: PropTypes.string,
+            dateFormat: PropTypes.string,
+            valueFormat: PropTypes.string,
+            use12Hours: PropTypes.bool,
+            useKeyboard: PropTypes.bool,
+            maxLength: PropTypes.number,
+            maxRows: PropTypes.number,
+            listValues: PropTypes.arrayOf(
+                PropTypes.shape({
+                    title: PropTypes.string,
+                    value: PropTypes.oneOfType([
+                        PropTypes.number,
+                        PropTypes.string,
+                    ]),
+                    parent: PropTypes.string,
+                })
+            ),
+            validateValue: PropTypes.func,
+            allowCustomValues: PropTypes.bool,
+            treeExpandAll: PropTypes.bool,
+            treeSelectOnlyLeafs: PropTypes.bool,
+        }),
+        defaultValue: PropTypes.any,
+        preferWidgets: PropTypes.arrayOf(PropTypes.string),
+        excludeOperators: PropTypes.arrayOf(PropTypes.string),
+        funcs: PropTypes.any,
+        hideForSelect: PropTypes.bool,
+        hideForCompare: PropTypes.bool,
+        conjunctions: PropTypes.arrayOf(PropTypes.oneOf(['AND', 'OR'])),
+        showNot: PropTypes.bool,
+    })
+);
+
 DashQueryBuilder.propTypes = {
     /**
      * The ID used to identify this component in Dash callbacks.
@@ -122,8 +179,15 @@ DashQueryBuilder.propTypes = {
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
      */
-    tree: PropTypes.any,
     setProps: PropTypes.func,
-    fields: PropTypes.any.isRequired,
-    theme: PropTypes.string,
+    /**
+     * Tree produced by the query builder
+     */
+    tree: PropTypes.any,
+    fields: fieldPropType.isRequired,
+    theme: PropTypes.oneOf(['material', 'antd', 'basic']),
+    sqlFormat: PropTypes.string,
+    queryStringFormat: PropTypes.string,
+    mongodbFormat: PropTypes.string,
+    jsonLogicFormat: PropTypes.string,
 };

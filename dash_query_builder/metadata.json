@@ -4,6 +4,22 @@
     "displayName": "DashQueryBuilder",
     "methods": [
       {
+        "name": "getCurrentStateFromTree",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "tree",
+            "type": null
+          },
+          {
+            "name": "config",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
         "name": "onChange",
         "docblock": null,
         "modifiers": [],
@@ -27,18 +43,6 @@
         "returns": null
       },
       {
-        "name": "renderResult",
-        "docblock": null,
-        "modifiers": [],
-        "params": [
-          {
-            "name": "{tree: immutableTree, config}",
-            "type": null
-          }
-        ],
-        "returns": null
-      },
-      {
         "name": "renderBuilder",
         "docblock": null,
         "modifiers": [],
@@ -59,28 +63,71 @@
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
       },
-      "tree": {
+      "setProps": {
         "type": {
-          "name": "any"
+          "name": "func"
         },
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
       },
-      "setProps": {
+      "tree": {
         "type": {
-          "name": "func"
+          "name": "any"
         },
         "required": false,
         "description": ""
       },
       "fields": {
         "type": {
-          "name": "any"
+          "name": "custom",
+          "raw": "fieldPropType"
         },
-        "required": true,
+        "required": false,
         "description": ""
       },
       "theme": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'material'",
+              "computed": false
+            },
+            {
+              "value": "'antd'",
+              "computed": false
+            },
+            {
+              "value": "'basic'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "sqlFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "queryStringFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "mongodbFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "jsonLogicFormat": {
         "type": {
           "name": "string"
         },
