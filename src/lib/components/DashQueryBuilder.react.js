@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {throttle} from 'lodash';
 import {
     BasicConfig,
     Query,
@@ -44,8 +45,9 @@ export default class DashQueryBuilder extends Component {
         );
     }
     getCurrentStateFromTree = (tree, config) => {
+        console.log(tree);
         let currentState = {
-            tree: QbUtils.checkTree(tree),
+            tree: QbUtils.checkTree(tree, config),
             config: config,
             queryStringFormat: JSON.stringify(
                 QbUtils.queryString(tree, config, true)
@@ -60,7 +62,10 @@ export default class DashQueryBuilder extends Component {
     };
     onChange = (immutableTree, config) => {
         // Tip: for better performance you can apply `throttle` - see `examples/demo`
-        let currentState = this.getCurrentStateFromTree(immutableTree, config);
+        let currentState = throttle(
+            this.getCurrentStateFromTree(immutableTree, config),
+            100
+        );
         this.setState(currentState);
         this.setProps(currentState);
     };
@@ -87,7 +92,9 @@ export default class DashQueryBuilder extends Component {
     );
 }
 
-DashQueryBuilder.defaultProps = {};
+DashQueryBuilder.defaultProps = {
+    tree: QbUtils.loadTree(queryValue),
+};
 
 const singleFieldType = PropTypes.oneOf([
     '!struct',
@@ -124,7 +131,7 @@ const fieldPropType = PropTypes.objectOf(
         /**
          * Config for subfields of complex field (multiple nesting is supported)
          */
-        subfields: lazySubfield, //fields type
+        subfields: PropTypes.any, //lazySubfield, //fields type
         label: PropTypes.string.isRequired,
         label2: PropTypes.string,
         tooltip: PropTypes.string,
@@ -180,9 +187,7 @@ DashQueryBuilder.propTypes = {
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func,
-    /**
-     * Tree produced by the query builder
-     */
+
     tree: PropTypes.any,
     fields: fieldPropType.isRequired,
     theme: PropTypes.oneOf(['material', 'antd', 'basic']),

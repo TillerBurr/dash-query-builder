@@ -24,7 +24,7 @@ Keyword arguments:
 
 - theme (a value equal to: 'material', 'antd', 'basic'; optional)
 
-- tree (boolean | number | string | dict | list; optional)"""
+- tree (boolean | number | string | dict | list; default QbUtils.loadTree(queryValue))"""
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, theme=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree']

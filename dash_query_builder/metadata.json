@@ -75,12 +75,16 @@
           "name": "any"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "QbUtils.loadTree(queryValue)",
+          "computed": true
+        }
       },
       "fields": {
         "type": {
           "name": "custom",
-          "raw": "fieldPropType"
+          "raw": "fieldPropType.isRequired"
         },
         "required": false,
         "description": ""
