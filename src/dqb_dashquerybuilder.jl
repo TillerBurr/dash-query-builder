@@ -9,7 +9,7 @@ A DashQueryBuilder component.
 
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
-- `fields` (optional)
+- `fields` (Bool | Real | String | Dict | Array; required)
 - `jsonLogicFormat` (String; optional)
 - `mongodbFormat` (String; optional)
 - `queryStringFormat` (String; optional)

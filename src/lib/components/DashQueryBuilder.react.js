@@ -39,13 +39,11 @@ export default class DashQueryBuilder extends Component {
         };
         this.setProps = props.setProps;
         this.state = this.getCurrentStateFromTree(
-            // QbUtils.checkTree(QbUtils.loadTree(queryValue))
             QbUtils.loadTree(queryValue),
             config
         );
     }
     getCurrentStateFromTree = (tree, config) => {
-        console.log(tree);
         let currentState = {
             tree: QbUtils.checkTree(tree, config),
             config: config,
@@ -62,10 +60,11 @@ export default class DashQueryBuilder extends Component {
     };
     onChange = (immutableTree, config) => {
         // Tip: for better performance you can apply `throttle` - see `examples/demo`
-        let currentState = throttle(
-            this.getCurrentStateFromTree(immutableTree, config),
-            100
-        );
+        let currentState = this.getCurrentStateFromTree(immutableTree, config);
+        // throttle(
+
+        //     100
+        // );
         this.setState(currentState);
         this.setProps(currentState);
     };
@@ -112,15 +111,6 @@ const singleFieldType = PropTypes.oneOf([
     'multiselect',
 ]);
 
-function lazyFunction(f) {
-    return function () {
-        return f.apply(this, arguments);
-    };
-}
-let lazySubfield = lazyFunction(function () {
-    return fieldPropType;
-});
-
 const fieldPropType = PropTypes.objectOf(
     PropTypes.shape({
         type: PropTypes.oneOfType([
@@ -130,6 +120,7 @@ const fieldPropType = PropTypes.objectOf(
         mode: PropTypes.oneOf(['some', 'array']),
         /**
          * Config for subfields of complex field (multiple nesting is supported)
+         * Dash
          */
         subfields: PropTypes.any, //lazySubfield, //fields type
         label: PropTypes.string.isRequired,
@@ -189,7 +180,7 @@ DashQueryBuilder.propTypes = {
     setProps: PropTypes.func,
 
     tree: PropTypes.any,
-    fields: fieldPropType.isRequired,
+    fields: PropTypes.any.isRequired,
     theme: PropTypes.oneOf(['material', 'antd', 'basic']),
     sqlFormat: PropTypes.string,
     queryStringFormat: PropTypes.string,

@@ -54,7 +54,7 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output("output", "children"), [Input("input", "sqlFormat"), Input("input", "tree")],
+    Output("output", "children"), [Input("input", "sqlFormat")],
 )
 def display_output(fmt: str, tree: str):
     # with open("test.txt", "w") as f:

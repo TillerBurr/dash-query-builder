@@ -83,10 +83,9 @@
       },
       "fields": {
         "type": {
-          "name": "custom",
-          "raw": "fieldPropType.isRequired"
+          "name": "any"
         },
-        "required": false,
+        "required": true,
         "description": ""
       },
       "theme": {

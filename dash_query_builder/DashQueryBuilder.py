@@ -12,7 +12,7 @@ Keyword arguments:
 - id (string; optional):
     The ID used to identify this component in Dash callbacks.
 
-- fields (optional)
+- fields (boolean | number | string | dict | list; required)
 
 - jsonLogicFormat (string; optional)
 
@@ -26,7 +26,7 @@ Keyword arguments:
 
 - tree (boolean | number | string | dict | list; default QbUtils.loadTree(queryValue))"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, theme=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, **kwargs):
+    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.REQUIRED, theme=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree']
         self._type = 'DashQueryBuilder'
         self._namespace = 'dash_query_builder'
@@ -37,7 +37,7 @@ Keyword arguments:
         _locals = locals()
         _locals.update(kwargs)  # For wildcard attrs
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
-        for k in []:
+        for k in ['fields']:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')

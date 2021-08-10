@@ -18,7 +18,7 @@ theme=NULL, tree=NULL)
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{fields}{}
+\item{fields}{Logical | numeric | character | named list | unnamed list. }
 
 \item{jsonLogicFormat}{Character. }
 
