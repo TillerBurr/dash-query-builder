@@ -32,16 +32,19 @@ export default class DashQueryBuilder extends Component {
     constructor(props) {
         super(props);
         let InitialConfig = themeSelect(props.theme);
+        let initTree;
         const fields = props.fields; //JSON.parse(props.fields);
         const config = {
             ...InitialConfig,
             fields,
         };
         this.setProps = props.setProps;
-        this.state = this.getCurrentStateFromTree(
-            QbUtils.loadTree(queryValue),
-            config
-        );
+        if (props.tree) {
+            initTree = QbUtils.loadTree(JSON.parse(props.tree));
+        } else {
+            initTree = QbUtils.loadTree({id: QbUtils.uuid(), type: 'group'});
+        }
+        this.state = this.getCurrentStateFromTree(initTree, config);
     }
     getCurrentStateFromTree = (tree, config) => {
         let currentState = {
