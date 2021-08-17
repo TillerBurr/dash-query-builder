@@ -75,7 +75,7 @@
           "name": "any"
         },
         "required": false,
-        "description": "",
+        "description": "The tree that describes the state of the query builder.",
         "defaultValue": {
           "value": "QbUtils.loadTree(queryValue)",
           "computed": true
@@ -83,10 +83,11 @@
       },
       "fields": {
         "type": {
-          "name": "any"
+          "name": "custom",
+          "raw": "fieldPropType.isRequired"
         },
-        "required": true,
-        "description": ""
+        "required": false,
+        "description": "The fields that are used to populate the options for the query builder.This can be a very complicated object.\n See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info."
       },
       "theme": {
         "type": {
@@ -107,35 +108,39 @@
           ]
         },
         "required": false,
-        "description": ""
+        "description": "Sets the theme of the query builder.",
+        "defaultValue": {
+          "value": "'basic'",
+          "computed": false
+        }
       },
       "sqlFormat": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The SQL Formatted string defined by the current state of the tree"
       },
       "queryStringFormat": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The Query String Formatted string defined by the current state of the tree"
       },
       "mongodbFormat": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The MongoDB Formatted string defined by the current state of the tree"
       },
       "jsonLogicFormat": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The JSON Logic Formatted string defined by the current state of the tree"
       }
     }
   }

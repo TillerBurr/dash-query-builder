@@ -12,21 +12,34 @@ Keyword arguments:
 - id (string; optional):
     The ID used to identify this component in Dash callbacks.
 
-- fields (boolean | number | string | dict | list; required)
+- fields (optional):
+    The fields that are used to populate the options for the query
+    builder.This can be a very complicated object.  See
+    https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields
+    for more info.
 
-- jsonLogicFormat (string; optional)
+- jsonLogicFormat (string; optional):
+    The JSON Logic Formatted string defined by the current state of
+    the tree.
 
-- mongodbFormat (string; optional)
+- mongodbFormat (string; optional):
+    The MongoDB Formatted string defined by the current state of the
+    tree.
 
-- queryStringFormat (string; optional)
+- queryStringFormat (string; optional):
+    The Query String Formatted string defined by the current state of
+    the tree.
 
-- sqlFormat (string; optional)
+- sqlFormat (string; optional):
+    The SQL Formatted string defined by the current state of the tree.
 
-- theme (a value equal to: 'material', 'antd', 'basic'; optional)
+- theme (a value equal to: 'material', 'antd', 'basic'; default 'basic'):
+    Sets the theme of the query builder.
 
-- tree (boolean | number | string | dict | list; default QbUtils.loadTree(queryValue))"""
+- tree (boolean | number | string | dict | list; default QbUtils.loadTree(queryValue)):
+    The tree that describes the state of the query builder."""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.REQUIRED, theme=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, **kwargs):
+    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, theme=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree']
         self._type = 'DashQueryBuilder'
         self._namespace = 'dash_query_builder'
@@ -37,7 +50,7 @@ Keyword arguments:
         _locals = locals()
         _locals.update(kwargs)  # For wildcard attrs
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
-        for k in ['fields']:
+        for k in []:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')

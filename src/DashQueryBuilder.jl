@@ -3,7 +3,7 @@ module DashQueryBuilder
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.0.1"
+const version = "0.1.0"
 
 include("dqb_dashquerybuilder.jl")
 

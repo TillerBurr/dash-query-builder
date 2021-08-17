@@ -67,7 +67,9 @@ tree = {
 app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(
-            id="input", fields=fields["fields"], theme="material", tree=json.dumps(tree)
+            id="input",
+            fields=fields["fields"],
+            theme="material",  # tree=json.dumps(tree)
         ),
         html.Div(id="output"),
         html.Hr(),
