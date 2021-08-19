@@ -1,6 +1,5 @@
 const path = require('path');
 const packagejson = require('./package.json');
-
 const dashLibraryName = packagejson.name.replace(/-/g, '_');
 
 module.exports = (env, argv) => {

@@ -6,13 +6,14 @@
 \title{DashQueryBuilder component}
 
 \description{
-
+DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).  It takes a `fields` property to generate the options for building the actual query. The optional property `tree` is used to define the current state of the tree. It can be used to define the starting state of the query builder. The optional property `theme` is one of `material`, `antd` or `basic`. This is the styling of the component. These are the only themes supported by `react-awesome-query-builder`
 }
 
 \usage{
 dqbDashQueryBuilder(id=NULL, fields=NULL, jsonLogicFormat=NULL,
-mongodbFormat=NULL, queryStringFormat=NULL, sqlFormat=NULL,
-theme=NULL, tree=NULL)
+mongodbFormat=NULL, queryBuilderStringFormat=NULL,
+queryStringFormat=NULL, sqlFormat=NULL, theme=NULL,
+tree=NULL)
 }
 
 \arguments{
@@ -24,6 +25,8 @@ theme=NULL, tree=NULL)
 \item{jsonLogicFormat}{Character. The JSON Logic Formatted string defined by the current state of the tree}
 
 \item{mongodbFormat}{Character. The MongoDB Formatted string defined by the current state of the tree}
+
+\item{queryBuilderStringFormat}{Character. The Query Builder String Formatted string defined by the current state of the tree}
 
 \item{queryStringFormat}{Character. The Query String Formatted string defined by the current state of the tree}
 

@@ -7,8 +7,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def _get_long_description():
-    with io.open(os.path.join(HERE, "README.md"), encoding="utf8") as f:
-        return f.read()
+    with io.open(os.path.join(HERE, "README.md"), encoding="utf8") as fi:
+        return fi.read()
 
 
 with open("package.json") as f:

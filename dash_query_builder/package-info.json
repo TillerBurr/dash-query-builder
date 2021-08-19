@@ -1,6 +1,6 @@
 {
   "name": "dash_query_builder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plotly Dash Component providing react-awesome-query-builder functionality",
   "homepage": "https://github.com/baurt/dash_query_builder",
   "bugs": {
@@ -16,13 +16,13 @@
     "validate-init": "python _validate_init.py",
     "prepublishOnly": "npm run validate-init",
     "build:js": "webpack --mode production",
-    "build:backends": "dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'dqb' --jl-prefix 'dqb'",
+    "build:backends": "dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''",
     "build:backends-activated": "(. venv/bin/activate || venv\\scripts\\activate && npm run build:py_and_r)",
     "build": "npm run build:js && npm run build:backends",
     "build:activated": "npm run build:js && npm run build:backends-activated",
     "build:js:dev": "webpack --mode development"
   },
-  "author": "Tyler Baur <tbaur@teuteberg.com>",
+  "author": "Tyler Baur <baur.tyler@protonmail.com>",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.11.4",

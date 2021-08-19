@@ -1,18 +1,45 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {
-    BasicConfig,
-    Query,
-    Builder,
-    Utils as QbUtils,
-} from 'react-awesome-query-builder';
+import {BasicConfig, Query, Builder, Utils} from 'react-awesome-query-builder';
 import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
 import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
-import 'react-awesome-query-builder/lib/css/styles.css';
-import 'antd/dist/antd.css';
-import {requirePropFactory} from '@material-ui/core';
 
-/**DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
+import 'antd/dist/antd.css';
+import 'react-awesome-query-builder/lib/css/styles.css';
+const {
+    loadTree,
+    checkTree,
+    uuid,
+    queryString,
+    queryBuilderFormat,
+    mongodbFormat,
+    sqlFormat,
+    jsonLogicFormat,
+} = Utils;
+
+// TODO See if an async component would allow for dynamic imports below
+const emptyTree = {id: uuid(), type: 'group'};
+//async
+function themeSelect(theme) {
+    let InitialConfig;
+    if (theme === 'antd') {
+        // let modu = await import('react-awesome-query-builder/lib/config/antd');
+        // InitialConfig = modu.AntdConfig;
+        // import('antd/dist/antd.css');
+        InitialConfig = AntdConfig;
+    } else if (theme === 'material') {
+        // let modu = await import(
+        //     'react-awesome-query-builder/lib/config/material'
+        // );
+        // InitialConfig = modu.MaterialConfig;
+        InitialConfig = MaterialConfig;
+    } else {
+        InitialConfig = BasicConfig;
+    }
+
+    return InitialConfig;
+}
+/** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
  * It takes a `fields` property to generate the options for building the actual query.
  * The optional property `tree` is used to define the current state of the tree. It can be used to
@@ -21,74 +48,57 @@ import {requirePropFactory} from '@material-ui/core';
  * These are the only themes supported by `react-awesome-query-builder`
 
  */
-
-let InitialConfig;
-
-const queryValue = {id: QbUtils.uuid(), type: 'group'};
-const themeSelect = (theme) => {
-    let InitialConfig;
-    // switch (theme) {
-    //     case null:
-    //     case 'basic':
-    //         InitialConfig =
-    //             require('react-awesome-query-builder/modules/config/basic').default();
-    //         break;
-    //     case 'material':
-    //         InitialConfig =
-    //             require('react-awesome-query-builder/modules/config/material').default();
-    //         break;
-    //     case 'antd':
-    //         InitialConfig =
-    //             require('react-awesome-query-builder/modules/config/antd').default();
-    //         require('antd/dist/antd.css');
-    //         break;
-    // }
-    if (theme === 'antd') {
-        InitialConfig = AntdConfig;
-    } else if (theme === 'material') {
-        InitialConfig = MaterialConfig;
-    } else {
-        InitialConfig = BasicConfig;
-    }
-
-    return InitialConfig;
-};
 export default class DashQueryBuilder extends Component {
     constructor(props) {
         super(props);
         let InitialConfig = themeSelect(props.theme);
-        let initTree = QbUtils.loadTree(props.tree);
+
         const fields = props.fields; //JSON.parse(props.fields);
         const config = {
             ...InitialConfig,
             fields,
         };
         this.setProps = props.setProps;
-
+        let initTree = checkTree(loadTree(props.tree), config);
         this.state = this.getCurrentStateFromTree(initTree, config);
     }
+
+    /**
+     *
+     * Update the state if tree has changed. This allows Dash to update the 'tree' prop and have it set
+     * the layout properly
+     */
+    componentDidUpdate(prevProps) {
+        if (prevProps.tree !== this.props.tree) {
+            let currentState = this.getCurrentStateFromTree(
+                loadTree(this.props.tree),
+                this.state.config
+            );
+            this.setState(currentState);
+        }
+    }
+    /**
+     *
+     *  Takes a tree and config and updates the various Formats used.
+     */
     getCurrentStateFromTree = (tree, config) => {
         let currentState = {
-            tree: QbUtils.checkTree(tree, config),
+            tree: checkTree(tree, config),
             config: config,
-            queryStringFormat: JSON.stringify(
-                QbUtils.queryString(tree, config, true)
+            queryStringFormat: JSON.stringify(queryString(tree, config, true)),
+            queryBuilderFormat: JSON.stringify(
+                queryBuilderFormat(tree, config)
             ),
-            mongodbFormat: JSON.stringify(QbUtils.mongodbFormat(tree, config)),
-            sqlFormat: JSON.stringify(QbUtils.sqlFormat(tree, config)),
-            jsonLogicFormat: JSON.stringify(
-                QbUtils.jsonLogicFormat(tree, config)
-            ),
+            mongodbFormat: JSON.stringify(mongodbFormat(tree, config)),
+            sqlFormat: JSON.stringify(sqlFormat(tree, config)),
+            jsonLogicFormat: JSON.stringify(jsonLogicFormat(tree, config)),
         };
         return currentState;
     };
     onChange = (immutableTree, config) => {
         // Tip: for better performance you can apply `throttle` - see `examples/demo`
         let currentState = this.getCurrentStateFromTree(immutableTree, config);
-        // throttle(
 
-        //     100
-        // );
         this.setState(currentState);
         this.setProps(currentState);
     };
@@ -96,12 +106,14 @@ export default class DashQueryBuilder extends Component {
     render = () => {
         return (
             <div>
+                {/* <React.Suspense fallback={null}> */}
                 <Query
                     {...this.state.config}
                     value={this.state.tree}
                     onChange={this.onChange}
                     renderBuilder={this.renderBuilder}
                 />
+                {/* </React.Suspense> */}
             </div>
         );
     };
@@ -116,7 +128,7 @@ export default class DashQueryBuilder extends Component {
 }
 
 DashQueryBuilder.defaultProps = {
-    tree: QbUtils.loadTree(queryValue),
+    tree: loadTree(emptyTree),
     theme: 'basic',
 };
 
@@ -214,6 +226,8 @@ DashQueryBuilder.propTypes = {
     sqlFormat: PropTypes.string,
     /** The Query String Formatted string defined by the current state of the tree */
     queryStringFormat: PropTypes.string,
+    /** The Query Builder String Formatted string defined by the current state of the tree */
+    queryBuilderStringFormat: PropTypes.string,
     /** The MongoDB Formatted string defined by the current state of the tree */
     mongodbFormat: PropTypes.string,
     /** The JSON Logic Formatted string defined by the current state of the tree */

@@ -1,23 +1,22 @@
 {
   "src/lib/components/DashQueryBuilder.react.js": {
-    "description": "",
+    "description": "DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).\n\nIt takes a `fields` property to generate the options for building the actual query.\nThe optional property `tree` is used to define the current state of the tree. It can be used to\ndefine the starting state of the query builder.\nThe optional property `theme` is one of `material`, `antd` or `basic`. This is the styling of the component.\nThese are the only themes supported by `react-awesome-query-builder`",
     "displayName": "DashQueryBuilder",
     "methods": [
       {
         "name": "getCurrentStateFromTree",
-        "docblock": null,
+        "docblock": "Takes a tree and config and updates the various Formats used.",
         "modifiers": [],
         "params": [
           {
-            "name": "tree",
-            "type": null
+            "name": "tree"
           },
           {
-            "name": "config",
-            "type": null
+            "name": "config"
           }
         ],
-        "returns": null
+        "returns": null,
+        "description": "Takes a tree and config and updates the various Formats used."
       },
       {
         "name": "onChange",
@@ -77,7 +76,7 @@
         "required": false,
         "description": "The tree that describes the state of the query builder.",
         "defaultValue": {
-          "value": "QbUtils.loadTree(queryValue)",
+          "value": "loadTree(emptyTree)",
           "computed": true
         }
       },
@@ -127,6 +126,13 @@
         },
         "required": false,
         "description": "The Query String Formatted string defined by the current state of the tree"
+      },
+      "queryBuilderStringFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The Query Builder String Formatted string defined by the current state of the tree"
       },
       "mongodbFormat": {
         "type": {

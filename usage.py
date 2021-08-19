@@ -64,16 +64,20 @@ tree = {
         }
     },
 }
+
+empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(
             id="input",
             fields=fields["fields"],
-            theme="material",  # tree=json.dumps(tree)
+            theme="material",
+            # tree=json.dumps(tree),
+            # sqlFormat="main_report_data.color IN ('green', 'yellow')",
         ),
         html.Div(id="output"),
         html.Hr(),
-        html.Div(id="secondaryOut"),
+        html.Button(id="update-button", children="Click to Update"),
     ]
 )
 
@@ -86,6 +90,24 @@ def display_output(fmt: str):
     #     json.dump(json.dumps(tree), f)
     new_fmt = fmt.replace("EMPTY", "NULL") if fmt is not None else None
     return new_fmt
+
+
+@app.callback(
+    Output("input", "tree"),
+    Input("update-button", "n_clicks"),
+    # prevent_initial_call=True,
+)
+def update_tree_value(n):
+    if n is None:
+        rv = empty_
+    elif n % 2 == 1:
+        rv = tree
+    elif n % 2 == 0:
+        rv = empty_
+    else:
+        rv = empty_
+
+    return rv
 
 
 if __name__ == "__main__":
