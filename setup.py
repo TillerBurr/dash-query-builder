@@ -33,7 +33,6 @@ setup(
         "Source": github_url,
     },
     install_requires=["dash>=1.9.0"],
-    include_package_data=True,
     classifiers=[
         "Framework :: Dash",
         "Programming Language :: Python :: 3.6",
