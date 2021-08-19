@@ -20,11 +20,11 @@ github_url = package.get("homepage")
 setup(
     name=package_name,
     version=package["version"],
-    description="A Query Builder Component for Plotly Dash",
     long_description=_get_long_description(),
     author="Tyler Baur",
     author_email="baur.tyler@protonmail.com",
-    packages=[package_name],
+    packages=find_packages(),
+    # packages=[package_name],
     include_package_data=True,
     license=package["license"],
     description=package.get("description", package_name),
@@ -32,7 +32,6 @@ setup(
         "Bug Reports": os.path.join(github_url, "issues"),
         "Source": github_url,
     },
-    packages=find_packages(),
     install_requires=["dash>=1.9.0"],
     include_package_data=True,
     classifiers=[
