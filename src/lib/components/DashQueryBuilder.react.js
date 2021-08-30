@@ -70,6 +70,9 @@ export default class DashQueryBuilder extends Component {
      */
     componentDidUpdate(prevProps) {
         if (prevProps.tree !== this.props.tree) {
+            console.log(this.props.tree);
+
+            //what happens if this.props.tree is null?
             let currentState = this.getCurrentStateFromTree(
                 loadTree(this.props.tree),
                 this.state.config
@@ -85,12 +88,12 @@ export default class DashQueryBuilder extends Component {
         let currentState = {
             tree: checkTree(tree, config),
             config: config,
-            queryStringFormat: JSON.stringify(queryString(tree, config, true)),
+            queryStringFormat: queryString(tree, config),
             queryBuilderFormat: JSON.stringify(
                 queryBuilderFormat(tree, config)
             ),
             mongodbFormat: JSON.stringify(mongodbFormat(tree, config)),
-            sqlFormat: JSON.stringify(sqlFormat(tree, config)),
+            sqlFormat: sqlFormat(tree, config),
             jsonLogicFormat: JSON.stringify(jsonLogicFormat(tree, config)),
         };
         return currentState;
