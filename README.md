@@ -21,8 +21,8 @@ If you have selected install_dependencies during the prompt, you can skip this p
     ```
 2. Create a virtual env and activate.
     ```
-    $ virtualenv venv
-    $ . venv/bin/activate
+    $ virtualenv .venv
+    $ . .venv/bin/activate
     ```
     _Note: venv\Scripts\activate for windows_
 
