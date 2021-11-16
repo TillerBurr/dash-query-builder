@@ -19,7 +19,7 @@ tree=NULL)
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{fields}{The fields that are used to populate the options for the query builder.This can be a very complicated object.
+\item{fields}{The fields that are used to populate the options for the query builder. This can be a very complicated object.
  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info.}
 
 \item{jsonLogicFormat}{Character. The JSON Logic Formatted string defined by the current state of the tree}

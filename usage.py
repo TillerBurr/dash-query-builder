@@ -1,8 +1,5 @@
 import dash_query_builder
-import dash
-import json
-from dash.dependencies import Input, Output
-import dash_html_components as html
+from dash import html, dash, Input, Output
 
 app = dash.Dash(__name__)
 fields = {
@@ -72,8 +69,6 @@ app.layout = html.Div(
             id="input",
             fields=fields["fields"],
             theme="material",
-            # tree=json.dumps(tree),
-            # sqlFormat="main_report_data.color IN ('green', 'yellow')",
         ),
         html.Div(id="output"),
         html.Hr(),
@@ -83,11 +78,10 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output("output", "children"), [Input("input", "sqlFormat")],
+    Output("output", "children"),
+    [Input("input", "sqlFormat")],
 )
 def display_output(fmt: str):
-    # with open("test.txt", "w") as f:
-    #     json.dump(json.dumps(tree), f)
     new_fmt = fmt.replace("EMPTY", "NULL") if fmt is not None else None
     return new_fmt
 

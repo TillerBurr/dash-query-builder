@@ -17,21 +17,12 @@ const {
     jsonLogicFormat,
 } = Utils;
 
-// TODO See if an async component would allow for dynamic imports below
 const emptyTree = {id: uuid(), type: 'group'};
-//async
 function themeSelect(theme) {
     let InitialConfig;
     if (theme === 'antd') {
-        // let modu = await import('react-awesome-query-builder/lib/config/antd');
-        // InitialConfig = modu.AntdConfig;
-        // import('antd/dist/antd.css');
         InitialConfig = AntdConfig;
     } else if (theme === 'material') {
-        // let modu = await import(
-        //     'react-awesome-query-builder/lib/config/material'
-        // );
-        // InitialConfig = modu.MaterialConfig;
         InitialConfig = MaterialConfig;
     } else {
         InitialConfig = BasicConfig;
@@ -53,7 +44,7 @@ export default class DashQueryBuilder extends Component {
         super(props);
         let InitialConfig = themeSelect(props.theme);
 
-        const fields = props.fields; //JSON.parse(props.fields);
+        const fields = props.fields;
         const config = {
             ...InitialConfig,
             fields,
@@ -65,13 +56,11 @@ export default class DashQueryBuilder extends Component {
 
     /**
      *
-     * Update the state if tree has changed. This allows Dash to update the 'tree' prop and have it set
+     * Update the state if tree has changed. This allows Dash to update the `tree` prop and have it set
      * the layout properly
      */
     componentDidUpdate(prevProps) {
         if (prevProps.tree !== this.props.tree) {
-            console.log(this.props.tree);
-
             //what happens if this.props.tree is null?
             let currentState = this.getCurrentStateFromTree(
                 loadTree(this.props.tree),
@@ -99,7 +88,7 @@ export default class DashQueryBuilder extends Component {
         return currentState;
     };
     onChange = (immutableTree, config) => {
-        // Tip: for better performance you can apply `throttle` - see `examples/demo`
+        // Can we use Throttle (from lodash)?
         let currentState = this.getCurrentStateFromTree(immutableTree, config);
 
         this.setState(currentState);
@@ -109,14 +98,12 @@ export default class DashQueryBuilder extends Component {
     render = () => {
         return (
             <div>
-                {/* <React.Suspense fallback={null}> */}
                 <Query
                     {...this.state.config}
                     value={this.state.tree}
                     onChange={this.onChange}
                     renderBuilder={this.renderBuilder}
                 />
-                {/* </React.Suspense> */}
             </div>
         );
     };
@@ -160,7 +147,6 @@ const fieldPropType = PropTypes.objectOf(
         mode: PropTypes.oneOf(['some', 'array']),
         /**
          * Config for subfields of complex field (multiple nesting is supported)
-         * Dash
          */
         subfields: PropTypes.any, //fields type
         label: PropTypes.string.isRequired,
@@ -220,7 +206,7 @@ DashQueryBuilder.propTypes = {
     setProps: PropTypes.func,
     /** The tree that describes the state of the query builder. */
     tree: PropTypes.any,
-    /** The fields that are used to populate the options for the query builder.This can be a very complicated object.
+    /** The fields that are used to populate the options for the query builder. This can be a very complicated object.
      *  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info. */
     fields: fieldPropType.isRequired,
     /** Sets the theme of the query builder. */

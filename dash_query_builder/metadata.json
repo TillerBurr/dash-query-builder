@@ -86,7 +86,7 @@
           "raw": "fieldPropType.isRequired"
         },
         "required": false,
-        "description": "The fields that are used to populate the options for the query builder.This can be a very complicated object.\n See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info."
+        "description": "The fields that are used to populate the options for the query builder. This can be a very complicated object.\n See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info."
       },
       "theme": {
         "type": {

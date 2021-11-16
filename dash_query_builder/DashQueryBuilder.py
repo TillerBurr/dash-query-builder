@@ -20,7 +20,7 @@ Keyword arguments:
 
 - fields (optional):
     The fields that are used to populate the options for the query
-    builder.This can be a very complicated object.  See
+    builder. This can be a very complicated object.  See
     https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields
     for more info.
 
