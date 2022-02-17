@@ -1,123 +1,59 @@
-import React, {Component} from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import {BasicConfig, Query, Builder, Utils} from 'react-awesome-query-builder';
-import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
-import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
+import { Utils } from 'react-awesome-query-builder';
 
-import 'antd/dist/antd.css';
+
+// import 'antd/dist/antd.css';
 import 'react-awesome-query-builder/lib/css/styles.css';
 const {
     loadTree,
-    checkTree,
     uuid,
-    queryString,
-    queryBuilderFormat,
-    mongodbFormat,
-    sqlFormat,
-    jsonLogicFormat,
 } = Utils;
 
-const emptyTree = {id: uuid(), type: 'group'};
-function themeSelect(theme) {
-    let InitialConfig;
-    if (theme === 'antd') {
-        InitialConfig = AntdConfig;
-    } else if (theme === 'material') {
-        InitialConfig = MaterialConfig;
-    } else {
-        InitialConfig = BasicConfig;
+const LazyMUIQueryBuilder = lazy(() => import(/* webpackChunkName: "mui" */ '../fragments/MUIQueryBuilder.react'));
+const LazyMaterialQueryBuilder = lazy(() => import(/* webpackChunkName: "material" */ '../fragments/MaterialQueryBuilder.react'));
+const LazyAntdQueryBuilder = lazy(() => import(/* webpackChunkName: "antd" */ '../fragments/AntdQueryBuilder.react'));
+const LazyBootstrapQueryBuilder = lazy(() => import(/* webpackChunkName: "bootstrap" */ '../fragments/BootstrapQueryBuilder.react'));
+const LazyBasicQueryBuilder = lazy(() => import(/* webpackChunkName: "basic" */ '../fragments/BasicQueryBuilder.react'));
+const emptyTree = { id: uuid(), type: 'group' };
+
+const QueryBuilderFactory = (props) => {
+    switch (props.theme) {
+        case "mui":
+            return <LazyMUIQueryBuilder {...props} />
+        case "material":
+            return <LazyMaterialQueryBuilder {...props} />
+        case "antd":
+            return <LazyAntdQueryBuilder {...props} />
+        case "bootstrap":
+            return <LazyBootstrapQueryBuilder {...props} />
+        case "basic":
+        default:
+            return <LazyBasicQueryBuilder {...props} />
     }
 
-    return InitialConfig;
 }
 /** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
  * It takes a `fields` property to generate the options for building the actual query.
  * The optional property `tree` is used to define the current state of the tree. It can be used to
  * define the starting state of the query builder.
- * The optional property `theme` is one of `material`, `antd` or `basic`. This is the styling of the component.
- * These are the only themes supported by `react-awesome-query-builder`
-
+ * The optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.
+ * These are the only themes supported by `react-awesome-query-builder`.
  */
 export default class DashQueryBuilder extends Component {
-    constructor(props) {
-        super(props);
-        let InitialConfig = themeSelect(props.theme);
 
-        const fields = props.fields;
-        const config = {
-            ...InitialConfig,
-            fields,
-        };
-        this.setProps = props.setProps;
-        let initTree = checkTree(loadTree(props.tree), config);
-        this.state = this.getCurrentStateFromTree(initTree, config);
-    }
-
-    /**
-     *
-     * Update the state if tree has changed. This allows Dash to update the `tree` prop and have it set
-     * the layout properly
-     */
-    componentDidUpdate(prevProps) {
-        if (prevProps.tree !== this.props.tree) {
-            //what happens if this.props.tree is null?
-            let currentState = this.getCurrentStateFromTree(
-                loadTree(this.props.tree),
-                this.state.config
-            );
-            this.setState(currentState);
-        }
-    }
-    /**
-     *
-     *  Takes a tree and config and updates the various Formats used.
-     */
-    getCurrentStateFromTree = (tree, config) => {
-        let currentState = {
-            tree: checkTree(tree, config),
-            config: config,
-            queryStringFormat: queryString(tree, config),
-            queryBuilderFormat: JSON.stringify(
-                queryBuilderFormat(tree, config)
-            ),
-            mongodbFormat: JSON.stringify(mongodbFormat(tree, config)),
-            sqlFormat: sqlFormat(tree, config),
-            jsonLogicFormat: JSON.stringify(jsonLogicFormat(tree, config)),
-        };
-        return currentState;
-    };
-    onChange = (immutableTree, config) => {
-        // Can we use Throttle (from lodash)?
-        let currentState = this.getCurrentStateFromTree(immutableTree, config);
-
-        this.setState(currentState);
-        this.setProps(currentState);
-    };
-
-    render = () => {
+    render() {
         return (
-            <div>
-                <Query
-                    {...this.state.config}
-                    value={this.state.tree}
-                    onChange={this.onChange}
-                    renderBuilder={this.renderBuilder}
-                />
-            </div>
-        );
-    };
+            <Suspense fallback={<div>Loading...</div>}>
+                <QueryBuilderFactory {...this.props} />
+            </Suspense>
+        )
+    }
 
-    renderBuilder = (props) => (
-        <div className="query-builder-container" style={{padding: '10px'}}>
-            <div className="query-builder qb-lite">
-                <Builder {...props} />
-            </div>
-        </div>
-    );
 }
 
-DashQueryBuilder.defaultProps = {
+export const defaultProps = {
     tree: loadTree(emptyTree),
     theme: 'basic',
 };
@@ -194,7 +130,7 @@ const fieldPropType = PropTypes.objectOf(
     })
 );
 
-DashQueryBuilder.propTypes = {
+export const themelessPropTypes = {
     /**
      * The ID used to identify this component in Dash callbacks.
      */
@@ -209,8 +145,7 @@ DashQueryBuilder.propTypes = {
     /** The fields that are used to populate the options for the query builder. This can be a very complicated object.
      *  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info. */
     fields: fieldPropType.isRequired,
-    /** Sets the theme of the query builder. */
-    theme: PropTypes.oneOf(['material', 'antd', 'basic']),
+
     /** The SQL Formatted string defined by the current state of the tree */
     sqlFormat: PropTypes.string,
     /** The Query String Formatted string defined by the current state of the tree */
@@ -222,3 +157,11 @@ DashQueryBuilder.propTypes = {
     /** The JSON Logic Formatted string defined by the current state of the tree */
     jsonLogicFormat: PropTypes.string,
 };
+export const propTypes = {
+    ...themelessPropTypes,
+    /** Sets the theme of the query builder. */
+    theme: PropTypes.oneOf(['material', "mui", 'antd', 'basic', 'bootstrap']),
+}
+
+DashQueryBuilder.propTypes = propTypes;
+DashQueryBuilder.defaultProps = defaultProps;

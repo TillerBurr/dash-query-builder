@@ -7,14 +7,13 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-dash=">=2.0.0"
+dash="^2.0.0"
 
 
 [tool.poetry.dev-dependencies]
 black = "^21.6b0"
 flake8 = "^3.9.2"
-dash = {version = ">=1.9.0", extras = ["dev","testing"]}
-webdriver-manager = "^3.5.2"
+dash = {version = "^2.0.0", extras = ["dev","testing"]}
 
 
 [build-system]

@@ -82,8 +82,8 @@ app.layout = html.Div(
     [Input("input", "sqlFormat")],
 )
 def display_output(fmt: str):
-    new_fmt = fmt.replace("EMPTY", "NULL") if fmt is not None else None
-    return new_fmt
+
+    return fmt
 
 
 @app.callback(

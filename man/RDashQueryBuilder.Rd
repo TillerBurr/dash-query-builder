@@ -6,7 +6,7 @@
 \title{DashQueryBuilder component}
 
 \description{
-DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).  It takes a `fields` property to generate the options for building the actual query. The optional property `tree` is used to define the current state of the tree. It can be used to define the starting state of the query builder. The optional property `theme` is one of `material`, `antd` or `basic`. This is the styling of the component. These are the only themes supported by `react-awesome-query-builder`
+DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).  It takes a `fields` property to generate the options for building the actual query. The optional property `tree` is used to define the current state of the tree. It can be used to define the starting state of the query builder. The optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component. These are the only themes supported by `react-awesome-query-builder`.
 }
 
 \usage{
@@ -32,7 +32,7 @@ tree=NULL)
 
 \item{sqlFormat}{Character. The SQL Formatted string defined by the current state of the tree}
 
-\item{theme}{A value equal to: 'material', 'antd', 'basic'. Sets the theme of the query builder.}
+\item{theme}{A value equal to: 'material', "mui", 'antd', 'basic', 'bootstrap'. Sets the theme of the query builder.}
 
 \item{tree}{Logical | numeric | character | named list | unnamed list. The tree that describes the state of the query builder.}
 }

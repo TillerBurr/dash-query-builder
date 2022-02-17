@@ -1,5 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
+#' @export
 RDashQueryBuilder <- function(id=NULL, fields=NULL, jsonLogicFormat=NULL, mongodbFormat=NULL, queryBuilderStringFormat=NULL, queryStringFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL) {
     
     props <- list(id=id, fields=fields, jsonLogicFormat=jsonLogicFormat, mongodbFormat=mongodbFormat, queryBuilderStringFormat=queryBuilderStringFormat, queryStringFormat=queryStringFormat, sqlFormat=sqlFormat, theme=theme, tree=tree)

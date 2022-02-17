@@ -10,8 +10,8 @@ DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](ht
 It takes a `fields` property to generate the options for building the actual query.
 The optional property `tree` is used to define the current state of the tree. It can be used to
 define the starting state of the query builder.
-The optional property `theme` is one of `material`, `antd` or `basic`. This is the styling of the component.
-These are the only themes supported by `react-awesome-query-builder`
+The optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.
+These are the only themes supported by `react-awesome-query-builder`.
 
 Keyword arguments:
 
@@ -43,13 +43,13 @@ Keyword arguments:
 - sqlFormat (string; optional):
     The SQL Formatted string defined by the current state of the tree.
 
-- theme (a value equal to: 'material', 'antd', 'basic'; default 'basic'):
+- theme (a value equal to: 'material', "mui", 'antd', 'basic', 'bootstrap'; default 'basic'):
     Sets the theme of the query builder.
 
 - tree (boolean | number | string | dict | list; default loadTree(emptyTree)):
     The tree that describes the state of the query builder."""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, theme=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, **kwargs):
+    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, theme=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree']
         self._type = 'DashQueryBuilder'
         self._namespace = 'dash_query_builder'

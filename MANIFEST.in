@@ -1,5 +1,9 @@
 include dash_query_builder/dash_query_builder.min.js
 include dash_query_builder/dash_query_builder.min.js.map
+include dash_query_builder/async-*.js
+include dash_query_builder/async-*.js.map
+include dash_query_builder/*-shared.js
+include dash_query_builder/*-shared.js.map
 include dash_query_builder/metadata.json
 include dash_query_builder/package-info.json
 include README.md

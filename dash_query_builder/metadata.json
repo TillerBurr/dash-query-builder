@@ -1,59 +1,8 @@
 {
   "src/lib/components/DashQueryBuilder.react.js": {
-    "description": "DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).\n\nIt takes a `fields` property to generate the options for building the actual query.\nThe optional property `tree` is used to define the current state of the tree. It can be used to\ndefine the starting state of the query builder.\nThe optional property `theme` is one of `material`, `antd` or `basic`. This is the styling of the component.\nThese are the only themes supported by `react-awesome-query-builder`",
+    "description": "DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).\n\nIt takes a `fields` property to generate the options for building the actual query.\nThe optional property `tree` is used to define the current state of the tree. It can be used to\ndefine the starting state of the query builder.\nThe optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.\nThese are the only themes supported by `react-awesome-query-builder`.",
     "displayName": "DashQueryBuilder",
-    "methods": [
-      {
-        "name": "getCurrentStateFromTree",
-        "docblock": "Takes a tree and config and updates the various Formats used.",
-        "modifiers": [],
-        "params": [
-          {
-            "name": "tree"
-          },
-          {
-            "name": "config"
-          }
-        ],
-        "returns": null,
-        "description": "Takes a tree and config and updates the various Formats used."
-      },
-      {
-        "name": "onChange",
-        "docblock": null,
-        "modifiers": [],
-        "params": [
-          {
-            "name": "immutableTree",
-            "type": null
-          },
-          {
-            "name": "config",
-            "type": null
-          }
-        ],
-        "returns": null
-      },
-      {
-        "name": "render",
-        "docblock": null,
-        "modifiers": [],
-        "params": [],
-        "returns": null
-      },
-      {
-        "name": "renderBuilder",
-        "docblock": null,
-        "modifiers": [],
-        "params": [
-          {
-            "name": "props",
-            "type": null
-          }
-        ],
-        "returns": null
-      }
-    ],
+    "methods": [],
     "props": {
       "id": {
         "type": {
@@ -87,31 +36,6 @@
         },
         "required": false,
         "description": "The fields that are used to populate the options for the query builder. This can be a very complicated object.\n See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info."
-      },
-      "theme": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "'material'",
-              "computed": false
-            },
-            {
-              "value": "'antd'",
-              "computed": false
-            },
-            {
-              "value": "'basic'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Sets the theme of the query builder.",
-        "defaultValue": {
-          "value": "'basic'",
-          "computed": false
-        }
       },
       "sqlFormat": {
         "type": {
@@ -147,6 +71,39 @@
         },
         "required": false,
         "description": "The JSON Logic Formatted string defined by the current state of the tree"
+      },
+      "theme": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'material'",
+              "computed": false
+            },
+            {
+              "value": "\"mui\"",
+              "computed": false
+            },
+            {
+              "value": "'antd'",
+              "computed": false
+            },
+            {
+              "value": "'basic'",
+              "computed": false
+            },
+            {
+              "value": "'bootstrap'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Sets the theme of the query builder.",
+        "defaultValue": {
+          "value": "'basic'",
+          "computed": false
+        }
       }
     }
   }

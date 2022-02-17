@@ -1,6 +1,9 @@
 const path = require('path');
 const packagejson = require('./package.json');
 const dashLibraryName = packagejson.name.replace(/-/g, '_');
+const WebpackDashDynamicImport = require('@plotly/webpack-dash-dynamic-import');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, argv) => {
     let mode;
@@ -28,7 +31,7 @@ module.exports = (env, argv) => {
         filename = `${dashLibraryName}.${modeSuffix}.js`;
     }
 
-    const entry = overrides.entry || {main: './src/lib/index.js'};
+    const entry = overrides.entry || { main: './src/lib/index.js' };
 
     const devtool = overrides.devtool || 'source-map';
 
@@ -36,17 +39,18 @@ module.exports = (env, argv) => {
         'externals' in overrides
             ? overrides.externals
             : {
-                  react: 'React',
-                  'react-dom': 'ReactDOM',
-                  'plotly.js': 'Plotly',
-                  'prop-types': 'PropTypes',
-              };
+                react: 'React',
+                'react-dom': 'ReactDOM',
+                'plotly.js': 'Plotly',
+                'prop-types': 'PropTypes',
+            };
 
     return {
         mode,
         entry,
         output: {
             path: path.resolve(__dirname, dashLibraryName),
+            chunkFilename: '[name].js',
             filename,
             library: dashLibraryName,
             libraryTarget: 'window',
@@ -78,5 +82,44 @@ module.exports = (env, argv) => {
                 },
             ],
         },
-    };
+        optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    sourceMap: true,
+                    parallel: true,
+                    cache: './.build_cache/terser',
+                    terserOptions: {
+                        warnings: false,
+                        ie8: false
+                    }
+                })
+            ],
+            splitChunks: {
+                name: "[name].js",
+                cacheGroups: {
+                    async: {
+                        chunks: 'async',
+                        minSize: 0,
+                        name(module, chunks, cacheGroupKey) {
+                            return `${cacheGroupKey}-${chunks[0].name}`;
+                        }
+                    },
+                    shared: {
+                        chunks: 'all',
+                        minSize: 0,
+                        minChunks: 2,
+                        name: 'dash_query_builder-shared'
+                    }
+                }
+            }
+        },
+        plugins: [
+            new WebpackDashDynamicImport(),
+            new webpack.SourceMapDevToolPlugin({
+                filename: '[file].map',
+                exclude: ['async-plotlyjs']
+            })
+        ]
+    }
 };
+
