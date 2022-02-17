@@ -33,6 +33,8 @@ _this_module = _sys.modules[__name__]
 
 async_resources = ["material", "mui", "antd", "bootstrap", "basic"]
 
+shared_resources = ["min", "shared"]
+
 _js_dist = []
 
 _js_dist.extend(
@@ -67,14 +69,18 @@ _js_dist.extend(
 _js_dist.extend(
     [
         {
-            "relative_package_path": "dash_query_builder.min.js",
+            "relative_package_path": f"dash_query_builder.{shared_resource}.js",
             "namespace": package_name,
-        },
+        }
+        for shared_resource in shared_resources
+    ]
+    + [
         {
-            "relative_package_path": "dash_query_builder.min.js.map",
+            "relative_package_path": f"dash_query_builder.{shared_resource}.js.map",
             "namespace": package_name,
             "dynamic": True,
-        },
+        }
+        for shared_resource in shared_resources
     ]
 )
 

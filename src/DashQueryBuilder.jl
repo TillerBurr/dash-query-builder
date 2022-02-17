@@ -92,7 +92,21 @@ DashBase.Resource(
     type = :js
 ),
 DashBase.Resource(
+    relative_package_path = "dash_query_builder.shared.js",
+    external_url = nothing,
+    dynamic = nothing,
+    async = nothing,
+    type = :js
+),
+DashBase.Resource(
     relative_package_path = "dash_query_builder.min.js.map",
+    external_url = nothing,
+    dynamic = true,
+    async = nothing,
+    type = :js
+),
+DashBase.Resource(
+    relative_package_path = "dash_query_builder.shared.js.map",
     external_url = nothing,
     dynamic = true,
     async = nothing,
