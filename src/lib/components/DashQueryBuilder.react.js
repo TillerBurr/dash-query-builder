@@ -56,6 +56,8 @@ export default class DashQueryBuilder extends Component {
 export const defaultProps = {
     tree: loadTree(emptyTree),
     theme: 'basic',
+    initialTreeFormat: 'default',
+    alwaysShowActionButtons: true,
 };
 
 const singleFieldType = PropTypes.oneOf([
@@ -153,9 +155,17 @@ export const themelessPropTypes = {
     /** The Query Builder String Formatted string defined by the current state of the tree */
     queryBuilderStringFormat: PropTypes.string,
     /** The MongoDB Formatted string defined by the current state of the tree */
-    mongodbFormat: PropTypes.string,
+    mongodbFormat: PropTypes.object,
     /** The JSON Logic Formatted string defined by the current state of the tree */
-    jsonLogicFormat: PropTypes.string,
+    jsonLogicFormat: PropTypes.object,
+    /** The JSON Logic Formatted defined by the current state of the tree */
+    elasticSearchFormat: PropTypes.object,
+    /** The JSON Logic Formatted string defined by the current state of the tree */
+    spelFormat: PropTypes.string,
+    /** Specifies the type of the initial tree.  */
+    initialTreeFormat: PropTypes.oneOf(['jsonLogic', 'spel', 'default']),
+    /** Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.*/
+    alwaysShowActionButtons: PropTypes.bool,
 };
 export const propTypes = {
     ...themelessPropTypes,

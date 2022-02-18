@@ -1,5 +1,6 @@
 import dash_query_builder
-from dash import html, dash, Input, Output
+from dash import html, dash, Input, Output, State
+import json
 
 app = dash.Dash(__name__)
 fields = {
@@ -36,6 +37,18 @@ fields = {
             "operators": ["equal", "is_empty"],
             "valueSources": ["value"],
         },
+        "multicolor": {
+            "label": "Colors",
+            "type": "multiselect",
+            "fieldSettings": {
+                "showSearch": True,
+                "listValues": [
+                    {"value": "yellow", "title": "Yellow"},
+                    {"value": "green", "title": "Green"},
+                    {"value": "orange", "title": "Orange"},
+                ],
+            },
+        },
     }
 }
 tree = {
@@ -62,28 +75,63 @@ tree = {
     },
 }
 
+jsonLogicTree = {
+    "errors": [],
+    "logic": {
+        "and": [{"in": [{"var": "main_report_data.color"}, ["green", "yellow"]]}]
+    },
+    "data": {"main_report_data": {"color": None}},
+}
+spelFormatTree = "{'green', 'yellow'}.?[true].contains(main_report_data.color)"
 empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(
             id="input",
             fields=fields["fields"],
-            theme="material",
+            theme="mui",
+            tree=empty_,
+            alwaysShowActionButtons=True,
         ),
         html.Div(id="output"),
         html.Hr(),
-        html.Button(id="update-button", children="Click to Update"),
+        html.Button(id="update-button", children="Click to Update Using Tree Input"),
+        html.Button(
+            id="update-button-json", children="Click to Update Using JSONLogic Input"
+        ),
+        html.Button(
+            id="update-button-spel", children="Click to Update Using SPEL Input"
+        ),
     ]
 )
 
 
 @app.callback(
     Output("output", "children"),
-    [Input("input", "sqlFormat")],
+    [Input("input", "tree")],
+    [
+        State("input", "sqlFormat"),
+        State("input", "jsonLogicFormat"),
+        State("input", "spelFormat"),
+    ],
 )
-def display_output(fmt: str):
-
-    return fmt
+def display_output(tree_value, sqlFormat, jsonLogicFormat, spelFormat):
+    output = html.Div(
+        children=[
+            html.H1("tree"),
+            html.Div(json.dumps(tree_value, indent=2)),
+            html.Hr(),
+            html.H1("sqlFormat"),
+            html.Div(sqlFormat),
+            html.Hr(),
+            html.H1("jsonLogicFormat"),
+            html.Div(json.dumps(jsonLogicFormat)),
+            html.Hr(),
+            html.H1("spelFormat"),
+            html.Div(spelFormat),
+        ]
+    )
+    return output
 
 
 @app.callback(
@@ -92,14 +140,38 @@ def display_output(fmt: str):
     # prevent_initial_call=True,
 )
 def update_tree_value(n):
-    if n is None:
-        rv = empty_
-    elif n % 2 == 1:
+    if n is not None and n % 2 == 1:
         rv = tree
-    elif n % 2 == 0:
-        rv = empty_
     else:
         rv = empty_
+
+    return rv
+
+
+@app.callback(
+    Output("input", "jsonLogicFormat"),
+    Input("update-button-json", "n_clicks"),
+    prevent_initial_call=True,
+)
+def update_json_tree_value(n):
+    if n is not None and n % 2 == 1:
+        rv = jsonLogicTree
+    else:
+        rv = {}
+
+    return rv
+
+
+@app.callback(
+    Output("input", "spelFormat"),
+    Input("update-button-spel", "n_clicks"),
+    prevent_initial_call=True,
+)
+def update_spel_tree_value(n):
+    if n is not None and n % 2 == 1:
+        rv = spelFormatTree
+    else:
+        rv = ""
 
     return rv
 

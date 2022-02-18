@@ -10,25 +10,35 @@ DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](ht
 }
 
 \usage{
-RDashQueryBuilder(id=NULL, fields=NULL, jsonLogicFormat=NULL,
+RDashQueryBuilder(id=NULL, alwaysShowActionButtons=NULL,
+elasticSearchFormat=NULL, fields=NULL,
+initialTreeFormat=NULL, jsonLogicFormat=NULL,
 mongodbFormat=NULL, queryBuilderStringFormat=NULL,
-queryStringFormat=NULL, sqlFormat=NULL, theme=NULL,
-tree=NULL)
+queryStringFormat=NULL, spelFormat=NULL, sqlFormat=NULL,
+theme=NULL, tree=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
+\item{alwaysShowActionButtons}{Logical. Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.}
+
+\item{elasticSearchFormat}{Named list. The JSON Logic Formatted defined by the current state of the tree}
+
 \item{fields}{The fields that are used to populate the options for the query builder. This can be a very complicated object.
  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info.}
 
-\item{jsonLogicFormat}{Character. The JSON Logic Formatted string defined by the current state of the tree}
+\item{initialTreeFormat}{A value equal to: 'jsonlogic', 'spel', 'default'. Specifies the type of the initial tree.}
 
-\item{mongodbFormat}{Character. The MongoDB Formatted string defined by the current state of the tree}
+\item{jsonLogicFormat}{Named list. The JSON Logic Formatted string defined by the current state of the tree}
+
+\item{mongodbFormat}{Named list. The MongoDB Formatted string defined by the current state of the tree}
 
 \item{queryBuilderStringFormat}{Character. The Query Builder String Formatted string defined by the current state of the tree}
 
 \item{queryStringFormat}{Character. The Query String Formatted string defined by the current state of the tree}
+
+\item{spelFormat}{Character. The JSON Logic Formatted string defined by the current state of the tree}
 
 \item{sqlFormat}{Character. The SQL Formatted string defined by the current state of the tree}
 

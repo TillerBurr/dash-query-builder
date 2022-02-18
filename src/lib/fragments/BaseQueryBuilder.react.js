@@ -10,6 +10,9 @@ const {
     mongodbFormat,
     sqlFormat,
     jsonLogicFormat,
+    elasticSearchFormat,
+    spelFormat,
+    getTree
 } = Utils;
 
 
@@ -26,15 +29,17 @@ export default class BaseQueryBuilder extends Component {
     constructor(props) {
         super(props);
 
-
         const fields = props.fields;
         const config = {
             ...props.config,
             fields,
         };
         this.setProps = props.setProps;
-        let initTree = checkTree(loadTree(props.tree), config);
-        this.state = this.getCurrentStateFromTree(initTree, config);
+        let initialImmutableTree = checkTree(loadTree(props.tree), config);
+        let currentState = this.getCurrentStateFromTree(initialImmutableTree, config);
+
+        this.state = { ...currentState, immutableTree: initialImmutableTree, alwaysShowActionButtons: props.alwaysShowActionButtons };
+
     }
 
     /**
@@ -45,28 +50,32 @@ export default class BaseQueryBuilder extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.tree !== this.props.tree) {
             //what happens if this.props.tree is null?
+            let immutableTree = loadTree(this.props.tree)
             let currentState = this.getCurrentStateFromTree(
-                loadTree(this.props.tree),
+                immutableTree,
                 this.state.config
             );
-            this.setState(currentState);
+            this.setState({ ...currentState, immutableTree: immutableTree, alwaysShowActionButtons: this.props.alwaysShowActionButtons });
         }
+
     }
     /**
      *
      *  Takes a tree and config and updates the various Formats used.
      */
-    getCurrentStateFromTree = (tree, config) => {
+    getCurrentStateFromTree = (immutableTree, config) => {
+        let currentTree = getTree(immutableTree);
+
         let currentState = {
-            tree: checkTree(tree, config),
+            tree: currentTree,
             config: config,
-            queryStringFormat: queryString(tree, config),
-            queryBuilderFormat: JSON.stringify(
-                queryBuilderFormat(tree, config)
-            ),
-            mongodbFormat: JSON.stringify(mongodbFormat(tree, config)),
-            sqlFormat: sqlFormat(tree, config),
-            jsonLogicFormat: JSON.stringify(jsonLogicFormat(tree, config)),
+            queryStringFormat: queryString(immutableTree, config),
+            queryBuilderFormat: queryBuilderFormat(immutableTree, config),
+            mongodbFormat: mongodbFormat(immutableTree, config),
+            sqlFormat: sqlFormat(immutableTree, config),
+            jsonLogicFormat: jsonLogicFormat(immutableTree, config),
+            elasticSearchFormat: elasticSearchFormat(immutableTree, config),
+            spelFormat: spelFormat(immutableTree, config),
         };
         return currentState;
     };
@@ -74,7 +83,7 @@ export default class BaseQueryBuilder extends Component {
         // Can we use Throttle (from lodash)?
         let currentState = this.getCurrentStateFromTree(immutableTree, config);
 
-        this.setState(currentState);
+        this.setState({ ...currentState, immutableTree: immutableTree });
         this.setProps(currentState);
     };
 
@@ -83,21 +92,21 @@ export default class BaseQueryBuilder extends Component {
             <div>
                 <Query
                     {...this.state.config}
-                    value={this.state.tree}
+                    value={this.state.immutableTree}
                     onChange={this.onChange}
-                    renderBuilder={this.renderBuilder}
+                    renderBuilder={(props) => (this.renderBuilder(props, this.state.alwaysShowActionButtons))}
                 />
             </div>
         );
     };
 
-    renderBuilder = (props) => (
-        <div className="query-builder-container" style={{ padding: '10px' }}>
-            <div className="query-builder qb-lite">
+    renderBuilder = (props, alwaysShowActionButtons) => {
+        return (<div className="query-builder-container" style={{ padding: '10px' }}>
+            <div className={alwaysShowActionButtons ? 'query-builder' : 'query-builder qb-lite'}>
                 <Builder {...props} />
             </div>
-        </div>
-    );
+        </div>)
+    }
 }
 
 const configPropTypes = {

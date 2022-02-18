@@ -43,6 +43,7 @@ module.exports = (env, argv) => {
                 'react-dom': 'ReactDOM',
                 'plotly.js': 'Plotly',
                 'prop-types': 'PropTypes',
+                // 'react-awesome-query-builder': 'Utils',
             };
 
     return {
