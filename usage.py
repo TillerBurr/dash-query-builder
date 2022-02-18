@@ -37,18 +37,6 @@ fields = {
             "operators": ["equal", "is_empty"],
             "valueSources": ["value"],
         },
-        "multicolor": {
-            "label": "Colors",
-            "type": "multiselect",
-            "fieldSettings": {
-                "showSearch": True,
-                "listValues": [
-                    {"value": "yellow", "title": "Yellow"},
-                    {"value": "green", "title": "Green"},
-                    {"value": "orange", "title": "Orange"},
-                ],
-            },
-        },
     }
 }
 tree = {
@@ -77,10 +65,8 @@ tree = {
 
 jsonLogicTree = {
     "errors": [],
-    "logic": {
-        "and": [{"in": [{"var": "main_report_data.color"}, ["green", "yellow"]]}]
-    },
-    "data": {"main_report_data": {"color": None}},
+    "logic": {"and": [{"==": [{"var": "main_report_data.price"}, 49]}]},
+    "data": {"main_report_data": {"price": None}},
 }
 spelFormatTree = "{'green', 'yellow'}.?[true].contains(main_report_data.color)"
 empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
@@ -171,7 +157,7 @@ def update_spel_tree_value(n):
     if n is not None and n % 2 == 1:
         rv = spelFormatTree
     else:
-        rv = ""
+        rv = None
 
     return rv
 
