@@ -5,11 +5,17 @@ import MUIConfig from 'react-awesome-query-builder/lib/config/mui';
 
 
 export default class MUIQueryBuilder extends Component {
+    constructor(props) {
+        super(props)
+        let config = (props.config === null || props.config === undefined) ? MUIConfig : { ...MUIConfig, ...props.config }
+        this.state = { config: config }
+    }
+
 
     render() {
         return (
             <div>
-                <BaseQueryBuilder {...this.props} config={MUIConfig} />
+                <BaseQueryBuilder {...this.props} config={this.state.config} />
             </div>
         )
     }

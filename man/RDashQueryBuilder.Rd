@@ -10,7 +10,7 @@ DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](ht
 }
 
 \usage{
-RDashQueryBuilder(id=NULL, alwaysShowActionButtons=NULL,
+RDashQueryBuilder(id=NULL, alwaysShowActionButtons=NULL, config=NULL,
 elasticSearchFormat=NULL, fields=NULL,
 initialTreeFormat=NULL, jsonLogicFormat=NULL,
 mongodbFormat=NULL, queryBuilderStringFormat=NULL,
@@ -22,6 +22,9 @@ theme=NULL, tree=NULL)
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
 \item{alwaysShowActionButtons}{Logical. Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.}
+
+\item{config}{Named list. Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,
+operators or widgets. Setting this is currently in alpha, it is very unstable.}
 
 \item{elasticSearchFormat}{Named list. The JSON Logic Formatted defined by the current state of the tree}
 

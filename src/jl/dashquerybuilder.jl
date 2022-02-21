@@ -16,6 +16,8 @@ These are the only themes supported by `react-awesome-query-builder`.
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
 - `alwaysShowActionButtons` (Bool; optional): Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.
+- `config` (Dict; optional): Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,
+operators or widgets. Setting this is currently in alpha, it is very unstable.
 - `elasticSearchFormat` (Dict; optional): The JSON Logic Formatted defined by the current state of the tree
 - `fields` (optional): The fields that are used to populate the options for the query builder. This can be a very complicated object.
  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info.
@@ -30,7 +32,7 @@ Keyword arguments:
 - `tree` (Bool | Real | String | Dict | Array; optional): The tree that describes the state of the query builder.
 """
 function dashquerybuilder(; kwargs...)
-        available_props = Symbol[:id, :alwaysShowActionButtons, :elasticSearchFormat, :fields, :initialTreeFormat, :jsonLogicFormat, :mongodbFormat, :queryBuilderStringFormat, :queryStringFormat, :spelFormat, :sqlFormat, :theme, :tree]
+        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :initialTreeFormat, :jsonLogicFormat, :mongodbFormat, :queryBuilderStringFormat, :queryStringFormat, :spelFormat, :sqlFormat, :theme, :tree]
         wild_props = Symbol[]
         return Component("dashquerybuilder", "DashQueryBuilder", "dash_query_builder", available_props, wild_props; kwargs...)
 end

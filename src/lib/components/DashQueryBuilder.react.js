@@ -45,7 +45,7 @@ export default class DashQueryBuilder extends Component {
 
     render() {
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
                 <QueryBuilderFactory {...this.props} />
             </Suspense>
         )
@@ -87,7 +87,7 @@ const fieldPropType = PropTypes.objectOf(
          * Config for subfields of complex field (multiple nesting is supported)
          */
         subfields: PropTypes.any, //fields type
-        label: PropTypes.string.isRequired,
+        label: PropTypes.string,
         label2: PropTypes.string,
         tooltip: PropTypes.string,
         valueSources: PropTypes.arrayOf(
@@ -166,6 +166,9 @@ export const themelessPropTypes = {
     initialTreeFormat: PropTypes.oneOf(['jsonLogic', 'spel', 'default']),
     /** Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.*/
     alwaysShowActionButtons: PropTypes.bool,
+    /** Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,
+     * operators or widgets. Setting this is currently in alpha, it is very unstable.*/
+    config: PropTypes.object
 };
 export const propTypes = {
     ...themelessPropTypes,

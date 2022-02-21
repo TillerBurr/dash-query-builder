@@ -122,6 +122,13 @@
           "computed": false
         }
       },
+      "config": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,\noperators or widgets. Setting this is currently in alpha, it is very unstable."
+      },
       "theme": {
         "type": {
           "name": "enum",

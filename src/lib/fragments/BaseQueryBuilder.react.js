@@ -18,36 +18,6 @@ const {
     uuid
 } = Utils;
 const emptyTree = { id: uuid(), type: 'group' };
-const loadModifiedTree = (modifiedProp, modifiedValue, config) => {
-    switch (modifiedProp) {
-
-        case 'jsonLogicFormat':
-            console.log('jsonLogicFormat', modifiedValue);
-            let jsonLogicTree = loadFromJsonLogic(modifiedValue, config);
-            console.log('jsonLogicTree', jsonLogicTree);
-            return jsonLogicTree;
-        case 'spelFormat':
-            if (modifiedValue === '' || modifiedValue === undefined || modifiedValue === null) {
-                return loadTree(emptyTree, config)
-            }
-            else {
-                let treeAndErrors = loadFromSpel(modifiedValue, config);
-                let tree = treeAndErrors[0];
-                if (treeAndErrors[1].length > 0) {
-                    console.log('There are Errors in the SPEL String', treeAndErrors[1]);
-                }
-                if (tree === undefined) {
-                    tree = loadTree(emptyTree, config);
-                }
-                return tree
-            }
-
-        case 'tree':
-        default:
-            return loadTree(modifiedValue);
-    }
-
-}
 
 /** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
@@ -69,10 +39,42 @@ export default class BaseQueryBuilder extends Component {
         this.setProps = props.setProps;
         let initialImmutableTree = checkTree(loadTree(props.tree), config);
 
-        this.state = { config: config, immutableTree: initialImmutableTree };
-        this.setProps({ config: config }) // I don't think this does anything. Need to set up the config prop on subclasses.
+        this.state = { config: config, immutableTree: initialImmutableTree, alwaysShowActionButtons: props.alwaysShowActionButtons };
     }
 
+    loadModifiedTree(modifiedProp, modifiedValue, config = this.state.config) {
+        switch (modifiedProp) {
+
+            case 'jsonLogicFormat':
+                if (modifiedValue === undefined || modifiedValue === null) {
+                    return loadTree(emptyTree, this.state.config)
+                }
+
+                let jsonLogicTree = loadFromJsonLogic(modifiedValue, config);
+                return jsonLogicTree;
+
+            case 'spelFormat':
+                if (modifiedValue === '' || modifiedValue === undefined || modifiedValue === null) {
+                    return loadTree(emptyTree, this.state.config)
+                }
+                else {
+                    let treeAndErrors = loadFromSpel(modifiedValue, this.state.config);
+                    let tree = treeAndErrors[0];
+                    if (treeAndErrors[1].length > 0) {
+                        console.log('There are Errors in the SPEL String', treeAndErrors[1]);
+                    }
+                    if (tree === undefined) {
+                        tree = loadTree(emptyTree, this.state.config);
+                    }
+                    return tree
+                }
+
+            case 'tree':
+            default:
+                return loadTree(modifiedValue);
+        }
+
+    }
 
     /**
      *
@@ -109,10 +111,9 @@ export default class BaseQueryBuilder extends Component {
                 modifiedValue = this.props.jsonLogicFormat.logic;
             }
         if (modified) {
-            let immutableTree = loadModifiedTree(modifiedProp, modifiedValue, this.state.config);
+            let immutableTree = this.loadModifiedTree(modifiedProp, modifiedValue);
 
-            //console.log('immutableTree')
-            console.log(getTree(immutableTree));
+            // console.log(getTree(immutableTree));
             let currentState = this.getCurrentStateFromTree(
                 immutableTree,
                 this.state.config
@@ -162,18 +163,12 @@ export default class BaseQueryBuilder extends Component {
 
     renderBuilder = (props) => {
         return (<div className="query-builder-container" style={{ padding: '10px' }}>
-            <div className={props.alwaysShowActionButtons ? 'query-builder' : 'query-builder qb-lite'}>
+            <div className={this.state.alwaysShowActionButtons ? 'query-builder' : 'query-builder qb-lite'}>
                 <Builder {...props} />
             </div>
         </div>)
     }
 }
 
-const configPropTypes = {
-    ...themelessPropTypes,
-    config: PropTypes.object
-}
-
-
-BaseQueryBuilder.propTypes = configPropTypes
+BaseQueryBuilder.propTypes = themelessPropTypes
 BaseQueryBuilder.defaultProps = defaultProps

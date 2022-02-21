@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-RDashQueryBuilder <- function(id=NULL, alwaysShowActionButtons=NULL, elasticSearchFormat=NULL, fields=NULL, initialTreeFormat=NULL, jsonLogicFormat=NULL, mongodbFormat=NULL, queryBuilderStringFormat=NULL, queryStringFormat=NULL, spelFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL) {
+RDashQueryBuilder <- function(id=NULL, alwaysShowActionButtons=NULL, config=NULL, elasticSearchFormat=NULL, fields=NULL, initialTreeFormat=NULL, jsonLogicFormat=NULL, mongodbFormat=NULL, queryBuilderStringFormat=NULL, queryStringFormat=NULL, spelFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL) {
     
-    props <- list(id=id, alwaysShowActionButtons=alwaysShowActionButtons, elasticSearchFormat=elasticSearchFormat, fields=fields, initialTreeFormat=initialTreeFormat, jsonLogicFormat=jsonLogicFormat, mongodbFormat=mongodbFormat, queryBuilderStringFormat=queryBuilderStringFormat, queryStringFormat=queryStringFormat, spelFormat=spelFormat, sqlFormat=sqlFormat, theme=theme, tree=tree)
+    props <- list(id=id, alwaysShowActionButtons=alwaysShowActionButtons, config=config, elasticSearchFormat=elasticSearchFormat, fields=fields, initialTreeFormat=initialTreeFormat, jsonLogicFormat=jsonLogicFormat, mongodbFormat=mongodbFormat, queryBuilderStringFormat=queryBuilderStringFormat, queryStringFormat=queryStringFormat, spelFormat=spelFormat, sqlFormat=sqlFormat, theme=theme, tree=tree)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@ RDashQueryBuilder <- function(id=NULL, alwaysShowActionButtons=NULL, elasticSear
         props = props,
         type = 'DashQueryBuilder',
         namespace = 'dash_query_builder',
-        propNames = c('id', 'alwaysShowActionButtons', 'elasticSearchFormat', 'fields', 'initialTreeFormat', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree'),
+        propNames = c('id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'initialTreeFormat', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree'),
         package = 'dashQueryBuilder'
         )
 

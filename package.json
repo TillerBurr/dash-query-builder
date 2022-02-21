@@ -20,7 +20,8 @@
         "build:backends-activated": "(. .venv/bin/activate || .venv\\scripts\\activate && npm run build:py_and_r)",
         "build": "npm run build:js && npm run build:backends",
         "build:activated": "npm run build:js && npm run build:backends-activated",
-        "build:js:dev": "webpack --mode development"
+        "build:js:dev": "webpack --mode development",
+        "build:dev": "npm run build:js:dev && npm run build:backends"
     },
     "author": "Tyler Baur <baur.tyler@protonmail.com>",
     "license": "MIT",
