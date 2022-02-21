@@ -18,17 +18,33 @@ Keyword arguments:
 - id (string; optional):
     The ID used to identify this component in Dash callbacks.
 
+- alwaysShowActionButtons (boolean; default True):
+    Always show the Action Buttons (Add Rule, Add Group, Delete,
+    etc.). If False, show only on hover.
+
+- config (dict; optional):
+    Customizable Config. Currently only usable for objects that do not
+    involve functions. Cannot be used to modify conjunctions,
+    operators or widgets. Setting this is currently in alpha, it is
+    very unstable.
+
+- elasticSearchFormat (dict; optional):
+    The JSON Logic Formatted defined by the current state of the tree.
+
 - fields (optional):
     The fields that are used to populate the options for the query
     builder. This can be a very complicated object.  See
     https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields
     for more info.
 
-- jsonLogicFormat (string; optional):
+- initialTreeFormat (a value equal to: 'jsonLogic', 'spel', 'default'; default 'default'):
+    Specifies the type of the initial tree.
+
+- jsonLogicFormat (dict; optional):
     The JSON Logic Formatted string defined by the current state of
     the tree.
 
-- mongodbFormat (string; optional):
+- mongodbFormat (dict; optional):
     The MongoDB Formatted string defined by the current state of the
     tree.
 
@@ -40,6 +56,10 @@ Keyword arguments:
     The Query String Formatted string defined by the current state of
     the tree.
 
+- spelFormat (string; optional):
+    The JSON Logic Formatted string defined by the current state of
+    the tree.
+
 - sqlFormat (string; optional):
     The SQL Formatted string defined by the current state of the tree.
 
@@ -49,12 +69,12 @@ Keyword arguments:
 - tree (boolean | number | string | dict | list; default loadTree(emptyTree)):
     The tree that describes the state of the query builder."""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, theme=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree']
+    def __init__(self, id=Component.UNDEFINED, tree=Component.UNDEFINED, fields=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, queryStringFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongodbFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, initialTreeFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, config=Component.UNDEFINED, theme=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'initialTreeFormat', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self._type = 'DashQueryBuilder'
         self._namespace = 'dash_query_builder'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'fields', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'sqlFormat', 'theme', 'tree']
+        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'initialTreeFormat', 'jsonLogicFormat', 'mongodbFormat', 'queryBuilderStringFormat', 'queryStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

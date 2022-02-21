@@ -4,15 +4,20 @@ import { Query, Builder, Utils } from 'react-awesome-query-builder';
 import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
 const {
     loadTree,
+    loadFromJsonLogic,
+    loadFromSpel,
     checkTree,
     queryString,
     queryBuilderFormat,
     mongodbFormat,
     sqlFormat,
     jsonLogicFormat,
+    elasticSearchFormat,
+    spelFormat,
+    getTree,
+    uuid
 } = Utils;
-
-
+const emptyTree = { id: uuid(), type: 'group' };
 
 /** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
@@ -26,55 +31,120 @@ export default class BaseQueryBuilder extends Component {
     constructor(props) {
         super(props);
 
-
         const fields = props.fields;
         const config = {
             ...props.config,
             fields,
         };
         this.setProps = props.setProps;
-        let initTree = checkTree(loadTree(props.tree), config);
-        this.state = this.getCurrentStateFromTree(initTree, config);
+        let initialImmutableTree = checkTree(loadTree(props.tree), config);
+
+        this.state = { config: config, immutableTree: initialImmutableTree, alwaysShowActionButtons: props.alwaysShowActionButtons };
+    }
+
+    loadModifiedTree(modifiedProp, modifiedValue, config = this.state.config) {
+        switch (modifiedProp) {
+
+            case 'jsonLogicFormat':
+                if (modifiedValue === undefined || modifiedValue === null) {
+                    return loadTree(emptyTree, this.state.config)
+                }
+
+                let jsonLogicTree = loadFromJsonLogic(modifiedValue, config);
+                return jsonLogicTree;
+
+            case 'spelFormat':
+                if (modifiedValue === '' || modifiedValue === undefined || modifiedValue === null) {
+                    return loadTree(emptyTree, this.state.config)
+                }
+                else {
+                    let treeAndErrors = loadFromSpel(modifiedValue, this.state.config);
+                    let tree = treeAndErrors[0];
+                    if (treeAndErrors[1].length > 0) {
+                        console.log('There are Errors in the SPEL String', treeAndErrors[1]);
+                    }
+                    if (tree === undefined) {
+                        tree = loadTree(emptyTree, this.state.config);
+                    }
+                    return tree
+                }
+
+            case 'tree':
+            default:
+                return loadTree(modifiedValue);
+        }
+
     }
 
     /**
      *
      * Update the state if tree has changed. This allows Dash to update the `tree` prop and have it set
-     * the layout properly
+     * the layout properly. Only run once and only if one of the props has changed.
      */
     componentDidUpdate(prevProps) {
-        if (prevProps.tree !== this.props.tree) {
+        let modified = false
+        let modifiedProp
+        let modifiedValue
+        if (prevProps.tree !== this.props.tree &&
+            prevProps.spelFormat === this.props.spelFormat &&
+            prevProps.jsonLogicFormat === this.props.jsonLogicFormat) {
             //what happens if this.props.tree is null?
+            modified = true;
+            modifiedProp = 'tree';
+            modifiedValue = this.props.tree;
+
+        }
+        else if (prevProps.tree === this.props.tree &&
+            prevProps.spelFormat !== this.props.spelFormat &&
+            prevProps.jsonLogicFormat === this.props.jsonLogicFormat) {
+            modified = true;
+            modifiedProp = 'spelFormat';
+            modifiedValue = this.props.spelFormat;
+
+        }
+        else
+            if (prevProps.tree === this.props.tree &&
+                prevProps.spelFormat === this.props.spelFormat &&
+                prevProps.jsonLogicFormat !== this.props.jsonLogicFormat) {
+                modified = true;
+                modifiedProp = 'jsonLogicFormat';
+                modifiedValue = this.props.jsonLogicFormat.logic;
+            }
+        if (modified) {
+            let immutableTree = this.loadModifiedTree(modifiedProp, modifiedValue);
+
+            // console.log(getTree(immutableTree));
             let currentState = this.getCurrentStateFromTree(
-                loadTree(this.props.tree),
+                immutableTree,
                 this.state.config
             );
-            this.setState(currentState);
+            this.setState({ immutableTree: immutableTree });
+            this.setProps(currentState)
         }
     }
     /**
      *
      *  Takes a tree and config and updates the various Formats used.
      */
-    getCurrentStateFromTree = (tree, config) => {
+    getCurrentStateFromTree = (immutableTree, config) => {
+        let currentTree = getTree(immutableTree);
         let currentState = {
-            tree: checkTree(tree, config),
+            tree: currentTree,
             config: config,
-            queryStringFormat: queryString(tree, config),
-            queryBuilderFormat: JSON.stringify(
-                queryBuilderFormat(tree, config)
-            ),
-            mongodbFormat: JSON.stringify(mongodbFormat(tree, config)),
-            sqlFormat: sqlFormat(tree, config),
-            jsonLogicFormat: JSON.stringify(jsonLogicFormat(tree, config)),
+            queryStringFormat: queryString(immutableTree, config),
+            queryBuilderFormat: queryBuilderFormat(immutableTree, config),
+            mongodbFormat: mongodbFormat(immutableTree, config),
+            sqlFormat: sqlFormat(immutableTree, config),
+            jsonLogicFormat: jsonLogicFormat(immutableTree, config),
+            elasticSearchFormat: elasticSearchFormat(immutableTree, config),
+            spelFormat: spelFormat(immutableTree, config),
         };
         return currentState;
     };
     onChange = (immutableTree, config) => {
         // Can we use Throttle (from lodash)?
         let currentState = this.getCurrentStateFromTree(immutableTree, config);
-
-        this.setState(currentState);
+        this.setState({ immutableTree: immutableTree, config: config });
         this.setProps(currentState);
     };
 
@@ -83,7 +153,7 @@ export default class BaseQueryBuilder extends Component {
             <div>
                 <Query
                     {...this.state.config}
-                    value={this.state.tree}
+                    value={this.state.immutableTree}
                     onChange={this.onChange}
                     renderBuilder={this.renderBuilder}
                 />
@@ -91,20 +161,14 @@ export default class BaseQueryBuilder extends Component {
         );
     };
 
-    renderBuilder = (props) => (
-        <div className="query-builder-container" style={{ padding: '10px' }}>
-            <div className="query-builder qb-lite">
+    renderBuilder = (props) => {
+        return (<div className="query-builder-container" style={{ padding: '10px' }}>
+            <div className={this.state.alwaysShowActionButtons ? 'query-builder' : 'query-builder qb-lite'}>
                 <Builder {...props} />
             </div>
-        </div>
-    );
+        </div>)
+    }
 }
 
-const configPropTypes = {
-    ...themelessPropTypes,
-    config: PropTypes.any
-}
-
-
-BaseQueryBuilder.propTypes = configPropTypes
+BaseQueryBuilder.propTypes = themelessPropTypes
 BaseQueryBuilder.defaultProps = defaultProps

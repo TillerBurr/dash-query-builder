@@ -45,7 +45,7 @@ export default class DashQueryBuilder extends Component {
 
     render() {
         return (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
                 <QueryBuilderFactory {...this.props} />
             </Suspense>
         )
@@ -56,6 +56,8 @@ export default class DashQueryBuilder extends Component {
 export const defaultProps = {
     tree: loadTree(emptyTree),
     theme: 'basic',
+    initialTreeFormat: 'default',
+    alwaysShowActionButtons: true,
 };
 
 const singleFieldType = PropTypes.oneOf([
@@ -85,7 +87,7 @@ const fieldPropType = PropTypes.objectOf(
          * Config for subfields of complex field (multiple nesting is supported)
          */
         subfields: PropTypes.any, //fields type
-        label: PropTypes.string.isRequired,
+        label: PropTypes.string,
         label2: PropTypes.string,
         tooltip: PropTypes.string,
         valueSources: PropTypes.arrayOf(
@@ -153,9 +155,20 @@ export const themelessPropTypes = {
     /** The Query Builder String Formatted string defined by the current state of the tree */
     queryBuilderStringFormat: PropTypes.string,
     /** The MongoDB Formatted string defined by the current state of the tree */
-    mongodbFormat: PropTypes.string,
+    mongodbFormat: PropTypes.object,
     /** The JSON Logic Formatted string defined by the current state of the tree */
-    jsonLogicFormat: PropTypes.string,
+    jsonLogicFormat: PropTypes.object,
+    /** The JSON Logic Formatted defined by the current state of the tree */
+    elasticSearchFormat: PropTypes.object,
+    /** The JSON Logic Formatted string defined by the current state of the tree */
+    spelFormat: PropTypes.string,
+    /** Specifies the type of the initial tree.  */
+    initialTreeFormat: PropTypes.oneOf(['jsonLogic', 'spel', 'default']),
+    /** Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.*/
+    alwaysShowActionButtons: PropTypes.bool,
+    /** Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,
+     * operators or widgets. Setting this is currently in alpha, it is very unstable.*/
+    config: PropTypes.object
 };
 export const propTypes = {
     ...themelessPropTypes,

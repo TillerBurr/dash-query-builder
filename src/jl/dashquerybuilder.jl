@@ -15,18 +15,24 @@ The optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` o
 These are the only themes supported by `react-awesome-query-builder`.
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
+- `alwaysShowActionButtons` (Bool; optional): Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.
+- `config` (Dict; optional): Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,
+operators or widgets. Setting this is currently in alpha, it is very unstable.
+- `elasticSearchFormat` (Dict; optional): The JSON Logic Formatted defined by the current state of the tree
 - `fields` (optional): The fields that are used to populate the options for the query builder. This can be a very complicated object.
  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info.
-- `jsonLogicFormat` (String; optional): The JSON Logic Formatted string defined by the current state of the tree
-- `mongodbFormat` (String; optional): The MongoDB Formatted string defined by the current state of the tree
+- `initialTreeFormat` (a value equal to: 'jsonLogic', 'spel', 'default'; optional): Specifies the type of the initial tree.
+- `jsonLogicFormat` (Dict; optional): The JSON Logic Formatted string defined by the current state of the tree
+- `mongodbFormat` (Dict; optional): The MongoDB Formatted string defined by the current state of the tree
 - `queryBuilderStringFormat` (String; optional): The Query Builder String Formatted string defined by the current state of the tree
 - `queryStringFormat` (String; optional): The Query String Formatted string defined by the current state of the tree
+- `spelFormat` (String; optional): The JSON Logic Formatted string defined by the current state of the tree
 - `sqlFormat` (String; optional): The SQL Formatted string defined by the current state of the tree
 - `theme` (a value equal to: 'material', "mui", 'antd', 'basic', 'bootstrap'; optional): Sets the theme of the query builder.
 - `tree` (Bool | Real | String | Dict | Array; optional): The tree that describes the state of the query builder.
 """
 function dashquerybuilder(; kwargs...)
-        available_props = Symbol[:id, :fields, :jsonLogicFormat, :mongodbFormat, :queryBuilderStringFormat, :queryStringFormat, :sqlFormat, :theme, :tree]
+        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :initialTreeFormat, :jsonLogicFormat, :mongodbFormat, :queryBuilderStringFormat, :queryStringFormat, :spelFormat, :sqlFormat, :theme, :tree]
         wild_props = Symbol[]
         return Component("dashquerybuilder", "DashQueryBuilder", "dash_query_builder", available_props, wild_props; kwargs...)
 end
