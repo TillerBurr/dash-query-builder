@@ -1,6 +1,6 @@
 {
     "name": "dash_query_builder",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Plotly Dash Component providing react-awesome-query-builder functionality",
     "homepage": "https://github.com/baurt/dash_query_builder",
     "bugs": {
