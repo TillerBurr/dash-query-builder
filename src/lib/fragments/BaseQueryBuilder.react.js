@@ -30,14 +30,14 @@ const emptyTree = { id: uuid(), type: 'group' };
 export default class BaseQueryBuilder extends Component {
     constructor(props) {
         super(props);
-
+        console.log(props.tree)
         const fields = props.fields;
         const config = {
             ...props.config,
             fields,
         };
         this.setProps = props.setProps;
-        let initialImmutableTree = checkTree(loadTree(props.tree), config);
+        let initialImmutableTree = initialImmutableTree = checkTree(loadTree(props.tree), config)
 
         this.state = { config: config, immutableTree: initialImmutableTree, alwaysShowActionButtons: props.alwaysShowActionButtons };
     }
@@ -82,6 +82,7 @@ export default class BaseQueryBuilder extends Component {
      * the layout properly. Only run once and only if one of the props has changed.
      */
     componentDidUpdate(prevProps) {
+        console.log('componentDidUpdate', prevProps, this.props)
         let modified = false
         let modifiedProp
         let modifiedValue
