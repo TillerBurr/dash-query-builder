@@ -2,7 +2,7 @@
 name = "DashQueryBuilder"
 uuid = "1b08a953-4be3-4667-9a23-9717610fdc70"
 authors = ["Tyler Baur <baur.tyler@protonmail.com>"]
-version = "0.1.1"
+version = "0.2.0"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"
