@@ -9,14 +9,17 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.10
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10"
+          python-version: ${{matrix.python-version}}
       - uses: actions/setup-node@v1
         with:
           node-version: 16
@@ -34,7 +37,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}-python-${{ matrix.python-version }}
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}-python-${{matrix.python-version}}
       - name: Install Dependencies
         run: poetry install
       - name: Build project and publish
