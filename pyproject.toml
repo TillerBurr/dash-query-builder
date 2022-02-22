@@ -4,6 +4,19 @@ version = "0.2.1"
 description = "Dash Component based on react-awesome-query-builder"
 authors = ["Tyler Baur <baur.tyler@protonmail.com>"]
 license = "MIT"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Dash",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10"
+]
+
+[tool.poetry.urls]
+"Bug Tracker"="https://github.com/baurt/dash_query_builder/issues"
+"Homepage"="https://github.com/baurt/dash_query_builder"
+
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -15,8 +28,6 @@ black = "^21.6b0"
 flake8 = "^3.9.2"
 dash = {version = "^2.0.0", extras = ["dev","testing"]}
 
-[tool.poetry.scripts]
-build_py_dash="dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
