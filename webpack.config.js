@@ -26,9 +26,11 @@ module.exports = (env, argv) => {
     }
 
     let filename = (overrides.output || {}).filename;
+    let chunkFilename = '[name].js';
     if (!filename) {
         const modeSuffix = mode === 'development' ? 'dev' : 'min';
         filename = `${dashLibraryName}.${modeSuffix}.js`;
+        chunkFilename = `[name].${modeSuffix}.js`;
     }
 
     const entry = overrides.entry || { main: './src/lib/index.js' };
@@ -51,7 +53,7 @@ module.exports = (env, argv) => {
         entry,
         output: {
             path: path.resolve(__dirname, dashLibraryName),
-            chunkFilename: '[name].js',
+            chunkFilename: chunkFilename,
             filename,
             library: dashLibraryName,
             libraryTarget: 'window',

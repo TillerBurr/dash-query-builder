@@ -1,4 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
+
+*.dev.js*
 ### VisualStudioCode template
 .vscode/*
 !.vscode/settings.json

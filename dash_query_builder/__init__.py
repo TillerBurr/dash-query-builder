@@ -31,16 +31,20 @@ _current_path = _os.path.dirname(_os.path.abspath(__file__))
 
 _this_module = _sys.modules[__name__]
 
+dev_mode = False
+mode_suffix = "dev" if dev_mode else "min"
 async_resources = ["material", "mui", "antd", "bootstrap", "basic"]
 
-shared_resources = ["min", "shared"]
+shared_resources = [mode_suffix, "shared"]
 
 _js_dist = []
 
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{}.js".format(async_resource),
+            "relative_package_path": "async-{0}.{1}.js".format(
+                async_resource, mode_suffix
+            ),
             "external_url": ("https://unpkg.com/{0}@{2}" "/{1}/async-{3}.js").format(
                 package_name, __name__, __version__, async_resource
             ),
@@ -55,7 +59,9 @@ _js_dist.extend(
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{}.js.map".format(async_resource),
+            "relative_package_path": "async-{0}.{1}.js.map".format(
+                async_resource, mode_suffix
+            ),
             "external_url": (
                 "https://unpkg.com/{0}@{2}" "/{1}/async-{3}.js.map"
             ).format(package_name, __name__, __version__, async_resource),

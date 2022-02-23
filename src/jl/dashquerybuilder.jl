@@ -21,8 +21,9 @@ operators or widgets. Setting this is currently in alpha, it is very unstable.
 - `elasticSearchFormat` (Dict; optional): The JSON Logic Formatted defined by the current state of the tree
 - `fields` (optional): The fields that are used to populate the options for the query builder. This can be a very complicated object.
  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info.
-- `initialTreeFormat` (a value equal to: 'jsonLogic', 'spel', 'default'; optional): Specifies the type of the initial tree.
 - `jsonLogicFormat` (Dict; optional): The JSON Logic Formatted string defined by the current state of the tree
+- `loadFormat` (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; optional): The Format which the Query Builder will load. Any changes made to that format will produce an update. Only that format will be able to load
+the tree
 - `mongodbFormat` (Dict; optional): The MongoDB Formatted string defined by the current state of the tree
 - `queryBuilderStringFormat` (String; optional): The Query Builder String Formatted string defined by the current state of the tree
 - `queryStringFormat` (String; optional): The Query String Formatted string defined by the current state of the tree
@@ -32,7 +33,7 @@ operators or widgets. Setting this is currently in alpha, it is very unstable.
 - `tree` (Bool | Real | String | Dict | Array; optional): The tree that describes the state of the query builder.
 """
 function dashquerybuilder(; kwargs...)
-        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :initialTreeFormat, :jsonLogicFormat, :mongodbFormat, :queryBuilderStringFormat, :queryStringFormat, :spelFormat, :sqlFormat, :theme, :tree]
+        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :jsonLogicFormat, :loadFormat, :mongodbFormat, :queryBuilderStringFormat, :queryStringFormat, :spelFormat, :sqlFormat, :theme, :tree]
         wild_props = Symbol[]
         return Component("dashquerybuilder", "DashQueryBuilder", "dash_query_builder", available_props, wild_props; kwargs...)
 end

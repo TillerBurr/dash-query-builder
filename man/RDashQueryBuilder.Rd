@@ -11,11 +11,10 @@ DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](ht
 
 \usage{
 RDashQueryBuilder(id=NULL, alwaysShowActionButtons=NULL, config=NULL,
-elasticSearchFormat=NULL, fields=NULL,
-initialTreeFormat=NULL, jsonLogicFormat=NULL,
-mongodbFormat=NULL, queryBuilderStringFormat=NULL,
-queryStringFormat=NULL, spelFormat=NULL, sqlFormat=NULL,
-theme=NULL, tree=NULL)
+elasticSearchFormat=NULL, fields=NULL, jsonLogicFormat=NULL,
+loadFormat=NULL, mongodbFormat=NULL,
+queryBuilderStringFormat=NULL, queryStringFormat=NULL,
+spelFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL)
 }
 
 \arguments{
@@ -31,9 +30,10 @@ operators or widgets. Setting this is currently in alpha, it is very unstable.}
 \item{fields}{The fields that are used to populate the options for the query builder. This can be a very complicated object.
  See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info.}
 
-\item{initialTreeFormat}{A value equal to: 'jsonlogic', 'spel', 'default'. Specifies the type of the initial tree.}
-
 \item{jsonLogicFormat}{Named list. The JSON Logic Formatted string defined by the current state of the tree}
+
+\item{loadFormat}{A value equal to: 'jsonlogicformat', 'spelformat', 'tree'. The Format which the Query Builder will load. Any changes made to that format will produce an update. Only that format will be able to load
+the tree}
 
 \item{mongodbFormat}{Named list. The MongoDB Formatted string defined by the current state of the tree}
 

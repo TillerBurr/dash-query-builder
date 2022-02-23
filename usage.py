@@ -1,5 +1,5 @@
 import dash_query_builder
-from dash import html, dash, Input, Output, State
+from dash import html, dash, Input, Output, State, callback_context, no_update
 import json
 
 app = dash.Dash(__name__)
@@ -92,7 +92,18 @@ jsonLogicTree = {
     },
     "data": {"main_report_data": {"qty": None, "price": None, "color": None}},
 }
+broken_jsonLogicTree = {
+    "errors": [],
+    "logic": {
+        "and": [
+            {"==": [{"var": "main_report_data.doesntExist"}, 3]},
+        ]
+    },
+    "data": {"main_report_data": {"doesntExist": None}},
+}
+
 spelFormatTree = "(main_report_data.qty == 3 && main_report_data.price >= 11 && main_report_data.price <= 30 && {'green', 'yellow'}.?[true].contains(main_report_data.color))"
+broken_spelFormatTree = "(doesntExist == 3)"
 empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(
     [
@@ -102,6 +113,7 @@ app.layout = html.Div(
             theme="mui",
             alwaysShowActionButtons=True,
             tree=None,
+            loadFormat="tree",
         ),
         html.Div(id="output"),
         html.Hr(),
@@ -112,8 +124,33 @@ app.layout = html.Div(
         html.Button(
             id="update-button-spel", children="Click to Update Using SPEL Input"
         ),
+        html.Hr(),
+        html.Button(id="update-format-tree", children="Load Tree"),
+        html.Button(id="update-format-json", children="Load JSONLogic"),
+        html.Button(id="update-format-spel", children="Load SPEL"),
     ]
 )
+
+
+@app.callback(
+    Output("input", "loadFormat"),
+    [
+        Input("update-format-tree", "n_clicks"),
+        Input("update-format-json", "n_clicks"),
+        Input("update-format-spel", "n_clicks"),
+    ],
+)
+def update_load_format(n_clicks_tree, n_clicks_json, n_clicks_spel):
+    if not callback_context.triggered:
+        return no_update
+    else:
+        button_id = callback_context.triggered[0]["prop_id"].split(".")[0]
+        if button_id == "update-format-tree":
+            return "tree"
+        if button_id == "update-format-json":
+            return "jsonLogicFormat"
+        if button_id == "update-format-spel":
+            return "spelFormat"
 
 
 @app.callback(
