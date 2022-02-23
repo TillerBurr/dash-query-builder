@@ -92,7 +92,18 @@ jsonLogicTree = {
     },
     "data": {"main_report_data": {"qty": None, "price": None, "color": None}},
 }
+broken_jsonLogicTree = {
+    "errors": [],
+    "logic": {
+        "and": [
+            {"==": [{"var": "main_report_data.doesntExist"}, 3]},
+        ]
+    },
+    "data": {"main_report_data": {"doesntExist": None}},
+}
+
 spelFormatTree = "(main_report_data.qty == 3 && main_report_data.price >= 11 && main_report_data.price <= 30 && {'green', 'yellow'}.?[true].contains(main_report_data.color))"
+broken_spelFormatTree = "(doesntExist == 3)"
 empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(
     [

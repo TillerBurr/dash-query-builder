@@ -4,7 +4,7 @@ import { Query, Builder, Utils } from 'react-awesome-query-builder';
 import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
 const {
     loadTree,
-    loadFromJsonLogic,
+    _loadFromJsonLogic,
     loadFromSpel,
     checkTree,
     queryString,
@@ -42,7 +42,6 @@ export default class BaseQueryBuilder extends Component {
             this.setProps({ loadFormat: 'tree' })
         }
         let initialLoadItem = this.getLoadItem(loadFormat, props);
-        console.log(loadFormat)
         let initialImmutableTree = checkTree(this.loadModifiedTree(props.loadFormat, initialLoadItem, config), config);
 
 
@@ -72,8 +71,13 @@ export default class BaseQueryBuilder extends Component {
                     return loadTree(emptyTree, config)
                 }
 
-                let jsonLogicTree = loadFromJsonLogic(modifiedValue, config);
-                return jsonLogicTree;
+                let treeAndErrors = _loadFromJsonLogic(modifiedValue, config);
+                let tree = treeAndErrors[0];
+                if (treeAndErrors[1].length > 0) {
+                    console.log('There were errors loading the tree:', treeAndErrors[1]);
+                    throw new Error('There were errors loading the tree: ' + treeAndErrors[1]);
+                }
+                return tree;
 
             case 'spelFormat':
                 if (modifiedValue === '' || modifiedValue === undefined || modifiedValue === null) {
@@ -84,6 +88,7 @@ export default class BaseQueryBuilder extends Component {
                     let tree = treeAndErrors[0];
                     if (treeAndErrors[1].length > 0) {
                         console.log('There are Errors in the SPEL String', treeAndErrors[1]);
+                        throw new Error('There were errors loading the tree: ' + treeAndErrors[1]);
                     }
                     if (tree === undefined) {
                         tree = loadTree(emptyTree, config);
@@ -128,7 +133,6 @@ export default class BaseQueryBuilder extends Component {
             }
         if (modified) {
             let immutableTree = this.loadModifiedTree(modifiedProp, modifiedValue);
-            console.log('modifiedProp', modifiedProp, 'modifiedValue', modifiedValue)
             let currentState = this.getCurrentStateFromTree(
                 immutableTree,
                 this.state.config
@@ -161,7 +165,7 @@ export default class BaseQueryBuilder extends Component {
             jsonLogicFormat: jsonLogicFormat(immutableTree, config),
             elasticSearchFormat: elasticSearchFormat(immutableTree, config),
             spelFormat: spelFormat(immutableTree, config),
-            loadFormat:this.state.loadFormat
+            loadFormat: this.state.loadFormat
         };
         return currentState;
     };
