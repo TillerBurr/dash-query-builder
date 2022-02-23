@@ -86,31 +86,6 @@
         "required": false,
         "description": "The JSON Logic Formatted string defined by the current state of the tree"
       },
-      "initialTreeFormat": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "'jsonLogic'",
-              "computed": false
-            },
-            {
-              "value": "'spel'",
-              "computed": false
-            },
-            {
-              "value": "'default'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Specifies the type of the initial tree.",
-        "defaultValue": {
-          "value": "'default'",
-          "computed": false
-        }
-      },
       "alwaysShowActionButtons": {
         "type": {
           "name": "bool"
@@ -128,6 +103,31 @@
         },
         "required": false,
         "description": "Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,\noperators or widgets. Setting this is currently in alpha, it is very unstable."
+      },
+      "loadFormat": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'jsonLogicFormat'",
+              "computed": false
+            },
+            {
+              "value": "'spelFormat'",
+              "computed": false
+            },
+            {
+              "value": "'tree'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "The Format which the Query Builder will load. Any changes made to that format will produce an update. Only that format will be able to load\nthe tree",
+        "defaultValue": {
+          "value": "'tree'",
+          "computed": false
+        }
       },
       "theme": {
         "type": {
