@@ -34,8 +34,9 @@ _this_module = _sys.modules[__name__]
 dev_mode = False
 mode_suffix = "dev" if dev_mode else "min"
 async_resources = ["material", "mui", "antd", "bootstrap", "basic"]
+_shared = "shared." + mode_suffix
 
-shared_resources = [mode_suffix, "shared"]
+shared_resources = [mode_suffix, _shared]
 
 _js_dist = []
 
