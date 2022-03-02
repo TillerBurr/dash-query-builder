@@ -16,7 +16,7 @@
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
         "build:js": "webpack --mode production",
-        "build:backends": "poetry run dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''",
+        "build:backends": "poetry run dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix '' && poetry run black .",
         "build": "npm run build:js && npm run build:backends",
         "build:activated": "npm run build:js && npm run build:backends-activated",
         "build:js:dev": "webpack --mode development",
