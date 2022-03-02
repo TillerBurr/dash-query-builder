@@ -13,9 +13,10 @@ repos:
           - id: check-toml
           - id: check-yaml
           - id: end-of-file-fixer
-            exclude: '[*.min.js|deps/*|inst/*]'
+            exclude: '.min.js[.map]*|/deps/|/inst/'
           - id: mixed-line-ending
           - id: trailing-whitespace
+            exclude: 'DESCRIPTION'
           - id: check-shebang-scripts-are-executable
     - repo: https://github.com/psf/black
       rev: 22.1.0
