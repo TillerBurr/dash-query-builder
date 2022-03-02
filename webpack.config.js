@@ -4,7 +4,12 @@ const dashLibraryName = packagejson.name.replace(/-/g, '_');
 const WebpackDashDynamicImport = require('@plotly/webpack-dash-dynamic-import');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
+const fs = require('fs');
+// App directory
+const appDirectory = fs.realpathSync(process.cwd());
 
+// Gets absolute path of file within app directory
+const resolveAppPath = relativePath => path.resolve(appDirectory, relativePath);
 module.exports = (env, argv) => {
     let mode;
 
@@ -33,12 +38,50 @@ module.exports = (env, argv) => {
         chunkFilename = `[name].${modeSuffix}.js`;
     }
 
-    const entry = overrides.entry || { main: './src/lib/index.js' };
+    const entry = (mode === 'production') ? overrides.entry || { main: './src/lib/index.js' } : { main: './src/demo/index.js' };
+    let output
+    let optimization
+    let externals
+    if (mode === 'production') {
+        output = {
+            path: path.resolve(__dirname, dashLibraryName),
+            chunkFilename: chunkFilename,
+            filename,
+            library: dashLibraryName,
+            libraryTarget: 'window',
+            globalObject: 'window'
+        }
+        optimization = {
+            minimizer: [
+                new TerserPlugin({
+                    parallel: true,
+                    terserOptions: {
+                        warnings: false,
+                        ie8: false
+                    }
+                })
+            ],
+            splitChunks: {
+                name: "[name].js",
+                cacheGroups: {
+                    async: {
+                        chunks: 'async',
+                        minSize: 0,
+                        name(module, chunks, cacheGroupKey) {
+                            return `${cacheGroupKey}-${chunks[0].name}`;
+                        }
+                    },
+                    shared: {
+                        chunks: 'all',
+                        minSize: 0,
+                        minChunks: 2,
+                        name: 'dash_query_builder.shared'
+                    }
+                }
+            }
+        }
 
-    const devtool = overrides.devtool || 'source-map';
-
-    const externals =
-        'externals' in overrides
+        externals = 'externals' in overrides
             ? overrides.externals
             : {
                 react: 'React',
@@ -47,20 +90,26 @@ module.exports = (env, argv) => {
                 'prop-types': 'PropTypes',
                 // 'react-awesome-query-builder': 'Utils',
             };
+    }
+    else {
+        output = {
+            filename: './output.js',
+            path: path.resolve(__dirname),
+        }
+        optimization = undefined
+        externals = undefined
+    }
+    const devtool = overrides.devtool || 'source-map';
 
+
+    const devServer = { static: resolveAppPath(__dirname), port: 3000, open: true, hot: true, historyApiFallback: true };
     return {
         mode,
         entry,
-        output: {
-            path: path.resolve(__dirname, dashLibraryName),
-            chunkFilename: chunkFilename,
-            filename,
-            library: dashLibraryName,
-            libraryTarget: 'window',
-            globalObject: 'window'
-        },
+        output,
         devtool,
         externals,
+        devServer,
         module: {
             rules: [
                 {
@@ -102,35 +151,7 @@ module.exports = (env, argv) => {
                 },
             ],
         },
-        optimization: {
-            minimizer: [
-                new TerserPlugin({
-                    parallel: true,
-                    terserOptions: {
-                        warnings: false,
-                        ie8: false
-                    }
-                })
-            ],
-            splitChunks: {
-                name: "[name].js",
-                cacheGroups: {
-                    async: {
-                        chunks: 'async',
-                        minSize: 0,
-                        name(module, chunks, cacheGroupKey) {
-                            return `${cacheGroupKey}-${chunks[0].name}`;
-                        }
-                    },
-                    shared: {
-                        chunks: 'all',
-                        minSize: 0,
-                        minChunks: 2,
-                        name: 'dash_query_builder.shared'
-                    }
-                }
-            }
-        },
+        optimization,
         plugins: [
             new WebpackDashDynamicImport(),
             new webpack.SourceMapDevToolPlugin({

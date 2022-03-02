@@ -1,10 +1,32 @@
-<!doctype>
+<!DOCTYPE >
 <html>
     <head>
         <title>Dash Query Builder</title>
+        <style>
+            pre {
+                outline: 1px solid #ccc;
+                padding: 5px;
+                margin: 5px;
+            }
+            .string {
+                color: green;
+            }
+            .number {
+                color: darkorange;
+            }
+            .boolean {
+                color: blue;
+            }
+            .null {
+                color: magenta;
+            }
+            .key {
+                color: red;
+            }
+        </style>
     </head>
     <body>
-        <div id='root'></div>
-        <script src="/dash_query_builder/output.js"></script>
+        <div id="root"></div>
+        <script src="./output.js"></script>
     </body>
 </html>
