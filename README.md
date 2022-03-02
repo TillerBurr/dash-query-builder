@@ -13,26 +13,15 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ### Install dependencies
 
-If you have selected install_dependencies during the prompt, you can skip this part.
+This project uses [Poetry](https://python-poetry.org/).
 
 1. Install npm packages
     ```
     $ npm install
     ```
-2. Create a virtual env and activate.
+2. Install python packages required to build components.
     ```
-    $ virtualenv .venv
-    $ . .venv/bin/activate
-    ```
-    _Note: venv\Scripts\activate for windows_
-
-3. Install python packages required to build components.
-    ```
-    $ pip install -r requirements.txt
-    ```
-4. Install the python packages for testing (optional)
-    ```
-    $ pip install -r tests/requirements.txt
+    $ poetry install
     ```
 
 ### Write your component code in `src/lib/components/DashQueryBuilder.react.js`.

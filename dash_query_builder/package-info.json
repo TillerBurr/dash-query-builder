@@ -1,6 +1,6 @@
 {
     "name": "dash-query-builder",
-    "version": "0.2.1",
+    "version": "0.3.2",
     "description": "Plotly Dash Component providing react-awesome-query-builder functionality",
     "homepage": "https://github.com/baurt/dash_query_builder",
     "bugs": {
@@ -16,8 +16,7 @@
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "npm run validate-init",
         "build:js": "webpack --mode production",
-        "build:backends": "dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''",
-        "build:backends-activated": "(. .venv/bin/activate || .venv\\scripts\\activate && npm run build:py_and_r)",
+        "build:backends": "poetry run dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''",
         "build": "npm run build:js && npm run build:backends",
         "build:activated": "npm run build:js && npm run build:backends-activated",
         "build:js:dev": "webpack --mode development",
@@ -49,10 +48,10 @@
     },
     "devDependencies": {
         "@babel/core": "^7.17.5",
+        "@babel/eslint-parser": "^7.17.0",
         "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
         "@babel/preset-env": "^7.16.11",
         "@babel/preset-react": "^7.16.7",
-        "babel-eslint": "^10.0.2",
         "babel-loader": "^8.2.3",
         "copyfiles": "^2.4.1",
         "css-loader": "^6.6.0",

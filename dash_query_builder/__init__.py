@@ -1,13 +1,12 @@
 from __future__ import print_function as _
 
+import json
 import os as _os
 import sys as _sys
-import json
 
 import dash as _dash
 
-# noinspection PyUnresolvedReferences
-from ._imports_ import *
+from ._imports_ import *  # noqa
 from ._imports_ import __all__
 
 if not hasattr(_dash, "__plotly_dash") and not hasattr(_dash, "development"):
@@ -43,12 +42,12 @@ _js_dist = []
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{0}.{1}.js".format(
+            "relative_package_path": "async-{}.{}.js".format(
                 async_resource, mode_suffix
             ),
-            "external_url": ("https://unpkg.com/{0}@{2}" "/{1}/async-{3}.js").format(
-                package_name, __name__, __version__, async_resource
-            ),
+            "external_url": (
+                "https://unpkg.com/{0}@{2}" "/{1}/async-{3}.{4}.js"
+            ).format(package_name, __name__, __version__, async_resource, mode_suffix),
             "namespace": package_name,
             "async": True,
         }
@@ -60,12 +59,9 @@ _js_dist.extend(
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{0}.{1}.js.map".format(
-                async_resource, mode_suffix
-            ),
-            "external_url": (
-                "https://unpkg.com/{0}@{2}" "/{1}/async-{3}.js.map"
-            ).format(package_name, __name__, __version__, async_resource),
+            "relative_package_path": "async-{async_resource}.{mode_suffix}." + "js.map",
+            "external_url": f"https://unpkg.com/{package_name}@{__version__}/"
+            + f"{__name__}/async-{async_resource}.{mode_suffix}.js.map",
             "namespace": package_name,
             "dynamic": True,
         }

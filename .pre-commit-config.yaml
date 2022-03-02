@@ -1,0 +1,33 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.0.1
+      hooks:
+          - id: check-ast
+          - id: check-builtin-literals
+          - id: check-case-conflict
+          - id: check-docstring-first
+          - id: check-merge-conflict
+          - id: check-json
+          - id: check-toml
+          - id: check-yaml
+          - id: end-of-file-fixer
+            exclude: '[*.min.js|deps/*|inst/*]'
+          - id: mixed-line-ending
+          - id: trailing-whitespace
+          - id: check-shebang-scripts-are-executable
+    - repo: https://github.com/psf/black
+      rev: 22.1.0
+      hooks:
+          - id: black
+    - repo: https://github.com/PyCQA/isort
+      rev: 5.10.1
+      hooks:
+          - id: isort
+            args: ['--profile', 'black']
+    - repo: https://github.com/asottile/pyupgrade
+      rev: v2.31.0
+      hooks:
+          - id: pyupgrade
+            args: ['--py37-plus']
