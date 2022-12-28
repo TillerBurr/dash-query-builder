@@ -25,7 +25,7 @@ const emptyTree = { id: uuid(), type: 'group' };
  * It takes a `fields` property to generate the options for building the actual query.
  * The optional property `tree` is used to define the current state of the tree. It can be used to
  * define the starting state of the query builder.
- * The optional property `theme` is one of `material`, `antd`, `bootstrap` or `basic`. This is the styling of the component.
+ * The optional property `theme` is one of 'mui', `material`, `antd`, `bootstrap` or `basic`. This is the styling of the component.
  * These are the only themes supported by `react-awesome-query-builder`.
  */
 export default class BaseQueryBuilder extends Component {
