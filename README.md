@@ -31,7 +31,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
         ```
         $ poetry run python usage.py
         ```
-- Write tests for your component.
+- Write tests for your component. (There are currently no tests for this package. The component has some finicky selectors that I still need to figure out.)
     - A sample test is available in `tests/test_usage.py`, it will load `usage.py` and you can then automate interactions with selenium.
     - Run the tests with `$ pytest tests`.
     - The Dash team uses these types of integration tests extensively. Browse the Dash component code on GitHub for more examples of testing (e.g. https://github.com/plotly/dash-core-components)
