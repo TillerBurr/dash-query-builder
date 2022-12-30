@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10']
+        python-version: ['3.11']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -23,23 +23,39 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Install poetry
-        uses: Gr1N/setup-poetry@v7
 
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        id: cache-npm
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - name: Install npm Dependencies
+        run: npm install
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+      - name: Cache poetry
+        id: cached-poetry
+        uses: actions/cache@v3
+        with:
+          path: ~/.local
+          key: poetry-cache-${{ runner.os }}-${{ matrix.python-version}}
+      - name: Install Poetry
+        if: steps.cached-poetry.outputs.cache-hit != 'true'
+        uses: snok/install-poetry@v1
       - name: Cache poetry
         id: cached-poetry-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}-python-${{matrix.python-version}}
+          path: .venv
+          key: poetry-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - run: poetry --version
       - name: Install Dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install
       - name: Build project and publish
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
         run: |
-          npm install
           npm run build:js
           poetry run dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''
           poetry build
