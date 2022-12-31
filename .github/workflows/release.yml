@@ -14,25 +14,27 @@ jobs:
         python-version: ['3.11']
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{matrix.python-version}}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-
-      - name: Cache npm dependencies
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Cache pnpm dependencies
         uses: actions/cache@v3
-        id: cache-npm
+        id: cache-pnpm
         with:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
-      - name: Install npm Dependencies
-        run: npm install
-        if: steps.cache-npm.outputs.cache-hit != 'true'
+      - name: Install pnpm Dependencies
+        run: pnpm install
+        if: steps.cache-pnpm.outputs.cache-hit != 'true'
       - name: Cache poetry
         id: cached-poetry
         uses: actions/cache@v3
@@ -56,7 +58,7 @@ jobs:
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
         run: |
-          npm run build:js
+          pnpm run build:js
           poetry run dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''
           poetry build
           poetry publish
