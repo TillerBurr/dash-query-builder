@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Query, Builder, Utils } from 'react-awesome-query-builder';
-import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
-const {
-    loadTree,
+import { Utils, Query, Builder } from '@react-awesome-query-builder/ui'
+const { loadTree,
     _loadFromJsonLogic,
     loadFromSpel,
     checkTree,
@@ -198,5 +195,3 @@ export default class BaseQueryBuilder extends Component {
     }
 }
 
-BaseQueryBuilder.propTypes = themelessPropTypes
-BaseQueryBuilder.defaultProps = defaultProps

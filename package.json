@@ -1,6 +1,6 @@
 {
     "name": "dash-query-builder",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "description": "Plotly Dash Component providing react-awesome-query-builder functionality",
     "homepage": "https://github.com/baurt/dash_query_builder",
     "bugs": {
@@ -27,27 +27,13 @@
     "author": "Tyler Baur <baur.tyler@protonmail.com>",
     "license": "MIT",
     "dependencies": {
-        "@ant-design/icons": "^4.7.0",
-        "@emotion/react": "^11.7.1",
-        "@emotion/styled": "^11.6.0",
-        "@fortawesome/fontawesome-svg-core": "^1.2.0",
-        "@fortawesome/free-solid-svg-icons": "^5.15.0",
-        "@fortawesome/react-fontawesome": "^0.1.17",
-        "@material-ui/core": "^4.12.3",
-        "@material-ui/icons": "^4.11.2",
-        "@material-ui/lab": "^4.0.0-alpha.60",
-        "@material-ui/pickers": "^3.3.10",
-        "@mui/icons-material": "^5.4.2",
-        "@mui/lab": "5.0.0-alpha.69",
-        "@mui/material": "^5.4.2",
         "@plotly/webpack-dash-dynamic-import": "^1.3.0",
-        "@popperjs/core": "^2.11.6",
-        "antd": "^4.18.7",
-        "bootstrap": "^5.1.3",
-        "material-ui-confirm": "^3.0.3",
-        "ramda": "^0.28.0",
-        "react-awesome-query-builder": "^5.0.0 <5.2.0",
-        "reactstrap": "^9.0.1"
+        "@react-awesome-query-builder/antd": "^6.1.1",
+        "@react-awesome-query-builder/bootstrap": "^6.1.1",
+        "@react-awesome-query-builder/mui": "^6.1.1",
+        "@react-awesome-query-builder/ui": "^6.1.1",
+        "bootstrap": "^5.2.3",
+        "ramda": "^0.28.0"
     },
     "devDependencies": {
         "@babel/core": "^7.17.5",
@@ -73,7 +59,7 @@
         "webpack-cli": "^4.9.2"
     },
     "engines": {
-        "node": ">=8.11.0",
-        "npm": ">=6.1.0"
+        "node": ">=19.2.0",
+        "pnpm": ">=7.22.0"
     }
 }

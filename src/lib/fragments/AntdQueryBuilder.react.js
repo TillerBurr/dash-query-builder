@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
 import BaseQueryBuilder from './BaseQueryBuilder.react';
-import AntdConfig from 'react-awesome-query-builder/lib/config/antd';
-import 'antd/dist/antd.css';
+import { AntdConfig } from '@react-awesome-query-builder/antd';
+import '@react-awesome-query-builder/antd/css/styles.css'
 
 export default class AntdQueryBuilder extends Component {
 
@@ -22,5 +21,3 @@ export default class AntdQueryBuilder extends Component {
     }
 }
 
-AntdQueryBuilder.defaultProps = defaultProps
-AntdQueryBuilder.propTypes = themelessPropTypes

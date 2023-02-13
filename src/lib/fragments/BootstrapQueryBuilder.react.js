@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
 import BaseQueryBuilder from './BaseQueryBuilder.react';
-import BootstrapConfig from 'react-awesome-query-builder/lib/config/bootstrap';
+import { BootstrapConfig } from '@react-awesome-query-builder/bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class BootstrapQueryBuilder extends Component {
 
@@ -21,5 +21,3 @@ export default class BootstrapQueryBuilder extends Component {
     }
 }
 
-BootstrapQueryBuilder.defaultProps = defaultProps
-BootstrapQueryBuilder.propTypes = themelessPropTypes
