@@ -65,21 +65,20 @@ will have the output of
 with the parameters:
 ```python
 {
-    'kWmLCFE2ast3': -1.5,
-    'kARgegk5Lvaf': 2,
-    'fo6xh6AMSeX8': 'CT',
-    '93vVGkBiQmew': 'DE',
-    'XAKBsHhqMpri': 'MA',
-    'fYDMqouT8uEe': 'MD',
-    'bKYabUMWbPxx': 'SCOTT',
-    'PWbpMNL3eu2g': 'Ruby',
-    '9pps45B3q22R': 'Gold',
-    'KxRuGpP7Lzkc': 8.2,
-    '3KWbyriTq2J6': 'REGULAR',
-    'cj66tmtgtvXF': 5,
-    'PBHYRhizBfnp': 'main_report_data.another_column'
+    "kWmLCFE2ast3": -1.5,
+    "kARgegk5Lvaf": 2,
+    "fo6xh6AMSeX8": "CT",
+    "93vVGkBiQmew": "DE",
+    "XAKBsHhqMpri": "MA",
+    "fYDMqouT8uEe": "MD",
+    "bKYabUMWbPxx": "SCOTT",
+    "PWbpMNL3eu2g": "Ruby",
+    "9pps45B3q22R": "Gold",
+    "KxRuGpP7Lzkc": 8.2,
+    "3KWbyriTq2J6": "REGULAR",
+    "cj66tmtgtvXF": 5,
+    "PBHYRhizBfnp": "main_report_data.another_column",
 }
-
 ```
 """
 from .parser_ import WhereParser  # noqa

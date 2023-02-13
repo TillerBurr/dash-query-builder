@@ -5,7 +5,6 @@ from pyparsing import ParseFatalException, ParseResults
 from rich import print
 from shortuuid import uuid
 
-
 from .constants import Boolean, Identifier, Number, String
 
 

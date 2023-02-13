@@ -20,4 +20,3 @@ export default class AntdQueryBuilder extends Component {
         )
     }
 }
-

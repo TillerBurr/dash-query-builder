@@ -25,7 +25,6 @@ from .constants import (
     number_string_bool,
 )
 
-
 equality_operator = pp.oneOf(("=", "==" "!=", "<>")).set_name("equality_operator")
 comparison_operator = pp.oneOf((">", ">=", "<", "<=")).set_name("inequality_operator")
 EQUALITY_OPERATOR = (

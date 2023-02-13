@@ -18,7 +18,6 @@ from .operators import (
     NULL_OPERATOR,
 )
 
-
 ParserElement.enablePackrat()
 
 

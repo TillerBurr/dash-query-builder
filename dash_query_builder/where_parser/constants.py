@@ -12,7 +12,6 @@ from pyparsing import (
     nums,
 )
 
-
 LPAR, RPAR, COMMA = map(Suppress, "(),")
 # define SQL tokens
 SELECT, FROM, WHERE, AND, OR, IN, IS, NOT, NULL, BETWEEN, TRUE, FALSE = map(

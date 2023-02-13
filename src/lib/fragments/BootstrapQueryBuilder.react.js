@@ -20,4 +20,3 @@ export default class BootstrapQueryBuilder extends Component {
         )
     }
 }
-

@@ -5,65 +5,65 @@ from dash.development.base_component import Component, _explicitize_args
 
 class DashQueryBuilder(Component):
     """A DashQueryBuilder component.
-        DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
+    DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
 
-        It takes a `fields` property to generate the options for building the actual query.
-        The optional property `tree` is used to define the current state of the tree. It can be used to
-        define the starting state of the query builder.
-        The optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.
-        These are the only themes supported by `react-awesome-query-builder`.
+    It takes a `fields` property to generate the options for building the actual query.
+    The optional property `tree` is used to define the current state of the tree. It can be used to
+    define the starting state of the query builder.
+    The optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.
+    These are the only themes supported by `react-awesome-query-builder`.
 
-        Keyword arguments:
+    Keyword arguments:
 
-        - id (string; optional):
-            The ID used to identify this component in Dash callbacks.
+    - id (string; optional):
+        The ID used to identify this component in Dash callbacks.
 
-        - alwaysShowActionButtons (boolean; default True):
-            Always show the Action Buttons (Add Rule, Add Group, Delete,
-            etc.). If False, show only on hover.
+    - alwaysShowActionButtons (boolean; default True):
+        Always show the Action Buttons (Add Rule, Add Group, Delete,
+        etc.). If False, show only on hover.
 
-        - config (dict; optional):
-            Customizable Config. Currently only usable for objects that do not
-            involve functions. Cannot be used to modify conjunctions,
-            operators or widgets. Setting this is currently in alpha, it is
-            very unstable.
+    - config (dict; optional):
+        Customizable Config. Currently only usable for objects that do not
+        involve functions. Cannot be used to modify conjunctions,
+        operators or widgets. Setting this is currently in alpha, it is
+        very unstable.
 
-        - elasticSearchFormat (dict; optional):
-            The JSON Logic Formatted defined by the current state of the tree.
+    - elasticSearchFormat (dict; optional):
+        The JSON Logic Formatted defined by the current state of the tree.
 
-        - fields (optional):
-            The fields that are used to populate the options for the query
-            builder. This can be a very complicated object.  See
-            https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields
-            for more info.
+    - fields (optional):
+        The fields that are used to populate the options for the query
+        builder. This can be a very complicated object.  See
+        https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields
+        for more info.
 
-        - jsonLogicFormat (dict; optional):
-            The JSON Logic Formatted string defined by the current state of
-            the tree.
+    - jsonLogicFormat (dict; optional):
+        The JSON Logic Formatted string defined by the current state of
+        the tree.
 
-        - loadFormat (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; default 'tree'):
-            The Format which the Query Builder will load. Any changes made to
-            that format will produce an update. Only that format will be able
-            to load the tree.
+    - loadFormat (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; default 'tree'):
+        The Format which the Query Builder will load. Any changes made to
+        that format will produce an update. Only that format will be able
+        to load the tree.
 
-        - mongodbFormat (dict; optional):
-            The MongoDB Formatted string defined by the current state of the
-            tree.
+    - mongodbFormat (dict; optional):
+        The MongoDB Formatted string defined by the current state of the
+        tree.
 
-        - queryBuilderStringFormat (string; optional):
-            The Query Builder String Formatted string defined by the current
-            state of the tree.
+    - queryBuilderStringFormat (string; optional):
+        The Query Builder String Formatted string defined by the current
+        state of the tree.
 
-        - queryStringFormat (string; optional):
-            The Query String Formatted string defined by the current state of
-            the tree.
+    - queryStringFormat (string; optional):
+        The Query String Formatted string defined by the current state of
+        the tree.
 
-        - spelFormat (string; optional):
-            The JSON Logic Formatted string defined by the current state of
-            the tree.
+    - spelFormat (string; optional):
+        The JSON Logic Formatted string defined by the current state of
+        the tree.
 
-        - sqlFormat (string; optional):
-            The SQL Formatted string defined by the current state of the tree.
+    - sqlFormat (string; optional):
+        The SQL Formatted string defined by the current state of the tree.
 
     - theme (a value equal to: "mui", 'antd', 'basic', 'bootstrap'; default 'basic'):
         Sets the theme of the query builder.
@@ -93,7 +93,7 @@ class DashQueryBuilder(Component):
         config=Component.UNDEFINED,
         loadFormat=Component.UNDEFINED,
         theme=Component.UNDEFINED,
-        **kwargs
+        **kwargs,
     ):
         self._prop_names = [
             "id",
@@ -134,4 +134,4 @@ class DashQueryBuilder(Component):
         _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args}
 
-        super(DashQueryBuilder, self).__init__(**args)
+        super().__init__(**args)
