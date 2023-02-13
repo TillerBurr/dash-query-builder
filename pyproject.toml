@@ -15,10 +15,18 @@ classifiers = [
 ]
 
 [tool.poetry.urls]
-"Bug Tracker"="https://github.com/baurt/dash_query_builder/issues"
-"Homepage"="https://github.com/baurt/dash_query_builder"
+"Bug Tracker"="https://github.com/baurt/dash-query-builder/issues"
+"Homepage"="https://github.com/baurt/dash-query-builder"
 
 
+[tool.ruff]
+ignore = []
+line-length = 88
+select = [
+  'E',
+  'F',
+  'W',
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
