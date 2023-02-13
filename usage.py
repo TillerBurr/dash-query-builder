@@ -107,7 +107,11 @@ broken_jsonLogicTree = {
     "data": {"main_report_data": {"doesntExist": None}},
 }
 
-spelFormatTree = "(main_report_data.qty == 3 && main_report_data.price >= 11 && main_report_data.price <= 30 && {'green', 'yellow'}.?[true].contains(main_report_data.color))"
+spelFormatTree = (
+    "(main_report_data.qty == 3 && main_report_data.price >= 11 &&"
+    + " main_report_data.price <= 30 &&"
+    + " {'green', 'yellow'}.?[true].contains(main_report_data.color))"
+)
 broken_spelFormatTree = "(doesntExist == 3)"
 empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(
