@@ -151,7 +151,19 @@ export default class BaseQueryBuilder extends Component {
      *  Takes a tree and config and updates the various Formats used.
      */
     getCurrentStateFromTree = (immutableTree, config) => {
-        let currentTree = getTree(immutableTree);
+        let currentTree
+
+        try {
+            currentTree = getTree(immutableTree, true, false)
+        }
+        catch (e) {
+            try {
+                currentTree = getTree(immutableTree);
+            }
+            catch (e) {
+                throw e
+            }
+        }
         let currentState = {
             tree: currentTree,
             config: config,

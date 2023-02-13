@@ -134,10 +134,6 @@
           "name": "enum",
           "value": [
             {
-              "value": "'material'",
-              "computed": false
-            },
-            {
               "value": "\"mui\"",
               "computed": false
             },

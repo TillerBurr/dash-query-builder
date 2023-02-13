@@ -45,7 +45,7 @@ the tree}
 
 \item{sqlFormat}{Character. The SQL Formatted string defined by the current state of the tree}
 
-\item{theme}{A value equal to: 'material', "mui", 'antd', 'basic', 'bootstrap'. Sets the theme of the query builder.}
+\item{theme}{A value equal to: "mui", 'antd', 'basic', 'bootstrap'. Sets the theme of the query builder.}
 
 \item{tree}{Logical | numeric | character | named list | unnamed list. The tree that describes the state of the query builder.}
 }

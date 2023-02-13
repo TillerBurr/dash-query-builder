@@ -29,7 +29,7 @@ the tree
 - `queryStringFormat` (String; optional): The Query String Formatted string defined by the current state of the tree
 - `spelFormat` (String; optional): The JSON Logic Formatted string defined by the current state of the tree
 - `sqlFormat` (String; optional): The SQL Formatted string defined by the current state of the tree
-- `theme` (a value equal to: 'material', "mui", 'antd', 'basic', 'bootstrap'; optional): Sets the theme of the query builder.
+- `theme` (a value equal to: "mui", 'antd', 'basic', 'bootstrap'; optional): Sets the theme of the query builder.
 - `tree` (Bool | Real | String | Dict | Array; optional): The tree that describes the state of the query builder.
 """
 function dashquerybuilder(; kwargs...)
