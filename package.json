@@ -17,7 +17,7 @@
         "validate-init": "python _validate_init.py",
         "prepublishOnly": "pnpm run validate-init",
         "build:js": "webpack --mode production",
-        "build:backends": "dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''",
+        "build:backends": "dash-generate-components ./src/lib/components dash_query_builder --r-prefix 'R' --jl-prefix ''",
         "build:backends-activated": "(. .venv/bin/activate || .venv\\scripts\\activate && pnpm run build:py_and_r)",
         "build": "pnpm run build:js && pnpm run build:backends",
         "build:activated": "pnpm run build:js && pnpm run build:backends-activated",
