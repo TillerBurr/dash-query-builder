@@ -51,4 +51,3 @@ the tree}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}
-
