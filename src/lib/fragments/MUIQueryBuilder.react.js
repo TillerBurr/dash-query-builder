@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
 import BaseQueryBuilder from './BaseQueryBuilder.react';
-import MUIConfig from 'react-awesome-query-builder/lib/config/mui';
+import { MuiConfig } from '@react-awesome-query-builder/mui'
 
 
 export default class MUIQueryBuilder extends Component {
     constructor(props) {
         super(props)
-        let config = (props.config === null || props.config === undefined) ? MUIConfig : { ...MUIConfig, ...props.config }
+        let config = (props.config === null || props.config === undefined) ? MuiConfig : { ...MuiConfig, ...props.config }
         this.state = { config: config }
     }
 
@@ -20,6 +19,3 @@ export default class MUIQueryBuilder extends Component {
         )
     }
 }
-
-MUIQueryBuilder.defaultProps = defaultProps
-MUIQueryBuilder.propTypes = themelessPropTypes

@@ -5,7 +5,7 @@ include dash_query_builder/async-*.min.js.map
 include dash_query_builder/*.shared.min.js
 include dash_query_builder/*.shared.min.js.map
 include dash_query_builder/metadata.json
-include dash_query_builder/package-info.json
+include dash_query_builder/package.json
 include README.md
 include LICENSE
 include package.json

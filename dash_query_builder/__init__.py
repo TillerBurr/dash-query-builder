@@ -6,8 +6,10 @@ import sys as _sys
 
 import dash as _dash
 
-# noinspection PyUnresolvedReferences
+# noinspection PyUnresolvedReferences'
+from ._imports_ import *  # noqa
 from ._imports_ import __all__
+from .where_parser import WhereParser  # noqa
 
 if not hasattr(_dash, "__plotly_dash") and not hasattr(_dash, "development"):
     print(
@@ -19,7 +21,7 @@ if not hasattr(_dash, "__plotly_dash") and not hasattr(_dash, "development"):
     _sys.exit(1)
 
 _basepath = _os.path.dirname(__file__)
-_filepath = _os.path.abspath(_os.path.join(_basepath, "package-info.json"))
+_filepath = _os.path.abspath(_os.path.join(_basepath, "package.json"))
 with open(_filepath) as f:
     package = json.load(f)
 
@@ -32,10 +34,10 @@ _this_module = _sys.modules[__name__]
 
 dev_mode = False
 mode_suffix = "dev" if dev_mode else "min"
-async_resources = ["material", "mui", "antd", "bootstrap", "basic"]
+async_resources = ["mui", "antd", "bootstrap", "basic"]
 _shared = "shared." + mode_suffix
 
-shared_resources = [mode_suffix, _shared]
+shared_resources = [mode_suffix]
 
 _js_dist = []
 

@@ -1,28 +1,24 @@
 import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import { Utils } from 'react-awesome-query-builder';
+import { Utils } from '@react-awesome-query-builder/ui';
+import '@react-awesome-query-builder/ui/css/styles.css';
+
+const { loadTree, uuid } = Utils;
+
+const emptyTree = { id: uuid(), type: 'group' };
 
 
-// import 'antd/dist/antd.css';
-import 'react-awesome-query-builder/lib/css/styles.css';
-const {
-    loadTree,
-    uuid,
-} = Utils;
 
 const LazyMUIQueryBuilder = lazy(() => import(/* webpackChunkName: "mui" */ '../fragments/MUIQueryBuilder.react'));
-const LazyMaterialQueryBuilder = lazy(() => import(/* webpackChunkName: "material" */ '../fragments/MaterialQueryBuilder.react'));
 const LazyAntdQueryBuilder = lazy(() => import(/* webpackChunkName: "antd" */ '../fragments/AntdQueryBuilder.react'));
 const LazyBootstrapQueryBuilder = lazy(() => import(/* webpackChunkName: "bootstrap" */ '../fragments/BootstrapQueryBuilder.react'));
 const LazyBasicQueryBuilder = lazy(() => import(/* webpackChunkName: "basic" */ '../fragments/BasicQueryBuilder.react'));
-const emptyTree = { id: uuid(), type: 'group' };
+
 
 const QueryBuilderFactory = (props) => {
     switch (props.theme) {
         case "mui":
             return <LazyMUIQueryBuilder {...props} />
-        case "material":
-            return <LazyMaterialQueryBuilder {...props} />
         case "antd":
             return <LazyAntdQueryBuilder {...props} />
         case "bootstrap":
@@ -52,6 +48,8 @@ export default class DashQueryBuilder extends Component {
     }
 
 }
+
+
 
 export const defaultProps = {
     tree: loadTree(emptyTree),
@@ -175,8 +173,9 @@ export const themelessPropTypes = {
 export const propTypes = {
     ...themelessPropTypes,
     /** Sets the theme of the query builder. */
-    theme: PropTypes.oneOf(['material', "mui", 'antd', 'basic', 'bootstrap']),
+    theme: PropTypes.oneOf(["mui", 'antd', 'basic', 'bootstrap']),
 }
+
 
 DashQueryBuilder.propTypes = propTypes;
 DashQueryBuilder.defaultProps = defaultProps;

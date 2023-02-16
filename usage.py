@@ -50,8 +50,9 @@ fields = {
 tree = {
     "id": "aa8abaa8-cdef-4012-b456-717f1e3484de",
     "type": "group",
-    "children1": {
-        "98a9baba-4567-489a-bcde-f17f1e35f74c": {
+    "children1": [
+        {
+            "id": "98a9baba-4567-489a-bcde-f17f1e35f74c",
             "type": "rule",
             "properties": {
                 "field": "main_report_data.qty",
@@ -61,7 +62,8 @@ tree = {
                 "valueType": ["number"],
             },
         },
-        "a99b99aa-0123-4456-b89a-b17f1e3608b4": {
+        {
+            "id": "a99b99aa-0123-4456-b89a-b17f1e3608b4",
             "type": "rule",
             "properties": {
                 "field": "main_report_data.price",
@@ -71,7 +73,8 @@ tree = {
                 "valueType": ["number", "number"],
             },
         },
-        "9a8b99a9-cdef-4012-b456-717f1e360a4c": {
+        {
+            "id": "9a8b99a9-cdef-4012-b456-717f1e360a4c",
             "type": "rule",
             "properties": {
                 "field": "main_report_data.color",
@@ -81,7 +84,7 @@ tree = {
                 "valueType": ["multiselect"],
             },
         },
-    },
+    ],
 }
 jsonLogicTree = {
     "errors": [],
@@ -104,7 +107,11 @@ broken_jsonLogicTree = {
     "data": {"main_report_data": {"doesntExist": None}},
 }
 
-spelFormatTree = "(main_report_data.qty == 3 && main_report_data.price >= 11 && main_report_data.price <= 30 && {'green', 'yellow'}.?[true].contains(main_report_data.color))"
+spelFormatTree = (
+    "(main_report_data.qty == 3 && main_report_data.price >= 11 &&"
+    + " main_report_data.price <= 30 &&"
+    + " {'green', 'yellow'}.?[true].contains(main_report_data.color))"
+)
 broken_spelFormatTree = "(doesntExist == 3)"
 empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(

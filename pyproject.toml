@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dash-query-builder"
-version = "0.3.2"
+version = "0.4.0"
 description = "Dash Component based on react-awesome-query-builder"
 authors = ["Tyler Baur <baur.tyler@protonmail.com>"]
 license = "MIT"
@@ -15,62 +15,35 @@ classifiers = [
 ]
 
 [tool.poetry.urls]
-"Bug Tracker"="https://github.com/baurt/dash_query_builder/issues"
-"Homepage"="https://github.com/baurt/dash_query_builder"
+"Bug Tracker"="https://github.com/baurt/dash-query-builder/issues"
+"Homepage"="https://github.com/baurt/dash-query-builder"
 
 
+[tool.ruff]
+ignore = []
+line-length = 88
+select = [
+  'E',
+  'F',
+  'W',
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 dash="^2.0.0"
+pyparsing = "^3.0.9"
+rich = "^13.3.1"
+shortuuid = "^1.0.11"
+
+
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.0.200"
-shed = "^0.10.8"
 dash = {version = "^2.0.0", extras = ["dev","testing"]}
-pre-commit = "^2.21.0"
-
-[tool.ruff]
-line-length = 88
-
-# Enable Pyflakes `E` and `F` codes by default.
-select = ["E", "F"]
-ignore = []
-
-# Exclude a variety of commonly ignored directories.
-exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "venv",
-]
-per-file-ignores = {}
-
-# Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-
-# Assume Python 3.11.
-target-version = "py311"
-
-[tool.ruff.mccabe]
-# Unlike Flake8, default to a complexity level of 10.
-max-complexity = 10
+mypy = "^1.0.0"
+pre-commit = "^3.0.4"
+shed = "^0.10.9"
+ruff = "^0.0.246"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

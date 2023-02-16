@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { themelessPropTypes, defaultProps } from '../components/DashQueryBuilder.react';
 import BaseQueryBuilder from './BaseQueryBuilder.react';
-import { BasicConfig } from 'react-awesome-query-builder';
+import { BasicConfig } from '@react-awesome-query-builder/ui';
 
 export default class BasicQueryBuilder extends Component {
 
@@ -20,6 +19,3 @@ export default class BasicQueryBuilder extends Component {
         )
     }
 }
-
-BasicQueryBuilder.defaultProps = defaultProps
-BasicQueryBuilder.propTypes = themelessPropTypes

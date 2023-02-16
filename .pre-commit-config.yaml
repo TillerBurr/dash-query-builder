@@ -1,24 +1,25 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
-    hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
-    -   id: check-added-large-files
-- repo: https://github.com/charliermarsh/ruff-pre-commit
-  # Ruff version.
-  rev: 'v0.0.200'
-  hooks:
-    - id: ruff
-      # Respect `exclude` and `extend-exclude` settings.
-      args: ["--force-exclude"]
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v3.2.0
+      hooks:
+          - id: trailing-whitespace
+          - id: end-of-file-fixer
+            exclude: ^(deps|inst/|R/|man/|dash_query_builder/_imports_.py)
+          - id: check-yaml
+          - id: check-added-large-files
+            args: [--maxkb=1500]
 
-- repo: https://github.com/Zac-HD/shed
-  rev: 0.10.8
-  hooks:
-    - id: shed
-      # args: [--refactor, --py39-plus]
-      types_or: [python, pyi, markdown, rst]
+    - repo: https://github.com/Zac-HD/shed
+      rev: 0.10.7
+      hooks:
+          - id: shed
+            args: [--refactor, --py310-plus]
+            types_or: [python, markdown, rst]
+
+    - repo: https://github.com/charliermarsh/ruff-pre-commit
+      rev: v0.0.246
+      hooks:
+          - id: ruff
+            exclude: dash_query_builder/DashQueryBuilder.py
