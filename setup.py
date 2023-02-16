@@ -1,13 +1,13 @@
 import json
 import os
-import io
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def _get_long_description():
-    with io.open(os.path.join(HERE, "README.md"), encoding="utf8") as fi:
+    with open(os.path.join(HERE, "README.md"), encoding="utf8") as fi:
         return fi.read()
 
 
