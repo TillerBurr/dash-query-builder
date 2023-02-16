@@ -54,7 +54,7 @@ jobs:
             - name: Build project
               run: |
                   pnpm run build:js
-                  poetry run dash-generate-components ./src/lib/components dash_query_builder -p package-info.json --r-prefix 'R' --jl-prefix ''
+                  poetry run dash-generate-components ./src/lib/components dash_query_builder --r-prefix 'R' --jl-prefix ''
 
             - name: Upload project
               uses: actions/upload-artifact@v3

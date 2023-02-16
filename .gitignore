@@ -9,7 +9,7 @@ dash_query_builder/*.min.js.*
 dash_query_builder/*.min.js
 dash_query_builder/*.json
 dash_query_builder/DashQueryBuilder.py
-
+DESCRIPTION
 *.dev.js*
 ### VisualStudioCode template
 .vscode/
