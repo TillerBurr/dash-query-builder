@@ -2,7 +2,7 @@
 
 Dash Query Builder is a Dash component library.
 
-This project uses [Poetry](https://python-poetry.org/docs/).
+This project uses [Poetry](https://python-poetry.org/docs/) and [pnpm](https://pnpm.io/).
 
 ## Contributing
 
@@ -10,9 +10,9 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ### Install dependencies
 
-1. Install npm packages
+1. Install pnpm packages
     ```
-    $ npm install
+    $ pnpm install
     ```
 
 2. Install python packages required to build components.
@@ -25,7 +25,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 - Test your code in a Python environment:
     1. Build your code
         ```
-        $ npm run build
+        $ pnpm run build
         ```
     2. Run and modify the `usage.py` sample dash app:
         ```
@@ -44,7 +44,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 1. Build your code:
     ```
-    $ npm run build
+    $ pnpm run build
     ```
 2. Create a Python distribution
     ```
