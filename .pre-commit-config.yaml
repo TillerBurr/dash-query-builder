@@ -12,14 +12,14 @@ repos:
             args: [--maxkb=1500]
 
     - repo: https://github.com/Zac-HD/shed
-      rev: 0.10.9
+      rev: 2023.2.1
       hooks:
           - id: shed
             args: [--refactor, --py310-plus]
             types_or: [python, markdown, rst]
 
     - repo: https://github.com/charliermarsh/ruff-pre-commit
-      rev: v0.0.249
+      rev: v0.0.253
       hooks:
           - id: ruff
             exclude: dash_query_builder/DashQueryBuilder.py
