@@ -1,6 +1,5 @@
 """Actions for the parser."""
 
-
 from pyparsing import ParseFatalException, ParseResults
 from rich import print
 from shortuuid import uuid
@@ -376,9 +375,11 @@ class InAction(OpNode):
         _ids = self.generate_uuids()
         array_of_operands = ", ".join(
             [
-                f"%({_ids[i]})s"
-                if not isinstance(oper, Identifier)
-                else oper.generate_template()
+                (
+                    f"%({_ids[i]})s"
+                    if not isinstance(oper, Identifier)
+                    else oper.generate_template()
+                )
                 for i, oper in enumerate(self.operands)
             ]
         )

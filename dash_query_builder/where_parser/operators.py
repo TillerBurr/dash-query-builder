@@ -5,6 +5,7 @@ These are the relational operators used in the ``where_parser``, including the v
 comparison operators (such as >,==,=,!=,etc.), the 'BETWEEN' operator, the 'IS NULL'
 operator and the "IN" operator.
 """
+
 import pyparsing as pp
 
 from .actions import BetweenAction, InAction, NullAction, RelationalAction

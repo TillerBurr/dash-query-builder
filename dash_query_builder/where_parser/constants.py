@@ -1,4 +1,5 @@
 """Constants used in creating the Parser."""
+
 from pyparsing import (
     CaselessKeyword,
     OneOrMore,
