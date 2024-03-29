@@ -31,8 +31,6 @@
   "license": "MIT",
   "dependencies": {
     "@react-awesome-query-builder/antd": "^6.4.2",
-    "@react-awesome-query-builder/bootstrap": "^6.4.2",
-    "@react-awesome-query-builder/fluent": "^6.4.2",
     "@react-awesome-query-builder/mui": "^6.4.2"
   }
 }

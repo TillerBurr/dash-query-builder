@@ -1,59 +1,66 @@
 # Dash Query Builder
 
-Dash Query Builder is a Dash component library.
+Component for Dash based on react-awesome-query-builder
 
-This project uses [Poetry](https://python-poetry.org/docs/).
+## Install
 
-## Contributing
+```shell
+pip install dash_query_builder
+```
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md)
+## Development
+### Getting Started
 
-### Install dependencies
+1. Create a new python environment:
+   ```shell
+   python -m venv venv
+   . venv/bin/activate
+   ```
+   _Note: venv\Scripts\activate for windows_
 
-1. Install npm packages
-    ```
-    $ npm install
-    ```
+2. Install python dependencies:
+   ```shell
+   pip install -r requirements.txt
+   ```
+3. Install npm packages:
+   1. Optional: use [nvm](https://github.com/nvm-sh/nvm) to manage node version:
+      ```shell
+      nvm install
+      nvm use
+      ```
+   2. Install:
+      ```shell
+      npm install
+      ```
+4. Build:
+   ```shell
+   npm run build
+   ```
 
-2. Install python packages required to build components.
-    ```
-    $ poetry install
-    ```
+### Component Code
 
-### Write your component code in `src/lib/components/DashQueryBuilder.react.js`.
+### Publish
 
-- Test your code in a Python environment:
-    1. Build your code
-        ```
-        $ npm run build
-        ```
-    2. Run and modify the `usage.py` sample dash app:
-        ```
-        $ poetry run python usage.py
-        ```
-- Write tests for your component. (There are currently no tests for this package. The component has some finicky selectors that I still need to figure out.)
-    - A sample test is available in `tests/test_usage.py`, it will load `usage.py` and you can then automate interactions with selenium.
-    - Run the tests with `$ pytest tests`.
-    - The Dash team uses these types of integration tests extensively. Browse the Dash component code on GitHub for more examples of testing (e.g. https://github.com/plotly/dash-core-components)
-- Add custom styles to your component by putting your custom CSS files into your distribution folder (`dash_query_builder`).
-    - Make sure that they are referenced in `MANIFEST.in` so that they get properly included when you're ready to publish your component.
-    - Make sure the stylesheets are added to the `_css_dist` dict in `dash_query_builder/__init__.py` so dash will serve them automatically when the component suite is requested.
-- [Review your code](./review_checklist.md)
+If publish on npm:
+```shell
+npm build
+npm publish
+```
 
-### Create a production build and publish:
+### Justfile
 
-1. Build your code:
-    ```
-    $ npm run build
-    ```
-2. Create a Python distribution
-    ```
-    $ poetry build
-    ```
-    This will create source and wheel distribution in the generated the `dist/` folder.
+Alternatively, use the provided [just](https://github.com/casey/just) commands:
 
-3. Publish the component to PyPI:
-    1. Publish on PyPI
-        ```
-        $ poetry publish
-        ```
+1. Create a Python environment from previous step 1 and install:
+   ```shell
+   just install
+   ```
+2. Build
+   ```shell
+   just build
+   ```
+3. Publish
+   ```shell
+   just publish
+   ```
+4. See all commands with `just -l`

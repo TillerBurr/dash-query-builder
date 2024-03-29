@@ -1,0 +1,5 @@
+[env]
+_.python.venv=".venv"
+
+[tools]
+just = "latest"

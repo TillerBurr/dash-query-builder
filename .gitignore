@@ -1,23 +1,16 @@
-
-inst/
-deps/
-src/*.jl
-src/jl/
-R/
-man/
-dash_query_builder/*.min.js.*
-dash_query_builder/*.min.js
-dash_query_builder/*.json
-dash_query_builder/DashQueryBuilder.py
-DESCRIPTION
-*.dev.js*
+# Created by .ignore support plugin (hsz.mobi)
+### Webpack
+.build_cache
 ### VisualStudioCode template
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-.ruff_cache/
-.build_cache/
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -281,3 +274,7 @@ bh_unicode_properties.cache
 # Sublime-github package stores a github token in this file
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
+
+# Julia manifest file names
+Manifest.toml
+JuliaManifest.toml
