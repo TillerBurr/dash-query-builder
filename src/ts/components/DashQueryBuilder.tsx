@@ -102,12 +102,17 @@ const loadNewTree = (load_format: loadFormatType, loadItem: string | Object, con
  */
 const DashQueryBuilder = (props: Props) => {
     const { id, tree, load_format, fields, config, setProps } = props;
-    let completeConfig = { ...config, ...fields }
+    let initialConfig: Config
+    console.log(config)
+    if (config === undefined) {
+        initialConfig = BasicConfig
+    }
+    let completeConfig = { ...initialConfig, ...fields }
     const loadItem = props[load_format] || emptyTree;
     const initialImmutableTree = loadNewTree(load_format, loadItem, completeConfig);
     const [state, setState] = useState({
         tree: initialImmutableTree,
-        config: config
+        config: completeConfig
     });
 
     const onChange = useCallback((immutableTree: ImmutableTree, config: Config) => {
@@ -131,7 +136,7 @@ const DashQueryBuilder = (props: Props) => {
     return (
         <div id={id}>
             <Query
-                {...config}
+                {...completeConfig}
                 value={state.tree}
                 onChange={onChange}
                 renderBuilder={renderBuilder}

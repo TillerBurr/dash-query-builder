@@ -25,7 +25,7 @@ export type themeType = 'mui' | 'antd' | 'fluent' | 'bootstrap' | 'basic'
 
 export type Props = {
     fields: Fields
-    config: Config
+    config?: Config
     load_format: loadFormatType
     tree: JsonTree
     sqlFormat?: string

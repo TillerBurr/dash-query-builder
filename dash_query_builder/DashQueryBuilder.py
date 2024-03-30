@@ -14,7 +14,7 @@ Keyword arguments:
 
 - alwaysShowActionButtons (boolean; default True)
 
-- config (dict; required)
+- config (dict; optional)
 
     `config` is a dict with keys:
 
@@ -1534,7 +1534,7 @@ Keyword arguments:
     _namespace = 'dash_query_builder'
     _type = 'DashQueryBuilder'
     @_explicitize_args
-    def __init__(self, fields=Component.REQUIRED, config=Component.REQUIRED, load_format=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
+    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, load_format=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree']
@@ -1544,7 +1544,7 @@ Keyword arguments:
         _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args}
 
-        for k in ['config', 'fields']:
+        for k in ['fields']:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')

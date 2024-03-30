@@ -84,7 +84,9 @@ tree = {
     ],
 }
 app.layout = dash_query_builder.DashQueryBuilder(
-    id="component", fields=fields, tree=tree, config={}
+    id="component",
+    fields=fields,
+    tree=tree,
 )
 
 

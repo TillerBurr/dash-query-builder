@@ -17,7 +17,7 @@
       },
       "config": {
         "description": "",
-        "required": true,
+        "required": false,
         "type": {
           "name": "shape",
           "value": {
