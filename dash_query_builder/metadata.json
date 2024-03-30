@@ -3,6 +3,3265 @@
     "displayName": "DashQueryBuilder",
     "description": "Component description",
     "props": {
+      "fields": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "objectOf",
+          "value": {
+            "name": "any",
+            "raw": "FieldOrGroup"
+          },
+          "raw": "Fields"
+        }
+      },
+      "config": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "shape",
+          "value": {
+            "settings": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {
+                "locale": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "moment": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "antd": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    },
+                    "material": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    },
+                    "mui": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  },
+                  "raw": "{ moment?: string; antd?: Object; material?: Object; mui?: Object; }"
+                },
+                "theme": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "material": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    },
+                    "mui": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  },
+                  "raw": "{ material?: Object; mui?: Object; }"
+                },
+                "valueLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "valuePlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "operatorLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldPlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "funcPlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "funcLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "operatorPlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "lockLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "lockedLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "deleteLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addGroupLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addCaseLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addDefaultCaseLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultCaseLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addRuleLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addSubRuleLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "delGroupLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "notLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldSourcesPopupTitle": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "valueSourcesPopupTitle": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "removeRuleConfirmOptions": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "title": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okType": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "cancelText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    }
+                  },
+                  "raw": "{ title?: string; okText?: string; okType?: string; cancelText?: string; }"
+                },
+                "removeGroupConfirmOptions": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "title": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okType": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "cancelText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    }
+                  },
+                  "raw": "{ title?: string; okText?: string; okType?: string; cancelText?: string; }"
+                },
+                "defaultField": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    }
+                  ],
+                  "raw": "string | FieldFuncValue | FieldFuncValueI"
+                },
+                "defaultOperator": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldSources": {
+                  "description": "",
+                  "required": false,
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "enum",
+                    "value": [
+                      {
+                        "value": "'func'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'field'",
+                        "computed": false
+                      }
+                    ],
+                    "raw": "FieldSource"
+                  },
+                  "raw": "FieldSource[]"
+                },
+                "valueSourcesInfo": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "func": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    },
+                    "field": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    },
+                    "value": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    },
+                    "const": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    }
+                  },
+                  "raw": "ValueSourcesInfo"
+                },
+                "canCompareFieldWithField": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "CanCompareFieldWithField | SerializedFunction"
+                },
+                "canReorder": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canRegroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canRegroupCases": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "showNot": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "showLock": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canDeleteLocked": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "maxNesting": {
+                  "description": "",
+                  "required": false,
+                  "name": "number",
+                  "raw": "number"
+                },
+                "setOpOnChangeField": {
+                  "description": "",
+                  "required": true,
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "enum",
+                    "value": [
+                      {
+                        "value": "'default'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'keep'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'first'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'none'",
+                        "computed": false
+                      }
+                    ],
+                    "raw": "ChangeFieldStrategy"
+                  },
+                  "raw": "ChangeFieldStrategy[]"
+                },
+                "clearValueOnChangeField": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "clearValueOnChangeOp": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canLeaveEmptyGroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canLeaveEmptyCase": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "shouldCreateEmptyGroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "forceShowConj": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableGroupsMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableFieldsMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableOpsMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableValuesMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "maxNumberOfRules": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "toString": {
+                      "description": "Returns a string representation of an object.\n@,param,radix, ,Specifies a radix for converting numeric values to strings. This value is only used for numbers.",
+                      "required": false,
+                      "name": "func",
+                      "raw": "(radix?: number) => string"
+                    },
+                    "toFixed": {
+                      "description": "Returns a string representing a number in fixed-point notation.\n@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.",
+                      "required": true,
+                      "name": "func",
+                      "raw": "(fractionDigits?: number) => string"
+                    },
+                    "toExponential": {
+                      "description": "Returns a string containing a number represented in exponential notation.\n@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.",
+                      "required": true,
+                      "name": "func",
+                      "raw": "(fractionDigits?: number) => string"
+                    },
+                    "toPrecision": {
+                      "description": "Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.\n@,param,precision, ,Number of significant digits. Must be in the range 1 - 21, inclusive.",
+                      "required": true,
+                      "name": "func",
+                      "raw": "(precision?: number) => string"
+                    },
+                    "valueOf": {
+                      "description": "Returns the primitive value of the specified object.",
+                      "required": false,
+                      "name": "func",
+                      "raw": "() => number"
+                    },
+                    "toLocaleString": {
+                      "description": "Converts a number to a string by using the current or specified locale.\n@,param,locales, ,A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.\n@,param,options, ,An object that contains one or more properties that specify comparison options.\n@,param,locales, ,A locale string, array of locale strings, Intl.Locale object, or array of Intl.Locale objects that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.\n@,param,options, ,An object that contains one or more properties that specify comparison options.",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "{ (locales?: string | string[], options?: NumberFormatOptions): string; (locales?: LocalesArgument, options?: NumberFormatOptions): string; }"
+                    }
+                  },
+                  "raw": "Number"
+                },
+                "maxNumberOfCases": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "toString": {
+                      "description": "Returns a string representation of an object.\n@,param,radix, ,Specifies a radix for converting numeric values to strings. This value is only used for numbers.",
+                      "required": false,
+                      "name": "func",
+                      "raw": "(radix?: number) => string"
+                    },
+                    "toFixed": {
+                      "description": "Returns a string representing a number in fixed-point notation.\n@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.",
+                      "required": true,
+                      "name": "func",
+                      "raw": "(fractionDigits?: number) => string"
+                    },
+                    "toExponential": {
+                      "description": "Returns a string containing a number represented in exponential notation.\n@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.",
+                      "required": true,
+                      "name": "func",
+                      "raw": "(fractionDigits?: number) => string"
+                    },
+                    "toPrecision": {
+                      "description": "Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.\n@,param,precision, ,Number of significant digits. Must be in the range 1 - 21, inclusive.",
+                      "required": true,
+                      "name": "func",
+                      "raw": "(precision?: number) => string"
+                    },
+                    "valueOf": {
+                      "description": "Returns the primitive value of the specified object.",
+                      "required": false,
+                      "name": "func",
+                      "raw": "() => number"
+                    },
+                    "toLocaleString": {
+                      "description": "Converts a number to a string by using the current or specified locale.\n@,param,locales, ,A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.\n@,param,options, ,An object that contains one or more properties that specify comparison options.\n@,param,locales, ,A locale string, array of locale strings, Intl.Locale object, or array of Intl.Locale objects that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.\n@,param,options, ,An object that contains one or more properties that specify comparison options.",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "{ (locales?: string | string[], options?: NumberFormatOptions): string; (locales?: LocalesArgument, options?: NumberFormatOptions): string; }"
+                    }
+                  },
+                  "raw": "Number"
+                },
+                "showErrorMessage": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canShortMongoQuery": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "convertableWidgets": {
+                  "description": "",
+                  "required": false,
+                  "name": "objectOf",
+                  "value": {
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "raw": "string[]"
+                  },
+                  "raw": "TypedMap<string[]>"
+                },
+                "removeEmptyGroupsOnLoad": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "removeIncompleteRulesOnLoad": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "removeInvalidMultiSelectValuesOnLoad": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "groupOperators": {
+                  "description": "",
+                  "required": false,
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "raw": "string[]"
+                },
+                "useConfigCompress": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "keepInputOnChangeFieldSrc": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "fieldItemKeysForSearch": {
+                  "description": "",
+                  "required": false,
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "enum",
+                    "value": [
+                      {
+                        "value": "'key'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'path'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'label'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'altLabel'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'tooltip'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'grouplabel'",
+                        "computed": false
+                      }
+                    ],
+                    "raw": "FieldItemSearchableKey"
+                  },
+                  "raw": "FieldItemSearchableKey[]"
+                },
+                "listKeysForSearch": {
+                  "description": "",
+                  "required": false,
+                  "name": "arrayOf",
+                  "value": {
+                    "name": "enum",
+                    "value": [
+                      {
+                        "value": "'value'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'title'",
+                        "computed": false
+                      },
+                      {
+                        "value": "'groupTitle'",
+                        "computed": false
+                      }
+                    ],
+                    "raw": "ListItemSearchableKey"
+                  },
+                  "raw": "ListItemSearchableKey[]"
+                },
+                "fieldSeparator": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldSeparatorDisplay": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "formatReverse": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FormatReverse"
+                },
+                "sqlFormatReverse": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | SqlFormatReverse"
+                },
+                "spelFormatReverse": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | SpelFormatReverse"
+                },
+                "formatField": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FormatField"
+                },
+                "formatSpelField": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FormatSpelField"
+                },
+                "formatAggr": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FormatAggr"
+                },
+                "renderField": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<FieldProps<Config>>"
+                },
+                "renderOperator": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<FieldProps<Config>>"
+                },
+                "renderFunc": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<FieldProps<Config>>"
+                },
+                "renderConjs": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ConjsProps>"
+                },
+                "renderButton": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ButtonProps>"
+                },
+                "renderIcon": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<IconProps>"
+                },
+                "renderButtonGroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ButtonGroupProps>"
+                },
+                "renderSwitch": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<SwitchProps>"
+                },
+                "renderProvider": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ProviderProps>"
+                },
+                "renderValueSources": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ValueSourcesProps>"
+                },
+                "renderFieldSources": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ValueSourcesProps>"
+                },
+                "renderConfirm": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | ConfirmFunc"
+                },
+                "useConfirm": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    },
+                    {
+                      "name": "func",
+                      "raw": "() => Function"
+                    }
+                  ],
+                  "raw": "SerializedFunction | (() => Function)"
+                },
+                "renderSize": {
+                  "description": "",
+                  "required": false,
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'small'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'large'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'medium'",
+                      "computed": false
+                    }
+                  ],
+                  "raw": "AntdSize"
+                },
+                "renderItem": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<ItemBuilderProps>"
+                },
+                "dropdownPlacement": {
+                  "description": "",
+                  "required": false,
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'topLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topRight'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomRight'",
+                      "computed": false
+                    }
+                  ],
+                  "raw": "AntdPosition"
+                },
+                "groupActionsPosition": {
+                  "description": "",
+                  "required": false,
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'topLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topRight'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomRight'",
+                      "computed": false
+                    }
+                  ],
+                  "raw": "AntdPosition"
+                },
+                "showLabels": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "maxLabelsLength": {
+                  "description": "",
+                  "required": false,
+                  "name": "number",
+                  "raw": "number"
+                },
+                "customFieldSelectProps": {
+                  "description": "",
+                  "required": false,
+                  "name": "object",
+                  "raw": "object"
+                },
+                "renderBeforeWidget": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<RuleProps>"
+                },
+                "renderAfterWidget": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<RuleProps>"
+                },
+                "renderBeforeActions": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<RuleProps>"
+                },
+                "renderAfterActions": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<RuleProps>"
+                },
+                "renderRuleError": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "SerializedFunction | FactoryWithContext<RuleErrorProps>"
+                },
+                "renderSwitchPrefix": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    {
+                      "name": "shape",
+                      "value": {
+                        "constructor": {
+                          "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "Function"
+                        },
+                        "toString": {
+                          "description": "Returns a string representation of an object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "toLocaleString": {
+                          "description": "Returns a date converted to a string using the current locale.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => string"
+                        },
+                        "valueOf": {
+                          "description": "Returns the primitive value of the specified object.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "() => Object"
+                        },
+                        "hasOwnProperty": {
+                          "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        },
+                        "isPrototypeOf": {
+                          "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: Object) => boolean"
+                        },
+                        "propertyIsEnumerable": {
+                          "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                          "required": false,
+                          "name": "func",
+                          "raw": "(v: PropertyKey) => boolean"
+                        }
+                      },
+                      "raw": "Object"
+                    }
+                  ],
+                  "raw": "string | Object | ReactElement<any, string | JSXElementConstructor<any>>"
+                },
+                "defaultSliderWidth": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultSelectWidth": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultSearchWidth": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultMaxRows": {
+                  "description": "",
+                  "required": false,
+                  "name": "number",
+                  "raw": "number"
+                }
+              },
+              "raw": "Settings"
+            },
+            "operators": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "any",
+                "raw": "Operator<Config>"
+              },
+              "raw": "Operators<Config>"
+            },
+            "widgets": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "any",
+                "raw": "Widget<Config>"
+              },
+              "raw": "Widgets<Config>"
+            },
+            "conjunctions": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "shape",
+                "value": {
+                  "label": {
+                    "description": "",
+                    "required": true,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "formatConj": {
+                    "description": "",
+                    "required": true,
+                    "name": "union",
+                    "value": [
+                      {
+                        "name": "string",
+                        "raw": "string"
+                      },
+                      {
+                        "name": "shape",
+                        "value": {
+                          "constructor": {
+                            "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "Function"
+                          },
+                          "toString": {
+                            "description": "Returns a string representation of an object.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => string"
+                          },
+                          "toLocaleString": {
+                            "description": "Returns a date converted to a string using the current locale.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => string"
+                          },
+                          "valueOf": {
+                            "description": "Returns the primitive value of the specified object.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => Object"
+                          },
+                          "hasOwnProperty": {
+                            "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: PropertyKey) => boolean"
+                          },
+                          "isPrototypeOf": {
+                            "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: Object) => boolean"
+                          },
+                          "propertyIsEnumerable": {
+                            "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: PropertyKey) => boolean"
+                          }
+                        },
+                        "raw": "Object"
+                      }
+                    ],
+                    "raw": "SerializedFunction | FormatConj"
+                  },
+                  "sqlFormatConj": {
+                    "description": "",
+                    "required": true,
+                    "name": "union",
+                    "value": [
+                      {
+                        "name": "string",
+                        "raw": "string"
+                      },
+                      {
+                        "name": "shape",
+                        "value": {
+                          "constructor": {
+                            "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "Function"
+                          },
+                          "toString": {
+                            "description": "Returns a string representation of an object.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => string"
+                          },
+                          "toLocaleString": {
+                            "description": "Returns a date converted to a string using the current locale.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => string"
+                          },
+                          "valueOf": {
+                            "description": "Returns the primitive value of the specified object.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => Object"
+                          },
+                          "hasOwnProperty": {
+                            "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: PropertyKey) => boolean"
+                          },
+                          "isPrototypeOf": {
+                            "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: Object) => boolean"
+                          },
+                          "propertyIsEnumerable": {
+                            "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: PropertyKey) => boolean"
+                          }
+                        },
+                        "raw": "Object"
+                      }
+                    ],
+                    "raw": "SerializedFunction | SqlFormatConj"
+                  },
+                  "spelFormatConj": {
+                    "description": "",
+                    "required": true,
+                    "name": "union",
+                    "value": [
+                      {
+                        "name": "string",
+                        "raw": "string"
+                      },
+                      {
+                        "name": "shape",
+                        "value": {
+                          "constructor": {
+                            "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "Function"
+                          },
+                          "toString": {
+                            "description": "Returns a string representation of an object.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => string"
+                          },
+                          "toLocaleString": {
+                            "description": "Returns a date converted to a string using the current locale.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => string"
+                          },
+                          "valueOf": {
+                            "description": "Returns the primitive value of the specified object.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "() => Object"
+                          },
+                          "hasOwnProperty": {
+                            "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: PropertyKey) => boolean"
+                          },
+                          "isPrototypeOf": {
+                            "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: Object) => boolean"
+                          },
+                          "propertyIsEnumerable": {
+                            "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+                            "required": false,
+                            "name": "func",
+                            "raw": "(v: PropertyKey) => boolean"
+                          }
+                        },
+                        "raw": "Object"
+                      }
+                    ],
+                    "raw": "SerializedFunction | SpelFormatConj"
+                  },
+                  "mongoConj": {
+                    "description": "",
+                    "required": true,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "jsonLogicConj": {
+                    "description": "",
+                    "required": false,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "sqlConj": {
+                    "description": "",
+                    "required": false,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "spelConj": {
+                    "description": "",
+                    "required": false,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "spelConjs": {
+                    "description": "",
+                    "required": false,
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "raw": "string[]"
+                  },
+                  "reversedConj": {
+                    "description": "",
+                    "required": false,
+                    "name": "string",
+                    "raw": "string"
+                  }
+                },
+                "raw": "Conjunction"
+              },
+              "raw": "Conjunctions"
+            },
+            "types": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "shape",
+                "value": {
+                  "valueSources": {
+                    "description": "",
+                    "required": false,
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "enum",
+                      "value": [
+                        {
+                          "value": "'func'",
+                          "computed": false
+                        },
+                        {
+                          "value": "'field'",
+                          "computed": false
+                        },
+                        {
+                          "value": "'value'",
+                          "computed": false
+                        },
+                        {
+                          "value": "'const'",
+                          "computed": false
+                        }
+                      ],
+                      "raw": "ValueSource"
+                    },
+                    "raw": "ValueSource[]"
+                  },
+                  "defaultOperator": {
+                    "description": "",
+                    "required": false,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "widgets": {
+                    "description": "",
+                    "required": true,
+                    "name": "shape",
+                    "value": {},
+                    "raw": "TypedMap<WidgetConfigForType>"
+                  },
+                  "mainWidget": {
+                    "description": "",
+                    "required": false,
+                    "name": "string",
+                    "raw": "string"
+                  },
+                  "excludeOperators": {
+                    "description": "",
+                    "required": false,
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "raw": "string[]"
+                  }
+                },
+                "raw": "Type"
+              },
+              "raw": "Types"
+            },
+            "fields": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "any",
+                "raw": "FieldOrGroup"
+              },
+              "raw": "Fields"
+            },
+            "funcs": {
+              "description": "",
+              "required": false,
+              "name": "objectOf",
+              "value": {
+                "name": "any",
+                "raw": "FuncOrGroup"
+              },
+              "raw": "Funcs"
+            },
+            "ctx": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "any",
+                "raw": "any"
+              },
+              "raw": "ConfigContext"
+            }
+          },
+          "raw": "Config"
+        }
+      },
+      "load_format": {
+        "description": "",
+        "required": false,
+        "defaultValue": {
+          "value": "'tree'",
+          "computed": false
+        },
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'jsonLogicFormat'",
+              "computed": false
+            },
+            {
+              "value": "'spelFormat'",
+              "computed": false
+            },
+            {
+              "value": "'tree'",
+              "computed": false
+            }
+          ],
+          "raw": "loadFormatType"
+        }
+      },
+      "tree": {
+        "description": "",
+        "required": false,
+        "defaultValue": {
+          "value": "emptyTree",
+          "computed": false
+        },
+        "type": {
+          "name": "any",
+          "raw": "JsonTree"
+        }
+      },
+      "sqlFormat": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "jsonLogicFormat": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "shape",
+          "value": {
+            "constructor": {
+              "description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor.",
+              "required": false,
+              "name": "func",
+              "raw": "Function"
+            },
+            "toString": {
+              "description": "Returns a string representation of an object.",
+              "required": false,
+              "name": "func",
+              "raw": "() => string"
+            },
+            "toLocaleString": {
+              "description": "Returns a date converted to a string using the current locale.",
+              "required": false,
+              "name": "func",
+              "raw": "() => string"
+            },
+            "valueOf": {
+              "description": "Returns the primitive value of the specified object.",
+              "required": false,
+              "name": "func",
+              "raw": "() => Object"
+            },
+            "hasOwnProperty": {
+              "description": "Determines whether an object has a property with the specified name.\n@,param,v, ,A property name.",
+              "required": false,
+              "name": "func",
+              "raw": "(v: PropertyKey) => boolean"
+            },
+            "isPrototypeOf": {
+              "description": "Determines whether an object exists in another object's prototype chain.\n@,param,v, ,Another object whose prototype chain is to be checked.",
+              "required": false,
+              "name": "func",
+              "raw": "(v: Object) => boolean"
+            },
+            "propertyIsEnumerable": {
+              "description": "Determines whether a specified property is enumerable.\n@,param,v, ,A property name.",
+              "required": false,
+              "name": "func",
+              "raw": "(v: PropertyKey) => boolean"
+            }
+          },
+          "raw": "Object"
+        }
+      },
+      "queryBuilderStringFormat": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "mongoDBFormat": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "elasticSearchFormat": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "spelFormat": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "alwaysShowActionButtons": {
+        "description": "",
+        "required": false,
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        },
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
+        }
+      },
+      "theme": {
+        "description": "",
+        "required": false,
+        "defaultValue": {
+          "value": "'basic'",
+          "computed": false
+        },
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'mui'",
+              "computed": false
+            },
+            {
+              "value": "'antd'",
+              "computed": false
+            },
+            {
+              "value": "'fluent'",
+              "computed": false
+            },
+            {
+              "value": "'bootstrap'",
+              "computed": false
+            },
+            {
+              "value": "'basic'",
+              "computed": false
+            }
+          ],
+          "raw": "themeType"
+        }
+      },
       "id": {
         "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,
