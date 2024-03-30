@@ -185,17 +185,20 @@ export default class BaseQueryBuilder extends Component {
                 ...this.state.config,
                 fields: this.props.fields,
             };
-            // Reset the tree to an empty state
 
             // Update the component's state with the new config and reset tree
+            const updatdTree = checkTree(
+                loadTree(emptyTree, updatedConfig),
+                updatedConfig
+            );
             this.setState({
                 config: updatedConfig,
-                immutableTree: emptyTree,
+                immutableTree: updatdTree,
             });
 
             this.setProps({
                 config: updatedConfig,
-                immutableTree: emptyTree,
+                immutableTree: updatdTree,
             });
         }
     }
