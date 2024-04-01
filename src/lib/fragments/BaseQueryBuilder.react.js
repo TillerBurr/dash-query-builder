@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { Utils, Query, Builder } from '@react-awesome-query-builder/ui'
-const { loadTree,
+import React, {Component} from 'react';
+import {Utils, Query, Builder} from '@react-awesome-query-builder/ui';
+const {
+    loadTree,
     _loadFromJsonLogic,
     loadFromSpel,
     checkTree,
@@ -12,10 +13,9 @@ const { loadTree,
     elasticSearchFormat,
     spelFormat,
     getTree,
-    uuid
+    uuid,
 } = Utils;
-const emptyTree = { id: uuid(), type: 'group' };
-
+const emptyTree = {id: uuid(), type: 'group'};
 
 /** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
@@ -34,70 +34,88 @@ export default class BaseQueryBuilder extends Component {
             fields,
         };
         this.setProps = props.setProps;
-        let loadFormat = (props.loadFormat === null || props.loadFormat === undefined) ? 'tree' : props.loadFormat;
+        let loadFormat =
+            props.loadFormat === null || props.loadFormat === undefined
+                ? 'tree'
+                : props.loadFormat;
         if (props.loadFormat === null || props.loadFormat === undefined) {
-            this.setProps({ loadFormat: 'tree' })
+            this.setProps({loadFormat: 'tree'});
         }
         let initialLoadItem = this.getLoadItem(loadFormat, props);
-        let initialImmutableTree = checkTree(this.loadModifiedTree(props.loadFormat, initialLoadItem, config), config);
-
+        let initialImmutableTree = checkTree(
+            this.loadModifiedTree(props.loadFormat, initialLoadItem, config),
+            config
+        );
 
         this.state = {
             config: config,
             immutableTree: initialImmutableTree,
             alwaysShowActionButtons: props.alwaysShowActionButtons,
-            loadFormat: props.loadFormat
+            loadFormat: props.loadFormat,
         };
     }
     getLoadItem(loadFormat, props) {
         switch (loadFormat) {
             case 'jsonLogicFormat':
-                return props.jsonLogicFormat
+                return props.jsonLogicFormat;
             case 'spelFormat':
-                return props.spelFormat
+                return props.spelFormat;
             default:
             case 'tree':
-                return props.tree
+                return props.tree;
         }
     }
     loadModifiedTree(modifiedProp, modifiedValue, config = this.state.config) {
         switch (modifiedProp) {
-
             case 'jsonLogicFormat':
                 if (modifiedValue === undefined || modifiedValue === null) {
-                    return loadTree(emptyTree, config)
+                    return loadTree(emptyTree, config);
                 }
 
                 let treeAndErrors = _loadFromJsonLogic(modifiedValue, config);
                 let tree = treeAndErrors[0];
                 if (treeAndErrors[1].length > 0) {
-                    console.log('There were errors loading the tree:', treeAndErrors[1]);
-                    throw new Error('There were errors loading the tree: ' + treeAndErrors[1]);
+                    console.log(
+                        'There were errors loading the tree:',
+                        treeAndErrors[1]
+                    );
+                    throw new Error(
+                        'There were errors loading the tree: ' +
+                            treeAndErrors[1]
+                    );
                 }
                 return tree;
 
             case 'spelFormat':
-                if (modifiedValue === '' || modifiedValue === undefined || modifiedValue === null) {
-                    return loadTree(emptyTree, config)
-                }
-                else {
+                if (
+                    modifiedValue === '' ||
+                    modifiedValue === undefined ||
+                    modifiedValue === null
+                ) {
+                    return loadTree(emptyTree, config);
+                } else {
                     let treeAndErrors = loadFromSpel(modifiedValue, config);
                     let tree = treeAndErrors[0];
                     if (treeAndErrors[1].length > 0) {
-                        console.log('There are Errors in the SPEL String', treeAndErrors[1]);
-                        throw new Error('There were errors loading the tree: ' + treeAndErrors[1]);
+                        console.log(
+                            'There are Errors in the SPEL String',
+                            treeAndErrors[1]
+                        );
+                        throw new Error(
+                            'There were errors loading the tree: ' +
+                                treeAndErrors[1]
+                        );
                     }
                     if (tree === undefined) {
                         tree = loadTree(emptyTree, config);
                     }
-                    return tree
+                    return tree;
                 }
 
             case 'tree':
             default:
                 return loadTree(modifiedValue, config);
         }
-
     }
 
     /**
@@ -106,44 +124,58 @@ export default class BaseQueryBuilder extends Component {
      * the layout properly. Only run once and only if one of the props has changed.
      */
     componentDidUpdate(prevProps) {
-        let modified = false
-        let modifiedProp
-        let modifiedValue
-        if (prevProps.tree !== this.props.tree && this.props.loadFormat === 'tree') {
+        let modified = false;
+        let modifiedProp;
+        let modifiedValue;
+        if (
+            prevProps.tree !== this.props.tree &&
+            this.props.loadFormat === 'tree'
+        ) {
             //what happens if this.props.tree is null?
             modified = true;
             modifiedProp = 'tree';
             modifiedValue = this.props.tree;
-
-        }
-        else if (this.props.loadFormat === 'spelFormat' && prevProps.spelFormat !== this.props.spelFormat) {
+        } else if (
+            this.props.loadFormat === 'spelFormat' &&
+            prevProps.spelFormat !== this.props.spelFormat
+        ) {
             modified = true;
             modifiedProp = 'spelFormat';
             modifiedValue = this.props.spelFormat;
-
+        } else if (
+            this.props.loadFormat === 'jsonLogicFormat' &&
+            prevProps.jsonLogicFormat !== this.props.jsonLogicFormat
+        ) {
+            modified = true;
+            modifiedProp = 'jsonLogicFormat';
+            modifiedValue = this.props.jsonLogicFormat.logic;
         }
-        else
-            if (this.props.loadFormat === 'jsonLogicFormat' && prevProps.jsonLogicFormat !== this.props.jsonLogicFormat) {
-                modified = true;
-                modifiedProp = 'jsonLogicFormat';
-                modifiedValue = this.props.jsonLogicFormat.logic;
-            }
         if (modified) {
-            let immutableTree = this.loadModifiedTree(modifiedProp, modifiedValue);
+            let immutableTree = this.loadModifiedTree(
+                modifiedProp,
+                modifiedValue
+            );
             let currentState = this.getCurrentStateFromTree(
                 immutableTree,
                 this.state.config
             );
-            this.setState({ immutableTree: immutableTree });
-            this.setProps(currentState)
+            this.setState({immutableTree: immutableTree});
+            this.setProps(currentState);
         }
         if (prevProps.loadFormat !== this.props.loadFormat) {
-            this.setProps({ loadFormat: this.props.loadFormat })
-            this.setState({ loadFormat: this.props.loadFormat })
+            this.setProps({loadFormat: this.props.loadFormat});
+            this.setState({loadFormat: this.props.loadFormat});
         }
-        if (prevProps.alwaysShowActionButtons !== this.props.alwaysShowActionButtons) {
-            this.setProps({ alwaysShowActionButtons: this.props.alwaysShowActionButtons })
-            this.setState({ alwaysShowActionButtons: this.props.alwaysShowActionButtons })
+        if (
+            prevProps.alwaysShowActionButtons !==
+            this.props.alwaysShowActionButtons
+        ) {
+            this.setProps({
+                alwaysShowActionButtons: this.props.alwaysShowActionButtons,
+            });
+            this.setState({
+                alwaysShowActionButtons: this.props.alwaysShowActionButtons,
+            });
         }
     }
     /**
@@ -151,17 +183,15 @@ export default class BaseQueryBuilder extends Component {
      *  Takes a tree and config and updates the various Formats used.
      */
     getCurrentStateFromTree = (immutableTree, config) => {
-        let currentTree
+        let currentTree;
 
         try {
-            currentTree = getTree(immutableTree, true, false)
-        }
-        catch (e) {
+            currentTree = getTree(immutableTree, true, false);
+        } catch (e) {
             try {
                 currentTree = getTree(immutableTree);
-            }
-            catch (e) {
-                throw e
+            } catch (e) {
+                throw e;
             }
         }
         let currentState = {
@@ -174,14 +204,14 @@ export default class BaseQueryBuilder extends Component {
             jsonLogicFormat: jsonLogicFormat(immutableTree, config),
             elasticSearchFormat: elasticSearchFormat(immutableTree, config),
             spelFormat: spelFormat(immutableTree, config),
-            loadFormat: this.state.loadFormat
+            loadFormat: this.state.loadFormat,
         };
         return currentState;
     };
     onChange = (immutableTree, config) => {
         // Can we use Throttle (from lodash)?
         let currentState = this.getCurrentStateFromTree(immutableTree, config);
-        this.setState({ immutableTree: immutableTree, config: config });
+        this.setState({immutableTree: immutableTree, config: config});
         this.setProps(currentState);
     };
 
@@ -199,10 +229,18 @@ export default class BaseQueryBuilder extends Component {
     };
 
     renderBuilder = (props) => {
-        return (<div className="query-builder-container" style={{ padding: '10px' }}>
-            <div className={this.state.alwaysShowActionButtons ? 'query-builder' : 'query-builder qb-lite'}>
-                <Builder {...props} />
+        return (
+            <div className="query-builder-container" style={{padding: '10px'}}>
+                <div
+                    className={
+                        this.state.alwaysShowActionButtons
+                            ? 'query-builder'
+                            : 'query-builder qb-lite'
+                    }
+                >
+                    <Builder {...props} />
+                </div>
             </div>
-        </div>)
-    }
+        );
+    };
 }
