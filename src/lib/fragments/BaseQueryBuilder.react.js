@@ -53,6 +53,7 @@ export default class BaseQueryBuilder extends Component {
             immutableTree: initialImmutableTree,
             alwaysShowActionButtons: props.alwaysShowActionButtons,
             loadFormat: props.loadFormat,
+            fields: fields,
         };
     }
     getLoadItem(loadFormat, props) {
@@ -180,13 +181,8 @@ export default class BaseQueryBuilder extends Component {
         }
 
         // Check for changes in the fields prop
-        if (
-            prevProps.fields !== this.props.fields &&
-            this.props.fields !== this.props.currentState.fields
-        ) {
+        if (prevProps.fields !== this.props.fields) {
             // Create a new config object with updated fields
-            console.log('prevProps', prevProps);
-            console.log('this.props', this.props);
             const updatedConfig = {
                 ...this.state.config,
                 fields: this.props.fields,
@@ -201,6 +197,7 @@ export default class BaseQueryBuilder extends Component {
             this.setProps({currentState});
             this.setState({
                 immutableTree: emptyImmutableTree,
+                fields: this.props.fields,
                 // config: updatedConfig,
             });
         }
@@ -237,8 +234,20 @@ export default class BaseQueryBuilder extends Component {
     };
     onChange = (immutableTree, config) => {
         // Can we use Throttle (from lodash)?
-        let currentState = this.getCurrentStateFromTree(immutableTree, config);
-        this.setState({immutableTree: immutableTree, config: config});
+        let currentState;
+        if (config.fields !== this.state.fields) {
+            let newConfig = {...config, fields: this.state.fields};
+            this.setState({config: newConfig});
+
+            currentState = this.getCurrentStateFromTree(
+                immutableTree,
+                newConfig
+            );
+            this.setState({immutableTree: immutableTree, config: newConfig});
+        } else {
+            currentState = this.getCurrentStateFromTree(immutableTree, config);
+            this.setState({immutableTree: immutableTree, config: config});
+        }
         this.setProps(currentState);
     };
 
