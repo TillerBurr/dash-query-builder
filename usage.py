@@ -45,7 +45,47 @@ fields = {
                 },
             },
         }
-    }
+    },
+    "fields2": {
+        "main_report_data": {
+            "type": "!struct",
+            "label": "Fields",
+            "subfields": {
+                "qty2": {
+                    "label": "Qty2",
+                    "type": "number",
+                    "fieldSettings": {"min": 20},
+                    "valueSources": ["value"],
+                    "preferWidgets": ["number"],
+                },
+                "price2": {
+                    "label": "Price2",
+                    "type": "number",
+                    "valueSources": ["value"],
+                    "fieldSettings": {"min": 10, "max": 300},
+                    "preferWidgets": ["slider", "rangeslider"],
+                },
+                "color3": {
+                    "label": "Color3",
+                    "type": "select",
+                    "valueSources": ["value"],
+                    "fieldSettings": {
+                        "listValues": [
+                            {"value": "blue", "title": "Blue"},
+                            {"value": "green", "title": "Green"},
+                            {"value": "orange", "title": "Orange"},
+                        ]
+                    },
+                },
+                "is_promo": {
+                    "label": "Promo?",
+                    "type": "boolean",
+                    "operators": ["equal", "is_null"],
+                    "valueSources": ["value"],
+                },
+            },
+        }
+    },
 }
 tree = {
     "id": "aa8abaa8-cdef-4012-b456-717f1e3484de",
@@ -137,6 +177,7 @@ app.layout = html.Div(
         html.Button(id="update-format-tree", children="Load Tree"),
         html.Button(id="update-format-json", children="Load JSONLogic"),
         html.Button(id="update-format-spel", children="Load SPEL"),
+        html.Button(id="fields-button", children="Update Fields"),
     ]
 )
 
@@ -200,6 +241,20 @@ def update_tree_value(n):
         rv = tree
     else:
         rv = empty_
+
+    return rv
+
+
+@app.callback(
+    Output("input", "fields"),
+    Input("fields-button", "n_clicks"),
+    prevent_initial_call=True,
+)
+def update_fields(n):
+    if n is not None and n % 2 == 1:
+        rv = fields["fields2"]
+    else:
+        rv = fields["fields"]
 
     return rv
 
