@@ -1,34 +1,50 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, {Component, lazy, Suspense} from 'react';
 import PropTypes from 'prop-types';
-import { Utils } from '@react-awesome-query-builder/ui';
+import {Utils} from '@react-awesome-query-builder/ui';
 import '@react-awesome-query-builder/ui/css/styles.css';
 
-const { loadTree, uuid } = Utils;
+const {loadTree, uuid} = Utils;
 
-const emptyTree = { id: uuid(), type: 'group' };
+const emptyTree = {id: uuid(), type: 'group'};
 
-
-
-const LazyMUIQueryBuilder = lazy(() => import(/* webpackChunkName: "mui" */ '../fragments/MUIQueryBuilder.react'));
-const LazyAntdQueryBuilder = lazy(() => import(/* webpackChunkName: "antd" */ '../fragments/AntdQueryBuilder.react'));
-const LazyBootstrapQueryBuilder = lazy(() => import(/* webpackChunkName: "bootstrap" */ '../fragments/BootstrapQueryBuilder.react'));
-const LazyBasicQueryBuilder = lazy(() => import(/* webpackChunkName: "basic" */ '../fragments/BasicQueryBuilder.react'));
-
+const LazyMUIQueryBuilder = lazy(
+    () =>
+        import(
+            /* webpackChunkName: "mui" */ '../fragments/MUIQueryBuilder.react'
+        )
+);
+const LazyAntdQueryBuilder = lazy(
+    () =>
+        import(
+            /* webpackChunkName: "antd" */ '../fragments/AntdQueryBuilder.react'
+        )
+);
+const LazyBootstrapQueryBuilder = lazy(
+    () =>
+        import(
+            /* webpackChunkName: "bootstrap" */ '../fragments/BootstrapQueryBuilder.react'
+        )
+);
+const LazyBasicQueryBuilder = lazy(
+    () =>
+        import(
+            /* webpackChunkName: "basic" */ '../fragments/BasicQueryBuilder.react'
+        )
+);
 
 const QueryBuilderFactory = (props) => {
     switch (props.theme) {
-        case "mui":
-            return <LazyMUIQueryBuilder {...props} />
-        case "antd":
-            return <LazyAntdQueryBuilder {...props} />
-        case "bootstrap":
-            return <LazyBootstrapQueryBuilder {...props} />
-        case "basic":
+        case 'mui':
+            return <LazyMUIQueryBuilder {...props} />;
+        case 'antd':
+            return <LazyAntdQueryBuilder {...props} />;
+        case 'bootstrap':
+            return <LazyBootstrapQueryBuilder {...props} />;
+        case 'basic':
         default:
-            return <LazyBasicQueryBuilder {...props} />
+            return <LazyBasicQueryBuilder {...props} />;
     }
-
-}
+};
 /** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
  * It takes a `fields` property to generate the options for building the actual query.
@@ -38,18 +54,14 @@ const QueryBuilderFactory = (props) => {
  * These are the only themes supported by `react-awesome-query-builder`.
  */
 export default class DashQueryBuilder extends Component {
-
     render() {
         return (
             <Suspense fallback={null}>
                 <QueryBuilderFactory {...this.props} />
             </Suspense>
-        )
+        );
     }
-
 }
-
-
 
 export const defaultProps = {
     tree: loadTree(emptyTree),
@@ -168,14 +180,14 @@ export const themelessPropTypes = {
     /** The Format which the Query Builder will load. Any changes made to that format will produce an update. Only that format will be able to load
      * the tree
      */
-    loadFormat: PropTypes.oneOf(['jsonLogicFormat', 'spelFormat', 'tree']).isRequired,
+    loadFormat: PropTypes.oneOf(['jsonLogicFormat', 'spelFormat', 'tree'])
+        .isRequired,
 };
 export const propTypes = {
     ...themelessPropTypes,
     /** Sets the theme of the query builder. */
-    theme: PropTypes.oneOf(["mui", 'antd', 'basic', 'bootstrap']),
-}
-
+    theme: PropTypes.oneOf(['mui', 'antd', 'basic', 'bootstrap']),
+};
 
 DashQueryBuilder.propTypes = propTypes;
 DashQueryBuilder.defaultProps = defaultProps;
