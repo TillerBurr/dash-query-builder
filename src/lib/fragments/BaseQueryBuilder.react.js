@@ -185,6 +185,7 @@ export default class BaseQueryBuilder extends Component {
                 ...this.state.config,
                 fields: this.props.fields,
             };
+            const emptyTree = {id: uuid(), type: 'group'};
             // Reset the tree to an empty state
 
             // Update the component's state with the new config and reset tree
