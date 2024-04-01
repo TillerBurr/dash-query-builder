@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dash-query-builder"
-version = "0.4.0"
+version = "0.5.0"
 description = "Dash Component based on react-awesome-query-builder"
 authors = ["Tyler Baur <baur.tyler@protonmail.com>"]
 license = "MIT"
@@ -11,6 +11,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License"
 ]
 
@@ -34,9 +35,6 @@ dash="^2.0.0"
 pyparsing = "^3.0.9"
 rich = "^13.3.1"
 shortuuid = "^1.0.11"
-
-
-
 
 [tool.poetry.group.dev.dependencies]
 dash = {version = "^2.0.0", extras = ["dev","testing"]}
