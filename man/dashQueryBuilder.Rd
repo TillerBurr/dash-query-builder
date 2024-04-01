@@ -189,10 +189,6 @@ those elements have the following types:
   - tolocalestring (optional): converts a number to a string by using the current or specified locale.
 @,param,locales, ,a locale string or array of locale strings that contain one or more language or locale tags. if you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. if you omit this parameter, the default locale of the javascript runtime is used.
 @,param,options, ,an object that contains one or more properties that specify comparison options.
-@,param,locales, ,a locale string, array of locale strings, intl.locale object, or array of intl.locale objects that contain one or more language or locale tags. if you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. if you omit this parameter, the default locale of the javascript runtime is used.
-@,param,options, ,an object that contains one or more properties that specify comparison options.. tolocalestring has the following type: lists containing elements .
-those elements have the following types:
-
   - maxnumberofcases (optional): . maxnumberofcases has the following type: lists containing elements 'tostring', 'tofixed', 'toexponential', 'toprecision', 'valueof', 'tolocalestring'.
 those elements have the following types:
   - tostring (optional): returns a string representation of an object.
@@ -207,10 +203,6 @@ those elements have the following types:
   - tolocalestring (optional): converts a number to a string by using the current or specified locale.
 @,param,locales, ,a locale string or array of locale strings that contain one or more language or locale tags. if you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. if you omit this parameter, the default locale of the javascript runtime is used.
 @,param,options, ,an object that contains one or more properties that specify comparison options.
-@,param,locales, ,a locale string, array of locale strings, intl.locale object, or array of intl.locale objects that contain one or more language or locale tags. if you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. if you omit this parameter, the default locale of the javascript runtime is used.
-@,param,options, ,an object that contains one or more properties that specify comparison options.. tolocalestring has the following type: lists containing elements .
-those elements have the following types:
-
   - showerrormessage (logical; optional)
   - canshortmongoquery (logical; optional)
   - convertablewidgets (list with named elements and values of type list of characters; optional)

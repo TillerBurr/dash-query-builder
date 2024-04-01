@@ -1,38 +1,40 @@
 {
-  "name": "dash_query_builder",
-  "version": "1.0.0",
-  "description": "Component for Dash based on react-awesome-query-builder",
-  "main": "index.ts",
-  "scripts": {
-    "build:js::dev": "webpack --mode development",
-    "build:js": "webpack",
-    "build:backends": "dash-generate-components ./src/ts/components dash_query_builder -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\.",
-    "build": "npm run build:js && npm run build:backends",
-    "watch": "npm run build:js::dev -- --watch"
-  },
-  "devDependencies": {
-    "@types/react": "^17.0.39",
-    "css-loader": "^6.7.1",
-    "npm-run-all": "^4.1.5",
-    "ramda": "^0.28.0",
-    "react": "18.2.0",
-    "react-docgen": "^5.4.0",
-    "react-dom": "^18.2.0",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.3.1",
-    "typescript": "^4.7.4",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0"
-  },
-  "peerDependencies": {
-    "react": "^16.13.0"
-  },
-  "author": "Tyler Baur <baur.tyler@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@react-awesome-query-builder/antd": "^6.4.2",
-    "@react-awesome-query-builder/bootstrap": "^6.4.2",
-    "@react-awesome-query-builder/fluent": "^6.4.2",
-    "@react-awesome-query-builder/mui": "^6.4.2"
-  }
+    "name": "dash_query_builder",
+    "version": "1.0.0",
+    "description": "Component for Dash based on react-awesome-query-builder",
+    "main": "index.ts",
+    "scripts": {
+        "build:js::dev": "webpack --mode development",
+        "build:js": "webpack",
+        "build:backends": "dash-generate-components ./src/ts/components dash_query_builder -p package-info.json --r-prefix '' --jl-prefix '' --ignore \\.test\\.",
+        "build": "npm run build:js && npm run build:backends",
+        "watch": "npm run build:js::dev -- --watch"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.39",
+        "css-loader": "^6.7.1",
+        "npm-run-all": "^4.1.5",
+        "ramda": "^0.28.0",
+        "react": "18.2.0",
+        "react-docgen": "^5.4.0",
+        "react-dom": "^18.2.0",
+        "style-loader": "^3.3.1",
+        "ts-loader": "^9.3.1",
+        "typescript": "^4.7.4",
+        "webpack": "^5.73.0",
+        "webpack-cli": "^4.10.0"
+    },
+    "peerDependencies": {
+        "react": "^16.13.0"
+    },
+    "author": "Tyler Baur <baur.tyler@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@react-awesome-query-builder/antd": "^6.4.2",
+        "@react-awesome-query-builder/bootstrap": "^6.4.2",
+        "@react-awesome-query-builder/fluent": "^6.4.2",
+        "@react-awesome-query-builder/mui": "^6.4.2",
+        "@react-awesome-query-builder/ui": "^6.4.2",
+        "@types/ramda": "^0.29.12"
+    }
 }

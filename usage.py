@@ -1,5 +1,7 @@
+import json
 import dash_query_builder
 import dash
+from dash import Output, callback, html, Input, State
 
 app = dash.Dash(__name__)
 fields = {
@@ -83,11 +85,26 @@ tree = {
         },
     ],
 }
-app.layout = dash_query_builder.DashQueryBuilder(
-    id="component",
-    fields=fields,
-    tree=tree,
+app.layout = html.Div(
+    [
+        dash_query_builder.DashQueryBuilder(
+            id="component",
+            fields=fields,
+            tree=tree,
+        ),
+        html.Div(id="output"),
+    ]
 )
+
+
+@callback(
+    Output("output", "children"),
+    Input("component", "tree"),
+    State("component", "sqlFormat"),
+)
+def update_output(tree, sql_format):
+    val = html.Div([json.dumps(tree), html.Hr(), html.Div(sql_format)])
+    return val
 
 
 if __name__ == "__main__":

@@ -3,3 +3,4 @@ _.python.venv=".venv"
 
 [tools]
 just = "latest"
+node = "19.2"

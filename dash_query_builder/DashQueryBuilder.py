@@ -545,7 +545,7 @@ Keyword arguments:
                 after the decimal point. Must be in the range 0 - 20,
                 inclusive.
 
-            - toLocaleString (dict; optional):
+            - toLocaleString (optional):
                 Converts a number to a string by using the current or
                 specified locale. @,param,locales, ,A locale string or
                 array of locale strings that contain one or more
@@ -555,19 +555,7 @@ Keyword arguments:
                 locale. If you omit this parameter, the default locale
                 of the JavaScript runtime is used. @,param,options,
                 ,An object that contains one or more properties that
-                specify comparison options. @,param,locales, ,A locale
-                string, array of locale strings, Intl.Locale object,
-                or array of Intl.Locale objects that contain one or
-                more language or locale tags. If you include more than
-                one locale string, list them in descending order of
-                priority so that the first entry is the preferred
-                locale. If you omit this parameter, the default locale
-                of the JavaScript runtime is used. @,param,options,
-                ,An object that contains one or more properties that
                 specify comparison options.
-
-                `toLocaleString` is a dict with keys:
-
 
             - toPrecision (required):
                 Returns a string containing a number represented
@@ -601,7 +589,7 @@ Keyword arguments:
                 after the decimal point. Must be in the range 0 - 20,
                 inclusive.
 
-            - toLocaleString (dict; optional):
+            - toLocaleString (optional):
                 Converts a number to a string by using the current or
                 specified locale. @,param,locales, ,A locale string or
                 array of locale strings that contain one or more
@@ -611,19 +599,7 @@ Keyword arguments:
                 locale. If you omit this parameter, the default locale
                 of the JavaScript runtime is used. @,param,options,
                 ,An object that contains one or more properties that
-                specify comparison options. @,param,locales, ,A locale
-                string, array of locale strings, Intl.Locale object,
-                or array of Intl.Locale objects that contain one or
-                more language or locale tags. If you include more than
-                one locale string, list them in descending order of
-                priority so that the first entry is the preferred
-                locale. If you omit this parameter, the default locale
-                of the JavaScript runtime is used. @,param,options,
-                ,An object that contains one or more properties that
                 specify comparison options.
-
-                `toLocaleString` is a dict with keys:
-
 
             - toPrecision (required):
                 Returns a string containing a number represented
