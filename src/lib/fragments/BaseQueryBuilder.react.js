@@ -17,6 +17,7 @@ const {
 } = Utils;
 const emptyTree = {id: uuid(), type: 'group'};
 
+const emptyImmutableTree = loadTree(emptyTree);
 /** DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).
  *
  * It takes a `fields` property to generate the options for building the actual query.
@@ -69,7 +70,7 @@ export default class BaseQueryBuilder extends Component {
         switch (modifiedProp) {
             case 'jsonLogicFormat':
                 if (modifiedValue === undefined || modifiedValue === null) {
-                    return loadTree(emptyTree, config);
+                    return emptyImmutableTree;
                 }
 
                 let treeAndErrors = _loadFromJsonLogic(modifiedValue, config);
@@ -92,7 +93,7 @@ export default class BaseQueryBuilder extends Component {
                     modifiedValue === undefined ||
                     modifiedValue === null
                 ) {
-                    return loadTree(emptyTree, config);
+                    return loadTree(emptyTree);
                 } else {
                     let treeAndErrors = loadFromSpel(modifiedValue, config);
                     let tree = treeAndErrors[0];
@@ -107,14 +108,14 @@ export default class BaseQueryBuilder extends Component {
                         );
                     }
                     if (tree === undefined) {
-                        tree = loadTree(emptyTree, config);
+                        tree = emptyImmutableTree;
                     }
                     return tree;
                 }
 
             case 'tree':
             default:
-                return loadTree(modifiedValue, config);
+                return loadTree(modifiedValue);
         }
     }
 
@@ -179,26 +180,28 @@ export default class BaseQueryBuilder extends Component {
         }
 
         // Check for changes in the fields prop
-        if (prevProps.fields !== this.props.fields) {
+        if (
+            prevProps.fields !== this.props.fields &&
+            this.props.fields !== this.props.currentState.fields
+        ) {
             // Create a new config object with updated fields
+            console.log('prevProps', prevProps);
+            console.log('this.props', this.props);
             const updatedConfig = {
                 ...this.state.config,
                 fields: this.props.fields,
             };
 
             // Update the component's state with the new config and reset tree
-            const updatdTree = checkTree(
-                loadTree(emptyTree, updatedConfig),
+            let currentState = this.getCurrentStateFromTree(
+                emptyImmutableTree,
                 updatedConfig
             );
+            // this.setState({config: updatedConfig});
+            this.setProps({currentState});
             this.setState({
-                config: updatedConfig,
-                immutableTree: updatdTree,
-            });
-
-            this.setProps({
-                config: updatedConfig,
-                immutableTree: updatdTree,
+                immutableTree: emptyImmutableTree,
+                // config: updatedConfig,
             });
         }
     }
