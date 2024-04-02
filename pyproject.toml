@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dash-query-builder"
-version = "0.5.1"
+version = "0.5.2"
 description = "Dash Component based on react-awesome-query-builder"
 authors = ["Tyler Baur <baur.tyler@protonmail.com>"]
 license = "MIT"

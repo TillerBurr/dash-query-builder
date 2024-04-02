@@ -3,7 +3,7 @@ module DashQueryBuilder
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.5.1"
+const version = "0.5.2"
 
 include("jl/dashquerybuilder.jl")
 
@@ -16,56 +16,56 @@ function __init__()
             [
                 DashBase.Resource(
     relative_package_path = "async-mui.min.js",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-mui.js",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-mui.js",
     dynamic = nothing,
     async = :true,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-antd.min.js",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-antd.js",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-antd.js",
     dynamic = nothing,
     async = :true,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-bootstrap.min.js",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-bootstrap.js",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-bootstrap.js",
     dynamic = nothing,
     async = :true,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-basic.min.js",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-basic.js",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-basic.js",
     dynamic = nothing,
     async = :true,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-mui.min.js.map",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-mui.js.map",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-mui.js.map",
     dynamic = true,
     async = nothing,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-antd.min.js.map",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-antd.js.map",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-antd.js.map",
     dynamic = true,
     async = nothing,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-bootstrap.min.js.map",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-bootstrap.js.map",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-bootstrap.js.map",
     dynamic = true,
     async = nothing,
     type = :js
 ),
 DashBase.Resource(
     relative_package_path = "async-basic.min.js.map",
-    external_url = "https://unpkg.com/dash_query_builder@0.5.1/dash_query_builder/async-basic.js.map",
+    external_url = "https://unpkg.com/dash_query_builder@0.5.2/dash_query_builder/async-basic.js.map",
     dynamic = true,
     async = nothing,
     type = :js
