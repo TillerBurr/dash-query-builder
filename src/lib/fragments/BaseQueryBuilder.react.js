@@ -116,7 +116,7 @@ export default class BaseQueryBuilder extends Component {
 
             case 'tree':
             default:
-                return emptyImmutableTree;
+                return loadTree(modifiedValue, config);
         }
     }
 
