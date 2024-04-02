@@ -1,0 +1,5 @@
+[tools]
+node = "19.2"
+
+[env]
+_.python.venv=".venv"

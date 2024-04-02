@@ -1,0 +1,163 @@
+{
+  "src/lib/components/DashQueryBuilder.react.js": {
+    "description": "DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).\n\nIt takes a `fields` property to generate the options for building the actual query.\nThe optional property `tree` is used to define the current state of the tree. It can be used to\ndefine the starting state of the query builder.\nThe optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.\nThese are the only themes supported by `react-awesome-query-builder`.",
+    "displayName": "DashQueryBuilder",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+      },
+      "tree": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "The tree that describes the state of the query builder.",
+        "defaultValue": {
+          "value": "loadTree(emptyTree)",
+          "computed": true
+        }
+      },
+      "fields": {
+        "type": {
+          "name": "custom",
+          "raw": "fieldPropType.isRequired"
+        },
+        "required": false,
+        "description": "The fields that are used to populate the options for the query builder. This can be a very complicated object.\n See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info."
+      },
+      "sqlFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The SQL Formatted string defined by the current state of the tree"
+      },
+      "queryStringFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The Query String Formatted string defined by the current state of the tree"
+      },
+      "queryBuilderStringFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The Query Builder String Formatted string defined by the current state of the tree"
+      },
+      "mongodbFormat": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The MongoDB Formatted string defined by the current state of the tree"
+      },
+      "jsonLogicFormat": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The JSON Logic Formatted string defined by the current state of the tree"
+      },
+      "elasticSearchFormat": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "The JSON Logic Formatted defined by the current state of the tree"
+      },
+      "spelFormat": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The JSON Logic Formatted string defined by the current state of the tree"
+      },
+      "alwaysShowActionButtons": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.",
+        "defaultValue": {
+          "value": "true",
+          "computed": false
+        }
+      },
+      "config": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,\noperators or widgets. Setting this is currently in alpha, it is very unstable."
+      },
+      "loadFormat": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'jsonLogicFormat'",
+              "computed": false
+            },
+            {
+              "value": "'spelFormat'",
+              "computed": false
+            },
+            {
+              "value": "'tree'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "The Format which the Query Builder will load. Any changes made to that format will produce an update. Only that format will be able to load\nthe tree",
+        "defaultValue": {
+          "value": "'tree'",
+          "computed": false
+        }
+      },
+      "theme": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'mui'",
+              "computed": false
+            },
+            {
+              "value": "'antd'",
+              "computed": false
+            },
+            {
+              "value": "'basic'",
+              "computed": false
+            },
+            {
+              "value": "'bootstrap'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Sets the theme of the query builder.",
+        "defaultValue": {
+          "value": "'basic'",
+          "computed": false
+        }
+      }
+    }
+  }
+}
