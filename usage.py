@@ -44,7 +44,41 @@ fields = {
                 },
             },
         }
-    }
+    },
+    "fields2": {
+        "main_report_data": {
+            "type": "!struct",
+            "label": "Fields",
+            "subfields": {
+                "qty2": {
+                    "label": "qty2",
+                    "type": "number",
+                    "fieldSettings": {"min": 0},
+                    "valueSources": ["value"],
+                    "preferWidgets": ["number"],
+                },
+                "Price2": {
+                    "label": "Price2",
+                    "type": "number",
+                    "valueSources": ["value"],
+                    "fieldSettings": {"min": 10, "max": 100},
+                    "preferWidgets": ["slider", "rangeslider"],
+                },
+                "color2": {
+                    "label": "Color2",
+                    "type": "select",
+                    "valueSources": ["value"],
+                    "fieldSettings": {
+                        "listValues": [
+                            {"value": "yellow", "title": "Yellow"},
+                            {"value": "green", "title": "Green"},
+                            {"value": "orange", "title": "Orange"},
+                        ]
+                    },
+                },
+            },
+        }
+    },
 }
 tree = {
     "id": "aa8abaa8-cdef-4012-b456-717f1e3484de",
@@ -92,6 +126,7 @@ app.layout = html.Div(
             fields=fields,
             tree=tree,
         ),
+        html.Button("Change Fields", id="fields-button"),
         html.Div(id="output"),
     ]
 )
@@ -105,6 +140,18 @@ app.layout = html.Div(
 def update_output(tree, sql_format):
     val = html.Div([json.dumps(tree), html.Hr(), html.Div(sql_format)])
     return val
+
+
+@callback(
+    Output("component", "fields"),
+    Input("fields-button", "n_clicks"),
+    prevent_initial_call=True,
+)
+def update_fields(n):
+    if n is not None and n % 2 == 1:
+        return fields["fields2"]
+    else:
+        return fields["fields"]
 
 
 if __name__ == "__main__":

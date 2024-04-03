@@ -32,52 +32,7 @@ const {
     getTree,
     uuid,
 } = QbUtils;
-const config: Config = {
-    ...BasicConfig,
-    fields: {
-        qty: {
-            label: 'Qty',
-            type: 'number',
-            fieldSettings: {
-                min: 0,
-            },
-            valueSources: ['value'],
-            preferWidgets: ['number'],
-        },
-        price: {
-            label: 'Price',
-            type: 'number',
-            valueSources: ['value'],
-            fieldSettings: {
-                min: 10,
-                max: 100,
-            },
-            preferWidgets: ['slider', 'rangeslider'],
-        },
-        name: {
-            label: 'Name',
-            type: 'text',
-        },
-        color: {
-            label: 'Color',
-            type: 'select',
-            valueSources: ['value'],
-            fieldSettings: {
-                listValues: [
-                    {value: 'yellow', title: 'Yellow'},
-                    {value: 'green', title: 'Green'},
-                    {value: 'orange', title: 'Orange'},
-                ],
-            },
-        },
-        is_promotion: {
-            label: 'Promo?',
-            type: 'boolean',
-            operators: ['equal'],
-            valueSources: ['value'],
-        },
-    },
-};
+
 const emptyTree: JsonTree = {id: QbUtils.uuid(), type: 'group'};
 const emptyImmutableTree: ImmutableTree = loadTree(emptyTree);
 function isJsonTree(tree: any): tree is JsonTree {
@@ -122,7 +77,7 @@ const loadNewTree = (
  * Component description
  */
 const DashQueryBuilder = (props: Props) => {
-    const {id, tree, load_format, fields, config, setProps, sqlFormat} = props;
+    const {id, tree, load_format, fields, config, setProps} = props;
     let initialConfig: Config = mergeAll([BasicConfig, config]);
     console.log(config);
     let completeConfig = {...initialConfig, ...fields};
@@ -137,14 +92,36 @@ const DashQueryBuilder = (props: Props) => {
     const [state, setState] = useState({
         tree: initialImmutableTree,
         config: completeConfig,
-        fields: fields,
+        // fields: fields,
     });
     useEffect(() => {
         setProps({
             sqlFormat: QbUtils.sqlFormat(state.tree, state.config),
+            tree: getTree(state.tree),
+            jsonLogicFormat: QbUtils.jsonLogicFormat(state.tree, state.config),
+            mongodbFormat: QbUtils.mongodbFormat(state.tree, state.config),
+            queryString: QbUtils.queryString(state.tree, state.config),
+            elasticSearchFormat: QbUtils.elasticSearchFormat(
+                state.tree,
+                state.config
+            ),
+            spelFormat: QbUtils.spelFormat(state.tree, state.config),
         }),
             [tree];
     });
+
+    useEffect(() => {
+        setProps({
+            tree: emptyTree,
+        });
+        const newConfig = {...state.config, fields: fields};
+        setState((prevState) => ({
+            ...prevState,
+            tree: emptyImmutableTree,
+            config: newConfig,
+        }));
+        //todo: fix
+    }, [fields]);
 
     const onChange = useCallback(
         (immutableTree: ImmutableTree, config: Config) => {
@@ -156,7 +133,6 @@ const DashQueryBuilder = (props: Props) => {
             }));
             const jsonTree = getTree(checkTree(immutableTree, config));
             setProps({tree: jsonTree});
-            // `jsonTree` can be saved to backend, and later loaded to `queryValue`
         },
         []
     );

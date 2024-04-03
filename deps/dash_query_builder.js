@@ -70569,244 +70569,240 @@
                             c.Utils.elasticSearchFormat,
                             c.Utils.spelFormat,
                             c.Utils.getTree),
-                        v =
-                            (c.Utils.uuid,
-                            n(n({}, c.BasicConfig), {
-                                fields: {
-                                    qty: {
-                                        label: 'Qty',
-                                        type: 'number',
-                                        fieldSettings: {min: 0},
-                                        valueSources: ['value'],
-                                        preferWidgets: ['number'],
-                                    },
-                                    price: {
-                                        label: 'Price',
-                                        type: 'number',
-                                        valueSources: ['value'],
-                                        fieldSettings: {min: 10, max: 100},
-                                        preferWidgets: [
-                                            'slider',
-                                            'rangeslider',
-                                        ],
-                                    },
-                                    name: {label: 'Name', type: 'text'},
-                                    color: {
-                                        label: 'Color',
-                                        type: 'select',
-                                        valueSources: ['value'],
-                                        fieldSettings: {
-                                            listValues: [
-                                                {
-                                                    value: 'yellow',
-                                                    title: 'Yellow',
-                                                },
-                                                {
-                                                    value: 'green',
-                                                    title: 'Green',
-                                                },
-                                                {
-                                                    value: 'orange',
-                                                    title: 'Orange',
-                                                },
-                                            ],
-                                        },
-                                    },
-                                    is_promotion: {
-                                        label: 'Promo?',
-                                        type: 'boolean',
-                                        operators: ['equal'],
-                                        valueSources: ['value'],
-                                    },
-                                },
-                            }),
-                            {id: c.Utils.uuid(), type: 'group'});
-                    f(v);
-                    var g = function (e) {
-                        var t = e.id,
-                            r = (e.tree, e.load_format),
-                            a = e.fields,
-                            o = e.config,
-                            i = e.setProps,
-                            u = (e.sqlFormat, d([c.BasicConfig, o]));
-                        console.log(o);
-                        var g = n(n({}, u), a),
-                            y = (function (e, t, r) {
-                                var n, a, o, i;
-                                switch (e) {
-                                    case 'spelFormat':
-                                        if ('string' != typeof t)
-                                            throw new Error(
-                                                'Spel format requires string input'
-                                            );
-                                        if (
-                                            ((i = (n = _(t, r))[0]),
-                                            (o = n[1]).length > 0)
-                                        )
-                                            throw (
-                                                (console.log(
-                                                    'There were errors loading the tree:',
-                                                    o
-                                                ),
-                                                new Error(
-                                                    'There were errors loading the tree: ' +
-                                                        o
-                                                ))
-                                            );
-                                    case 'jsonLogicFormat':
-                                        if ('object' != typeof t)
-                                            throw new Error(
-                                                'JsonLogic format requires object input'
-                                            );
-                                        if (
-                                            ((i = (a = p(t, r))[0]),
-                                            (o = a[1]).length > 0)
-                                        )
-                                            throw (
-                                                (console.log(
-                                                    'There were errors loading the tree:',
-                                                    o
-                                                ),
-                                                new Error(
-                                                    'There were errors loading the tree: ' +
-                                                        o
-                                                ))
-                                            );
-                                        return i;
-                                    case 'tree':
-                                        if (
-                                            !(function (e) {
-                                                return (
-                                                    'group' === e.type ||
-                                                    'switch_group' === e.type
+                        v = (c.Utils.uuid, {id: c.Utils.uuid(), type: 'group'}),
+                        g = f(v),
+                        y = function (e) {
+                            var t = e.id,
+                                r = (e.tree, e.load_format),
+                                a = e.fields,
+                                o = e.config,
+                                i = e.setProps,
+                                u = d([c.BasicConfig, o]);
+                            console.log(o);
+                            var y = n(n({}, u), a),
+                                b = (function (e, t, r) {
+                                    var n, a, o, i;
+                                    switch (e) {
+                                        case 'spelFormat':
+                                            if ('string' != typeof t)
+                                                throw new Error(
+                                                    'Spel format requires string input'
                                                 );
-                                            })(t)
-                                        )
-                                            throw new Error(
-                                                'Tree Format requires JsonTree input'
-                                            );
-                                        return h(f(t), r);
-                                }
-                            })(r, e[r] || v, g),
-                            b = (0, s.useState)({
-                                tree: y,
-                                config: g,
-                                fields: a,
-                            }),
-                            M = b[0],
-                            L = b[1];
-                        (0, s.useEffect)(function () {
-                            i({sqlFormat: c.Utils.sqlFormat(M.tree, M.config)});
-                        });
-                        var w = (0, s.useCallback)(function (e, t) {
-                                L(function (r) {
-                                    return n(n({}, r), {tree: e, config: t});
+                                            if (
+                                                ((i = (n = _(t, r))[0]),
+                                                (o = n[1]).length > 0)
+                                            )
+                                                throw (
+                                                    (console.log(
+                                                        'There were errors loading the tree:',
+                                                        o
+                                                    ),
+                                                    new Error(
+                                                        'There were errors loading the tree: ' +
+                                                            o
+                                                    ))
+                                                );
+                                        case 'jsonLogicFormat':
+                                            if ('object' != typeof t)
+                                                throw new Error(
+                                                    'JsonLogic format requires object input'
+                                                );
+                                            if (
+                                                ((i = (a = p(t, r))[0]),
+                                                (o = a[1]).length > 0)
+                                            )
+                                                throw (
+                                                    (console.log(
+                                                        'There were errors loading the tree:',
+                                                        o
+                                                    ),
+                                                    new Error(
+                                                        'There were errors loading the tree: ' +
+                                                            o
+                                                    ))
+                                                );
+                                            return i;
+                                        case 'tree':
+                                            if (
+                                                !(function (e) {
+                                                    return (
+                                                        'group' === e.type ||
+                                                        'switch_group' ===
+                                                            e.type
+                                                    );
+                                                })(t)
+                                            )
+                                                throw new Error(
+                                                    'Tree Format requires JsonTree input'
+                                                );
+                                            return h(f(t), r);
+                                    }
+                                })(r, e[r] || v, y),
+                                M = (0, s.useState)({tree: b, config: y}),
+                                L = M[0],
+                                w = M[1];
+                            (0, s.useEffect)(function () {
+                                i({
+                                    sqlFormat: c.Utils.sqlFormat(
+                                        L.tree,
+                                        L.config
+                                    ),
+                                    tree: m(L.tree),
+                                    jsonLogicFormat: c.Utils.jsonLogicFormat(
+                                        L.tree,
+                                        L.config
+                                    ),
+                                    mongodbFormat: c.Utils.mongodbFormat(
+                                        L.tree,
+                                        L.config
+                                    ),
+                                    queryString: c.Utils.queryString(
+                                        L.tree,
+                                        L.config
+                                    ),
+                                    elasticSearchFormat:
+                                        c.Utils.elasticSearchFormat(
+                                            L.tree,
+                                            L.config
+                                        ),
+                                    spelFormat: c.Utils.spelFormat(
+                                        L.tree,
+                                        L.config
+                                    ),
                                 });
-                                var r = m(h(e, t));
-                                i({tree: r});
-                            }, []),
-                            O = (0, s.useCallback)(function (e) {
-                                return l.default.createElement(
-                                    'div',
-                                    {
-                                        className: 'query-builder-container',
-                                        style: {padding: '10px'},
+                            }),
+                                (0, s.useEffect)(
+                                    function () {
+                                        i({tree: v});
+                                        var e = n(n({}, L.config), {fields: a});
+                                        w(function (t) {
+                                            return n(n({}, t), {
+                                                tree: g,
+                                                config: e,
+                                            });
+                                        });
                                     },
+                                    [a]
+                                );
+                            var O = (0, s.useCallback)(function (e, t) {
+                                    w(function (r) {
+                                        return n(n({}, r), {
+                                            tree: e,
+                                            config: t,
+                                        });
+                                    });
+                                    var r = m(h(e, t));
+                                    i({tree: r});
+                                }, []),
+                                k = (0, s.useCallback)(function (e) {
+                                    return l.default.createElement(
+                                        'div',
+                                        {
+                                            className:
+                                                'query-builder-container',
+                                            style: {padding: '10px'},
+                                        },
+                                        l.default.createElement(
+                                            'div',
+                                            {
+                                                className:
+                                                    'query-builder qb-lite',
+                                            },
+                                            l.default.createElement(
+                                                c.Builder,
+                                                n({}, e)
+                                            )
+                                        )
+                                    );
+                                }, []);
+                            return l.default.createElement(
+                                'div',
+                                {id: t},
+                                l.default.createElement(
+                                    c.Query,
+                                    n({}, y, {
+                                        value: L.tree,
+                                        onChange: O,
+                                        renderBuilder: k,
+                                    })
+                                ),
+                                l.default.createElement(
+                                    'div',
+                                    {className: 'query-builder-result'},
                                     l.default.createElement(
                                         'div',
-                                        {className: 'query-builder qb-lite'},
+                                        null,
+                                        'Query string:',
+                                        ' ',
                                         l.default.createElement(
-                                            c.Builder,
-                                            n({}, e)
-                                        )
-                                    )
-                                );
-                            }, []);
-                        return l.default.createElement(
-                            'div',
-                            {id: t},
-                            l.default.createElement(
-                                c.Query,
-                                n({}, g, {
-                                    value: M.tree,
-                                    onChange: w,
-                                    renderBuilder: O,
-                                })
-                            ),
-                            l.default.createElement(
-                                'div',
-                                {className: 'query-builder-result'},
-                                l.default.createElement(
-                                    'div',
-                                    null,
-                                    'Query string:',
-                                    ' ',
-                                    l.default.createElement(
-                                        'pre',
-                                        null,
-                                        JSON.stringify(
-                                            c.Utils.queryString(
-                                                M.tree,
-                                                M.config
+                                            'pre',
+                                            null,
+                                            JSON.stringify(
+                                                c.Utils.queryString(
+                                                    L.tree,
+                                                    L.config
+                                                )
                                             )
                                         )
-                                    )
-                                ),
-                                l.default.createElement(
-                                    'div',
-                                    null,
-                                    'MongoDb query:',
-                                    ' ',
+                                    ),
                                     l.default.createElement(
-                                        'pre',
+                                        'div',
                                         null,
-                                        JSON.stringify(
-                                            c.Utils.mongodbFormat(
-                                                M.tree,
-                                                M.config
+                                        'MongoDb query:',
+                                        ' ',
+                                        l.default.createElement(
+                                            'pre',
+                                            null,
+                                            JSON.stringify(
+                                                c.Utils.mongodbFormat(
+                                                    L.tree,
+                                                    L.config
+                                                )
                                             )
                                         )
-                                    )
-                                ),
-                                l.default.createElement(
-                                    'div',
-                                    null,
-                                    'SQL where:',
-                                    ' ',
+                                    ),
                                     l.default.createElement(
-                                        'pre',
+                                        'div',
                                         null,
-                                        JSON.stringify(
-                                            c.Utils.sqlFormat(M.tree, M.config)
+                                        'SQL where:',
+                                        ' ',
+                                        l.default.createElement(
+                                            'pre',
+                                            null,
+                                            JSON.stringify(
+                                                c.Utils.sqlFormat(
+                                                    L.tree,
+                                                    L.config
+                                                )
+                                            )
                                         )
-                                    )
-                                ),
-                                l.default.createElement(
-                                    'div',
-                                    null,
-                                    'JsonLogic:',
-                                    ' ',
+                                    ),
                                     l.default.createElement(
-                                        'pre',
+                                        'div',
                                         null,
-                                        JSON.stringify(
-                                            c.Utils.jsonLogicFormat(
-                                                M.tree,
-                                                M.config
+                                        'JsonLogic:',
+                                        ' ',
+                                        l.default.createElement(
+                                            'pre',
+                                            null,
+                                            JSON.stringify(
+                                                c.Utils.jsonLogicFormat(
+                                                    L.tree,
+                                                    L.config
+                                                )
                                             )
                                         )
                                     )
                                 )
-                            )
-                        );
-                    };
-                    (g.defaultProps = {
+                            );
+                        };
+                    (y.defaultProps = {
                         tree: v,
                         theme: 'basic',
                         load_format: 'tree',
                         alwaysShowActionButtons: !0,
                     }),
-                        (t.default = g);
+                        (t.default = y);
                 },
                 19842: function (e, t, r) {
                     'use strict';
