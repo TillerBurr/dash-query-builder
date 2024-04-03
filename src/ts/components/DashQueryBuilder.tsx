@@ -1,6 +1,6 @@
-import {useState, useCallback, useEffect} from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import React from 'react';
-import {loadFormatType, Props} from '../props';
+import { loadFormatType, Props } from '../props';
 import {
     Utils as QbUtils,
     Query,
@@ -15,25 +15,19 @@ import {
 } from '@react-awesome-query-builder/ui';
 import '@react-awesome-query-builder/ui/css/styles.css';
 import * as R from 'ramda';
-const {mergeAll} = R;
+const { mergeAll } = R;
 
 const {
     loadTree,
     _loadFromJsonLogic,
     loadFromSpel,
     checkTree,
-    queryString,
-    queryBuilderFormat,
-    mongodbFormat,
-    sqlFormat,
-    jsonLogicFormat,
-    elasticSearchFormat,
-    spelFormat,
+
     getTree,
     uuid,
 } = QbUtils;
 
-const emptyTree: JsonTree = {id: QbUtils.uuid(), type: 'group'};
+const emptyTree: JsonTree = { id: QbUtils.uuid(), type: 'group' };
 const emptyImmutableTree: ImmutableTree = loadTree(emptyTree);
 function isJsonTree(tree: any): tree is JsonTree {
     return tree.type === 'group' || tree.type === 'switch_group';
@@ -77,12 +71,13 @@ const loadNewTree = (
  * Component description
  */
 const DashQueryBuilder = (props: Props) => {
-    const {id, tree, load_format, fields, config, setProps} = props;
-    let initialConfig: Config = mergeAll([BasicConfig, config]);
-    console.log(config);
-    let completeConfig = {...initialConfig, ...fields};
+    const { id, tree, load_format, fields, config, setProps, spelFormat } = props;
+    const initialConfig: Config = mergeAll([BasicConfig, config]);
+    const completeConfig = { ...initialConfig, fields: fields };
 
+    const isFirstRun = useRef(true)
     const loadItem = props[load_format] || emptyTree;
+    console.log("loadItem", loadItem)
 
     const initialImmutableTree = loadNewTree(
         load_format,
@@ -92,7 +87,6 @@ const DashQueryBuilder = (props: Props) => {
     const [state, setState] = useState({
         tree: initialImmutableTree,
         config: completeConfig,
-        // fields: fields,
     });
     useEffect(() => {
         setProps({
@@ -109,18 +103,27 @@ const DashQueryBuilder = (props: Props) => {
         }),
             [tree];
     });
+    useEffect(() => {
+        if (isFirstRun.current) {
+            return;
+        }
+        // if spelFormat is changed and load_format is spelFormat: loadModifiedTree, set tree state
+    }, [spelFormat]);
 
     useEffect(() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false
+            return
+        }
         setProps({
             tree: emptyTree,
         });
-        const newConfig = {...state.config, fields: fields};
+        const newConfig = { ...state.config, fields: fields };
         setState((prevState) => ({
             ...prevState,
             tree: emptyImmutableTree,
             config: newConfig,
         }));
-        //todo: fix
     }, [fields]);
 
     const onChange = useCallback(
@@ -132,14 +135,14 @@ const DashQueryBuilder = (props: Props) => {
                 config: config,
             }));
             const jsonTree = getTree(checkTree(immutableTree, config));
-            setProps({tree: jsonTree});
+            setProps({ tree: jsonTree });
         },
         []
     );
 
     const renderBuilder = useCallback(
         (props: BuilderProps) => (
-            <div className="query-builder-container" style={{padding: '10px'}}>
+            <div className="query-builder-container" style={{ padding: '10px' }}>
                 <div className="query-builder qb-lite">
                     <Builder {...props} />
                 </div>
@@ -156,40 +159,6 @@ const DashQueryBuilder = (props: Props) => {
                 onChange={onChange}
                 renderBuilder={renderBuilder}
             />
-            <div className="query-builder-result">
-                <div>
-                    Query string:{' '}
-                    <pre>
-                        {JSON.stringify(
-                            QbUtils.queryString(state.tree, state.config)
-                        )}
-                    </pre>
-                </div>
-                <div>
-                    MongoDb query:{' '}
-                    <pre>
-                        {JSON.stringify(
-                            QbUtils.mongodbFormat(state.tree, state.config)
-                        )}
-                    </pre>
-                </div>
-                <div>
-                    SQL where:{' '}
-                    <pre>
-                        {JSON.stringify(
-                            QbUtils.sqlFormat(state.tree, state.config)
-                        )}
-                    </pre>
-                </div>
-                <div>
-                    JsonLogic:{' '}
-                    <pre>
-                        {JSON.stringify(
-                            QbUtils.jsonLogicFormat(state.tree, state.config)
-                        )}
-                    </pre>
-                </div>
-            </div>
         </div>
     );
 };

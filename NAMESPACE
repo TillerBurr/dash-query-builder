@@ -1,5 +1,4 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 export(DashQueryBuilder)
-export(RDashQueryBuilder)
 export(dashQueryBuilder)

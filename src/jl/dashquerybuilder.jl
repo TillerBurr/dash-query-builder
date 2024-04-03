@@ -612,3 +612,4 @@ function dashquerybuilder(; kwargs...)
         wild_props = Symbol[]
         return Component("dashquerybuilder", "DashQueryBuilder", "dash_query_builder", available_props, wild_props; kwargs...)
 end
+

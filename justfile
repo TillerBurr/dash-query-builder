@@ -2,24 +2,24 @@ set dotenv-load := false
 
 # Generate components and build the bundle
 build:
-    npm run build
+    pnpm run build
 
 # Build the webpack bundle
 build-js:
-    npm run build:js
+    pnpm run build:js
 
 # Generate the components
 generate:
-    npm run build:backends
+    pnpm run build:backends
 
 # Rebuild the bundle on change
 watch:
-    npm run watch
+    pnpm run watch
 
 # Install  pip requirements & node modules.
 install:
     python -m pip install -r requirements.txt
-    npm install
+    pnpm install
 
 # Package the application for distribution using python wheel.
 package: clean build
@@ -27,7 +27,7 @@ package: clean build
 
 # Publish the package to pypi using twine.
 publish: package
-    npm publish
+    pnpm publish
     twine upload dist/*
 
 # Remove dist & build directories

@@ -123,7 +123,7 @@ app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(
             id="component",
-            fields=fields,
+            fields=fields["fields"],
             tree=tree,
         ),
         html.Button("Change Fields", id="fields-button"),
