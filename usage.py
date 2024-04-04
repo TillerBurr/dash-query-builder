@@ -122,15 +122,15 @@ tree = {
     ],
 }
 jsonLogic = {
-    "errors": [],
-    "logic": {
-        "and": [
-            {"==": [{"var": "main_report_data.qty"}, 3]},
-            {"<=": [11, {"var": "main_report_data.price"}, 30]},
-            {"in": [{"var": "main_report_data.color"}, ["green", "yellow"]]},
-        ]
-    },
-    "data": {"main_report_data": {"qty": None, "price": None, "color": None}},
+    # "errors": [],
+    # "logic": {
+    "and": [
+        {"==": [{"var": "main_report_data.qty"}, 3]},
+        {"<=": [11, {"var": "main_report_data.price"}, 30]},
+        {"in": [{"var": "main_report_data.color"}, ["green", "yellow"]]},
+    ]
+    # },
+    # "data": {"main_report_data": {"qty": None, "price": None, "color": None}},
 }
 broken_jsonLogic = {
     "errors": [],

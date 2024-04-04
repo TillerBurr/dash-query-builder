@@ -13,7 +13,7 @@ import {
 } from '@react-awesome-query-builder/ui';
 import '@react-awesome-query-builder/ui/css/styles.css';
 import * as R from 'ramda';
-const {mergeAll} = R;
+const {mergeAll, isEmpty} = R;
 
 const {loadTree, _loadFromJsonLogic, loadFromSpel, checkTree, getTree} =
     QbUtils;
@@ -29,6 +29,7 @@ const loadNewTree = (
     config: Config
 ): ImmutableTree => {
     let error: string[], tree: ImmutableTree;
+    console.log('loadNewTree', load_format, loadItem);
     switch (load_format) {
         case 'spelFormat':
             if (typeof loadItem !== 'string') {
@@ -45,14 +46,15 @@ const loadNewTree = (
         case 'jsonLogicFormat':
             if (typeof loadItem !== 'object') {
                 throw new Error('JsonLogic format requires object input');
+            } else if (isEmpty(loadItem)) {
+                console.log('empty tree');
+                return loadTree(emptyTree);
+            } else {
+                [tree, error] = _loadFromJsonLogic(loadItem, config);
+                console.log('tree', tree);
+                console.log('error', error);
+                return tree;
             }
-
-            [tree, error] = _loadFromJsonLogic(loadItem, config);
-            if (error.length > 0) {
-                console.log('There were errors loading the tree:', error);
-                throw new Error('There were errors loading the tree: ' + error);
-            }
-            return tree;
 
         case 'tree':
             if (!isJsonTree(loadItem)) {
@@ -84,8 +86,6 @@ const DashQueryBuilder = (props: Props) => {
     const initialConfig: Config = mergeAll([BasicConfig, config]);
     const completeConfig = {...initialConfig, fields: fields};
     const initialLoadItem = props[loadFormat] || emptyTree;
-    console.log('props', props);
-    console.log('loadformat', loadFormat);
     const initialImmutableTree = loadNewTree(
         loadFormat,
         initialLoadItem,
@@ -104,7 +104,7 @@ const DashQueryBuilder = (props: Props) => {
                 jsonLogicFormat: QbUtils.jsonLogicFormat(
                     newImmutableTree,
                     state.config
-                ),
+                ).logic,
                 mongoDBFormat: QbUtils.mongodbFormat(
                     newImmutableTree,
                     state.config
@@ -119,12 +119,6 @@ const DashQueryBuilder = (props: Props) => {
                 ),
                 spelFormat: QbUtils.spelFormat(newImmutableTree, state.config),
             };
-            // if (loadFormat === 'spelFormat') {
-            //     newProps = R.omit(['spelFormat'], newProps);
-            // } else if (loadFormat === 'jsonLogicFormat') {
-            //     newProps = R.omit(['jsonLogicFormat'], newProps);
-            // }
-            console.log('newProps', newProps);
             setState((prevState) => ({
                 ...prevState,
                 immutableTree: newImmutableTree,
@@ -153,7 +147,8 @@ const DashQueryBuilder = (props: Props) => {
         if (isFirstRun.current) {
             return;
         }
-        if (loadFormat === 'jsonLogicFormat') {
+        if (loadFormat === 'jsonLogicFormat' && jsonLogicFormat !== undefined) {
+            console.log('jsonLogicFormat', jsonLogicFormat);
             let newTree = loadNewTree(
                 'jsonLogicFormat',
                 jsonLogicFormat,
@@ -163,6 +158,7 @@ const DashQueryBuilder = (props: Props) => {
                 ...prevState,
                 immutableTree: newTree,
             }));
+            setProps({tree: getTree(newTree)});
         }
     }, [jsonLogicFormat]);
 
