@@ -5,6 +5,7 @@ import {
     ImmutableTree,
     JsonTree,
     JsonLogicTree,
+    ElasticSearchFormatQueryType,
 } from '@react-awesome-query-builder/ui';
 import * as R from 'ramda';
 const {mergeAll} = R;
@@ -32,17 +33,22 @@ export type DashComponentProps = {
 export type loadFormatType = 'jsonLogicFormat' | 'spelFormat' | 'tree';
 export type themeType = 'mui' | 'antd' | 'fluent' | 'bootstrap' | 'basic';
 
-export type Props = {
-    fields: Fields;
-    config?: Config;
-    load_format: loadFormatType;
+export interface FormatProps {
     tree: JsonTree;
     sqlFormat?: string;
     jsonLogicFormat?: JsonLogicTree;
     queryBuilderStringFormat?: string;
-    mongoDBFormat?: string;
-    elasticSearchFormat?: string;
+    mongoDBFormat?: Object;
+    queryString?: string;
+    elasticSearchFormat?: Object;
     spelFormat?: string;
+}
+interface FullProps extends FormatProps {
+    fields: Fields;
+    config?: Config;
+    loadFormat: loadFormatType;
     alwaysShowActionButtons: boolean;
     theme: themeType;
-} & DashComponentProps;
+}
+
+export type Props = FullProps & DashComponentProps;

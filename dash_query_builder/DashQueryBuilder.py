@@ -1458,7 +1458,35 @@ Keyword arguments:
 
     - widgets (dict with strings as keys and values of type boolean | number | string | dict | list; required)
 
-- elasticSearchFormat (string; optional)
+- elasticSearchFormat (dict; optional)
+
+    `elasticSearchFormat` is a dict with keys:
+
+    - constructor (optional):
+        The initial value of Object.prototype.constructor is the
+        standard built-in Object constructor.
+
+    - hasOwnProperty (optional):
+        Determines whether an object has a property with the specified
+        name. @,param,v, ,A property name.
+
+    - isPrototypeOf (optional):
+        Determines whether an object exists in another object's
+        prototype chain. @,param,v, ,Another object whose prototype
+        chain is to be checked.
+
+    - propertyIsEnumerable (optional):
+        Determines whether a specified property is enumerable.
+        @,param,v, ,A property name.
+
+    - toLocaleString (optional):
+        Returns a date converted to a string using the current locale.
+
+    - toString (optional):
+        Returns a string representation of an object.
+
+    - valueOf (optional):
+        Returns the primitive value of the specified object.
 
 - fields (dict with strings as keys and values of type boolean | number | string | dict | list; required)
 
@@ -1494,9 +1522,39 @@ Keyword arguments:
 
 - load_format (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; default 'tree')
 
-- mongoDBFormat (string; optional)
+- mongoDBFormat (dict; optional)
+
+    `mongoDBFormat` is a dict with keys:
+
+    - constructor (optional):
+        The initial value of Object.prototype.constructor is the
+        standard built-in Object constructor.
+
+    - hasOwnProperty (optional):
+        Determines whether an object has a property with the specified
+        name. @,param,v, ,A property name.
+
+    - isPrototypeOf (optional):
+        Determines whether an object exists in another object's
+        prototype chain. @,param,v, ,Another object whose prototype
+        chain is to be checked.
+
+    - propertyIsEnumerable (optional):
+        Determines whether a specified property is enumerable.
+        @,param,v, ,A property name.
+
+    - toLocaleString (optional):
+        Returns a date converted to a string using the current locale.
+
+    - toString (optional):
+        Returns a string representation of an object.
+
+    - valueOf (optional):
+        Returns the primitive value of the specified object.
 
 - queryBuilderStringFormat (string; optional)
+
+- queryString (string; optional)
 
 - spelFormat (string; optional)
 
@@ -1510,10 +1568,10 @@ Keyword arguments:
     _namespace = 'dash_query_builder'
     _type = 'DashQueryBuilder'
     @_explicitize_args
-    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, load_format=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree']
+    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, load_format=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'spelFormat', 'sqlFormat', 'theme', 'tree']
+        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

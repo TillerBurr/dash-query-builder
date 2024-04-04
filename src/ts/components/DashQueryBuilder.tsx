@@ -1,33 +1,24 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import {useState, useRef, useCallback, useEffect} from 'react';
 import React from 'react';
-import { loadFormatType, Props } from '../props';
+import {FormatProps, loadFormatType, Props} from '../props';
 import {
     Utils as QbUtils,
     Query,
     Builder,
     BasicConfig,
     JsonTree,
-    JsonGroup,
     Config,
     ImmutableTree,
     BuilderProps,
-    JsonLogicTree,
 } from '@react-awesome-query-builder/ui';
 import '@react-awesome-query-builder/ui/css/styles.css';
 import * as R from 'ramda';
-const { mergeAll } = R;
+const {mergeAll} = R;
 
-const {
-    loadTree,
-    _loadFromJsonLogic,
-    loadFromSpel,
-    checkTree,
+const {loadTree, _loadFromJsonLogic, loadFromSpel, checkTree, getTree} =
+    QbUtils;
 
-    getTree,
-    uuid,
-} = QbUtils;
-
-const emptyTree: JsonTree = { id: QbUtils.uuid(), type: 'group' };
+const emptyTree: JsonTree = {id: QbUtils.uuid(), type: 'group', children1: []};
 const emptyImmutableTree: ImmutableTree = loadTree(emptyTree);
 function isJsonTree(tree: any): tree is JsonTree {
     return tree.type === 'group' || tree.type === 'switch_group';
@@ -41,17 +32,21 @@ const loadNewTree = (
     switch (load_format) {
         case 'spelFormat':
             if (typeof loadItem !== 'string') {
-                throw new Error('Spel format requires string input');
+                return loadTree(emptyTree);
+            } else {
+                [tree, error] = loadFromSpel(loadItem, config);
             }
-            [tree, error] = loadFromSpel(loadItem, config);
+
             if (error.length > 0) {
                 console.log('There were errors loading the tree:', error);
                 throw new Error('There were errors loading the tree: ' + error);
             }
+            return tree;
         case 'jsonLogicFormat':
             if (typeof loadItem !== 'object') {
                 throw new Error('JsonLogic format requires object input');
             }
+
             [tree, error] = _loadFromJsonLogic(loadItem, config);
             if (error.length > 0) {
                 console.log('There were errors loading the tree:', error);
@@ -71,91 +66,158 @@ const loadNewTree = (
  * Component description
  */
 const DashQueryBuilder = (props: Props) => {
-    const { id, tree, load_format, fields, config, setProps, spelFormat } = props;
+    const {
+        id,
+        tree,
+        loadFormat,
+        fields,
+        config,
+        setProps,
+        spelFormat,
+        jsonLogicFormat,
+        alwaysShowActionButtons,
+    } = props;
+
+    const previousTree: React.MutableRefObject<JsonTree> = useRef(null);
+
+    const isFirstRun = useRef(true);
     const initialConfig: Config = mergeAll([BasicConfig, config]);
-    const completeConfig = { ...initialConfig, fields: fields };
-
-    const isFirstRun = useRef(true)
-    const loadItem = props[load_format] || emptyTree;
-    console.log("loadItem", loadItem)
-
+    const completeConfig = {...initialConfig, fields: fields};
+    const initialLoadItem = props[loadFormat] || emptyTree;
+    console.log('props', props);
+    console.log('loadformat', loadFormat);
     const initialImmutableTree = loadNewTree(
-        load_format,
-        loadItem,
+        loadFormat,
+        initialLoadItem,
         completeConfig
     );
     const [state, setState] = useState({
-        tree: initialImmutableTree,
+        immutableTree: initialImmutableTree,
         config: completeConfig,
     });
     useEffect(() => {
-        setProps({
-            sqlFormat: QbUtils.sqlFormat(state.tree, state.config),
-            tree: getTree(state.tree),
-            jsonLogicFormat: QbUtils.jsonLogicFormat(state.tree, state.config),
-            mongodbFormat: QbUtils.mongodbFormat(state.tree, state.config),
-            queryString: QbUtils.queryString(state.tree, state.config),
-            elasticSearchFormat: QbUtils.elasticSearchFormat(
-                state.tree,
-                state.config
-            ),
-            spelFormat: QbUtils.spelFormat(state.tree, state.config),
-        }),
-            [tree];
-    });
+        if (previousTree.current !== tree) {
+            let newImmutableTree = loadTree(tree);
+            let newProps: FormatProps = {
+                sqlFormat: QbUtils.sqlFormat(newImmutableTree, state.config),
+                tree: tree,
+                jsonLogicFormat: QbUtils.jsonLogicFormat(
+                    newImmutableTree,
+                    state.config
+                ),
+                mongoDBFormat: QbUtils.mongodbFormat(
+                    newImmutableTree,
+                    state.config
+                ),
+                queryString: QbUtils.queryString(
+                    newImmutableTree,
+                    state.config
+                ),
+                elasticSearchFormat: QbUtils.elasticSearchFormat(
+                    newImmutableTree,
+                    state.config
+                ),
+                spelFormat: QbUtils.spelFormat(newImmutableTree, state.config),
+            };
+            // if (loadFormat === 'spelFormat') {
+            //     newProps = R.omit(['spelFormat'], newProps);
+            // } else if (loadFormat === 'jsonLogicFormat') {
+            //     newProps = R.omit(['jsonLogicFormat'], newProps);
+            // }
+            console.log('newProps', newProps);
+            setState((prevState) => ({
+                ...prevState,
+                immutableTree: newImmutableTree,
+            }));
+            setProps({...newProps});
+            previousTree.current = tree;
+        }
+    }, [tree]);
+
     useEffect(() => {
         if (isFirstRun.current) {
             return;
         }
-        // if spelFormat is changed and load_format is spelFormat: loadModifiedTree, set tree state
+        if (loadFormat === 'spelFormat' && spelFormat !== undefined) {
+            console.log('spelFormat', spelFormat);
+            let newTree = loadNewTree('spelFormat', spelFormat, state.config);
+            setState((prevState) => ({
+                ...prevState,
+                immutableTree: newTree,
+            }));
+            setProps({tree: getTree(newTree)});
+        }
     }, [spelFormat]);
 
     useEffect(() => {
         if (isFirstRun.current) {
-            isFirstRun.current = false
-            return
+            return;
+        }
+        if (loadFormat === 'jsonLogicFormat') {
+            let newTree = loadNewTree(
+                'jsonLogicFormat',
+                jsonLogicFormat,
+                state.config
+            );
+            setState((prevState) => ({
+                ...prevState,
+                immutableTree: newTree,
+            }));
+        }
+    }, [jsonLogicFormat]);
+
+    useEffect(() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false;
+            return;
         }
         setProps({
             tree: emptyTree,
         });
-        const newConfig = { ...state.config, fields: fields };
+        const newConfig = {...state.config, fields: fields};
         setState((prevState) => ({
             ...prevState,
-            tree: emptyImmutableTree,
+            immutableTree: emptyImmutableTree,
             config: newConfig,
         }));
     }, [fields]);
 
     const onChange = useCallback(
         (immutableTree: ImmutableTree, config: Config) => {
+            console.log('onChange');
             // Tip: for better performance you can apply `throttle` - see `examples/demo`
             setState((prevState) => ({
                 ...prevState,
-                tree: immutableTree,
+                immutableTree: immutableTree,
                 config: config,
             }));
             const jsonTree = getTree(checkTree(immutableTree, config));
-            setProps({ tree: jsonTree });
+            setProps({tree: jsonTree});
         },
         []
     );
 
     const renderBuilder = useCallback(
         (props: BuilderProps) => (
-            <div className="query-builder-container" style={{ padding: '10px' }}>
-                <div className="query-builder qb-lite">
+            <div className="query-builder-container" style={{padding: '10px'}}>
+                <div
+                    className={
+                        'query-builder ' +
+                        (!alwaysShowActionButtons ? 'qb-lite' : '')
+                    }
+                >
                     <Builder {...props} />
                 </div>
             </div>
         ),
-        []
+        [alwaysShowActionButtons]
     );
 
     return (
         <div id={id}>
             <Query
-                {...completeConfig}
-                value={state.tree}
+                {...state.config}
+                value={state.immutableTree}
                 onChange={onChange}
                 renderBuilder={renderBuilder}
             />
@@ -166,7 +228,7 @@ const DashQueryBuilder = (props: Props) => {
 DashQueryBuilder.defaultProps = {
     tree: emptyTree,
     theme: 'basic',
-    load_format: 'tree',
+    loadFormat: 'tree',
     alwaysShowActionButtons: true,
 };
 

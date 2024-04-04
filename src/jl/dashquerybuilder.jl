@@ -585,7 +585,18 @@ Those elements have the following types:
   - `fields` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
   - `funcs` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; optional)
   - `ctx` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
-- `elasticSearchFormat` (String; optional)
+- `elasticSearchFormat` (optional): . elasticSearchFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
 - `fields` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
 - `jsonLogicFormat` (optional): . jsonLogicFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
@@ -600,16 +611,27 @@ Those elements have the following types:
   - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
 @,param,v, ,A property name.
 - `load_format` (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; optional)
-- `mongoDBFormat` (String; optional)
+- `mongoDBFormat` (optional): . mongoDBFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
 - `queryBuilderStringFormat` (String; optional)
+- `queryString` (String; optional)
 - `spelFormat` (String; optional)
 - `sqlFormat` (String; optional)
 - `theme` (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; optional)
 - `tree` (Bool | Real | String | Dict | Array; optional)
 """
 function dashquerybuilder(; kwargs...)
-        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :jsonLogicFormat, :load_format, :mongoDBFormat, :queryBuilderStringFormat, :spelFormat, :sqlFormat, :theme, :tree]
+        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :jsonLogicFormat, :load_format, :mongoDBFormat, :queryBuilderStringFormat, :queryString, :spelFormat, :sqlFormat, :theme, :tree]
         wild_props = Symbol[]
         return Component("dashquerybuilder", "DashQueryBuilder", "dash_query_builder", available_props, wild_props; kwargs...)
 end
-

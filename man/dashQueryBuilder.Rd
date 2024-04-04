@@ -13,8 +13,8 @@ Component description
 dashQueryBuilder(id=NULL, alwaysShowActionButtons=NULL, config=NULL,
 elasticSearchFormat=NULL, fields=NULL, jsonLogicFormat=NULL,
 load_format=NULL, mongoDBFormat=NULL,
-queryBuilderStringFormat=NULL, spelFormat=NULL,
-sqlFormat=NULL, theme=NULL, tree=NULL)
+queryBuilderStringFormat=NULL, queryString=NULL,
+spelFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL)
 }
 
 \arguments{
@@ -598,7 +598,18 @@ those elements have the following types:
   - funcs (list with named elements and values of type logical | numeric | character | named list | unnamed list; optional)
   - ctx (list with named elements and values of type logical | numeric | character | named list | unnamed list; required). }
 
-\item{elasticSearchFormat}{Character. }
+\item{elasticSearchFormat}{Lists containing elements 'constructor', 'tostring', 'tolocalestring', 'valueof', 'hasownproperty', 'isprototypeof', 'propertyisenumerable'.
+those elements have the following types:
+  - constructor (optional): the initial value of object.prototype.constructor is the standard built-in object constructor.
+  - tostring (optional): returns a string representation of an object.
+  - tolocalestring (optional): returns a date converted to a string using the current locale.
+  - valueof (optional): returns the primitive value of the specified object.
+  - hasownproperty (optional): determines whether an object has a property with the specified name.
+@,param,v, ,a property name.
+  - isprototypeof (optional): determines whether an object exists in another object's prototype chain.
+@,param,v, ,another object whose prototype chain is to be checked.
+  - propertyisenumerable (optional): determines whether a specified property is enumerable.
+@,param,v, ,a property name.. }
 
 \item{fields}{List with named elements and values of type logical | numeric | character | named list | unnamed list. }
 
@@ -617,9 +628,22 @@ those elements have the following types:
 
 \item{load_format}{A value equal to: 'jsonlogicformat', 'spelformat', 'tree'. }
 
-\item{mongoDBFormat}{Character. }
+\item{mongoDBFormat}{Lists containing elements 'constructor', 'tostring', 'tolocalestring', 'valueof', 'hasownproperty', 'isprototypeof', 'propertyisenumerable'.
+those elements have the following types:
+  - constructor (optional): the initial value of object.prototype.constructor is the standard built-in object constructor.
+  - tostring (optional): returns a string representation of an object.
+  - tolocalestring (optional): returns a date converted to a string using the current locale.
+  - valueof (optional): returns the primitive value of the specified object.
+  - hasownproperty (optional): determines whether an object has a property with the specified name.
+@,param,v, ,a property name.
+  - isprototypeof (optional): determines whether an object exists in another object's prototype chain.
+@,param,v, ,another object whose prototype chain is to be checked.
+  - propertyisenumerable (optional): determines whether a specified property is enumerable.
+@,param,v, ,a property name.. }
 
 \item{queryBuilderStringFormat}{Character. }
+
+\item{queryString}{Character. }
 
 \item{spelFormat}{Character. }
 
