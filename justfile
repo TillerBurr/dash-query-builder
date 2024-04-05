@@ -2,10 +2,14 @@ set dotenv-load := false
 
 # Generate components and build the bundle
 build:
+    rm -rf dash_query_builder/js
+    rm -rf dash_query_builder/*.js
     pnpm run build
 
 # Build the webpack bundle
 build-js:
+    rm -rf dash_query_builder/js
+    rm -rf dash_query_builder/*.js
     pnpm run build:js
 
 # Generate the components

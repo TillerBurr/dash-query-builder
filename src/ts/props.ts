@@ -1,14 +1,9 @@
 import {
     Config,
     Fields,
-    BasicConfig,
-    ImmutableTree,
     JsonTree,
     JsonLogicTree,
-    ElasticSearchFormatQueryType,
 } from '@react-awesome-query-builder/ui';
-import * as R from 'ramda';
-const {mergeAll} = R;
 /**
  * Every Dash components are given these props.
  * Use with your own props:

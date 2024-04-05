@@ -5,7 +5,7 @@ from dash.development.base_component import Component, _explicitize_args
 
 class DashQueryBuilder(Component):
     """A DashQueryBuilder component.
-Component description
+
 
 Keyword arguments:
 
@@ -20,160 +20,25 @@ Keyword arguments:
 
     - conjunctions (dict; required)
 
-        `conjunctions` is a dict with strings as keys and values of
-        type dict with keys:
+        `conjunctions` is a dict with keys:
 
-        - formatConj (dict; required)
-
-            `formatConj` is a string
-
-              Or dict with keys:
-
-            - constructor (optional):
-
-                The initial value of Object.prototype.constructor is the
-
-                standard built-in Object constructor.
-
-            - hasOwnProperty (optional):
-
-                Determines whether an object has a property with the specified
-
-                name. @,param,v, ,A property name.
-
-            - isPrototypeOf (optional):
-
-                Determines whether an object exists in another object's
-
-                prototype chain. @,param,v, ,Another object whose prototype
-
-                chain is to be checked.
-
-            - propertyIsEnumerable (optional):
-
-                Determines whether a specified property is enumerable.
-
-                @,param,v, ,A property name.
-
-            - toLocaleString (optional):
-
-                Returns a date converted to a string using the current locale.
-
-            - toString (optional):
-
-                Returns a string representation of an object.
-
-            - valueOf (optional):
-
-                Returns the primitive value of the specified object.
-
-        - jsonLogicConj (string; optional)
-
-        - label (string; required)
-
-        - mongoConj (string; required)
-
-        - reversedConj (string; optional)
-
-        - spelConj (string; optional)
-
-        - spelConjs (list of strings; optional)
-
-        - spelFormatConj (dict; required)
-
-            `spelFormatConj` is a string
-
-      Or dict with keys:
-
-            - constructor (optional):
-
-                The initial value of Object.prototype.constructor is the
-
-                standard built-in Object constructor.
-
-            - hasOwnProperty (optional):
-
-                Determines whether an object has a property with the specified
-
-                name. @,param,v, ,A property name.
-
-            - isPrototypeOf (optional):
-
-                Determines whether an object exists in another object's
-
-                prototype chain. @,param,v, ,Another object whose prototype
-
-                chain is to be checked.
-
-            - propertyIsEnumerable (optional):
-
-                Determines whether a specified property is enumerable.
-
-                @,param,v, ,A property name.
-
-            - toLocaleString (optional):
-
-                Returns a date converted to a string using the current locale.
-
-            - toString (optional):
-
-                Returns a string representation of an object.
-
-            - valueOf (optional):
-
-                Returns the primitive value of the specified object.
-
-        - sqlConj (string; optional)
-
-        - sqlFormatConj (dict; required)
-
-            `sqlFormatConj` is a string | dict with keys:
-
-            - constructor (optional):
-
-                The initial value of Object.prototype.constructor is the
-
-                standard built-in Object constructor.
-
-            - hasOwnProperty (optional):
-
-                Determines whether an object has a property with the specified
-
-                name. @,param,v, ,A property name.
-
-            - isPrototypeOf (optional):
-
-                Determines whether an object exists in another object's
-
-                prototype chain. @,param,v, ,Another object whose prototype
-
-                chain is to be checked.
-
-            - propertyIsEnumerable (optional):
-
-                Determines whether a specified property is enumerable.
-
-                @,param,v, ,A property name.
-
-            - toLocaleString (optional):
-
-                Returns a date converted to a string using the current locale.
-
-            - toString (optional):
-
-                Returns a string representation of an object.
-
-            - valueOf (optional):
-
-                Returns the primitive value of the specified object.
 
     - ctx (dict with strings as keys and values of type boolean | number | string | dict | list; required)
 
-    - fields (dict with strings as keys and values of type boolean | number | string | dict | list; required)
+    - fields (dict; required)
 
-    - funcs (dict with strings as keys and values of type boolean | number | string | dict | list; optional)
+        `fields` is a dict with keys:
 
-    - operators (dict with strings as keys and values of type boolean | number | string | dict | list; required)
+
+    - funcs (dict; optional)
+
+        `funcs` is a dict with keys:
+
+
+    - operators (dict; required)
+
+        `operators` is a dict with keys:
+
 
     - settings (dict; required)
 
@@ -189,37 +54,7 @@ Keyword arguments:
 
         - addSubRuleLabel (string; optional)
 
-        - canCompareFieldWithField (dict; optional)
-
-            `canCompareFieldWithField` is a string
-
-          Or dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
+        - canCompareFieldWithField (boolean | number | string | dict | list; optional)
 
         - canDeleteLocked (boolean; optional)
 
@@ -239,7 +74,10 @@ Keyword arguments:
 
         - clearValueOnChangeOp (boolean; optional)
 
-        - convertableWidgets (dict with strings as keys and values of type list of strings; optional)
+        - convertableWidgets (dict; optional)
+
+            `convertableWidgets` is a dict with keys:
+
 
         - customFieldSelectProps (dict; optional)
 
@@ -263,7 +101,10 @@ Keyword arguments:
 
         - dropdownPlacement (a value equal to: 'topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight'; optional)
 
-        - fieldItemKeysForSearch (list of a value equal to: 'key', 'path', 'label', 'altLabel', 'tooltip', 'grouplabel's; optional)
+        - fieldItemKeysForSearch (dict; optional)
+
+            `fieldItemKeysForSearch` is a dict with keys:
+
 
         - fieldLabel (string; optional)
 
@@ -273,131 +114,19 @@ Keyword arguments:
 
         - fieldSeparatorDisplay (string; optional)
 
-        - fieldSources (list of a value equal to: 'func', 'field's; optional)
+        - fieldSources (list; optional)
 
         - fieldSourcesPopupTitle (string; optional)
 
         - forceShowConj (boolean; optional)
 
-        - formatAggr (dict; optional)
+        - formatAggr (boolean | number | string | dict | list; optional)
 
-            `formatAggr` is a string | dict with keys:
+        - formatField (boolean | number | string | dict | list; optional)
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
+        - formatReverse (boolean | number | string | dict | list; optional)
 
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - formatField (dict; optional)
-
-            `formatField` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - formatReverse (dict; optional)
-
-            `formatReverse` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - formatSpelField (dict; optional)
-
-            `formatSpelField` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
+        - formatSpelField (boolean | number | string | dict | list; optional)
 
         - funcLabel (string; optional)
 
@@ -405,7 +134,7 @@ Keyword arguments:
 
         - groupActionsPosition (a value equal to: 'topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight'; optional)
 
-        - groupOperators (list of strings; optional)
+        - groupOperators (list; optional)
 
         - immutableFieldsMode (boolean; optional)
 
@@ -417,7 +146,10 @@ Keyword arguments:
 
         - keepInputOnChangeFieldSrc (boolean; optional)
 
-        - listKeysForSearch (list of a value equal to: 'value', 'title', 'groupTitle's; optional)
+        - listKeysForSearch (dict; optional)
+
+            `listKeysForSearch` is a dict with keys:
+
 
         - locale (dict; optional)
 
@@ -427,65 +159,11 @@ Keyword arguments:
 
                 `antd` is a dict with keys:
 
-                - constructor (optional):
-                    The initial value of Object.prototype.constructor
-                    is the standard built-in Object constructor.
-
-                - hasOwnProperty (optional):
-                    Determines whether an object has a property with
-                    the specified name. @,param,v, ,A property name.
-
-                - isPrototypeOf (optional):
-                    Determines whether an object exists in another
-                    object's prototype chain. @,param,v, ,Another
-                    object whose prototype chain is to be checked.
-
-                - propertyIsEnumerable (optional):
-                    Determines whether a specified property is
-                    enumerable. @,param,v, ,A property name.
-
-                - toLocaleString (optional):
-                    Returns a date converted to a string using the
-                    current locale.
-
-                - toString (optional):
-                    Returns a string representation of an object.
-
-                - valueOf (optional):
-                    Returns the primitive value of the specified
-                    object.
 
             - material (dict; optional)
 
                 `material` is a dict with keys:
 
-                - constructor (optional):
-                    The initial value of Object.prototype.constructor
-                    is the standard built-in Object constructor.
-
-                - hasOwnProperty (optional):
-                    Determines whether an object has a property with
-                    the specified name. @,param,v, ,A property name.
-
-                - isPrototypeOf (optional):
-                    Determines whether an object exists in another
-                    object's prototype chain. @,param,v, ,Another
-                    object whose prototype chain is to be checked.
-
-                - propertyIsEnumerable (optional):
-                    Determines whether a specified property is
-                    enumerable. @,param,v, ,A property name.
-
-                - toLocaleString (optional):
-                    Returns a date converted to a string using the
-                    current locale.
-
-                - toString (optional):
-                    Returns a string representation of an object.
-
-                - valueOf (optional):
-                    Returns the primitive value of the specified
-                    object.
 
             - moment (string; optional)
 
@@ -493,33 +171,6 @@ Keyword arguments:
 
                 `mui` is a dict with keys:
 
-                - constructor (optional):
-                    The initial value of Object.prototype.constructor
-                    is the standard built-in Object constructor.
-
-                - hasOwnProperty (optional):
-                    Determines whether an object has a property with
-                    the specified name. @,param,v, ,A property name.
-
-                - isPrototypeOf (optional):
-                    Determines whether an object exists in another
-                    object's prototype chain. @,param,v, ,Another
-                    object whose prototype chain is to be checked.
-
-                - propertyIsEnumerable (optional):
-                    Determines whether a specified property is
-                    enumerable. @,param,v, ,A property name.
-
-                - toLocaleString (optional):
-                    Returns a date converted to a string using the
-                    current locale.
-
-                - toString (optional):
-                    Returns a string representation of an object.
-
-                - valueOf (optional):
-                    Returns the primitive value of the specified
-                    object.
 
         - lockLabel (string; optional)
 
@@ -533,89 +184,11 @@ Keyword arguments:
 
             `maxNumberOfCases` is a dict with keys:
 
-            - toExponential (required):
-                Returns a string containing a number represented in
-                exponential notation. @,param,fractionDigits, ,Number
-                of digits after the decimal point. Must be in the
-                range 0 - 20, inclusive.
-
-            - toFixed (required):
-                Returns a string representing a number in fixed-point
-                notation. @,param,fractionDigits, ,Number of digits
-                after the decimal point. Must be in the range 0 - 20,
-                inclusive.
-
-            - toLocaleString (optional):
-                Converts a number to a string by using the current or
-                specified locale. @,param,locales, ,A locale string or
-                array of locale strings that contain one or more
-                language or locale tags. If you include more than one
-                locale string, list them in descending order of
-                priority so that the first entry is the preferred
-                locale. If you omit this parameter, the default locale
-                of the JavaScript runtime is used. @,param,options,
-                ,An object that contains one or more properties that
-                specify comparison options.
-
-            - toPrecision (required):
-                Returns a string containing a number represented
-                either in exponential or fixed-point notation with a
-                specified number of digits. @,param,precision, ,Number
-                of significant digits. Must be in the range 1 - 21,
-                inclusive.
-
-            - toString (optional):
-                Returns a string representation of an object.
-                @,param,radix, ,Specifies a radix for converting
-                numeric values to strings. This value is only used for
-                numbers.
-
-            - valueOf (optional):
-                Returns the primitive value of the specified object.
 
         - maxNumberOfRules (dict; optional)
 
             `maxNumberOfRules` is a dict with keys:
 
-            - toExponential (required):
-                Returns a string containing a number represented in
-                exponential notation. @,param,fractionDigits, ,Number
-                of digits after the decimal point. Must be in the
-                range 0 - 20, inclusive.
-
-            - toFixed (required):
-                Returns a string representing a number in fixed-point
-                notation. @,param,fractionDigits, ,Number of digits
-                after the decimal point. Must be in the range 0 - 20,
-                inclusive.
-
-            - toLocaleString (optional):
-                Converts a number to a string by using the current or
-                specified locale. @,param,locales, ,A locale string or
-                array of locale strings that contain one or more
-                language or locale tags. If you include more than one
-                locale string, list them in descending order of
-                priority so that the first entry is the preferred
-                locale. If you omit this parameter, the default locale
-                of the JavaScript runtime is used. @,param,options,
-                ,An object that contains one or more properties that
-                specify comparison options.
-
-            - toPrecision (required):
-                Returns a string containing a number represented
-                either in exponential or fixed-point notation with a
-                specified number of digits. @,param,precision, ,Number
-                of significant digits. Must be in the range 1 - 21,
-                inclusive.
-
-            - toString (optional):
-                Returns a string representation of an object.
-                @,param,radix, ,Specifies a radix for converting
-                numeric values to strings. This value is only used for
-                numbers.
-
-            - valueOf (optional):
-                Returns the primitive value of the specified object.
 
         - notLabel (string; optional)
 
@@ -653,579 +226,47 @@ Keyword arguments:
 
             - title (string; optional)
 
-        - renderAfterActions (dict; optional)
+        - renderAfterActions (boolean | number | string | dict | list; optional)
 
-            `renderAfterActions` is a string | dict with keys:
+        - renderAfterWidget (boolean | number | string | dict | list; optional)
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
+        - renderBeforeActions (boolean | number | string | dict | list; optional)
 
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
+        - renderBeforeWidget (boolean | number | string | dict | list; optional)
 
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
+        - renderButton (boolean | number | string | dict | list; optional)
 
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
+        - renderButtonGroup (boolean | number | string | dict | list; optional)
 
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
+        - renderConfirm (boolean | number | string | dict | list; optional)
 
-    - toString (optional):
-        Returns a string representation of an object.
+        - renderConjs (boolean | number | string | dict | list; optional)
 
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
+        - renderField (boolean | number | string | dict | list; optional)
 
-        - renderAfterWidget (dict; optional)
+        - renderFieldSources (boolean | number | string | dict | list; optional)
 
-            `renderAfterWidget` is a string | dict with keys:
+        - renderFunc (boolean | number | string | dict | list; optional)
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
+        - renderIcon (boolean | number | string | dict | list; optional)
 
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
+        - renderItem (boolean | number | string | dict | list; optional)
 
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
+        - renderOperator (boolean | number | string | dict | list; optional)
 
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
+        - renderProvider (boolean | number | string | dict | list; optional)
 
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderBeforeActions (dict; optional)
-
-            `renderBeforeActions` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderBeforeWidget (dict; optional)
-
-            `renderBeforeWidget` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderButton (dict; optional)
-
-            `renderButton` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderButtonGroup (dict; optional)
-
-            `renderButtonGroup` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderConfirm (dict; optional)
-
-            `renderConfirm` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderConjs (dict; optional)
-
-            `renderConjs` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderField (dict; optional)
-
-            `renderField` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderFieldSources (dict; optional)
-
-            `renderFieldSources` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderFunc (dict; optional)
-
-            `renderFunc` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderIcon (dict; optional)
-
-            `renderIcon` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderItem (dict; optional)
-
-            `renderItem` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderOperator (dict; optional)
-
-            `renderOperator` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderProvider (dict; optional)
-
-            `renderProvider` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderRuleError (dict; optional)
-
-            `renderRuleError` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
+        - renderRuleError (boolean | number | string | dict | list; optional)
 
         - renderSize (a value equal to: 'small', 'large', 'medium'; optional)
 
-        - renderSwitch (dict; optional)
+        - renderSwitch (boolean | number | string | dict | list; optional)
 
-            `renderSwitch` is a string | dict with keys:
+        - renderSwitchPrefix (boolean | number | string | dict | list; optional)
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
+        - renderValueSources (boolean | number | string | dict | list; optional)
 
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderSwitchPrefix (dict; optional)
-
-            `renderSwitchPrefix` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - renderValueSources (dict; optional)
-
-            `renderValueSources` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - setOpOnChangeField (list of a value equal to: 'default', 'keep', 'first', 'none's; required)
+        - setOpOnChangeField (list; required)
 
         - shouldCreateEmptyGroup (boolean; optional)
 
@@ -1237,65 +278,9 @@ Keyword arguments:
 
         - showNot (boolean; optional)
 
-        - spelFormatReverse (dict; optional)
+        - spelFormatReverse (boolean | number | string | dict | list; optional)
 
-            `spelFormatReverse` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-        - sqlFormatReverse (dict; optional)
-
-            `sqlFormatReverse` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
+        - sqlFormatReverse (boolean | number | string | dict | list; optional)
 
         - theme (dict; optional)
 
@@ -1305,97 +290,15 @@ Keyword arguments:
 
                 `material` is a dict with keys:
 
-                - constructor (optional):
-                    The initial value of Object.prototype.constructor
-                    is the standard built-in Object constructor.
-
-                - hasOwnProperty (optional):
-                    Determines whether an object has a property with
-                    the specified name. @,param,v, ,A property name.
-
-                - isPrototypeOf (optional):
-                    Determines whether an object exists in another
-                    object's prototype chain. @,param,v, ,Another
-                    object whose prototype chain is to be checked.
-
-                - propertyIsEnumerable (optional):
-                    Determines whether a specified property is
-                    enumerable. @,param,v, ,A property name.
-
-                - toLocaleString (optional):
-                    Returns a date converted to a string using the
-                    current locale.
-
-                - toString (optional):
-                    Returns a string representation of an object.
-
-                - valueOf (optional):
-                    Returns the primitive value of the specified
-                    object.
 
             - mui (dict; optional)
 
                 `mui` is a dict with keys:
 
-                - constructor (optional):
-                    The initial value of Object.prototype.constructor
-                    is the standard built-in Object constructor.
-
-                - hasOwnProperty (optional):
-                    Determines whether an object has a property with
-                    the specified name. @,param,v, ,A property name.
-
-                - isPrototypeOf (optional):
-                    Determines whether an object exists in another
-                    object's prototype chain. @,param,v, ,Another
-                    object whose prototype chain is to be checked.
-
-                - propertyIsEnumerable (optional):
-                    Determines whether a specified property is
-                    enumerable. @,param,v, ,A property name.
-
-                - toLocaleString (optional):
-                    Returns a date converted to a string using the
-                    current locale.
-
-                - toString (optional):
-                    Returns a string representation of an object.
-
-                - valueOf (optional):
-                    Returns the primitive value of the specified
-                    object.
 
         - useConfigCompress (boolean; optional)
 
-        - useConfirm (dict; optional)
-
-            `useConfirm` is a string | dict with keys:
-
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
+        - useConfirm (boolean | number | string | dict | list; optional)
 
         - valueLabel (string; optional)
 
@@ -1441,116 +344,35 @@ Keyword arguments:
 
     - types (dict; required)
 
-        `types` is a dict with strings as keys and values of type dict
-        with keys:
+        `types` is a dict with keys:
 
-        - defaultOperator (string; optional)
 
-        - excludeOperators (list of strings; optional)
+    - widgets (dict; required)
 
-        - mainWidget (string; optional)
+        `widgets` is a dict with keys:
 
-        - valueSources (list of a value equal to: 'func', 'field', 'value', 'const's; optional)
-
-        - widgets (dict; required)
-
-            `widgets` is a dict with keys:
-
-    - widgets (dict with strings as keys and values of type boolean | number | string | dict | list; required)
 
 - elasticSearchFormat (dict; optional)
 
     `elasticSearchFormat` is a dict with keys:
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
 
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
+- fields (dict; required)
 
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
+    `fields` is a dict with keys:
 
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-- fields (dict with strings as keys and values of type boolean | number | string | dict | list; required)
 
 - jsonLogicFormat (dict; optional)
 
     `jsonLogicFormat` is a dict with keys:
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
 
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
-
-- load_format (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; default 'tree')
+- loadFormat (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; default 'tree')
 
 - mongoDBFormat (dict; optional)
 
     `mongoDBFormat` is a dict with keys:
 
-    - constructor (optional):
-        The initial value of Object.prototype.constructor is the
-        standard built-in Object constructor.
-
-    - hasOwnProperty (optional):
-        Determines whether an object has a property with the specified
-        name. @,param,v, ,A property name.
-
-    - isPrototypeOf (optional):
-        Determines whether an object exists in another object's
-        prototype chain. @,param,v, ,Another object whose prototype
-        chain is to be checked.
-
-    - propertyIsEnumerable (optional):
-        Determines whether a specified property is enumerable.
-        @,param,v, ,A property name.
-
-    - toLocaleString (optional):
-        Returns a date converted to a string using the current locale.
-
-    - toString (optional):
-        Returns a string representation of an object.
-
-    - valueOf (optional):
-        Returns the primitive value of the specified object.
 
 - queryBuilderStringFormat (string; optional)
 
@@ -1568,10 +390,10 @@ Keyword arguments:
     _namespace = 'dash_query_builder'
     _type = 'DashQueryBuilder'
     @_explicitize_args
-    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, load_format=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
+    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, loadFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'load_format', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
+        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

@@ -152,9 +152,7 @@ empty_ = {"id": "889239a8-cdef-4012-b456-717b503a0ffb", "type": "group"}
 app.layout = html.Div(
     [
         dash_query_builder.DashQueryBuilder(
-            id="component",
-            fields=fields["fields"],
-            tree=tree,
+            id="component", fields=fields["fields"], tree=tree, theme="bootstrap"
         ),
         html.Button("Change Fields", id="fields-button"),
         html.Hr(),
