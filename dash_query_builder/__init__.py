@@ -43,14 +43,13 @@ _js_dist.extend(
         for i in async_js
     ]
 )
-print(_js_dist)
 _js_dist.extend(
     [
         {
             "relative_package_path": f"js/{i}",
             "namespace": package_name,
         }
-        for i in async_js
+        for i in sync_js
     ]
 )
 

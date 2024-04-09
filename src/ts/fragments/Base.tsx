@@ -70,6 +70,10 @@ const BaseBuilder = (props: StyledProps) => {
                     state.config
                 ),
                 spelFormat: QbUtils.spelFormat(newImmutableTree, state.config),
+                queryBuilderFormat: QbUtils.queryBuilderFormat(
+                    newImmutableTree,
+                    state.config
+                ),
             };
             setState((prevState) => ({
                 ...prevState,

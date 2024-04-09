@@ -19,6 +19,7 @@ repos:
       rev: v0.3.5
       hooks:
           - id: ruff
+            args: [--fix]
             exclude: dash_query_builder/DashQueryBuilder.py
           - id: ruff-format
             exclude: dash_query_builder/DashQueryBuilder.py

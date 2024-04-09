@@ -200,15 +200,17 @@ Those elements have the following types:
 - `mongoDBFormat` (optional): . mongoDBFormat has the following type: lists containing elements .
 Those elements have the following types:
 
-- `queryBuilderStringFormat` (String; optional)
+- `queryBuilderFormat` (optional): . queryBuilderFormat has the following type: lists containing elements .
+Those elements have the following types:
+
 - `queryString` (String; optional)
 - `spelFormat` (String; optional)
-- `sqlFormat` (String; optional)
+- `sqlFormat` (String; optional): The WHERE clause in SQL
 - `theme` (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; optional)
-- `tree` (Bool | Real | String | Dict | Array; optional)
+- `tree` (Bool | Real | String | Dict | Array; optional): The JSON representation of the tree
 """
 function dashquerybuilder(; kwargs...)
-        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :jsonLogicFormat, :loadFormat, :mongoDBFormat, :queryBuilderStringFormat, :queryString, :spelFormat, :sqlFormat, :theme, :tree]
+        available_props = Symbol[:id, :alwaysShowActionButtons, :config, :elasticSearchFormat, :fields, :jsonLogicFormat, :loadFormat, :mongoDBFormat, :queryBuilderFormat, :queryString, :spelFormat, :sqlFormat, :theme, :tree]
         wild_props = Symbol[]
         return Component("dashquerybuilder", "DashQueryBuilder", "dash_query_builder", available_props, wild_props; kwargs...)
 end

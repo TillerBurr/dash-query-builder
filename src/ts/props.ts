@@ -29,10 +29,16 @@ export type loadFormatType = 'jsonLogicFormat' | 'spelFormat' | 'tree';
 export type themeType = 'mui' | 'antd' | 'fluent' | 'bootstrap' | 'basic';
 
 export interface FormatProps {
+    /**
+     * The JSON representation of the tree
+     */
     tree: JsonTree;
+    /**
+     * The WHERE clause in SQL
+     */
     sqlFormat?: string;
     jsonLogicFormat?: JsonLogicTree;
-    queryBuilderStringFormat?: string;
+    queryBuilderFormat?: Object;
     mongoDBFormat?: Object;
     queryString?: string;
     elasticSearchFormat?: Object;

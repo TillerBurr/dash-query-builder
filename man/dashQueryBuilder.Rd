@@ -13,8 +13,8 @@
 dashQueryBuilder(id=NULL, alwaysShowActionButtons=NULL, config=NULL,
 elasticSearchFormat=NULL, fields=NULL, jsonLogicFormat=NULL,
 loadFormat=NULL, mongoDBFormat=NULL,
-queryBuilderStringFormat=NULL, queryString=NULL,
-spelFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL)
+queryBuilderFormat=NULL, queryString=NULL, spelFormat=NULL,
+sqlFormat=NULL, theme=NULL, tree=NULL)
 }
 
 \arguments{
@@ -218,17 +218,19 @@ those elements have the following types:
 those elements have the following types:
 . }
 
-\item{queryBuilderStringFormat}{Character. }
+\item{queryBuilderFormat}{Lists containing elements .
+those elements have the following types:
+. }
 
 \item{queryString}{Character. }
 
 \item{spelFormat}{Character. }
 
-\item{sqlFormat}{Character. }
+\item{sqlFormat}{Character. The WHERE clause in SQL}
 
 \item{theme}{A value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'. }
 
-\item{tree}{Logical | numeric | character | named list | unnamed list. }
+\item{tree}{Logical | numeric | character | named list | unnamed list. The JSON representation of the tree}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

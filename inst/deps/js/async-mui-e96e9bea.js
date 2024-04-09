@@ -798,6 +798,10 @@
                                     elasticSearchFormat:
                                         l.cQ.elasticSearchFormat(e, S.config),
                                     spelFormat: l.cQ.spelFormat(e, S.config),
+                                    queryBuilderFormat: l.cQ.queryBuilderFormat(
+                                        e,
+                                        S.config
+                                    ),
                                 };
                             P(function (n) {
                                 return u(u({}, n), {immutableTree: e});
@@ -967,9 +971,9 @@
                 D = t(37002),
                 A = t(26350),
                 Q = t(29943),
-                G = t(26674),
-                U = y.cQ.ListUtils.mapListValues,
-                B = t(39760),
+                B = t(26674),
+                G = y.cQ.ListUtils.mapListValues,
+                U = t(39760),
                 K = t(59576),
                 $ = t(39271),
                 H = t(68472),
@@ -1041,7 +1045,7 @@
                             [c]
                         ),
                     },
-                    h = (0, B.D)(p || m),
+                    h = (0, U.D)(p || m),
                     b = oe(e, {debounceTimeout: 100, multiple: t, uif: 'mui'}),
                     E = b.open,
                     y = b.onOpen,
@@ -1066,8 +1070,8 @@
                     A = D.input || {};
                 A.width, (A = W()(A, ['width']));
                 var Q = W()(D, ['showSearch', 'showCheckboxes']),
-                    U = V || N,
-                    te = {width: t ? void 0 : U, minWidth: U},
+                    G = V || N,
+                    te = {width: t ? void 0 : G, minWidth: G},
                     ae = a ? '' : j,
                     ie = null != o ? o : t ? le : null,
                     ue = (0, ee.Z)(),
@@ -1277,7 +1281,7 @@
                                                   b
                                               )
                                             : u().createElement(
-                                                  G.Z,
+                                                  B.Z,
                                                   {inset: !0},
                                                   b
                                               );
@@ -2263,7 +2267,7 @@
                                     readOnly: l,
                                     renderValue: function (e) {
                                         if (!l && !e.length) return a;
-                                        var n = U(t, function (n) {
+                                        var n = G(t, function (n) {
                                             var t = n.title,
                                                 r = n.value;
                                             return e.indexOf(r) > -1 ? t : null;
@@ -2281,7 +2285,7 @@
                                 ])
                             ),
                             ((n = c ? r : []),
-                            U(t, function (e) {
+                            G(t, function (e) {
                                 var t = e.title,
                                     r = e.value;
                                 return u().createElement(
@@ -2290,7 +2294,7 @@
                                     u().createElement(Q.Z, {
                                         checked: n.indexOf(r) > -1,
                                     }),
-                                    u().createElement(G.Z, {primary: t})
+                                    u().createElement(B.Z, {primary: t})
                                 );
                             }))
                         )
@@ -2665,7 +2669,7 @@
                                             },
                                             !a &&
                                                 u().createElement(
-                                                    G.Z,
+                                                    B.Z,
                                                     {inset: !0},
                                                     l.label
                                                 ),
@@ -2944,10 +2948,10 @@
             const De = (Ve = y.cQ.ConfigMixins.addMixins(Ve, ['rangeslider']));
             var Ae = t(57856),
                 Qe = t.n(Ae),
-                Ge = t(38470),
-                Ue = t.n(Ge),
-                Be = t(28458),
-                Ke = t.n(Be),
+                Be = t(38470),
+                Ge = t.n(Be),
+                Ue = t(28458),
+                Ke = t.n(Ue),
                 $e = t(71278),
                 He = t.n($e),
                 Je = t(29488),
@@ -2966,7 +2970,7 @@
                         : n.insertBefore(e, n.firstChild),
                         (window._lastElementInsertedByStyleLoader = e);
                 }),
-                (en.domAPI = Ue()),
+                (en.domAPI = Ge()),
                 (en.insertStyleElement = He()),
                 Qe()(Ye.Z, en),
                 Ye.Z && Ye.Z.locals && Ye.Z.locals;

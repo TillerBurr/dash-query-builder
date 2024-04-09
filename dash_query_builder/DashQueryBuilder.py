@@ -374,26 +374,31 @@ Keyword arguments:
     `mongoDBFormat` is a dict with keys:
 
 
-- queryBuilderStringFormat (string; optional)
+- queryBuilderFormat (dict; optional)
+
+    `queryBuilderFormat` is a dict with keys:
+
 
 - queryString (string; optional)
 
 - spelFormat (string; optional)
 
-- sqlFormat (string; optional)
+- sqlFormat (string; optional):
+    The WHERE clause in SQL.
 
 - theme (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; default 'basic')
 
-- tree (boolean | number | string | dict | list; default emptyTree)"""
+- tree (boolean | number | string | dict | list; default emptyTree):
+    The JSON representation of the tree."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'dash_query_builder'
     _type = 'DashQueryBuilder'
     @_explicitize_args
-    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, loadFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderStringFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
+    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, loadFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderStringFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
+        self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()

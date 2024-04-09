@@ -1005,7 +1005,7 @@
                 }
             },
             "tree": {
-                "description": "",
+                "description": "The JSON representation of the tree",
                 "required": false,
                 "defaultValue": {
                     "value": "emptyTree",
@@ -1017,7 +1017,7 @@
                 }
             },
             "sqlFormat": {
-                "description": "",
+                "description": "The WHERE clause in SQL",
                 "required": false,
                 "type": {
                     "name": "string",
@@ -1033,12 +1033,13 @@
                     "raw": "Object"
                 }
             },
-            "queryBuilderStringFormat": {
+            "queryBuilderFormat": {
                 "description": "",
                 "required": false,
                 "type": {
-                    "name": "string",
-                    "raw": "string"
+                    "name": "shape",
+                    "value": {},
+                    "raw": "Object"
                 }
             },
             "mongoDBFormat": {
