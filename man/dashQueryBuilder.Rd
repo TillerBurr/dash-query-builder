@@ -6,7 +6,7 @@
 \title{DashQueryBuilder component}
 
 \description{
-
+The Dash Query Builder component
 }
 
 \usage{
@@ -20,7 +20,7 @@ sqlFormat=NULL, theme=NULL, tree=NULL)
 \arguments{
 \item{id}{Character. Unique ID to identify this component in Dash callbacks.}
 
-\item{alwaysShowActionButtons}{Logical. }
+\item{alwaysShowActionButtons}{Logical. Whether to show action buttons all the time or just on hover}
 
 \item{config}{Lists containing elements 'settings', 'operators', 'widgets', 'conjunctions', 'types', 'fields', 'funcs', 'ctx'.
 those elements have the following types:
@@ -198,37 +198,38 @@ those elements have the following types:
   - funcs (optional): . funcs has the following type: lists containing elements .
 those elements have the following types:
 
-  - ctx (list with named elements and values of type logical | numeric | character | named list | unnamed list; required). }
+  - ctx (list with named elements and values of type logical | numeric | character | named list | unnamed list; required). The config object. See the [Config](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc docs).}
 
 \item{elasticSearchFormat}{Lists containing elements .
 those elements have the following types:
-. }
+. ElasticSearch query object}
 
 \item{fields}{Lists containing elements .
 those elements have the following types:
-. }
+. The fields to populate the query builder. See the
+[Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.}
 
 \item{jsonLogicFormat}{Lists containing elements .
 those elements have the following types:
-. }
+. JSONLogic object}
 
-\item{loadFormat}{A value equal to: 'jsonlogicformat', 'spelformat', 'tree'. }
+\item{loadFormat}{A value equal to: 'tree', 'jsonlogicformat', 'spelformat'. The load format string. Changes the tree based on the corresponding prop change}
 
 \item{mongoDBFormat}{Lists containing elements .
 those elements have the following types:
-. }
+. MongoDB query object}
 
 \item{queryBuilderFormat}{Lists containing elements .
 those elements have the following types:
-. }
+. Query Builder object}
 
-\item{queryString}{Character. }
+\item{queryString}{Character. Query string}
 
-\item{spelFormat}{Character. }
+\item{spelFormat}{Character. SPEL query string}
 
 \item{sqlFormat}{Character. The WHERE clause in SQL}
 
-\item{theme}{A value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'. }
+\item{theme}{A value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'. The theme/styling used}
 
 \item{tree}{Logical | numeric | character | named list | unnamed list. The JSON representation of the tree}
 }

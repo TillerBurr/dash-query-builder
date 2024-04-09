@@ -3,6 +3,11 @@
     "version": "1.0.0",
     "description": "Component for Dash based on react-awesome-query-builder",
     "main": "index.ts",
+    "bugs": {
+        "url": "https://github.com/TillerBurr/dash-query-builder/issues",
+        "email": "baur.tyler@gmail.com"
+    },
+    "homepage": "https://github.com/TillerBurr/dash-query-builder",
     "scripts": {
         "build:js::dev": "webpack --mode development",
         "build:js": "webpack",

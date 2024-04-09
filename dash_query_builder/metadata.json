@@ -1,10 +1,82 @@
 {
     "src/ts/components/DashQueryBuilder.tsx": {
         "displayName": "DashQueryBuilder",
-        "description": "",
+        "description": "The Dash Query Builder component",
         "props": {
+            "tree": {
+                "description": "The JSON representation of the tree",
+                "required": false,
+                "defaultValue": {
+                    "value": "emptyTree",
+                    "computed": false
+                },
+                "type": {
+                    "name": "any",
+                    "raw": "JsonTree"
+                }
+            },
+            "sqlFormat": {
+                "description": "The WHERE clause in SQL",
+                "required": false,
+                "type": {
+                    "name": "string",
+                    "raw": "string"
+                }
+            },
+            "jsonLogicFormat": {
+                "description": "JSONLogic object",
+                "required": false,
+                "type": {
+                    "name": "shape",
+                    "value": {},
+                    "raw": "Object"
+                }
+            },
+            "queryBuilderFormat": {
+                "description": "Query Builder object",
+                "required": false,
+                "type": {
+                    "name": "shape",
+                    "value": {},
+                    "raw": "Object"
+                }
+            },
+            "mongoDBFormat": {
+                "description": "MongoDB query object",
+                "required": false,
+                "type": {
+                    "name": "shape",
+                    "value": {},
+                    "raw": "Object"
+                }
+            },
+            "queryString": {
+                "description": "Query string",
+                "required": false,
+                "type": {
+                    "name": "string",
+                    "raw": "string"
+                }
+            },
+            "elasticSearchFormat": {
+                "description": "ElasticSearch query object",
+                "required": false,
+                "type": {
+                    "name": "shape",
+                    "value": {},
+                    "raw": "Object"
+                }
+            },
+            "spelFormat": {
+                "description": "SPEL query string",
+                "required": false,
+                "type": {
+                    "name": "string",
+                    "raw": "string"
+                }
+            },
             "fields": {
-                "description": "",
+                "description": "The fields to populate the query builder. See the\n[Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.",
                 "required": true,
                 "type": {
                     "name": "shape",
@@ -13,7 +85,7 @@
                 }
             },
             "config": {
-                "description": "",
+                "description": "The config object. See the [Config](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc docs).",
                 "required": false,
                 "type": {
                     "name": "shape",
@@ -933,7 +1005,7 @@
                 }
             },
             "loadFormat": {
-                "description": "",
+                "description": "The load format string. Changes the tree based on the corresponding prop change",
                 "required": false,
                 "defaultValue": {
                     "value": "'tree'",
@@ -943,15 +1015,15 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'tree'",
+                            "computed": false
+                        },
+                        {
                             "value": "'jsonLogicFormat'",
                             "computed": false
                         },
                         {
                             "value": "'spelFormat'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'tree'",
                             "computed": false
                         }
                     ],
@@ -959,7 +1031,7 @@
                 }
             },
             "alwaysShowActionButtons": {
-                "description": "",
+                "description": "Whether to show action buttons all the time or just on hover",
                 "required": false,
                 "defaultValue": {
                     "value": "true",
@@ -971,7 +1043,7 @@
                 }
             },
             "theme": {
-                "description": "",
+                "description": "The theme/styling used",
                 "required": false,
                 "defaultValue": {
                     "value": "'basic'",
@@ -1002,78 +1074,6 @@
                         }
                     ],
                     "raw": "themeType"
-                }
-            },
-            "tree": {
-                "description": "The JSON representation of the tree",
-                "required": false,
-                "defaultValue": {
-                    "value": "emptyTree",
-                    "computed": false
-                },
-                "type": {
-                    "name": "any",
-                    "raw": "JsonTree"
-                }
-            },
-            "sqlFormat": {
-                "description": "The WHERE clause in SQL",
-                "required": false,
-                "type": {
-                    "name": "string",
-                    "raw": "string"
-                }
-            },
-            "jsonLogicFormat": {
-                "description": "",
-                "required": false,
-                "type": {
-                    "name": "shape",
-                    "value": {},
-                    "raw": "Object"
-                }
-            },
-            "queryBuilderFormat": {
-                "description": "",
-                "required": false,
-                "type": {
-                    "name": "shape",
-                    "value": {},
-                    "raw": "Object"
-                }
-            },
-            "mongoDBFormat": {
-                "description": "",
-                "required": false,
-                "type": {
-                    "name": "shape",
-                    "value": {},
-                    "raw": "Object"
-                }
-            },
-            "queryString": {
-                "description": "",
-                "required": false,
-                "type": {
-                    "name": "string",
-                    "raw": "string"
-                }
-            },
-            "elasticSearchFormat": {
-                "description": "",
-                "required": false,
-                "type": {
-                    "name": "shape",
-                    "value": {},
-                    "raw": "Object"
-                }
-            },
-            "spelFormat": {
-                "description": "",
-                "required": false,
-                "type": {
-                    "name": "string",
-                    "raw": "string"
                 }
             },
             "id": {

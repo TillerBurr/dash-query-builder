@@ -3,6 +3,9 @@ import React from 'react';
 import {Props} from '../props';
 import LazyQueryBuilder from '../fragments/LazyQueryBuilder';
 import {emptyTree} from '../fragments/utils';
+/**
+ * The Dash Query Builder component
+ */
 const DashQueryBuilder = (props: Props) => {
     const {id} = props;
 

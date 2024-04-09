@@ -5,16 +5,20 @@ from dash.development.base_component import Component, _explicitize_args
 
 class DashQueryBuilder(Component):
     """A DashQueryBuilder component.
-
+The Dash Query Builder component
 
 Keyword arguments:
 
 - id (string; optional):
     Unique ID to identify this component in Dash callbacks.
 
-- alwaysShowActionButtons (boolean; default True)
+- alwaysShowActionButtons (boolean; default True):
+    Whether to show action buttons all the time or just on hover.
 
-- config (dict; optional)
+- config (dict; optional):
+    The config object. See the
+    [Config](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc
+    docs).
 
     `config` is a dict with keys:
 
@@ -352,41 +356,53 @@ Keyword arguments:
         `widgets` is a dict with keys:
 
 
-- elasticSearchFormat (dict; optional)
+- elasticSearchFormat (dict; optional):
+    ElasticSearch query object.
 
     `elasticSearchFormat` is a dict with keys:
 
 
-- fields (dict; required)
+- fields (dict; required):
+    The fields to populate the query builder. See the
+    [Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields)
+    docs.
 
     `fields` is a dict with keys:
 
 
-- jsonLogicFormat (dict; optional)
+- jsonLogicFormat (dict; optional):
+    JSONLogic object.
 
     `jsonLogicFormat` is a dict with keys:
 
 
-- loadFormat (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; default 'tree')
+- loadFormat (a value equal to: 'tree', 'jsonLogicFormat', 'spelFormat'; default 'tree'):
+    The load format string. Changes the tree based on the
+    corresponding prop change.
 
-- mongoDBFormat (dict; optional)
+- mongoDBFormat (dict; optional):
+    MongoDB query object.
 
     `mongoDBFormat` is a dict with keys:
 
 
-- queryBuilderFormat (dict; optional)
+- queryBuilderFormat (dict; optional):
+    Query Builder object.
 
     `queryBuilderFormat` is a dict with keys:
 
 
-- queryString (string; optional)
+- queryString (string; optional):
+    Query string.
 
-- spelFormat (string; optional)
+- spelFormat (string; optional):
+    SPEL query string.
 
 - sqlFormat (string; optional):
     The WHERE clause in SQL.
 
-- theme (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; default 'basic')
+- theme (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; default 'basic'):
+    The theme/styling used.
 
 - tree (boolean | number | string | dict | list; default emptyTree):
     The JSON representation of the tree."""
@@ -395,7 +411,7 @@ Keyword arguments:
     _namespace = 'dash_query_builder'
     _type = 'DashQueryBuilder'
     @_explicitize_args
-    def __init__(self, fields=Component.REQUIRED, config=Component.UNDEFINED, loadFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
+    def __init__(self, tree=Component.UNDEFINED, sqlFormat=Component.UNDEFINED, jsonLogicFormat=Component.UNDEFINED, queryBuilderFormat=Component.UNDEFINED, mongoDBFormat=Component.UNDEFINED, queryString=Component.UNDEFINED, elasticSearchFormat=Component.UNDEFINED, spelFormat=Component.UNDEFINED, fields=Component.REQUIRED, config=Component.UNDEFINED, loadFormat=Component.UNDEFINED, alwaysShowActionButtons=Component.UNDEFINED, theme=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'alwaysShowActionButtons', 'config', 'elasticSearchFormat', 'fields', 'jsonLogicFormat', 'loadFormat', 'mongoDBFormat', 'queryBuilderFormat', 'queryString', 'spelFormat', 'sqlFormat', 'theme', 'tree']

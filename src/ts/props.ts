@@ -28,7 +28,7 @@ export type DashComponentProps = {
 export type loadFormatType = 'jsonLogicFormat' | 'spelFormat' | 'tree';
 export type themeType = 'mui' | 'antd' | 'fluent' | 'bootstrap' | 'basic';
 
-export interface FormatProps {
+export type FormatProps = {
     /**
      * The JSON representation of the tree
      */
@@ -37,19 +37,53 @@ export interface FormatProps {
      * The WHERE clause in SQL
      */
     sqlFormat?: string;
+    /**
+     * JSONLogic object
+     */
     jsonLogicFormat?: JsonLogicTree;
+    /**
+     * Query Builder object
+     */
     queryBuilderFormat?: Object;
+    /**
+     * MongoDB query object
+     */
     mongoDBFormat?: Object;
+    /**
+     * Query string
+     */
     queryString?: string;
+    /**
+     * ElasticSearch query object
+     */
     elasticSearchFormat?: Object;
+    /**
+     * SPEL query string
+     */
     spelFormat?: string;
-}
-interface FullProps extends FormatProps {
+};
+type FullProps = FormatProps & {
+    /**
+     * The fields to populate the query builder. See the
+     * [Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.
+     */
     fields: Fields;
+    /**
+     * The config object. See the [Config](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc docs).
+     */
     config?: Config;
+    /**
+     * The load format string. Changes the tree based on the corresponding prop change
+     */
     loadFormat: loadFormatType;
+    /**
+     * Whether to show action buttons all the time or just on hover
+     */
     alwaysShowActionButtons: boolean;
+    /**
+     * The theme/styling used
+     */
     theme: themeType;
-}
+};
 
 export type Props = FullProps & DashComponentProps;

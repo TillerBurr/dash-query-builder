@@ -6,7 +6,7 @@ repos:
       hooks:
           - id: trailing-whitespace
           - id: end-of-file-fixer
-            exclude: ^(deps|inst/|R/|man/|dash_query_builder/_imports_.py)
+            exclude: ^(deps/|src/jl/|inst/|R/|man/|dash_query_builder/_imports_.py|dash_query_builder/.+\.(js))
           - id: check-yaml
           - id: check-added-large-files
             args: [--maxkb=1500]
@@ -14,6 +14,7 @@ repos:
       rev: v3.1.0 # Use the sha or tag you want to point at
       hooks:
           - id: prettier
+            exclude: ^(deps/|src/jl/|inst/|R/|man/|dash_query_builder/_imports_.py|dash_query_builder/.+\.(js))
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
       rev: v0.3.5

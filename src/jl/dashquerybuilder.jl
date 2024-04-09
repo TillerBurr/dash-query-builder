@@ -6,11 +6,11 @@ export dashquerybuilder
     dashquerybuilder(;kwargs...)
 
 A DashQueryBuilder component.
-
+The Dash Query Builder component
 Keyword arguments:
 - `id` (String; optional): Unique ID to identify this component in Dash callbacks.
-- `alwaysShowActionButtons` (Bool; optional)
-- `config` (optional): . config has the following type: lists containing elements 'settings', 'operators', 'widgets', 'conjunctions', 'types', 'fields', 'funcs', 'ctx'.
+- `alwaysShowActionButtons` (Bool; optional): Whether to show action buttons all the time or just on hover
+- `config` (optional): The config object. See the [Config](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc docs).. config has the following type: lists containing elements 'settings', 'operators', 'widgets', 'conjunctions', 'types', 'fields', 'funcs', 'ctx'.
 Those elements have the following types:
   - `settings` (required): . settings has the following type: lists containing elements 'locale', 'theme', 'valueLabel', 'valuePlaceholder', 'fieldLabel', 'operatorLabel', 'fieldPlaceholder', 'funcPlaceholder', 'funcLabel', 'operatorPlaceholder', 'lockLabel', 'lockedLabel', 'deleteLabel', 'addGroupLabel', 'addCaseLabel', 'addDefaultCaseLabel', 'defaultCaseLabel', 'addRuleLabel', 'addSubRuleLabel', 'delGroupLabel', 'notLabel', 'fieldSourcesPopupTitle', 'valueSourcesPopupTitle', 'removeRuleConfirmOptions', 'removeGroupConfirmOptions', 'defaultField', 'defaultOperator', 'fieldSources', 'valueSourcesInfo', 'canCompareFieldWithField', 'canReorder', 'canRegroup', 'canRegroupCases', 'showNot', 'showLock', 'canDeleteLocked', 'maxNesting', 'setOpOnChangeField', 'clearValueOnChangeField', 'clearValueOnChangeOp', 'canLeaveEmptyGroup', 'canLeaveEmptyCase', 'shouldCreateEmptyGroup', 'forceShowConj', 'immutableGroupsMode', 'immutableFieldsMode', 'immutableOpsMode', 'immutableValuesMode', 'maxNumberOfRules', 'maxNumberOfCases', 'showErrorMessage', 'canShortMongoQuery', 'convertableWidgets', 'removeEmptyGroupsOnLoad', 'removeIncompleteRulesOnLoad', 'removeInvalidMultiSelectValuesOnLoad', 'groupOperators', 'useConfigCompress', 'keepInputOnChangeFieldSrc', 'fieldItemKeysForSearch', 'listKeysForSearch', 'fieldSeparator', 'fieldSeparatorDisplay', 'formatReverse', 'sqlFormatReverse', 'spelFormatReverse', 'formatField', 'formatSpelField', 'formatAggr', 'renderField', 'renderOperator', 'renderFunc', 'renderConjs', 'renderButton', 'renderIcon', 'renderButtonGroup', 'renderSwitch', 'renderProvider', 'renderValueSources', 'renderFieldSources', 'renderConfirm', 'useConfirm', 'renderSize', 'renderItem', 'dropdownPlacement', 'groupActionsPosition', 'showLabels', 'maxLabelsLength', 'customFieldSelectProps', 'renderBeforeWidget', 'renderAfterWidget', 'renderBeforeActions', 'renderAfterActions', 'renderRuleError', 'renderSwitchPrefix', 'defaultSliderWidth', 'defaultSelectWidth', 'defaultSearchWidth', 'defaultMaxRows'.
 Those elements have the following types:
@@ -187,26 +187,27 @@ Those elements have the following types:
 Those elements have the following types:
 
   - `ctx` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
-- `elasticSearchFormat` (optional): . elasticSearchFormat has the following type: lists containing elements .
+- `elasticSearchFormat` (optional): ElasticSearch query object. elasticSearchFormat has the following type: lists containing elements .
 Those elements have the following types:
 
-- `fields` (required): . fields has the following type: lists containing elements .
+- `fields` (required): The fields to populate the query builder. See the
+[Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.. fields has the following type: lists containing elements .
 Those elements have the following types:
 
-- `jsonLogicFormat` (optional): . jsonLogicFormat has the following type: lists containing elements .
+- `jsonLogicFormat` (optional): JSONLogic object. jsonLogicFormat has the following type: lists containing elements .
 Those elements have the following types:
 
-- `loadFormat` (a value equal to: 'jsonLogicFormat', 'spelFormat', 'tree'; optional)
-- `mongoDBFormat` (optional): . mongoDBFormat has the following type: lists containing elements .
+- `loadFormat` (a value equal to: 'tree', 'jsonLogicFormat', 'spelFormat'; optional): The load format string. Changes the tree based on the corresponding prop change
+- `mongoDBFormat` (optional): MongoDB query object. mongoDBFormat has the following type: lists containing elements .
 Those elements have the following types:
 
-- `queryBuilderFormat` (optional): . queryBuilderFormat has the following type: lists containing elements .
+- `queryBuilderFormat` (optional): Query Builder object. queryBuilderFormat has the following type: lists containing elements .
 Those elements have the following types:
 
-- `queryString` (String; optional)
-- `spelFormat` (String; optional)
+- `queryString` (String; optional): Query string
+- `spelFormat` (String; optional): SPEL query string
 - `sqlFormat` (String; optional): The WHERE clause in SQL
-- `theme` (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; optional)
+- `theme` (a value equal to: 'mui', 'antd', 'fluent', 'bootstrap', 'basic'; optional): The theme/styling used
 - `tree` (Bool | Real | String | Dict | Array; optional): The JSON representation of the tree
 """
 function dashquerybuilder(; kwargs...)
