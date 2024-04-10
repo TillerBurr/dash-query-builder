@@ -1,7 +1,11 @@
 """Actions for the parser."""
 
 from pyparsing import ParseFatalException, ParseResults
-from rich import print
+
+try:
+    from rich import print
+except ImportError:
+    pass
 from shortuuid import uuid
 
 from .constants import Boolean, Identifier, Number, String
@@ -179,7 +183,11 @@ class NotAction(OpNode):
         str
             SQL string prepended with "NOT"
         """
-        result = "NOT " + self.operands.generate()
+        generated = self.operands.generate()
+        if generated[0] == "(":
+            result = "NOT " + generated
+        else:
+            result = "NOT (" + self.operands.generate() + ")"
         return result
 
     def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
@@ -191,8 +199,11 @@ class NotAction(OpNode):
         Tuple[str,dict[str,int|float|bool|str]]
             Templated String and dictionary of values.
         """
-        template_str, values = self.operands.generate_template()
-        template_str = " ".join(("NOT", template_str))
+        generated, values = self.operands.generate_template()
+        if generated[0] == "(":
+            template_str = "NOT " + generated
+        else:
+            template_str = "NOT (" + generated + ")"
         return template_str, values
 
 
@@ -217,7 +228,6 @@ class AndAction(OpNode):
         super().__init__()
         self.operands = tokens[0][::2]
         self.operator = "AND"
-        print(self.operands)
 
     def generate(self) -> str:
         """

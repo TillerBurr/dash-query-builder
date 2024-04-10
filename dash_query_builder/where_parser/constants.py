@@ -248,7 +248,7 @@ class Identifier:
 
 ident = Word(alphas, alphanums + "_").set_name("alphanumeric_word")
 column_name = (
-    ident + "." + ident
+    ident + "." + ident | ident
 )  # delimited_list(ident, ".", combine=True).set_name("column name")
 identifier = column_name.set_parse_action(Identifier).set_name("Identifier")
 alphaword = Word(alphanums + "_.")
