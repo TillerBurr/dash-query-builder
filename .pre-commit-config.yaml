@@ -10,6 +10,7 @@ repos:
           - id: check-yaml
           - id: check-added-large-files
             args: [--maxkb=1500]
+            exclude: ^(assets/)
     - repo: https://github.com/pre-commit/mirrors-prettier
       rev: v3.1.0 # Use the sha or tag you want to point at
       hooks:

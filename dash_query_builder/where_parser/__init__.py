@@ -82,4 +82,12 @@ with the parameters:
 ```
 """
 
-from .parser_ import WhereParser  # noqa
+try:
+    from .parser_ import WhereParser  # noqa
+except ImportError as e:
+    raise ImportError(
+        """\
+    The WhereParser requires extra dependencies that can be installed via
+
+    $ python -m pip install dash-query-builder[where]\n"""
+    ) from e

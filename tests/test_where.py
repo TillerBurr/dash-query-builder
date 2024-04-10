@@ -26,7 +26,6 @@ import json
 )
 def test_basic(where_clause, template):
     where_parser = WhereParser()
-    # print(where_parser.generate_template("a>1 and x<5"))
     r_template, r_params = where_parser.generate_template(where_clause)
     r_params = {k: json.dumps(v).replace('"', "'") for k, v in r_params.items()}
     uuid_removed = re.sub(r"\([^()]*\)", "", r_template)

@@ -85,9 +85,9 @@ const BaseBuilder = (props: StyledProps) => {
     }, [tree]);
 
     useEffect(() => {
-        if (isFirstRun.current) {
-            return;
-        }
+        // if (isFirstRun.current) {
+        //     return;
+        // }
         if (loadFormat === 'spelFormat' && spelFormat !== undefined) {
             let newTree = loadNewTree('spelFormat', spelFormat, state.config);
             setState((prevState) => ({
@@ -99,9 +99,9 @@ const BaseBuilder = (props: StyledProps) => {
     }, [spelFormat]);
 
     useEffect(() => {
-        if (isFirstRun.current) {
-            return;
-        }
+        // if (isFirstRun.current) {
+        //     return;
+        // }
         if (loadFormat === 'jsonLogicFormat' && jsonLogicFormat !== undefined) {
             let newTree = loadNewTree(
                 'jsonLogicFormat',

@@ -145,7 +145,9 @@ app.layout = html.Div(
         dash_query_builder.DashQueryBuilder(
             id="dqb",
             fields=fields["fields"],
-            tree=empty_,
+            # tree=tree,
+            spelFormat=spelFormat,
+            loadFormat="spelFormat",
             theme="basic",
         ),
         html.Button("Change Fields", id="fields-button"),
