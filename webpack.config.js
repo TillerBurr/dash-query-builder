@@ -6,6 +6,7 @@ const dashLibraryName = packagejson.name.replace(/-/g, '_');
 
 module.exports = function (env, argv) {
     const mode = (argv && argv.mode) || 'production';
+    console.log(mode);
     const entry = [path.join(__dirname, 'src/ts/index.ts')];
     const output = {
         path: path.join(__dirname, dashLibraryName),
@@ -22,29 +23,26 @@ module.exports = function (env, argv) {
         // }),
     ];
     const optimization = {
+        // chunkIds: 'named',
         splitChunks: {
-            name: 'js/[name].js',
-            maxSize: 500000,
+            name: (module, chunks, cacheGroupKey) => {
+                const allChunksNames = chunks
+                    .map((chunk) => chunk.name)
+                    .join('-');
+                return `${cacheGroupKey}-${allChunksNames}`; //allChunksNames;
+            },
+            maxAsyncSize: 500000,
             cacheGroups: {
                 async: {
+                    name: 'js/[name].[chunkhash].js',
                     chunks: 'async',
-                    // minSize: 0,
-                    name(module, chunks, cacheGroupKey) {
-                        return `${cacheGroupKey}-${chunks[0].name}`;
+                    reuseExistingChunk: true,
+                    name: (module, chunks, cacheGroupKey) => {
+                        const allChunksNames = chunks
+                            .map((chunk) => chunk.name)
+                            .join('-');
+                        return `${cacheGroupKey}-${allChunksNames}`; //allChunksNames;
                     },
-                },
-                shared: {
-                    chunks: 'all',
-                    // minSize: 0,
-                    minChunks: 2,
-                    name(module, chunks, cacheGroupKey) {
-                        return `${cacheGroupKey}-${chunks[0].name}`;
-                    },
-                },
-                reactVendor: {
-                    test: /[\\/]node_modules[\\/](@react-awesome-query-builder\/antd)[\\/]/,
-                    name: 'vendor-antd',
-                    chunks: 'all',
                 },
             },
         },
@@ -67,7 +65,7 @@ module.exports = function (env, argv) {
         },
     };
 
-    return {
+    const exp = {
         output,
         mode,
         entry,
@@ -125,4 +123,5 @@ module.exports = function (env, argv) {
             ],
         },
     };
+    return exp;
 };

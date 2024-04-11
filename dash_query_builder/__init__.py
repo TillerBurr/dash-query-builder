@@ -33,6 +33,8 @@ _current_path = _os.path.dirname(_os.path.abspath(__file__))
 _this_module = _sys.modules[__name__]
 
 all_js = [f.name for f in (Path(__file__).parent / "js").glob("*.js")]
+all_dqb = [f.name for f in (Path(__file__).parent).glob("*.js")]
+all_sourcemaps = [f.name for f in (Path(__file__).parent).glob("*.js.map")]
 async_js = [f for f in all_js if f.startswith("async")]
 sync_js = [f for f in all_js if not f.startswith("async")]
 _js_dist = []
@@ -54,18 +56,20 @@ _js_dist.extend(
 )
 
 _js_dist.extend(
-    [
-        {"relative_package_path": "dash_query_builder.js", "namespace": package_name},
-        {
-            "relative_package_path": "dash_query_builder.js.map",
-            "namespace": package_name,
-            "dynamic": True,
-        },
-    ]
+    [{"relative_package_path": i, "namespace": package_name} for i in all_dqb]
 )
 
+_js_dist.extend(
+    [
+        {
+            "relative_package_path": f"{i}.map",
+            "namespace": package_name,
+            "dymanic": True,
+        }
+        for i in all_sourcemaps
+    ]
+)
 _css_dist = []
-
 
 for _component in __all__:
     setattr(locals()[_component], "_js_dist", _js_dist)
