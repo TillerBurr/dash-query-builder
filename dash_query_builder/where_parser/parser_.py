@@ -5,6 +5,8 @@ Parse a SQL WHERE Clause string to generate a template string and
 dictionary of values.
 """
 
+from typing import Union
+
 from pyparsing import Forward, ParserElement, infix_notation, opAssoc, rest_of_line
 from pyparsing.results import ParseResults
 
@@ -100,7 +102,7 @@ class WhereParser:
 
     def generate_template(
         self, str_to_parse: str
-    ) -> tuple[str, dict[str, str | int | float | bool]]:
+    ) -> tuple[str, dict[str, Union[str, int, float, bool]]]:
         """
         Generate the template string and values of a given WHERE string.
 

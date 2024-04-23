@@ -1,5 +1,7 @@
 """Constants used in creating the Parser."""
 
+from typing import Union
+
 from pyparsing import (
     CaselessKeyword,
     OneOrMore,
@@ -176,7 +178,7 @@ class Number:
         """
         return self.value
 
-    def generate_template(self) -> int | float:
+    def generate_template(self) -> Union[int, float]:
         """
         Generate a number based on the value.
 

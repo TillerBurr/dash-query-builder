@@ -43,6 +43,12 @@ jobs:
               uses: actions/setup-python@v5
               with:
                   python-version: ${{ matrix.python-version }}
+            - name: Install chrome
+              uses: nanasess/setup-chromedriver@v2
+            - run: |
+                  export DISPLAY=:99
+                  chromedriver --url-base=/wd/hub &
+                  sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
             - uses: actions/cache@v4
               id: cache
               with:

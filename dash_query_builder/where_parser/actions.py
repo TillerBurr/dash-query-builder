@@ -1,5 +1,7 @@
 """Actions for the parser."""
 
+from typing import Union
+
 from pyparsing import ParseFatalException, ParseResults
 
 try:
@@ -130,7 +132,7 @@ class OrAction(OpNode):
             + ")"
         )
 
-    def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
+    def generate_template(self) -> tuple[str, dict[str, Union[int, float, bool, str]]]:
         """
         Generate the templated "OR" clause string and corresponding values.
 
@@ -190,7 +192,7 @@ class NotAction(OpNode):
             result = "NOT (" + self.operands.generate() + ")"
         return result
 
-    def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
+    def generate_template(self) -> tuple[str, dict[str, Union[int, float, bool, str]]]:
         """
         Generate the templated "NOT" clause string and corresponding values.
 
@@ -243,7 +245,7 @@ class AndAction(OpNode):
             result = "(" + result + ")"
         return result
 
-    def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
+    def generate_template(self) -> tuple[str, dict[str, Union[int, float, bool, str]]]:
         """
         Generate the templated "NOT" clause string and corresponding values.
 
@@ -304,7 +306,7 @@ class RelationalAction(OpNode):
             (self.identifier.generate(), self.operator, self.operands.generate())
         )
 
-    def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
+    def generate_template(self) -> tuple[str, dict[str, Union[int, float, bool, str]]]:
         """
         Generate the templated comparison string and corresponding values.
 
@@ -373,7 +375,7 @@ class InAction(OpNode):
             )
         )
 
-    def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
+    def generate_template(self) -> tuple[str, dict[str, Union[int, float, bool, str]]]:
         """
         Generate the templated "IN" operator string and corresponding values.
 
@@ -526,7 +528,7 @@ class BetweenAction(OpNode):
             )
         )
 
-    def generate_template(self) -> tuple[str, dict[str, int | float | bool | str]]:
+    def generate_template(self) -> tuple[str, dict[str, Union[int, float, bool, str]]]:
         """
         Generate the templated "BETWEEN" operator string and corresponding values.
 
