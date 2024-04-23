@@ -69,9 +69,7 @@ app.run_server()
 
 This will run the app similar to this:
 
-
 https://github.com/TillerBurr/dash-query-builder/assets/49296311/1fdc9663-fde7-4c26-a706-00b5edc9f902
-
 
 There are other properties available as well, with defaults in parentheses.
 
@@ -93,7 +91,6 @@ The `loadFormat` can be changed via a callback, while keeping the same tree.
 Here's an example using `usage.py`:
 
 https://github.com/TillerBurr/dash-query-builder/assets/49296311/1191a643-27c0-4a4f-8032-2eb5d4b1d88e
-
 
 ## Where Parser
 
