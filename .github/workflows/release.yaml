@@ -32,6 +32,8 @@ jobs:
 
     pypi-publish:
         runs-on: ubuntu-latest
+        permissions:
+            id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-python@v5
@@ -44,8 +46,8 @@ jobs:
             - name: Publish package distributions to PyPI
               uses: pypa/gh-action-pypi-publish@release/v1
               with:
-                  skip_existing: true
-                  packages_dir: dist
+                  skip-existing: true
+                  packagessdir: dist
                   verbose: true
 
     publish-release:
