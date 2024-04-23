@@ -47,7 +47,6 @@ where = [
     "shortuuid>=1.0.11"
     ]
 
-
 [tool.hatch.version]
 path = "dash_query_builder/__version__.py"
 
