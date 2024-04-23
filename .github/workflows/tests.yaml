@@ -10,28 +10,8 @@ on:
             - synchronize
 
 jobs:
-    changes:
-        runs-on: ubuntu-latest
-        permissions:
-            pull-requests: read
-        outputs:
-            python: ${{ steps.filter.outputs.python}}
-        steps:
-            - uses: actions/checkout@v4
-            - uses: dorny/paths-filter@v2
-              id: filter
-              with:
-                  filters: |
-                      python:
-                        - 'tests/**'
-                        - 'dash_query_builder/**'
-            - id: debug
-              run: |
-                  echo "${{toJSON(steps.filter)}}"
-
     lint:
         runs-on: ubuntu-latest
-        needs: changes
         if: ${{needs.changes.outputs.python== 'true'}}
         steps:
             - uses: actions/checkout@v4
@@ -57,7 +37,7 @@ jobs:
 
     tests:
         runs-on: ubuntu-latest
-        needs: [changes, lint]
+        needs: lint
         if: ${{needs.changes.outputs.python == 'true'}}
         strategy:
             matrix:
