@@ -14,8 +14,6 @@ certifi==2024.2.2
     #   urllib3
 cffi==1.16.0
     # via cryptography
-cfgv==3.4.0
-    # via pre-commit
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
@@ -37,10 +35,6 @@ dash-testing-stub==0.0.2
     # via dash
 dill==0.3.8
     # via multiprocess
-distlib==0.3.8
-    # via virtualenv
-filelock==3.13.4
-    # via virtualenv
 fire==0.6.0
     # via dash
 flask==3.0.3
@@ -49,8 +43,6 @@ h11==0.14.0
     # via wsproto
 humanfriendly==10.0
     # via coloredlogs
-identify==2.5.35
-    # via pre-commit
 idna==3.7
     # via
     #   requests
@@ -60,7 +52,7 @@ importlib-metadata==7.1.0
     # via dash
 iniconfig==2.0.0
     # via pytest
-itsdangerous==2.1.2
+itsdangerous==2.2.0
     # via flask
 jinja2==3.1.3
     # via flask
@@ -74,8 +66,6 @@ multiprocess==0.70.16
     # via dash
 nest-asyncio==1.6.0
     # via dash
-nodeenv==1.8.0
-    # via pre-commit
 outcome==1.3.0.post0
     # via trio
 packaging==24.0
@@ -84,13 +74,10 @@ packaging==24.0
     #   pytest
 percy==2.0.2
     # via dash
-platformdirs==4.2.0
-    # via virtualenv
-plotly==5.20.0
+plotly==5.21.0
     # via dash
-pluggy==1.4.0
+pluggy==1.5.0
     # via pytest
-pre-commit==3.7.0
 psutil==5.9.8
     # via dash
 pycparser==2.22
@@ -103,22 +90,18 @@ pysocks==1.7.1
 pytest==8.1.1
     # via dash
 pyyaml==6.0.1
-    # via
-    #   dash
-    #   pre-commit
+    # via dash
 requests==2.31.0
     # via
     #   dash
     #   percy
 retrying==1.3.4
     # via dash
-ruff==0.3.5
+ruff==0.4.1
 selenium==4.2.0
     # via dash
-setuptools==69.2.0
-    # via
-    #   dash
-    #   nodeenv
+setuptools==69.5.1
+    # via dash
 shortuuid==1.0.13
 six==1.16.0
     # via
@@ -148,8 +131,6 @@ urllib3==1.26.18
     #   selenium
 urllib3-secure-extra==0.1.0
     # via urllib3
-virtualenv==20.25.1
-    # via pre-commit
 waitress==3.0.0
     # via dash
 werkzeug==3.0.2
