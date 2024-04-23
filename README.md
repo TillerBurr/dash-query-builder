@@ -101,7 +101,7 @@ specified in [PEP 249](https://peps.python.org/pep-0249/#paramstyle).
 ```python
 from dash_query_builder.where_parser import WhereParser
 where_parser = WhereParser()
-template, params = where_parser.parse("qty > 15 and price between 10 and 20")
+template, params = where_parser.get_template("qty > 15 and price between 10 and 20")
 print(template) # (qty > %(YSaAddDFs27s)s AND price BETWEEN %(W5PRwTGpFqqF)s AND %(N2nGExcGaUSt)s)
 print(params) # {'YSaAddDFs27s': 15, 'W5PRwTGpFqqF': 10, 'N2nGExcGaUSt': 20}
 ```

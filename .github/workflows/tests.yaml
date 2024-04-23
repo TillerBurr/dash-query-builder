@@ -27,7 +27,7 @@ jobs:
               if: steps.cache.outputs.cache-hit != 'true'
               run: pip install -r requirements-dev.txt
             - name: Lint
-              run: ruff dash_query_builder tests
+              run: ruff check dash_query_builder tests
             - name: Format
               run: ruff format dash_query_builder tests --check
 
