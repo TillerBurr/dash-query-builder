@@ -1,97 +1,117 @@
 const path = require('path');
+
 const packagejson = require('./package.json');
-const dashLibraryName = packagejson.name.replace(/-/g, '_');
 const WebpackDashDynamicImport = require('@plotly/webpack-dash-dynamic-import');
-const TerserPlugin = require('terser-webpack-plugin');
-const webpack = require('webpack');
+const dashLibraryName = packagejson.name.replace(/-/g, '_');
 
-module.exports = (env, argv) => {
-    let mode;
+module.exports = function (env, argv) {
+    const mode = (argv && argv.mode) || 'production';
+    console.log(mode);
+    const entry = [path.join(__dirname, 'src/ts/index.ts')];
+    const output = {
+        path: path.join(__dirname, dashLibraryName),
+        filename: `${dashLibraryName}.js`,
+        chunkFilename: 'js/[name].js',
+        library: dashLibraryName,
+        libraryTarget: 'umd',
+    };
+    let plugins = [
+        new WebpackDashDynamicImport(),
+        // new webpack.SourceMapDevToolPlugin({
+        //     filename: '[file].map',
+        //     exclude: ['async-plotlyjs'],
+        // }),
+    ];
+    const optimization = {
+        // chunkIds: 'named',
+        splitChunks: {
+            name: (module, chunks, cacheGroupKey) => {
+                const allChunksNames = chunks
+                    .map((chunk) => chunk.name)
+                    .join('-');
+                return `${cacheGroupKey}-${allChunksNames}`; //allChunksNames;
+            },
+            maxAsyncSize: 500000,
+            cacheGroups: {
+                async: {
+                    name: 'js/[name].[chunkhash].js',
+                    chunks: 'async',
+                    reuseExistingChunk: true,
+                    name: (module, chunks, cacheGroupKey) => {
+                        const allChunksNames = chunks
+                            .map((chunk) => chunk.name)
+                            .join('-');
+                        return `${cacheGroupKey}-${allChunksNames}`; //allChunksNames;
+                    },
+                },
+            },
+        },
+    };
 
-    const overrides = module.exports || {};
+    const externals = {
+        react: {
+            commonjs: 'react',
+            commonjs2: 'react',
+            amd: 'react',
+            umd: 'react',
+            root: 'React',
+        },
+        'react-dom': {
+            commonjs: 'react-dom',
+            commonjs2: 'react-dom',
+            amd: 'react-dom',
+            umd: 'react-dom',
+            root: 'ReactDOM',
+        },
+    };
 
-    // if user specified mode flag take that value
-    if (argv && argv.mode) {
-        mode = argv.mode;
-    }
-
-    // else if configuration object is already set (module.exports) use that value
-    else if (overrides.mode) {
-        mode = overrides.mode;
-    }
-
-    // else take webpack default (production)
-    else {
-        mode = 'production';
-    }
-
-    let filename = (overrides.output || {}).filename;
-    let chunkFilename = '[name].js';
-    if (!filename) {
-        const modeSuffix = mode === 'development' ? 'dev' : 'min';
-        filename = `${dashLibraryName}.${modeSuffix}.js`;
-        chunkFilename = `[name].${modeSuffix}.js`;
-    }
-
-    const entry = overrides.entry || { main: './src/lib/index.js' };
-
-    const devtool = overrides.devtool || 'source-map';
-
-    const externals =
-        'externals' in overrides
-            ? overrides.externals
-            : {
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'plotly.js': 'Plotly',
-                'prop-types': 'PropTypes',
-                // 'react-awesome-query-builder': 'Utils',
-            };
-
-    return {
+    const exp = {
+        output,
         mode,
         entry,
-        output: {
-            path: path.resolve(__dirname, dashLibraryName),
-            chunkFilename: chunkFilename,
-            filename,
-            library: dashLibraryName,
-            libraryTarget: 'window',
-            globalObject: 'window'
-        },
-        devtool,
+        plugins,
+        optimization,
+        target: 'web',
         externals,
+        resolve: {
+            extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+        },
         module: {
             rules: [
                 {
-                    test: /\.jsx?$/,
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
                     exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader',
-                    },
                 },
                 {
                     test: /\.css$/,
                     use: [
                         {
-                            loader: "style-loader",
+                            loader: 'style-loader',
                             options: {
                                 insert: function insertAtTop(element) {
-                                    var parent = document.querySelector("head");
-                                    // eslint-disable-next-line no-underscore-dangle
+                                    var parent = document.querySelector('head');
                                     var lastInsertedElement =
                                         window._lastElementInsertedByStyleLoader;
 
                                     if (!lastInsertedElement) {
-                                        parent.insertBefore(element, parent.firstChild);
-                                    } else if (lastInsertedElement.nextSibling) {
-                                        parent.insertBefore(element, lastInsertedElement.nextSibling);
+                                        parent.insertBefore(
+                                            element,
+                                            parent.firstChild
+                                        );
+                                    } else if (
+                                        lastInsertedElement.nextSibling
+                                    ) {
+                                        parent.insertBefore(
+                                            element,
+                                            lastInsertedElement.nextSibling
+                                        );
                                     } else {
                                         parent.appendChild(element);
                                     }
 
-                                    // eslint-disable-next-line no-underscore-dangle
-                                    window._lastElementInsertedByStyleLoader = element;
+                                    window._lastElementInsertedByStyleLoader =
+                                        element;
                                 },
                             },
                         },
@@ -102,43 +122,6 @@ module.exports = (env, argv) => {
                 },
             ],
         },
-        optimization: {
-            minimizer: [
-                new TerserPlugin({
-                    parallel: true,
-                    terserOptions: {
-                        warnings: false,
-                        ie8: false
-                    }
-                })
-            ],
-            splitChunks: {
-                name: "[name].js",
-                cacheGroups: {
-                    async: {
-                        chunks: 'async',
-                        minSize: 0,
-                        name(module, chunks, cacheGroupKey) {
-                            return `${cacheGroupKey}-${chunks[0].name}`;
-                        }
-                    },
-                    shared: {
-                        chunks: 'all',
-                        minSize: 0,
-                        minChunks: 2,
-                        name(module, chunks, cacheGroupKey) {
-                            return `${cacheGroupKey}-${chunks[0].name}`;
-                        }
-                    }
-                }
-            }
-        },
-        plugins: [
-            new WebpackDashDynamicImport(),
-            new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map',
-                exclude: ['async-plotlyjs']
-            })
-        ]
-    }
+    };
+    return exp;
 };

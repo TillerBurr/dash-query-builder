@@ -1,5 +1,8 @@
-[tools]
-node = "19.2"
-
 [env]
 _.python.venv=".venv"
+
+[tools]
+just = "1.25"
+node = "19.2"
+pnpm = "8.15"
+python = "3.12.1"

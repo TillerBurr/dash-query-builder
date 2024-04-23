@@ -1,13 +1,13 @@
 Package: dashQueryBuilder
-Title: Plotly Dash Component providing react-awesome-query-builder functionality
-Version: 0.5.2
-Description: Plotly Dash Component providing react-awesome-query-builder functionality
+Title: Component for Dash based on react-awesome-query-builder
+Version: 1.0.0
+Description: Component for Dash based on react-awesome-query-builder
 Depends: R (>= 3.0.2)
 Imports:
 Suggests:
 License: MIT + file LICENSE
-URL: https://github.com/baurt/dash_query_builder
-BugReports: https://github.com/baurt/dash_query_builder/issues
+URL: https://github.com/TillerBurr/dash-query-builder
+BugReports: https://github.com/TillerBurr/dash-query-builder/issues
 Encoding: UTF-8
 LazyData: true
 KeepSource: true

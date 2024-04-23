@@ -1,59 +1,137 @@
 # Dash Query Builder
 
-Dash Query Builder is a Dash component library.
+Component for Dash based on [react-awesome-query-builder](https://github.com/ukrbublik/react-awesome-query-builder).
+The component is a way to graphically generate WHERE clauses for SQL queries.
 
-This project uses [Poetry](https://python-poetry.org/docs/).
+## Install
 
-## Contributing
+```shell
+pip install dash_query_builder
+```
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md)
+## Usage
 
-### Install dependencies
+To use Dash Query Builder (DQB), you need to have a Dash app and a dictionary of fields.
+The fields property is a dictionary of fields and their properties, following the
+[config.fields docs](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields).
+The only caveat is that JavaScript cannot be used as in the example.
 
-1. Install npm packages
+For instance the following dictionary is valid:
+
+```python
+fields = {
+    "qty": {
+        "label": "Qty",
+        "type": "number",
+        "fieldSettings": {"min": 0},
+        "valueSources": ["value"],
+        "preferWidgets": ["number"],
+    },
+    "price": {
+        "label": "Price",
+        "type": "number",
+        "valueSources": ["value"],
+        "fieldSettings": {"min": 10, "max": 100},
+        "preferWidgets": ["slider", "rangeslider"],
+        "operators": ["equal", "between"],
+    },
+    "color": {
+        "label": "Color",
+        "type": "select",
+        "valueSources": ["value"],
+        "fieldSettings": {
+            "listValues": [
+                {"value": "yellow", "title": "Yellow"},
+                {"value": "green", "title": "Green"},
+                {"value": "orange", "title": "Orange"},
+            ]
+        },
+    },
+    "is_promotion": {
+        "label": "Promo?",
+        "type": "boolean",
+        "operators": ["equal", "is_empty"],
+        "valueSources": ["value"],
+    },
+}
+```
+
+The basic component can be created via:
+
+```python
+from dash import Dash, html
+import dash_query_builder as dqb
+fields =...
+app=Dash(__name__)
+app.layout=html.Div([dqb.DashQueryBuilder(fields=fields)])
+app.run_server()
+```
+
+This will run the app similar to this:
+
+![](./assets/Basic Usage.mp4)
+
+There are other properties available as well, with defaults in parentheses.
+
+-   config({}): see [CONFIG.adoc](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc) for full options
+-   theme("basic"): one of "antd", "mui", "fluent", "bootstrap", "basic"
+-   loadFormat("tree"): one of "tree", "spelFormat", "jsonLogicFormat"
+-   alwaysShowActionButtons(True): A boolean whether to always show action buttons, e.g. "Add Rule", "Add Group", etc.
+
+With the above parameters, a query builder will be created with an empty tree. To pre-populate the query builder,
+there are several ways to do so:
+
+1. `loadFormat=="tree"`: Set `tree` to a valid tree object.
+2. `loadFormat=="spelFormat"`: Set `spelFormat` to a valid SpEL string.
+3. `loadFormat=="jsonLogicFormat"`: Set `jsonLogicFormat` to a valid jsonLogic object.
+
+Once `loadFormat` is set, the tree/query builder will update when the query is changed or when the corresponding property is changed.
+The `loadFormat` can be changed via a callback, while keeping the same tree.
+
+![](./assets/LoadFormat.mp4)
+
+## Where Parser
+
+DQB has a built-in parser for SQL queries. The parser is relatively simple as far as parsers go, but it does what I need it to.
+It will parse the query and return a template string and a parameter dictionary. The template string will be in `pyformat` style, as
+specified in [PEP 249](https://peps.python.org/pep-0249/#paramstyle).
+
+### Example
+
+```python
+from dash_query_builder.where_parser import WhereParser
+where_parser = WhereParser()
+template, params = where_parser.parse("qty > 15 and price between 10 and 20")
+print(template) # (qty > %(YSaAddDFs27s)s AND price BETWEEN %(W5PRwTGpFqqF)s AND %(N2nGExcGaUSt)s)
+print(params) # {'YSaAddDFs27s': 15, 'W5PRwTGpFqqF': 10, 'N2nGExcGaUSt': 20}
+```
+
+Currently, only `pyformat` is supported. PRs are welcome!
+
+## Tools Used
+
+-   [uv](https://github.com/astral-sh/uv) for Python virtual environment and dependencies.
+-   [just](https://github.com/casey/just) for common commands
+-   [mise-en-place](https://mise.jdx.dev) to manage the toolchain.
+
+## Development
+
+### Getting Started
+
+1. Create a Python environment from previous step 1 and install:
+    ```shell
+    just sync
     ```
-    $ npm install
+2. Update the requirements and dev requirements
+    ```shell
+    just compile
     ```
-
-2. Install python packages required to build components.
+3. Build
+    ```shell
+    just build
     ```
-    $ poetry install
+4. Publish
+    ```shell
+    just publish
     ```
-
-### Write your component code in `src/lib/components/DashQueryBuilder.react.js`.
-
-- Test your code in a Python environment:
-    1. Build your code
-        ```
-        $ npm run build
-        ```
-    2. Run and modify the `usage.py` sample dash app:
-        ```
-        $ poetry run python usage.py
-        ```
-- Write tests for your component. (There are currently no tests for this package. The component has some finicky selectors that I still need to figure out.)
-    - A sample test is available in `tests/test_usage.py`, it will load `usage.py` and you can then automate interactions with selenium.
-    - Run the tests with `$ pytest tests`.
-    - The Dash team uses these types of integration tests extensively. Browse the Dash component code on GitHub for more examples of testing (e.g. https://github.com/plotly/dash-core-components)
-- Add custom styles to your component by putting your custom CSS files into your distribution folder (`dash_query_builder`).
-    - Make sure that they are referenced in `MANIFEST.in` so that they get properly included when you're ready to publish your component.
-    - Make sure the stylesheets are added to the `_css_dist` dict in `dash_query_builder/__init__.py` so dash will serve them automatically when the component suite is requested.
-- [Review your code](./review_checklist.md)
-
-### Create a production build and publish:
-
-1. Build your code:
-    ```
-    $ npm run build
-    ```
-2. Create a Python distribution
-    ```
-    $ poetry build
-    ```
-    This will create source and wheel distribution in the generated the `dist/` folder.
-
-3. Publish the component to PyPI:
-    1. Publish on PyPI
-        ```
-        $ poetry publish
-        ```
+5. See all commands with `just -l`

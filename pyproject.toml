@@ -1,48 +1,59 @@
-[tool.poetry]
-name = "dash-query-builder"
-version = "0.5.2"
-description = "Dash Component based on react-awesome-query-builder"
-authors = ["Tyler Baur <baur.tyler@protonmail.com>"]
-license = "MIT"
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Framework :: Dash",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: MIT License"
-]
-
-[tool.poetry.urls]
-"Bug Tracker"="https://github.com/baurt/dash-query-builder/issues"
-"Homepage"="https://github.com/baurt/dash-query-builder"
-
-
-[tool.ruff]
-ignore = []
-line-length = 88
-select = [
-  'E',
-  'F',
-  'W',
-]
-
-[tool.poetry.dependencies]
-python = "^3.8"
-dash="^2.0.0"
-pyparsing = "^3.0.9"
-rich = "^13.3.1"
-shortuuid = "^1.0.11"
-
-[tool.poetry.group.dev.dependencies]
-dash = {version = "^2.0.0", extras = ["dev","testing"]}
-mypy = "^1.0.0"
-pre-commit = "^3.0.4"
-shed = "^0.10.9"
-ruff = "^0.0.246"
-
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dash-query-builder"
+dynamic = ["version"]
+description = "Component for Dash based on react-awesome-query-builder"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["dash", "dash-query-builder"]
+authors = [
+    { name = "Tyler Baur",email = "baur.tyler@gmail.com" },
+]
+classifiers = [
+    "Framework :: Dash",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.8",
+]
+dependencies = ["dash>=2.0"]
+
+[project.urls]
+Homepage = "https://github.com/tillerburr/dash-query-builder"
+Repository = "https://github.com/tillerburr/dash-query-builder"
+Issues = "https://github.com/tillerburr/dash-query-builder/issues"
+
+
+[project.optional-dependencies]
+test = [
+   "dash[testing,dev]",
+    "pre-commit",
+    "ruff",
+    "pyparsing",
+    "shortuuid"
+    ]
+
+where = [
+    "pyparsing>=3.0.9",
+    "shortuuid>=1.0.11"
+    ]
+
+[tool.hatch.version]
+path = "dash_query_builder/__version__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/dash_query_builder",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["dash_query_builder"]

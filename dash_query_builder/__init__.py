@@ -1,15 +1,15 @@
 from __future__ import print_function as _
 
-import json
 import os as _os
 import sys as _sys
+import json
+from pathlib import Path
 
 import dash as _dash
 
-# noinspection PyUnresolvedReferences'
+# noinspection PyUnresolvedReferences
 from ._imports_ import *  # noqa
 from ._imports_ import __all__
-from .where_parser import WhereParser  # noqa
 
 if not hasattr(_dash, "__plotly_dash") and not hasattr(_dash, "development"):
     print(
@@ -21,7 +21,7 @@ if not hasattr(_dash, "__plotly_dash") and not hasattr(_dash, "development"):
     _sys.exit(1)
 
 _basepath = _os.path.dirname(__file__)
-_filepath = _os.path.abspath(_os.path.join(_basepath, "package.json"))
+_filepath = _os.path.abspath(_os.path.join(_basepath, "package-info.json"))
 with open(_filepath) as f:
     package = json.load(f)
 
@@ -32,68 +32,44 @@ _current_path = _os.path.dirname(_os.path.abspath(__file__))
 
 _this_module = _sys.modules[__name__]
 
-dev_mode = False
-mode_suffix = "dev" if dev_mode else "min"
-async_resources = ["mui", "antd", "bootstrap", "basic"]
-_shared = "shared." + mode_suffix
-
-shared_resources = [mode_suffix]
-
+all_js = [f.name for f in (Path(__file__).parent / "js").glob("*.js")]
+all_dqb = [f.name for f in (Path(__file__).parent).glob("*.js")]
+all_sourcemaps = [f.name for f in (Path(__file__).parent).glob("*.js.map")]
+async_js = [f for f in all_js if f.startswith("async")]
+sync_js = [f for f in all_js if not f.startswith("async")]
 _js_dist = []
 
 _js_dist.extend(
     [
-        {
-            "relative_package_path": "async-{}.{}.js".format(
-                async_resource, mode_suffix
-            ),
-            "external_url": ("https://unpkg.com/{0}@{2}" "/{1}/async-{3}.js").format(
-                package_name, __name__, __version__, async_resource
-            ),
-            "namespace": package_name,
-            "async": True,
-        }
-        for async_resource in async_resources
+        {"relative_package_path": f"js/{i}", "namespace": package_name, "async": True}
+        for i in async_js
     ]
 )
-
-# TODO: Figure out if unpkg link works
 _js_dist.extend(
     [
         {
-            "relative_package_path": "async-{}.{}.js.map".format(
-                async_resource, mode_suffix
-            ),
-            "external_url": (
-                "https://unpkg.com/{0}@{2}" "/{1}/async-{3}.js.map"
-            ).format(package_name, __name__, __version__, async_resource),
+            "relative_package_path": f"js/{i}",
             "namespace": package_name,
-            "dynamic": True,
         }
-        for async_resource in async_resources
+        for i in sync_js
     ]
+)
+
+_js_dist.extend(
+    [{"relative_package_path": i, "namespace": package_name} for i in all_dqb]
 )
 
 _js_dist.extend(
     [
         {
-            "relative_package_path": f"dash_query_builder.{shared_resource}.js",
+            "relative_package_path": f"{i}.map",
             "namespace": package_name,
+            "dymanic": True,
         }
-        for shared_resource in shared_resources
-    ]
-    + [
-        {
-            "relative_package_path": f"dash_query_builder.{shared_resource}.js.map",
-            "namespace": package_name,
-            "dynamic": True,
-        }
-        for shared_resource in shared_resources
+        for i in all_sourcemaps
     ]
 )
-
 _css_dist = []
-
 
 for _component in __all__:
     setattr(locals()[_component], "_js_dist", _js_dist)

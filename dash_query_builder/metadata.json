@@ -1,113 +1,1023 @@
 {
-  "src/lib/components/DashQueryBuilder.react.js": {
-    "description": "DashQueryBuilder is a Dash Component based on [`react-awesome-query-builder`](https://github.com/ukrbublik/react-awesome-query-builder).\n\nIt takes a `fields` property to generate the options for building the actual query.\nThe optional property `tree` is used to define the current state of the tree. It can be used to\ndefine the starting state of the query builder.\nThe optional property `theme` is one of `material`, `mui`, `antd`, `bootstrap` or `basic`. This is the styling of the component.\nThese are the only themes supported by `react-awesome-query-builder`.",
+  "src/ts/components/DashQueryBuilder.tsx": {
     "displayName": "DashQueryBuilder",
-    "methods": [],
+    "description": "The Dash Query Builder component",
     "props": {
-      "id": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The ID used to identify this component in Dash callbacks."
-      },
-      "setProps": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
-      },
       "tree": {
-        "type": {
-          "name": "any"
-        },
+        "description": "The JSON representation of the tree",
         "required": false,
-        "description": "The tree that describes the state of the query builder.",
         "defaultValue": {
-          "value": "loadTree(emptyTree)",
-          "computed": true
+          "value": "emptyTree",
+          "computed": false
+        },
+        "type": {
+          "name": "any",
+          "raw": "JsonTree"
+        }
+      },
+      "sqlFormat": {
+        "description": "The WHERE clause in SQL",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "jsonLogicFormat": {
+        "description": "JSONLogic object",
+        "required": false,
+        "type": {
+          "name": "shape",
+          "value": {},
+          "raw": "Object"
+        }
+      },
+      "queryBuilderFormat": {
+        "description": "Query Builder object",
+        "required": false,
+        "type": {
+          "name": "shape",
+          "value": {},
+          "raw": "Object"
+        }
+      },
+      "mongoDBFormat": {
+        "description": "MongoDB query object",
+        "required": false,
+        "type": {
+          "name": "shape",
+          "value": {},
+          "raw": "Object"
+        }
+      },
+      "queryString": {
+        "description": "Query string",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "elasticSearchFormat": {
+        "description": "ElasticSearch query object",
+        "required": false,
+        "type": {
+          "name": "shape",
+          "value": {},
+          "raw": "Object"
+        }
+      },
+      "spelFormat": {
+        "description": "SPEL query string",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
         }
       },
       "fields": {
+        "description": "The fields to populate the query builder. See the\n[Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.",
+        "required": true,
         "type": {
-          "name": "custom",
-          "raw": "fieldPropType.isRequired"
-        },
-        "required": false,
-        "description": "The fields that are used to populate the options for the query builder. This can be a very complicated object.\n See https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields for more info."
-      },
-      "sqlFormat": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The SQL Formatted string defined by the current state of the tree"
-      },
-      "queryStringFormat": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The Query String Formatted string defined by the current state of the tree"
-      },
-      "queryBuilderStringFormat": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The Query Builder String Formatted string defined by the current state of the tree"
-      },
-      "mongodbFormat": {
-        "type": {
-          "name": "object"
-        },
-        "required": false,
-        "description": "The MongoDB Formatted string defined by the current state of the tree"
-      },
-      "jsonLogicFormat": {
-        "type": {
-          "name": "object"
-        },
-        "required": false,
-        "description": "The JSON Logic Formatted string defined by the current state of the tree"
-      },
-      "elasticSearchFormat": {
-        "type": {
-          "name": "object"
-        },
-        "required": false,
-        "description": "The JSON Logic Formatted defined by the current state of the tree"
-      },
-      "spelFormat": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The JSON Logic Formatted string defined by the current state of the tree"
-      },
-      "alwaysShowActionButtons": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Always show the Action Buttons (Add Rule, Add Group, Delete, etc.). If false, show only on hover.",
-        "defaultValue": {
-          "value": "true",
-          "computed": false
+          "name": "shape",
+          "value": {},
+          "raw": "Record<string, T>"
         }
       },
       "config": {
-        "type": {
-          "name": "object"
-        },
+        "description": "The config object. See the [Config](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc docs).",
         "required": false,
-        "description": "Customizable Config. Currently only usable for objects that do not involve functions. Cannot be used to modify conjunctions,\noperators or widgets. Setting this is currently in alpha, it is very unstable."
+        "type": {
+          "name": "shape",
+          "value": {
+            "settings": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {
+                "locale": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "moment": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "antd": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "Object"
+                    },
+                    "material": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "Object"
+                    },
+                    "mui": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "Object"
+                    }
+                  },
+                  "raw": "{ moment?: string; antd?: Object; material?: Object; mui?: Object; }"
+                },
+                "theme": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "material": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "Object"
+                    },
+                    "mui": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {},
+                      "raw": "Object"
+                    }
+                  },
+                  "raw": "{ material?: Object; mui?: Object; }"
+                },
+                "valueLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "valuePlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "operatorLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldPlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "funcPlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "funcLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "operatorPlaceholder": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "lockLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "lockedLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "deleteLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addGroupLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addCaseLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addDefaultCaseLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultCaseLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addRuleLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "addSubRuleLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "delGroupLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "notLabel": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldSourcesPopupTitle": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "valueSourcesPopupTitle": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "removeRuleConfirmOptions": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "title": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okType": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "cancelText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    }
+                  },
+                  "raw": "{ title?: string; okText?: string; okType?: string; cancelText?: string; }"
+                },
+                "removeGroupConfirmOptions": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "title": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "okType": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    },
+                    "cancelText": {
+                      "description": "",
+                      "required": false,
+                      "name": "string",
+                      "raw": "string"
+                    }
+                  },
+                  "raw": "{ title?: string; okText?: string; okType?: string; cancelText?: string; }"
+                },
+                "defaultField": {
+                  "description": "",
+                  "required": false,
+                  "name": "union",
+                  "value": [
+                    {
+                      "name": "string",
+                      "raw": "string"
+                    }
+                  ],
+                  "raw": "string | FieldFuncValue | FieldFuncValueI"
+                },
+                "defaultOperator": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldSources": {
+                  "description": "",
+                  "required": false,
+                  "name": "array",
+                  "raw": "Array<FieldSource>"
+                },
+                "valueSourcesInfo": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {
+                    "func": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    },
+                    "field": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    },
+                    "value": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    },
+                    "const": {
+                      "description": "",
+                      "required": false,
+                      "name": "shape",
+                      "value": {
+                        "label": {
+                          "description": "",
+                          "required": true,
+                          "name": "string",
+                          "raw": "string"
+                        },
+                        "widget": {
+                          "description": "",
+                          "required": false,
+                          "name": "string",
+                          "raw": "string"
+                        }
+                      },
+                      "raw": "{ label: string; widget?: string; }"
+                    }
+                  },
+                  "raw": "ValueSourcesInfo"
+                },
+                "canCompareFieldWithField": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "canReorder": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canRegroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canRegroupCases": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "showNot": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "showLock": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canDeleteLocked": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "maxNesting": {
+                  "description": "",
+                  "required": false,
+                  "name": "number",
+                  "raw": "number"
+                },
+                "setOpOnChangeField": {
+                  "description": "",
+                  "required": true,
+                  "name": "array",
+                  "raw": "Array<ChangeFieldStrategy>"
+                },
+                "clearValueOnChangeField": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "clearValueOnChangeOp": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canLeaveEmptyGroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canLeaveEmptyCase": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "shouldCreateEmptyGroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "forceShowConj": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableGroupsMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableFieldsMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableOpsMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "immutableValuesMode": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "maxNumberOfRules": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {},
+                  "raw": "Number"
+                },
+                "maxNumberOfCases": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {},
+                  "raw": "Number"
+                },
+                "showErrorMessage": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "canShortMongoQuery": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "convertableWidgets": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {},
+                  "raw": "Record<string, T>"
+                },
+                "removeEmptyGroupsOnLoad": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "removeIncompleteRulesOnLoad": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "removeInvalidMultiSelectValuesOnLoad": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "groupOperators": {
+                  "description": "",
+                  "required": false,
+                  "name": "array",
+                  "raw": "Array<string>"
+                },
+                "useConfigCompress": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "keepInputOnChangeFieldSrc": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "fieldItemKeysForSearch": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {},
+                  "raw": "{}"
+                },
+                "listKeysForSearch": {
+                  "description": "",
+                  "required": false,
+                  "name": "shape",
+                  "value": {},
+                  "raw": "{}"
+                },
+                "fieldSeparator": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "fieldSeparatorDisplay": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "formatReverse": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "sqlFormatReverse": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "spelFormatReverse": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "formatField": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "formatSpelField": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "formatAggr": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderField": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderOperator": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderFunc": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderConjs": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderButton": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderIcon": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderButtonGroup": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderSwitch": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderProvider": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderValueSources": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderFieldSources": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderConfirm": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "useConfirm": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderSize": {
+                  "description": "",
+                  "required": false,
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'small'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'large'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'medium'",
+                      "computed": false
+                    }
+                  ],
+                  "raw": "AntdSize"
+                },
+                "renderItem": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "dropdownPlacement": {
+                  "description": "",
+                  "required": false,
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'topLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topRight'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomRight'",
+                      "computed": false
+                    }
+                  ],
+                  "raw": "AntdPosition"
+                },
+                "groupActionsPosition": {
+                  "description": "",
+                  "required": false,
+                  "name": "enum",
+                  "value": [
+                    {
+                      "value": "'topLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'topRight'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomLeft'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomCenter'",
+                      "computed": false
+                    },
+                    {
+                      "value": "'bottomRight'",
+                      "computed": false
+                    }
+                  ],
+                  "raw": "AntdPosition"
+                },
+                "showLabels": {
+                  "description": "",
+                  "required": false,
+                  "name": "bool",
+                  "raw": "boolean"
+                },
+                "maxLabelsLength": {
+                  "description": "",
+                  "required": false,
+                  "name": "number",
+                  "raw": "number"
+                },
+                "customFieldSelectProps": {
+                  "description": "",
+                  "required": false,
+                  "name": "object",
+                  "raw": "object"
+                },
+                "renderBeforeWidget": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderAfterWidget": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderBeforeActions": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderAfterActions": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderRuleError": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "renderSwitchPrefix": {
+                  "description": "",
+                  "required": false,
+                  "name": "any",
+                  "raw": "any"
+                },
+                "defaultSliderWidth": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultSelectWidth": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultSearchWidth": {
+                  "description": "",
+                  "required": false,
+                  "name": "string",
+                  "raw": "string"
+                },
+                "defaultMaxRows": {
+                  "description": "",
+                  "required": false,
+                  "name": "number",
+                  "raw": "number"
+                }
+              },
+              "raw": "Settings"
+            },
+            "operators": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {},
+              "raw": "Record<string, T>"
+            },
+            "widgets": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {},
+              "raw": "Record<string, T>"
+            },
+            "conjunctions": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {},
+              "raw": "Record<string, T>"
+            },
+            "types": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {},
+              "raw": "Record<string, T>"
+            },
+            "fields": {
+              "description": "",
+              "required": true,
+              "name": "shape",
+              "value": {},
+              "raw": "Record<string, T>"
+            },
+            "funcs": {
+              "description": "",
+              "required": false,
+              "name": "shape",
+              "value": {},
+              "raw": "Record<string, T>"
+            },
+            "ctx": {
+              "description": "",
+              "required": true,
+              "name": "objectOf",
+              "value": {
+                "name": "any",
+                "raw": "any"
+              },
+              "raw": "ConfigContext"
+            }
+          },
+          "raw": "Config"
+        }
       },
       "loadFormat": {
+        "description": "The load format string. Changes the tree based on the corresponding prop change",
+        "required": false,
+        "defaultValue": {
+          "value": "'tree'",
+          "computed": false
+        },
         "type": {
           "name": "enum",
           "value": [
+            {
+              "value": "'tree'",
+              "computed": false
+            },
             {
               "value": "'jsonLogicFormat'",
               "computed": false
@@ -115,21 +1025,30 @@
             {
               "value": "'spelFormat'",
               "computed": false
-            },
-            {
-              "value": "'tree'",
-              "computed": false
             }
-          ]
-        },
+          ],
+          "raw": "loadFormatType"
+        }
+      },
+      "alwaysShowActionButtons": {
+        "description": "Whether to show action buttons all the time or just on hover",
         "required": false,
-        "description": "The Format which the Query Builder will load. Any changes made to that format will produce an update. Only that format will be able to load\nthe tree",
         "defaultValue": {
-          "value": "'tree'",
+          "value": "true",
           "computed": false
+        },
+        "type": {
+          "name": "bool",
+          "raw": "boolean"
         }
       },
       "theme": {
+        "description": "The theme/styling used",
+        "required": false,
+        "defaultValue": {
+          "value": "'basic'",
+          "computed": false
+        },
         "type": {
           "name": "enum",
           "value": [
@@ -142,22 +1061,38 @@
               "computed": false
             },
             {
-              "value": "'basic'",
+              "value": "'fluent'",
               "computed": false
             },
             {
               "value": "'bootstrap'",
               "computed": false
+            },
+            {
+              "value": "'basic'",
+              "computed": false
             }
-          ]
-        },
+          ],
+          "raw": "themeType"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,
-        "description": "Sets the theme of the query builder.",
-        "defaultValue": {
-          "value": "'basic'",
-          "computed": false
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
         }
       }
-    }
+    },
+    "isContext": false
   }
 }
