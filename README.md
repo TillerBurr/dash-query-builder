@@ -69,7 +69,7 @@ app.run_server()
 
 This will run the app similar to this:
 
-![](./assets/Basic Usage.mp4)
+![Basic Usage](https://github.com/TillerBurr/dash-query-builder/main/assets/Basic%20Usage.mp4)
 
 There are other properties available as well, with defaults in parentheses.
 
@@ -82,13 +82,13 @@ With the above parameters, a query builder will be created with an empty tree. T
 there are several ways to do so:
 
 1. `loadFormat=="tree"`: Set `tree` to a valid tree object.
-2. `loadFormat=="spelFormat"`: Set `spelFormat` to a valid SpEL string.
-3. `loadFormat=="jsonLogicFormat"`: Set `jsonLogicFormat` to a valid jsonLogic object.
+1. `loadFormat=="spelFormat"`: Set `spelFormat` to a valid SpEL string.
+1. `loadFormat=="jsonLogicFormat"`: Set `jsonLogicFormat` to a valid jsonLogic object.
 
 Once `loadFormat` is set, the tree/query builder will update when the query is changed or when the corresponding property is changed.
 The `loadFormat` can be changed via a callback, while keeping the same tree.
 
-![](./assets/LoadFormat.mp4)
+![Load Format](https://github.com/TillerBurr/dash-query-builder/main/assets/LoadFormat.mp4)
 
 ## Where Parser
 
@@ -122,16 +122,16 @@ Currently, only `pyformat` is supported. PRs are welcome!
     ```shell
     just sync
     ```
-2. Update the requirements and dev requirements
+1. Update the requirements and dev requirements
     ```shell
     just compile
     ```
-3. Build
+1. Build
     ```shell
     just build
     ```
-4. Publish
+1. Publish
     ```shell
     just publish
     ```
-5. See all commands with `just -l`
+1. See all commands with `just -l`
