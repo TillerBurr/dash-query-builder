@@ -1,8 +1,8 @@
 from __future__ import print_function as _
 
+import json
 import os as _os
 import sys as _sys
-import json
 from pathlib import Path
 
 import dash as _dash

@@ -1,7 +1,9 @@
 import json
-import dash_query_builder
+
 import dash
-from dash import Output, callback, html, Input, State, no_update, callback_context
+from dash import Input, Output, State, callback, callback_context, html, no_update
+
+import dash_query_builder
 
 app = dash.Dash(__name__)
 fields = {

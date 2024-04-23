@@ -1,6 +1,7 @@
-from dash import Dash, html, Output, Input, callback
 import pytest
+from dash import Dash, Input, Output, callback, html
 from selenium.common.exceptions import TimeoutException
+
 from dash_query_builder import DashQueryBuilder
 
 

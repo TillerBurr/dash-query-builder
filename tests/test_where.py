@@ -1,7 +1,9 @@
-import re
-from dash_query_builder.where_parser import WhereParser
-import pytest
 import json
+import re
+
+import pytest
+
+from dash_query_builder.where_parser import WhereParser
 
 
 @pytest.mark.parametrize(

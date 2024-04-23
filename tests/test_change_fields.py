@@ -1,4 +1,5 @@
-from dash import Dash, State, html, Output, Input, callback
+from dash import Dash, Input, Output, State, callback, html
+
 from dash_query_builder import DashQueryBuilder
 
 

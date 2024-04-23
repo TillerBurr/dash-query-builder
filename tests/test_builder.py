@@ -1,7 +1,9 @@
 import json
-from dash import State, html, Dash, Output, Input
-from dash_query_builder import DashQueryBuilder
+
+from dash import Dash, Input, Output, State, html
 from selenium.webdriver.common.keys import Keys
+
+from dash_query_builder import DashQueryBuilder
 
 add_rule_selector = "#dqb > div > div > div > div > div.group--header.one--child.hide--line > div.group--actions.group--actions--tr > button:nth-child(1)"
 

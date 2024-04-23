@@ -1,7 +1,7 @@
+import pytest
 from dash import Dash, html
 
 from dash_query_builder.DashQueryBuilder import DashQueryBuilder
-import pytest
 
 antd_selector = "#dash-query-builder > div > div > div > div > div.group--header.one--child.hide--line.no--children > div.group--actions.group--actions--tr > div"
 bootstrap_selector = "#dash-query-builder > div > div > div > div > div.group--header.one--child.hide--line.no--children > div.group--actions.group--actions--tr > div"
