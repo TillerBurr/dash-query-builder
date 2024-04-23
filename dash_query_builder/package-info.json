@@ -1,6 +1,6 @@
 {
     "name": "dash_query_builder",
-    "version": "1.0.0",
+    "version": "0.6.0",
     "description": "Component for Dash based on react-awesome-query-builder",
     "main": "index.ts",
     "bugs": {
