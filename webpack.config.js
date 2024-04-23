@@ -6,7 +6,6 @@ const dashLibraryName = packagejson.name.replace(/-/g, '_');
 
 module.exports = function (env, argv) {
     const mode = (argv && argv.mode) || 'production';
-    console.log(mode);
     const entry = [path.join(__dirname, 'src/ts/index.ts')];
     const output = {
         path: path.join(__dirname, dashLibraryName),

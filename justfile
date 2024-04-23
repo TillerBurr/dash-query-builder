@@ -1,10 +1,11 @@
+#!/usr/bin/env just --justfile
 set dotenv-load := false
 
 # Clean js assets
 clean-js:
     rm -rf dash_query_builder/js
     rm -rf dash_query_builder/*.js
-    rm -r dash_query_builder/*.txt
+    rm -rf dash_query_builder/*.txt
 
 # Generate components and build the bundle
 build: clean-js

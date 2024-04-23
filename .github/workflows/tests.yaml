@@ -1,5 +1,6 @@
 name: Tests
 on:
+    workflow_dispatch:
     push:
         branches:
             - main
@@ -45,7 +46,7 @@ jobs:
               id: cache
               with:
                   path: ${{ env.pythonLocation }}
-                  key: ${{ runner.os }}-python-${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml', 'requirements-dev.txt'}}-test
+                  key: ${{ runner.os }}-python-${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml', 'requirements-dev.txt')}}-test
             - name: Install Dependencies
               if: steps.cache.outputs.cache-hit != 'true'
               run: pip install -r requirements-dev.txt
