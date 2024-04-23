@@ -14,4 +14,4 @@ package_name = package["name"].replace(" ", "_").replace("-", "_")
 _version = package["version"]
 
 with _version_file.open("w") as f:
-    f.write(f"__version__ = '{_version}'")
+    f.write(f'__version__ = "{_version}"')

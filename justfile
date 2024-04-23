@@ -9,6 +9,7 @@ clean-js:
 
 # Generate components and build the bundle
 build: clean-js
+    python scripts/make_version.py
     pnpm run build
 
 # Build the webpack bundle
