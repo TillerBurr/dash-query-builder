@@ -69,7 +69,7 @@ app.run_server()
 
 This will run the app similar to this:
 
-![Basic Usage](https://github.com/TillerBurr/dash-query-builder/main/assets/Basic%20Usage.mp4)
+![Basic Usage](https://raw.githubusercontent.com/TillerBurr/dash-query-builder/main/assets/Basic%20Usage.mp4)
 
 There are other properties available as well, with defaults in parentheses.
 
@@ -88,7 +88,7 @@ there are several ways to do so:
 Once `loadFormat` is set, the tree/query builder will update when the query is changed or when the corresponding property is changed.
 The `loadFormat` can be changed via a callback, while keeping the same tree.
 
-![Load Format](https://github.com/TillerBurr/dash-query-builder/main/assets/LoadFormat.mp4)
+![Load Format](https://raw.githubusercontent.com/TillerBurr/dash-query-builder/main/assets/LoadFormat.mp4)
 
 ## Where Parser
 
