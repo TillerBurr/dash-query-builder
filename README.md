@@ -73,10 +73,10 @@ https://github.com/TillerBurr/dash-query-builder/assets/49296311/1fdc9663-fde7-4
 
 There are other properties available as well, with defaults in parentheses.
 
--   config({}): see [CONFIG.adoc](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc) for full options
--   theme("basic"): one of "antd", "mui", "fluent", "bootstrap", "basic"
--   loadFormat("tree"): one of "tree", "spelFormat", "jsonLogicFormat"
--   alwaysShowActionButtons(True): A boolean whether to always show action buttons, e.g. "Add Rule", "Add Group", etc.
+- config({}): see [CONFIG.adoc](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc) for full options
+- theme("basic"): one of "antd", "mui", "fluent", "bootstrap", "basic"
+- loadFormat("tree"): one of "tree", "spelFormat", "jsonLogicFormat"
+- alwaysShowActionButtons(True): A boolean whether to always show action buttons, e.g. "Add Rule", "Add Group", etc.
 
 With the above parameters, a query builder will be created with an empty tree. To pre-populate the query builder,
 there are several ways to do so:
@@ -112,9 +112,9 @@ Currently, only `pyformat` is supported. PRs are welcome!
 
 ## Tools Used
 
--   [uv](https://github.com/astral-sh/uv) for Python virtual environment and dependencies.
--   [just](https://github.com/casey/just) for common commands
--   [mise-en-place](https://mise.jdx.dev) to manage the toolchain.
+- [uv](https://github.com/astral-sh/uv) for Python virtual environment and dependencies.
+- [just](https://github.com/casey/just) for common commands
+- [mise-en-place](https://mise.jdx.dev) to manage the toolchain.
 
 ## Development
 
