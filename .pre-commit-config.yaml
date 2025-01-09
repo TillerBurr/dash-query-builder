@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.5.0
+      rev: v5.0.0
       hooks:
           - id: trailing-whitespace
           - id: end-of-file-fixer
@@ -12,13 +12,13 @@ repos:
             args: [--maxkb=1500]
             exclude: ^(assets/)
     - repo: https://github.com/pre-commit/mirrors-prettier
-      rev: v3.1.0 # Use the sha or tag you want to point at
+      rev: v4.0.0-alpha.8 # Use the sha or tag you want to point at
       hooks:
           - id: prettier
             exclude: ^(deps/|src/jl/|inst/|R/|man/|dash_query_builder/_imports_.py|dash_query_builder/.+\.(js))
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.3.5
+      rev: v0.8.6
       hooks:
           - id: ruff
             args: [--fix]
