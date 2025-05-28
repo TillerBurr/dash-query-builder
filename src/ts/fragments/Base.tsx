@@ -46,8 +46,8 @@ const BaseBuilder = (props: StyledProps) => {
             utils: undefined,
             W: undefined,
             O: undefined,
-            components: undefined
-        }
+            components: undefined,
+        },
     };
 
     for (const [styleKey, styleCfgObj] of Object.entries(styleConfig)) {
@@ -60,7 +60,7 @@ const BaseBuilder = (props: StyledProps) => {
         delete config[styleKey];
     }
     initialConfig = mergeAll([initialConfig, config]);
-    
+
     const completeConfig = {...initialConfig, fields: fields};
     const initialLoadItem = props[loadFormat] || emptyTree;
     const initialImmutableTree = loadNewTree(
