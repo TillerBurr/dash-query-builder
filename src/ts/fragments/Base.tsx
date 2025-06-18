@@ -51,13 +51,15 @@ const BaseBuilder = (props: StyledProps) => {
     };
 
     for (const [styleKey, styleCfgObj] of Object.entries(styleConfig)) {
-        if (styleKey in config) {
+        if (config && config[styleKey] !== undefined) {
             const cfgObj = config[styleKey];
             initialConfig[styleKey] = mergeAll([styleCfgObj, cfgObj]);
         } else {
             initialConfig[styleKey] = styleCfgObj;
         }
-        delete config[styleKey];
+        if (config) {
+            delete config[styleKey];
+        }
     }
     initialConfig = mergeAll([initialConfig, config]);
 
