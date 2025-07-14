@@ -18,7 +18,7 @@ repos:
             exclude: ^(deps/|src/jl/|inst/|R/|man/|dash_query_builder/_imports_.py|dash_query_builder/.+\.(js))
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.8.6
+      rev: v0.12.3
       hooks:
           - id: ruff
             args: [--fix]
