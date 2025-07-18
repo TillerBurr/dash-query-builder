@@ -35,7 +35,34 @@ const BaseBuilder = (props: StyledProps) => {
     const previousTree: React.MutableRefObject<JsonTree> = useRef(null);
 
     const isFirstRun = useRef(true);
-    const initialConfig: Config = mergeAll([styleConfig, config]);
+    let initialConfig: Config = {
+        settings: undefined,
+        operators: undefined,
+        widgets: undefined,
+        conjunctions: undefined,
+        types: undefined,
+        fields: undefined,
+        ctx: {
+            utils: undefined,
+            W: undefined,
+            O: undefined,
+            components: undefined,
+        },
+    };
+
+    for (const [styleKey, styleCfgObj] of Object.entries(styleConfig)) {
+        if (config && config[styleKey] !== undefined) {
+            const cfgObj = config[styleKey];
+            initialConfig[styleKey] = mergeAll([styleCfgObj, cfgObj]);
+        } else {
+            initialConfig[styleKey] = styleCfgObj;
+        }
+        if (config) {
+            delete config[styleKey];
+        }
+    }
+    initialConfig = mergeAll([initialConfig, config]);
+
     const completeConfig = {...initialConfig, fields: fields};
     const initialLoadItem = props[loadFormat] || emptyTree;
     const initialImmutableTree = loadNewTree(

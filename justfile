@@ -31,7 +31,7 @@ watch: clean-js
 venv:
     uv venv
     uv pip sync requirements-dev.txt
-    uv pip install - .[test]
+    uv pip install -e .[test]
 
 # Sync the venv
 sync: venv
