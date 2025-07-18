@@ -2,7 +2,7 @@
 
 #' @export
 dashQueryBuilder <- function(id=NULL, alwaysShowActionButtons=NULL, config=NULL, elasticSearchFormat=NULL, fields=NULL, jsonLogicFormat=NULL, loadFormat=NULL, mongoDBFormat=NULL, queryBuilderFormat=NULL, queryString=NULL, spelFormat=NULL, sqlFormat=NULL, theme=NULL, tree=NULL) {
-
+    
     props <- list(id=id, alwaysShowActionButtons=alwaysShowActionButtons, config=config, elasticSearchFormat=elasticSearchFormat, fields=fields, jsonLogicFormat=jsonLogicFormat, loadFormat=loadFormat, mongoDBFormat=mongoDBFormat, queryBuilderFormat=queryBuilderFormat, queryString=queryString, spelFormat=spelFormat, sqlFormat=sqlFormat, theme=theme, tree=tree)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]

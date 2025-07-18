@@ -17,23 +17,68 @@ Those elements have the following types:
   - `locale` (optional): . locale has the following type: lists containing elements 'moment', 'antd', 'material', 'mui'.
 Those elements have the following types:
   - `moment` (String; optional)
-  - `antd` (optional): . antd has the following type: lists containing elements .
+  - `antd` (optional): . antd has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
-  - `material` (optional): . material has the following type: lists containing elements .
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `material` (optional): . material has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
-  - `mui` (optional): . mui has the following type: lists containing elements .
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `mui` (optional): . mui has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
   - `theme` (optional): . theme has the following type: lists containing elements 'material', 'mui'.
 Those elements have the following types:
-  - `material` (optional): . material has the following type: lists containing elements .
+  - `material` (optional): . material has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
-  - `mui` (optional): . mui has the following type: lists containing elements .
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `mui` (optional): . mui has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
   - `valueLabel` (String; optional)
   - `valuePlaceholder` (String; optional)
   - `fieldLabel` (String; optional)
@@ -69,7 +114,7 @@ Those elements have the following types:
   - `cancelText` (String; optional)
   - `defaultField` (String; optional)
   - `defaultOperator` (String; optional)
-  - `fieldSources` (Array; optional)
+  - `fieldSources` (Array of a value equal to: 'func', 'field's; optional)
   - `valueSourcesInfo` (optional): . valueSourcesInfo has the following type: lists containing elements 'func', 'field', 'value', 'const'.
 Those elements have the following types:
   - `func` (optional): . func has the following type: lists containing elements 'label', 'widget'.
@@ -88,7 +133,18 @@ Those elements have the following types:
 Those elements have the following types:
   - `label` (String; required)
   - `widget` (String; optional)
-  - `canCompareFieldWithField` (Bool | Real | String | Dict | Array; optional)
+  - `canCompareFieldWithField` (optional): . canCompareFieldWithField has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
   - `canReorder` (Bool; optional)
   - `canRegroup` (Bool; optional)
   - `canRegroupCases` (Bool; optional)
@@ -96,7 +152,7 @@ Those elements have the following types:
   - `showLock` (Bool; optional)
   - `canDeleteLocked` (Bool; optional)
   - `maxNesting` (Real; optional)
-  - `setOpOnChangeField` (Array; required)
+  - `setOpOnChangeField` (Array of a value equal to: 'default', 'keep', 'first', 'none's; required)
   - `clearValueOnChangeField` (Bool; optional)
   - `clearValueOnChangeOp` (Bool; optional)
   - `canLeaveEmptyGroup` (Bool; optional)
@@ -107,103 +163,487 @@ Those elements have the following types:
   - `immutableFieldsMode` (Bool; optional)
   - `immutableOpsMode` (Bool; optional)
   - `immutableValuesMode` (Bool; optional)
-  - `maxNumberOfRules` (optional): . maxNumberOfRules has the following type: lists containing elements .
+  - `maxNumberOfRules` (optional): . maxNumberOfRules has the following type: lists containing elements 'toString', 'toFixed', 'toExponential', 'toPrecision', 'valueOf', 'toLocaleString'.
+Those elements have the following types:
+  - `toString` (optional): Returns a string representation of an object.
+@,param,radix, ,Specifies a radix for converting numeric values to strings. This value is only used for numbers.
+  - `toFixed` (required): Returns a string representing a number in fixed-point notation.
+@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+  - `toExponential` (required): Returns a string containing a number represented in exponential notation.
+@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+  - `toPrecision` (required): Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.
+@,param,precision, ,Number of significant digits. Must be in the range 1 - 21, inclusive.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `toLocaleString` (optional): Converts a number to a string by using the current or specified locale.
+@,param,locales, ,A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
+@,param,options, ,An object that contains one or more properties that specify comparison options.
+@,param,locales, ,A locale string, array of locale strings, Intl.Locale object, or array of Intl.Locale objects that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
+@,param,options, ,An object that contains one or more properties that specify comparison options.. toLocaleString has the following type: lists containing elements .
 Those elements have the following types:
 
-  - `maxNumberOfCases` (optional): . maxNumberOfCases has the following type: lists containing elements .
+  - `maxNumberOfCases` (optional): . maxNumberOfCases has the following type: lists containing elements 'toString', 'toFixed', 'toExponential', 'toPrecision', 'valueOf', 'toLocaleString'.
+Those elements have the following types:
+  - `toString` (optional): Returns a string representation of an object.
+@,param,radix, ,Specifies a radix for converting numeric values to strings. This value is only used for numbers.
+  - `toFixed` (required): Returns a string representing a number in fixed-point notation.
+@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+  - `toExponential` (required): Returns a string containing a number represented in exponential notation.
+@,param,fractionDigits, ,Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+  - `toPrecision` (required): Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.
+@,param,precision, ,Number of significant digits. Must be in the range 1 - 21, inclusive.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `toLocaleString` (optional): Converts a number to a string by using the current or specified locale.
+@,param,locales, ,A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
+@,param,options, ,An object that contains one or more properties that specify comparison options.
+@,param,locales, ,A locale string, array of locale strings, Intl.Locale object, or array of Intl.Locale objects that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
+@,param,options, ,An object that contains one or more properties that specify comparison options.. toLocaleString has the following type: lists containing elements .
 Those elements have the following types:
 
   - `showErrorMessage` (Bool; optional)
   - `canShortMongoQuery` (Bool; optional)
-  - `convertableWidgets` (optional): . convertableWidgets has the following type: lists containing elements .
-Those elements have the following types:
-
+  - `convertableWidgets` (Dict with Strings as keys and values of type Array of Strings; optional)
   - `removeEmptyGroupsOnLoad` (Bool; optional)
   - `removeIncompleteRulesOnLoad` (Bool; optional)
   - `removeInvalidMultiSelectValuesOnLoad` (Bool; optional)
-  - `groupOperators` (Array; optional)
+  - `groupOperators` (Array of Strings; optional)
   - `useConfigCompress` (Bool; optional)
   - `keepInputOnChangeFieldSrc` (Bool; optional)
-  - `fieldItemKeysForSearch` (optional): . fieldItemKeysForSearch has the following type: lists containing elements .
-Those elements have the following types:
-
-  - `listKeysForSearch` (optional): . listKeysForSearch has the following type: lists containing elements .
-Those elements have the following types:
-
+  - `fieldItemKeysForSearch` (Array of a value equal to: 'key', 'path', 'label', 'altLabel', 'tooltip', 'grouplabel's; optional)
+  - `listKeysForSearch` (Array of a value equal to: 'value', 'title', 'groupTitle's; optional)
   - `fieldSeparator` (String; optional)
   - `fieldSeparatorDisplay` (String; optional)
-  - `formatReverse` (Bool | Real | String | Dict | Array; optional)
-  - `sqlFormatReverse` (Bool | Real | String | Dict | Array; optional)
-  - `spelFormatReverse` (Bool | Real | String | Dict | Array; optional)
-  - `formatField` (Bool | Real | String | Dict | Array; optional)
-  - `formatSpelField` (Bool | Real | String | Dict | Array; optional)
-  - `formatAggr` (Bool | Real | String | Dict | Array; optional)
-  - `renderField` (Bool | Real | String | Dict | Array; optional)
-  - `renderOperator` (Bool | Real | String | Dict | Array; optional)
-  - `renderFunc` (Bool | Real | String | Dict | Array; optional)
-  - `renderConjs` (Bool | Real | String | Dict | Array; optional)
-  - `renderButton` (Bool | Real | String | Dict | Array; optional)
-  - `renderIcon` (Bool | Real | String | Dict | Array; optional)
-  - `renderButtonGroup` (Bool | Real | String | Dict | Array; optional)
-  - `renderSwitch` (Bool | Real | String | Dict | Array; optional)
-  - `renderProvider` (Bool | Real | String | Dict | Array; optional)
-  - `renderValueSources` (Bool | Real | String | Dict | Array; optional)
-  - `renderFieldSources` (Bool | Real | String | Dict | Array; optional)
-  - `renderConfirm` (Bool | Real | String | Dict | Array; optional)
-  - `useConfirm` (Bool | Real | String | Dict | Array; optional)
+  - `formatReverse` (optional): . formatReverse has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `sqlFormatReverse` (optional): . sqlFormatReverse has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `spelFormatReverse` (optional): . spelFormatReverse has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `formatField` (optional): . formatField has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `formatSpelField` (optional): . formatSpelField has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `formatAggr` (optional): . formatAggr has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderField` (optional): . renderField has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderOperator` (optional): . renderOperator has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderFunc` (optional): . renderFunc has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderConjs` (optional): . renderConjs has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderButton` (optional): . renderButton has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderIcon` (optional): . renderIcon has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderButtonGroup` (optional): . renderButtonGroup has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderSwitch` (optional): . renderSwitch has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderProvider` (optional): . renderProvider has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderValueSources` (optional): . renderValueSources has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderFieldSources` (optional): . renderFieldSources has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderConfirm` (optional): . renderConfirm has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `useConfirm` (optional): . useConfirm has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
   - `renderSize` (a value equal to: 'small', 'large', 'medium'; optional)
-  - `renderItem` (Bool | Real | String | Dict | Array; optional)
+  - `renderItem` (optional): . renderItem has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
   - `dropdownPlacement` (a value equal to: 'topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight'; optional)
   - `groupActionsPosition` (a value equal to: 'topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight'; optional)
   - `showLabels` (Bool; optional)
   - `maxLabelsLength` (Real; optional)
   - `customFieldSelectProps` (Dict; optional)
-  - `renderBeforeWidget` (Bool | Real | String | Dict | Array; optional)
-  - `renderAfterWidget` (Bool | Real | String | Dict | Array; optional)
-  - `renderBeforeActions` (Bool | Real | String | Dict | Array; optional)
-  - `renderAfterActions` (Bool | Real | String | Dict | Array; optional)
-  - `renderRuleError` (Bool | Real | String | Dict | Array; optional)
-  - `renderSwitchPrefix` (Bool | Real | String | Dict | Array; optional)
+  - `renderBeforeWidget` (optional): . renderBeforeWidget has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderAfterWidget` (optional): . renderAfterWidget has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderBeforeActions` (optional): . renderBeforeActions has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderAfterActions` (optional): . renderAfterActions has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderRuleError` (optional): . renderRuleError has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `renderSwitchPrefix` (optional): . renderSwitchPrefix has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
   - `defaultSliderWidth` (String; optional)
   - `defaultSelectWidth` (String; optional)
   - `defaultSearchWidth` (String; optional)
   - `defaultMaxRows` (Real; optional)
-  - `operators` (required): . operators has the following type: lists containing elements .
+  - `operators` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
+  - `widgets` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
+  - `conjunctions` (required): . conjunctions has the following type: Dict with Strings as keys and values of type lists containing elements 'label', 'formatConj', 'sqlFormatConj', 'spelFormatConj', 'mongoConj', 'jsonLogicConj', 'sqlConj', 'spelConj', 'spelConjs', 'reversedConj'.
 Those elements have the following types:
-
+  - `label` (String; required)
+  - `formatConj` (required): . formatConj has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `sqlFormatConj` (required): . sqlFormatConj has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `spelFormatConj` (required): . spelFormatConj has the following type: String | lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
+Those elements have the following types:
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+  - `mongoConj` (String; required)
+  - `jsonLogicConj` (String; optional)
+  - `sqlConj` (String; optional)
+  - `spelConj` (String; optional)
+  - `spelConjs` (Array of Strings; optional)
+  - `reversedConj` (String; optional)
+  - `types` (required): . types has the following type: Dict with Strings as keys and values of type lists containing elements 'valueSources', 'defaultOperator', 'widgets', 'mainWidget', 'excludeOperators'.
+Those elements have the following types:
+  - `valueSources` (Array of a value equal to: 'func', 'field', 'value', 'const's; optional)
+  - `defaultOperator` (String; optional)
   - `widgets` (required): . widgets has the following type: lists containing elements .
 Those elements have the following types:
 
-  - `conjunctions` (required): . conjunctions has the following type: lists containing elements .
-Those elements have the following types:
-
-  - `types` (required): . types has the following type: lists containing elements .
-Those elements have the following types:
-
-  - `fields` (required): . fields has the following type: lists containing elements .
-Those elements have the following types:
-
-  - `funcs` (optional): . funcs has the following type: lists containing elements .
-Those elements have the following types:
-
+  - `mainWidget` (String; optional)
+  - `excludeOperators` (Array of Strings; optional)
+  - `fields` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
+  - `funcs` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; optional)
   - `ctx` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required)
-- `elasticSearchFormat` (optional): ElasticSearch query object. elasticSearchFormat has the following type: lists containing elements .
+- `elasticSearchFormat` (optional): ElasticSearch query object. elasticSearchFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
-- `fields` (required): The fields to populate the query builder. See the
-[Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.. fields has the following type: lists containing elements .
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+- `fields` (Dict with Strings as keys and values of type Bool | Real | String | Dict | Array; required): The fields to populate the query builder. See the
+[Fields](https://github.com/ukrbublik/react-awesome-query-builder/blob/master/CONFIG.adoc#configfields) docs.
+- `jsonLogicFormat` (optional): JSONLogic object. jsonLogicFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
-- `jsonLogicFormat` (optional): JSONLogic object. jsonLogicFormat has the following type: lists containing elements .
-Those elements have the following types:
-
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
 - `loadFormat` (a value equal to: 'tree', 'jsonLogicFormat', 'spelFormat'; optional): The load format string. Changes the tree based on the corresponding prop change
-- `mongoDBFormat` (optional): MongoDB query object. mongoDBFormat has the following type: lists containing elements .
+- `mongoDBFormat` (optional): MongoDB query object. mongoDBFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
-- `queryBuilderFormat` (optional): Query Builder object. queryBuilderFormat has the following type: lists containing elements .
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
+- `queryBuilderFormat` (optional): Query Builder object. queryBuilderFormat has the following type: lists containing elements 'constructor', 'toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable'.
 Those elements have the following types:
-
+  - `constructor` (optional): The initial value of Object.prototype.constructor is the standard built-in Object constructor.
+  - `toString` (optional): Returns a string representation of an object.
+  - `toLocaleString` (optional): Returns a date converted to a string using the current locale.
+  - `valueOf` (optional): Returns the primitive value of the specified object.
+  - `hasOwnProperty` (optional): Determines whether an object has a property with the specified name.
+@,param,v, ,A property name.
+  - `isPrototypeOf` (optional): Determines whether an object exists in another object's prototype chain.
+@,param,v, ,Another object whose prototype chain is to be checked.
+  - `propertyIsEnumerable` (optional): Determines whether a specified property is enumerable.
+@,param,v, ,A property name.
 - `queryString` (String; optional): Query string
 - `spelFormat` (String; optional): SPEL query string
 - `sqlFormat` (String; optional): The WHERE clause in SQL
