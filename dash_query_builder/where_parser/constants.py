@@ -19,7 +19,20 @@ LPAR, RPAR, COMMA = map(Suppress, "(),")
 # define SQL tokens
 SELECT, FROM, WHERE, AND, OR, IN, IS, NOT, NULL, BETWEEN, TRUE, FALSE = map(
     CaselessKeyword,
-    "select from where and or in is not null between true false".split(),
+    [
+        "select",
+        "from",
+        "where",
+        "and",
+        "or",
+        "in",
+        "is",
+        "not",
+        "null",
+        "between",
+        "true",
+        "false",
+    ],
 )
 NOT_NULL = NOT + NULL
 IS_NULL = IS + NULL
