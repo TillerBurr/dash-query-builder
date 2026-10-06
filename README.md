@@ -61,9 +61,10 @@ The basic component can be created via:
 ```python
 from dash import Dash, html
 import dash_query_builder as dqb
-fields =...
-app=Dash(__name__)
-app.layout=html.Div([dqb.DashQueryBuilder(fields=fields)])
+
+fields = ...
+app = Dash(__name__)
+app.layout = html.Div([dqb.DashQueryBuilder(fields=fields)])
 app.run_server()
 ```
 
@@ -102,10 +103,13 @@ specified in [PEP 249](https://peps.python.org/pep-0249/#paramstyle).
 
 ```python
 from dash_query_builder.where_parser import WhereParser
+
 where_parser = WhereParser()
 template, params = where_parser.get_template("qty > 15 and price between 10 and 20")
-print(template) # (qty > %(YSaAddDFs27s)s AND price BETWEEN %(W5PRwTGpFqqF)s AND %(N2nGExcGaUSt)s)
-print(params) # {'YSaAddDFs27s': 15, 'W5PRwTGpFqqF': 10, 'N2nGExcGaUSt': 20}
+print(
+    template
+)  # (qty > %(YSaAddDFs27s)s AND price BETWEEN %(W5PRwTGpFqqF)s AND %(N2nGExcGaUSt)s)
+print(params)  # {'YSaAddDFs27s': 15, 'W5PRwTGpFqqF': 10, 'N2nGExcGaUSt': 20}
 ```
 
 Currently, only `pyformat` is supported. PRs are welcome!
