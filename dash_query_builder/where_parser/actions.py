@@ -69,9 +69,9 @@ class OpNode:
 
     def debug(self) -> None:
         """Print the attributes of the object."""
-        print(f"Identifier:{repr(self.identifier.generate())}.")
-        print(f"Operator:{repr(self.operator)}.")
-        print(f"Operands:{repr(self.operands)}.")
+        print(f"Identifier:{self.identifier.generate()!r}.")
+        print(f"Operator:{self.operator!r}.")
+        print(f"Operands:{self.operands!r}.")
 
     def __repr__(self) -> str:
         """
@@ -85,11 +85,11 @@ class OpNode:
         if self.identifier is None:
             repr_str = ""
         else:
-            repr_str = f"{repr(self.identifier)}|"
+            repr_str = f"{self.identifier!r}|"
         return (
             f"{self.__class__.__name__}({self.operator}):"
             + repr_str
-            + f"{repr(self.operands)}"
+            + f"{self.operands!r}"
         )
 
 
