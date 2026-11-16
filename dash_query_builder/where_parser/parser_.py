@@ -98,7 +98,6 @@ class WhereParser:
             Location to save the diagram.
         """
         self.parser.create_diagram(save_location)
-        return
 
     def generate_template(
         self, str_to_parse: str
