@@ -8,7 +8,7 @@ from pathlib import Path
 import dash as _dash
 
 # noinspection PyUnresolvedReferences
-from ._imports_ import *  # noqa
+from ._imports_ import *
 from ._imports_ import __all__
 
 if not hasattr(_dash, "__plotly_dash") and not hasattr(_dash, "development"):
@@ -72,5 +72,5 @@ _js_dist.extend(
 _css_dist = []
 
 for _component in __all__:
-    setattr(locals()[_component], "_js_dist", _js_dist)
-    setattr(locals()[_component], "_css_dist", _css_dist)
+    locals()[_component]._js_dist = _js_dist
+    locals()[_component]._css_dist = _css_dist
